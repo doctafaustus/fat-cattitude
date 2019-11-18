@@ -1,10 +1,10 @@
 <template>
   <section class="product-card">
     <a href="#" class="card-link">
-      <img class="card-image" src="../assets/im-busy.jpg">
+      <img class="card-image" :src="shirt.image">
       <div class="card-info">
-        <div class="card-title">I'm Busy</div>
-        <div class="card-price">$30</div>
+        <div class="card-title">{{ shirt.title }}</div>
+        <div class="card-price">${{ shirt.price }}</div>
       </div>
     </a>
   </section>
@@ -13,6 +13,7 @@
 <script>
 export default {
   name: 'ProductCard',
+  props: ['shirt'],
   data () {
     return {
     }

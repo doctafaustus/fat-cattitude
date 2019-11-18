@@ -3,7 +3,10 @@
     <Header></Header>
     <div id="test">
       <h1 class="section-title">Show off your Fat Cattitude</h1>
-      <ProductCard></ProductCard>
+      <div class="product-list">
+        <ProductCard v-for="shirt in shirts" :key="shirt.id" :shirt="shirt"></ProductCard>
+      </div>
+      <!-- <ProductCard></ProductCard> -->
     </div>
   </section>
 </template>
@@ -11,6 +14,7 @@
 <script>
 import Header from '@/components/Header';
 import ProductCard from '@/components/ProductCard';
+import shirts from '@/model/shirts.js';
 
 export default {
   name: 'Home',
@@ -20,12 +24,16 @@ export default {
   },
   data () {
     return {
+      shirts
     }
+  },
+  mounted() {
+    console.log(shirts);
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 #test {
   background-image: url(//cdn.shopify.com/s/files/1/2292/0133/files/combo-postage-bg-pattern_ab71dc4e-68d1-49c3-8cab-384acb3fdd55_1200x.png?v=1571074956);
@@ -40,6 +48,11 @@ export default {
   letter-spacing: 2.4px;
   margin-bottom: 60px;
   padding-top: 20px;
+}
+
+.product-list {
+  display: flex;
+  justify-content: space-around;
 }
 
 @font-face{
