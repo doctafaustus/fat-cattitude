@@ -1,12 +1,23 @@
 <template>
-  <section id="test">
-    <h1 class="section-title">Show off your Fat Cattitude</h1>
+  <section>
+    <Header></Header>
+    <div id="test">
+      <h1 class="section-title">Show off your Fat Cattitude</h1>
+      <ProductCard></ProductCard>
+    </div>
   </section>
 </template>
 
 <script>
+import Header from '@/components/Header';
+import ProductCard from '@/components/ProductCard';
+
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
+  components: {
+    Header,
+    ProductCard
+  },
   data () {
     return {
     }
@@ -27,6 +38,8 @@ export default {
   font-size: 48px;
   font-family: 'Platform';
   letter-spacing: 2.4px;
+  margin-bottom: 60px;
+  padding-top: 20px;
 }
 
 @font-face{
