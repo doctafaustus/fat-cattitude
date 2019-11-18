@@ -1,10 +1,10 @@
 <template>
   <section class="product-card">
     <a href="#" class="card-link">
-      <img class="card-image" :src="shirt.image">
+      <img class="card-image" :src="product.image">
       <div class="card-info">
-        <div class="card-title">{{ shirt.title }}</div>
-        <div class="card-price">${{ shirt.price }}</div>
+        <div class="card-title">{{ product.title }}</div>
+        <div class="card-price">${{ product.price }}</div>
       </div>
     </a>
   </section>
@@ -13,7 +13,7 @@
 <script>
 export default {
   name: 'ProductCard',
-  props: ['shirt'],
+  props: ['product'],
   data () {
     return {
     }
@@ -24,14 +24,14 @@ export default {
 
 <style scoped lang="scss">
 .product-card {
-  width: 33%;
-
   .card-link {
     background-color: #fff;
     position: relative;
+    display: block;
   
     .card-image {
       width: 100%;
+      display: block;
     }
 
     .card-info {
