@@ -7,7 +7,7 @@
       <div class="row eight-bit">
         <h1 class="section-title light">Show off your Fat Cattitude</h1>
         <div class="product-list wrapper">
-          <ProductCard v-for="shirt in shirts" :key="shirt.id" :product="shirt"></ProductCard>
+          <ProductCard v-for="shirt in topShirts" :key="shirt.id" :product="shirt"></ProductCard>
         </div>
       </div>
 
@@ -33,22 +33,27 @@
               <span>We've got that something for you.</span>
               <span>Introducing Burger Bun.</span>
             </div>
-
             <a class="cta" href="#">Gimme this!</a>
-
             <a class="block-image-link" href="#">
               <img class="block-image" src="https://ih1.redbubble.net/image.126250173.7747/mug%2Ctravel%2C210x230%2Ccenter-pad%2C210x230%2Cf8f8f8.u1.jpg">
             </a>
           </div>
 
           <div class="block">
-            <h1 class="section-title light">Something Else</h1>
+            <h1 class="section-title light">Mad Hatter</h1>
             <div class="block-description">
-              <span>Sometimes there's a place in our heart for something and we don't even know it.</span>
-              <span>We've got that something for you.</span>
-              <span>Introducing Burger Bun.</span>
+              <span>Fat Cattitude Baseball Cap</span>
             </div>
+            <a class="cta" href="#">Get it now!</a>
           </div>
+        </div>
+      </div>
+
+      <!-- Cool Background -->
+      <div class="row cool-background">
+        <h1 class="section-title">Once a Fat Cat, Always a Fat Cat</h1>
+        <div class="product-list wrapper">
+          <ProductCard v-for="shirt in bottomShirts" :key="shirt.id" :product="shirt"></ProductCard>
         </div>
       </div>
 
@@ -59,8 +64,9 @@
 <script>
 import Header from '@/components/Header';
 import ProductCard from '@/components/ProductCard';
-import shirts from '@/model/shirts.js';
+import topShirts from '@/model/top-shirts.js';
 import stickers from '@/model/stickers.js';
+import bottomShirts from '@/model/bottom-shirts.js';
 
 export default {
   name: 'Home',
@@ -70,12 +76,13 @@ export default {
   },
   data () {
     return {
-      shirts,
+      topShirts,
+      bottomShirts,
       stickers
     }
   },
   mounted() {
-    console.log(shirts);
+    console.log(bottomShirts);
   }
 }
 </script>
@@ -105,6 +112,26 @@ export default {
 
   &.side-by-side {
     padding-top: 0;
+  }
+
+  &.cool-background {
+    background-image: url(../assets/space-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .product-list {
+      grid-template-columns: repeat(6, 1fr);
+      grid-row-gap: 39px;
+
+      .product-card {
+        grid-column: span 2;
+        color:red;
+
+        &:nth-last-child(2):nth-child(3n + 1) {
+          grid-column: 2 / span 2;
+        }
+      }
+    }
   }
 }
 
@@ -163,6 +190,10 @@ export default {
       background-repeat: no-repeat;
       background-size: cover;
       padding: 50px;
+
+      &:nth-child(2) {
+        background-image: url(https://cdn.shopify.com/s/files/1/1175/4418/products/DSC04100_800x.jpg?v=1571439540);
+      }
 
       .section-title {
         margin-bottom: 24px;
