@@ -17,7 +17,11 @@
         </form>
 
         <div class="subtitle light">Follow Us:</div>
-
+        <div class="social-media">
+          <a class="social-media-link" href="#"><Icon name="instagram"/></a>
+          <a class="social-media-link" href="#"><Icon name="twitter"/></a>
+          <a class="social-media-link" href="#"><Icon name="facebook"/></a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -27,8 +31,13 @@
 </template>
 
 <script>
+import Icon from '@/components/Icons';
+
 export default {
   name: 'Footer',
+  components: {
+    Icon
+  },
   data () {
     return {
     }
@@ -37,7 +46,7 @@ export default {
 </script>
 
 
-<style scoped lang="scss">
+<style lang="scss">
 footer {
   background-image: url(../assets/triangle-bg.png);
   background-size: cover;
@@ -46,7 +55,7 @@ footer {
 
 .footer-main {
   display: flex;
-  padding: 60px 20px;
+  padding: 60px 40px;
 
   .footer-left {
     width: 40%;
@@ -127,6 +136,25 @@ footer {
 
         &:hover {
           filter: hue-rotate(270deg);
+        }
+      }
+    }
+
+    .social-media {
+      .social-media-link {  
+        display: inline-block;
+
+        &:nth-child(2) {
+          margin: 0 24px;
+        }
+
+        .icon {
+          height: 50px;
+          width: 50px;
+
+          svg {
+            fill: #fff;
+          }
         }
       }
     }

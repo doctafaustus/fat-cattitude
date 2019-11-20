@@ -84,9 +84,6 @@ export default {
       bottomShirts,
       stickers
     }
-  },
-  mounted() {
-    console.log(bottomShirts);
   }
 }
 </script>
