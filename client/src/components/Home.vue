@@ -120,7 +120,7 @@ export default {
 
     .product-list {
       grid-template-columns: repeat(6, 1fr);
-      grid-gap: 5%;
+      grid-gap: 5em;
 
       .product-card {
         grid-column: span 2;
@@ -130,22 +130,6 @@ export default {
         }
       }
     }
-  }
-}
-
-.section-title,
-.subtitle {
-  font-family: 'Work Sans', sans-serif;
-}
-
-.section-title {
-  font-size: 48px;
-  font-weight: 800;
-  margin-bottom: 60px;
-  letter-spacing: 1.5px;
-
-  &.light {
-    color: #fff;
   }
 }
 

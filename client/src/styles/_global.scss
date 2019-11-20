@@ -2,3 +2,19 @@
   max-width: 1400px;
   margin: 0 auto;
 }
+
+.section-title,
+.subtitle {
+  font-family: 'Work Sans', sans-serif;
+
+  &.light {
+    color: #fff;
+  }
+}
+
+.section-title {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 60px;
+  letter-spacing: 1.5px;
+}
