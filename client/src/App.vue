@@ -13,6 +13,7 @@ export default {
 
 <style lang="scss">
 @import '@/styles/_reset.scss';
+@import '@/styles/_global.scss';
 
 body {
   background-color: #f9faff;

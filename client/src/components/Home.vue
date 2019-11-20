@@ -51,19 +51,22 @@
 
       <!-- Cool Background -->
       <div class="row cool-background">
-        <h1 class="section-title">Once a Fat Cat, Always a Fat Cat</h1>
+        <h1 class="section-title light">Once a Fat Cat, Always a Fat Cat</h1>
         <div class="product-list wrapper">
           <ProductCard v-for="shirt in bottomShirts" :key="shirt.id" :product="shirt"></ProductCard>
         </div>
       </div>
 
     </div>
+
+    <Footer></Footer>
   </section>
 </template>
 
 <script>
 import Header from '@/components/Header';
 import ProductCard from '@/components/ProductCard';
+import Footer from '@/components/Footer';
 import topShirts from '@/model/top-shirts.js';
 import stickers from '@/model/stickers.js';
 import bottomShirts from '@/model/bottom-shirts.js';
@@ -72,7 +75,8 @@ export default {
   name: 'Home',
   components: {
     Header,
-    ProductCard
+    ProductCard,
+    Footer
   },
   data () {
     return {
@@ -89,11 +93,6 @@ export default {
 
 
 <style scoped lang="scss">
-.wrapper {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
 .row {
   padding: 60px 40px;
   background-position: center center;
@@ -121,11 +120,10 @@ export default {
 
     .product-list {
       grid-template-columns: repeat(6, 1fr);
-      grid-row-gap: 39px;
+      grid-gap: 5%;
 
       .product-card {
         grid-column: span 2;
-        color:red;
 
         &:nth-last-child(2):nth-child(3n + 1) {
           grid-column: 2 / span 2;

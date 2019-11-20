@@ -3,31 +3,36 @@ const shirts = [
     title: 'Bottom Shirt',
     id: 1,
     price: 40,
-    image: 'https://cdn.shopify.com/s/files/1/0016/1667/4891/products/Red_Cloud_Hoodie_05_600x600.jpg?v=1566962268'
+    image: 'https://cdn.shopify.com/s/files/1/2292/0133/products/A_knight_395ce6cb-25d5-4531-a6e6-3481bbe6c425_300x.jpg',
+    inStock: true
   },
   {
     title: 'Bottom Shirt 2',
     id: 2,
     price: 25,
-    image: 'https://cdn.shopify.com/s/files/1/0016/1667/4891/products/Compact_Tee_01_600x600.jpg?v=1566962350'
+    image: 'https://cdn.shopify.com/s/files/1/2292/0133/products/C_amaro_300x.jpg?v=1571609661',
+    inStock: true
   },
   {
     title: 'Bottom Shirt 3',
     id: 3,
     price: 29,
-    image: 'https://cdn.shopify.com/s/files/1/0016/1667/4891/products/Poki_Alyssa-12_600x600.jpg?v=1567385694'
+    image: 'https://cdn.shopify.com/s/files/1/2292/0133/products/True-Self-Mock-4_300x.jpg?v=1571609604',
+    inStock: false
   },
   {
     title: 'Bottom Shirt 2',
     id: 4,
     price: 27,
-    image: 'https://cdn.shopify.com/s/files/1/0016/1667/4891/products/Pokimane_Summer_Joggers_Side_Studio_01_600x600.png'
+    image: 'https://cdn.shopify.com/s/files/1/2292/0133/products/anime-mistake-mock-b_300x.jpg?v=1571609619',
+    inStock: true
   },
   {
     title: 'Bottom Shirt 3',
     id: 5,
     price: 14,
-    image: 'https://cdn.shopify.com/s/files/1/0016/1667/4891/products/Comfy_Color_Block_Female_01_600x600.jpg?v=1566962416'
+    image: 'https://cdn.shopify.com/s/files/1/2292/0133/products/Time-Collector-Mock-3_300x.jpg?v=1571609590',
+    inStock: false
   },
 ];
 
