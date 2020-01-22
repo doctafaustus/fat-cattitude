@@ -1,13 +1,13 @@
 <template>
   <section class="product-card" :class="{ 'sold-out': !product.inStock }">
-    <a href="#" class="card-link">
+    <router-link v-bind:to="{ name: 'Item', params: { id: product.id } }" class="card-link" :product="product">
       <img class="card-image" :src="product.image">
       <div class="out-of-stock">Sold Out</div>
       <div class="card-info">
         <div class="card-title">{{ product.title }}</div>
         <div class="card-price">${{ product.price }}</div>
       </div>
-    </a>
+    </router-link>
   </section>
 </template>
 
