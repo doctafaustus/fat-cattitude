@@ -7,7 +7,7 @@
       <div class="row eight-bit">
         <h1 class="section-title light">Show off your Fat Cattitude</h1>
         <div class="product-list wrapper">
-          <ProductCard v-for="shirt in topShirts" :key="shirt.id" :product="shirt"></ProductCard>
+          <ProductCard v-for="shirt in products.featuredShirts" :key="shirt.id" :product="shirt"></ProductCard>
         </div>
       </div>
 
@@ -18,7 +18,7 @@
             <h1 class="section-title">Don't be a Sticky Vicky</h1>
             <div class="subtitle">And get yourself<br>a sticker!</div>
           </div>
-          <ProductCard v-for="sticker in stickers" :key="sticker.id" :product="sticker"></ProductCard>
+          <ProductCard v-for="sticker in products.stickers" :key="sticker.id" :product="sticker"></ProductCard>
         </div>
       </div>
 
@@ -53,7 +53,7 @@
       <div class="row cool-background">
         <h1 class="section-title light">Once a Fat Cat, Always a Fat Cat</h1>
         <div class="product-list wrapper">
-          <ProductCard v-for="shirt in bottomShirts" :key="shirt.id" :product="shirt"></ProductCard>
+          <ProductCard v-for="shirt in products.shirts" :key="shirt.id" :product="shirt"></ProductCard>
         </div>
       </div>
 
@@ -67,9 +67,7 @@
 import Header from '@/components/Header';
 import ProductCard from '@/components/ProductCard';
 import Footer from '@/components/Footer';
-import topShirts from '@/model/top-shirts.js';
-import stickers from '@/model/stickers.js';
-import bottomShirts from '@/model/bottom-shirts.js';
+import products from '@/model/products.js';
 
 export default {
   name: 'Home',
@@ -80,9 +78,7 @@ export default {
   },
   data () {
     return {
-      topShirts,
-      bottomShirts,
-      stickers
+      products
     }
   }
 }

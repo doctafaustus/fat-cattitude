@@ -1,27 +1,26 @@
 <template>
   <section class="item">
-    item
-    {{ product }}
+    {{ item }}
   </section>
 </template>
 
 <script>
-import topShirts from '@/model/top-shirts.js';
+import products from '@/model/products.js';
 
 export default {
   name: 'Item',
   data () {
     return {
-      product: {}
+      item: {}
     }
   },
   methods: {
-    getProduct() {
-      this.product = topShirts.find(product => product.id == this.$route.params.id);
+    getItem() {
+      this.item = products.featuredShirts.find(item => item.id == this.$route.params.id);
     },
   },
   created() {
-    this.getProduct();
+    this.getItem();
   }
 }
 </script>
