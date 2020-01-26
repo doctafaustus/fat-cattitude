@@ -11,16 +11,23 @@
         <div class="sub-container">
           <div class="row">
             <label>Style</label>
-            <div class="item-style">{{ item.style }}</div>
+            <div class="item-style">
+              <Icon :name="item.style"/>
+            </div>
           </div>
           <div class="row">
             <label>Color</label>
-            <div v-for="color in item.colors" :key="color.colorName" class="item-color">{{ color.colorName }}</div>
+            <ul class="item-colors">
+              <li class="swatch" v-for="color in item.colors" :key="color.colorName">
+                <span class="swatch-icon" :style="getSwatch(color.colorCode)"></span>
+                <span class="swatch-name">{{ color.colorName }}</span>
+              </li>
+            </ul>
           </div>
           <div class="row">
-            <label>Size</label>
+            <label>Size (Choose)</label>
             <ul v-for="color in item.colors" :key="color.colorName" class="item-sizes">
-              <li v-for="size in color.sizes" :key="size.variantID">{{ size.size }}</li>
+              <li v-for="size in color.sizes" :key="size.variantID" @click="selectSize(size.size)" :class="{ selected: size.size === selected.size }">{{ size.size }}</li>
             </ul>
           </div>
 
@@ -40,22 +47,37 @@
 
 <script>
 import products from '@/model/products.js';
+import Icon from '@/components/Icons';
 
 export default {
   name: 'Item',
+  components: {
+    Icon
+  },
   data () {
     return {
-      item: {}
+      item: {},
+      selected: {
+        size: null
+      }
     }
+  },
+  computed: {
   },
   methods: {
     getItem() {
       this.item = products.featuredShirts.find(item => item.id == this.$route.params.id);
     },
+    getSwatch(colorCode) {
+      return `background-color: ${colorCode}`;
+    },
+    selectSize(size) {
+      this.selected.size = size;
+    }
   },
   created() {
     this.getItem();
-  }
+  },
 }
 </script>
 
@@ -110,10 +132,40 @@ export default {
           color: #808080;
         }
 
-        .item-color,
+        .item-colors,
         .item-style,
         .item-sizes {
           padding: 10px 0;
+        }
+
+        .item-style {
+          .icon {
+            height: 38px;
+            width: 38px;
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 2px;
+          }
+        }
+
+        .item-colors {
+          .swatch {
+            .swatch-icon {
+              display: inline-block;
+              height: 25px;
+              width: 25px;
+              border-radius: 5px;
+              border: solid 2px #000;
+              margin-right: 3px;
+            }
+
+            .swatch-name {
+              font-size: 13px;
+              position: relative;
+              top: -7px;
+              margin-right: 20px;
+            }
+          }
         }
 
         .item-sizes {
@@ -129,7 +181,7 @@ export default {
               border: solid 2px #701aff;
             }
 
-            &:hover {
+            &:not(.selected):hover {
               border: solid 2px rgba(112, 26, 255, 0.3);
             }
           }
@@ -148,7 +200,7 @@ export default {
 
           .item-price {
             font-size: 22px;
-            color: #00b5ff;
+            color: #05a3e3;
             font-weight: 600;
           }
         }

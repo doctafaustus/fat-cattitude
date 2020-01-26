@@ -33,6 +33,7 @@ h1 {
   transition: all .20s ease;
   cursor: pointer;
   outline: none;
+  border: none;
 
   &:hover {
     filter: hue-rotate(-389deg);

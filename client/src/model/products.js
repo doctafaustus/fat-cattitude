@@ -2,12 +2,12 @@ const products = {
   featuredShirts: [
     {
       title: 'I\'m Busy',
-      subtitle: 'Sassy busy cat',
+      subtitle: 'Sassy busy cat T-shirt',
       id: 1,
       price: '$30',
       image: 'https://i.ibb.co/znmgYyG/im-busy-911cde4.jpg',
       inStock: true,
-      style: 'T-Shirt',
+      style: 'tshirt',
       colors: [
         {
           colorName: 'White',
