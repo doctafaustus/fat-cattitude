@@ -9,7 +9,25 @@
         <div class="item-subtitle">{{ item.subtitle }}</div>
 
         <div class="sub-container">
-          <div class="item-style"></div>
+          <div class="row">
+            <label>Style</label>
+            <div class="item-style">{{ item.style }}</div>
+          </div>
+          <div class="row">
+            <label>Color</label>
+            <div v-for="color in item.colors" :key="color.colorName" class="item-color">{{ color.colorName }}</div>
+          </div>
+          <div class="row">
+            <label>Size</label>
+            <ul v-for="color in item.colors" :key="color.colorName" class="item-sizes">
+              <li v-for="size in color.sizes" :key="size.variantID">{{ size.size }}</li>
+            </ul>
+          </div>
+
+          <div class="cta-and-price">
+            <button class="cta">Add to Cart</button>
+            <div class="item-price">{{ item.price }}</div>
+          </div>
         </div>
 
         {{ item }}
@@ -48,11 +66,11 @@ export default {
 
   .image-and-details {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 
     .image-container {
-      margin-right: 40px;
+      margin-right: 140px;
 
       .item-image {
         width: 625px;
@@ -61,7 +79,7 @@ export default {
     }
 
     .details-container {
-      border: solid 1px red;
+      max-width: 375px;
 
       .item-title {
         font-size: 48px;
@@ -70,6 +88,70 @@ export default {
 
       .item-subtitle {
         font-size: 20px;
+      }
+
+      .sub-container {
+        margin-top: 40px;
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 5px 10px rgba(37,33,81,.11);
+        padding: 20px;
+        text-align: left;
+
+        .row {
+          border-bottom: solid 1px #eaeaea;
+          margin-bottom: 20px;
+        }
+
+        label {
+          font-family: 'Cousine', sans-serif;
+          font-size: 13px;
+          display: block;
+          color: #808080;
+        }
+
+        .item-color,
+        .item-style,
+        .item-sizes {
+          padding: 10px 0;
+        }
+
+        .item-sizes {
+          li {
+            display: inline-block;
+            padding: 4px 8px;
+            margin-right: 6px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: solid 2px transparent;
+
+            &.selected {
+              border: solid 2px #701aff;
+            }
+
+            &:hover {
+              border: solid 2px rgba(112, 26, 255, 0.3);
+            }
+          }
+        }
+
+        .cta-and-price {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .cta {
+            padding: 11px 28px;
+            font-size: 18px;
+            font-weight: 600;
+          }
+
+          .item-price {
+            font-size: 22px;
+            color: #00b5ff;
+            font-weight: 600;
+          }
+        }
       }
     }
   }

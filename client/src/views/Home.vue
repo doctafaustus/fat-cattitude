@@ -132,22 +132,6 @@ export default {
   line-height: 34px;
 }
 
-.cta {
-  color: #fff;
-  background-image: linear-gradient(270deg,#fb00ff,#fc2fa9,#fd5b57,#ff8a01);
-  box-shadow: 0 3px 10px rgba(31,30,48,.15), inset 0 0 20px rgba(22,191,255,0);
-  font-size: 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  padding: 16px 45px;
-  display: inline-block;
-  transition: all .20s ease;
-
-  &:hover {
-    filter: hue-rotate(-389deg);
-  }
-}
-
 .product-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
