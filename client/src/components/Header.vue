@@ -1,10 +1,10 @@
 <template>
   <header>
     <div class="header-left">
-      <a href="#" class="logo-link">
-        <img class="logo" src="../assets/logo.png">
+      <router-link to="/" class="logo-link">
+        <img class="logo" src="../assets/logo-small.png">
         <div class="logo-text">Fat Cattitude</div>
-      </a>
+      </router-link>
     </div>
     <div class="header-right">
       <div class="bag-section">
@@ -28,7 +28,7 @@ export default {
 
 <style scoped lang="scss">
 header {
-  height: 80px;
+  height: 90px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,7 +48,9 @@ header {
   }
 
   .logo {
-    width: 40px;
+    width: 80px;
+    position: relative;
+    top: 4px;
   }
 
   .logo-text {

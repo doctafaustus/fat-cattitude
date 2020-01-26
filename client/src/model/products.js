@@ -2,10 +2,51 @@ const products = {
   featuredShirts: [
     {
       title: 'I\'m Busy',
+      subtitle: 'Sassy busy cat',
       id: 1,
       price: 30,
       image: 'https://i.ibb.co/znmgYyG/im-busy-911cde4.jpg',
-      inStock: true
+      inStock: true,
+      style: 'T-Shirt',
+      variants: [
+        {
+          variantID: '#3573346050',
+          color: 'White',
+          colorCode: '#ffffff',
+          size: 'XS'
+        },
+        {
+          variantID: '#3327753047',
+          color: 'White',
+          colorCode: '#ffffff',
+          size: 'S'
+        },
+        {
+          variantID: '#3327753049',
+          color: 'White',
+          colorCode: '#ffffff',
+          size: 'M'
+        },
+        {
+          variantID: '#3573346052',
+          color: 'White',
+          colorCode: '#ffffff',
+          size: 'L'
+        },
+        {
+          variantID: '#3573346054',
+          color: 'White',
+          colorCode: '#ffffff',
+          size: 'XL'
+        },
+        {
+          variantID: '#3327753051',
+          color: 'White',
+          colorCode: '#ffffff',
+          size: '2X'
+        },
+      ],
+      description: 'Bella canvas'
     },
     {
       title: 'I\'m Busy2',
