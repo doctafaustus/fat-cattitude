@@ -40,7 +40,7 @@ const products = {
           ]
         }
       ],
-      description: ''
+      description: 'Javascript Syntax, Colored with Sublime Text colors. Take a closer look. See if you get it. This t-shirt makes a great gift - present- for programmers, coders, IT ers, geeks, nerds and software and web developers with a sense of humor and a love for good old rock music!'
     },
     {
       title: 'I\'m Busy2',

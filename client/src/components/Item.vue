@@ -1,9 +1,13 @@
 <template>
   <section class="item wrapper">
-    <div class="image-and-details">
+
+    <div class="pdp-grid">
+      <!-- Image -->
       <div class="image-container">
-          <img :src="item.image" class="item-image">
+        <img :src="item.image" class="item-image">
       </div>
+
+      <!-- Details -->
       <div class="details-container">
         <h1 class="item-title">{{ item.title }}</h1>
         <div class="item-subtitle">{{ item.subtitle }}</div>
@@ -38,13 +42,16 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="size-guide-and-desc">
+      <!-- Size guide -->
       <SizeGuide></SizeGuide>
-      <div class="desc-container">Desc</div>
-    </div>
 
+      <!-- Description -->
+      <div class="desc-container">
+        <h3 class="desc-title">Description</h3>
+        <div class="desc-body">{{ item.description }}</div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -91,138 +98,138 @@ export default {
 .item {
   padding: 80px;
 
-  .image-and-details {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 80px;
+  .pdp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 
-    .image-container {
-      margin-right: 140px;
+  .image-container,
+  .size-guide {
+    margin-right: 140px;
+    max-width: 635px;
+  }
 
-      .item-image {
-        width: 625px;
-        box-shadow: 0 5px 10px rgba(37,33,81,.11);
-      }
+  .image-container {
+    .item-image {
+      width: 100%;
+      box-shadow: 0 5px 10px rgba(37,33,81,.11);
+    }
+  }
+
+  .details-container {
+    width: 375px;
+
+    .item-title {
+      font-size: 48px;
+      margin-bottom: 8px;
     }
 
-    .details-container {
-      width: 375px;
+    .item-subtitle {
+      font-size: 20px;
+    }
 
-      .item-title {
-        font-size: 48px;
-        margin-bottom: 8px;
+    .sub-container {
+      margin-top: 40px;
+      background-color: #fff;
+      border-radius: 6px;
+      box-shadow: 0 5px 10px rgba(37,33,81,.11);
+      padding: 20px;
+      text-align: left;
+
+      .row {
+        border-bottom: solid 1px #eaeaea;
+        margin-bottom: 20px;
       }
 
-      .item-subtitle {
-        font-size: 20px;
+      label {
+        font-family: 'Cousine', sans-serif;
+        font-size: 13px;
+        display: block;
+        color: #808080;
       }
 
-      .sub-container {
-        margin-top: 40px;
-        background-color: #fff;
-        border-radius: 6px;
-        box-shadow: 0 5px 10px rgba(37,33,81,.11);
-        padding: 20px;
-        text-align: left;
+      .item-colors,
+      .item-style,
+      .item-sizes {
+        padding: 10px 0;
+      }
 
-        .row {
-          border-bottom: solid 1px #eaeaea;
-          margin-bottom: 20px;
+      .item-style {
+        .icon {
+          height: 38px;
+          width: 38px;
+          cursor: pointer;
+          border-radius: 5px;
+          padding: 2px;
         }
 
-        label {
-          font-family: 'Cousine', sans-serif;
+        .unisex {
           font-size: 13px;
-          display: block;
-          color: #808080;
+          padding-left: 1px;
         }
+      }
 
-        .item-colors,
-        .item-style,
-        .item-sizes {
-          padding: 10px 0;
-        }
-
-        .item-style {
-          .icon {
-            height: 38px;
-            width: 38px;
-            cursor: pointer;
-            border-radius: 5px;
-            padding: 2px;
-          }
-
-          .unisex {
-            font-size: 13px;
-            padding-left: 1px;
-          }
-        }
-
-        .item-colors {
-          .swatch {
-            .swatch-icon {
-              display: inline-block;
-              height: 25px;
-              width: 25px;
-              border-radius: 5px;
-              border: solid 2px #000;
-              margin-right: 3px;
-            }
-
-            .swatch-name {
-              font-size: 13px;
-              position: relative;
-              top: -7px;
-              margin-right: 20px;
-            }
-          }
-        }
-
-        .item-sizes {
-          li {
+      .item-colors {
+        .swatch {
+          .swatch-icon {
             display: inline-block;
-            padding: 4px 8px;
-            margin-right: 6px;
+            height: 25px;
+            width: 25px;
             border-radius: 5px;
-            cursor: pointer;
-            border: solid 2px transparent;
+            border: solid 2px #000;
+            margin-right: 3px;
+          }
 
-            &.selected {
-              border: solid 2px #701aff;
-            }
-
-            &:not(.selected):hover {
-              border: solid 2px rgba(112, 26, 255, 0.3);
-            }
+          .swatch-name {
+            font-size: 13px;
+            position: relative;
+            top: -7px;
+            margin-right: 20px;
           }
         }
+      }
 
-        .cta-and-price {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+      .item-sizes {
+        li {
+          display: inline-block;
+          padding: 4px 8px;
+          margin-right: 6px;
+          border-radius: 5px;
+          cursor: pointer;
+          border: solid 2px transparent;
 
-          .cta {
-            padding: 11px 28px;
-            font-size: 18px;
-            font-weight: 600;
+          &.selected {
+            border: solid 2px #701aff;
           }
 
-          .item-price {
-            font-size: 22px;
-            color: #05a3e3;
-            font-weight: 600;
+          &:not(.selected):hover {
+            border: solid 2px rgba(112, 26, 255, 0.3);
           }
+        }
+      }
+
+      .cta-and-price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .cta {
+          padding: 11px 28px;
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        .item-price {
+          font-size: 22px;
+          color: #05a3e3;
+          font-weight: 600;
         }
       }
     }
   }
+  
+  .desc-container {
 
-  .size-guide-and-desc {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 
 }
