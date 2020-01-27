@@ -101,12 +101,7 @@ export default {
   .pdp-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-  }
-
-  .image-container,
-  .size-guide {
-    margin-right: 140px;
-    max-width: 635px;
+    grid-gap: 60px;
   }
 
   .image-container {
@@ -118,6 +113,7 @@ export default {
 
   .details-container {
     width: 375px;
+    margin: 0 auto;
 
     .item-title {
       font-size: 48px;
@@ -229,7 +225,17 @@ export default {
   }
   
   .desc-container {
+    padding: 0 40px;
 
+    .desc-title {
+      margin-bottom: 10px;
+    }
+
+    .desc-body {
+      font-size: 18px;
+      line-height: 24px;
+      text-align: left;
+    }
   }
 
 }
