@@ -13,6 +13,7 @@
             <label>Style</label>
             <div class="item-style">
               <Icon :name="item.style"/>
+              <span class="unisex">Unisex</span>
             </div>
           </div>
           <div class="row">
@@ -36,11 +37,13 @@
             <div class="item-price">{{ item.price }}</div>
           </div>
         </div>
-
-        {{ item }}
       </div>
     </div>
 
+    <div class="size-guide-and-desc">
+      <SizeGuide></SizeGuide>
+      <div class="desc-container">Desc</div>
+    </div>
 
   </section>
 </template>
@@ -48,11 +51,13 @@
 <script>
 import products from '@/model/products.js';
 import Icon from '@/components/Icons';
+import SizeGuide from '@/components/SizeGuide';
 
 export default {
   name: 'Item',
   components: {
-    Icon
+    Icon,
+    SizeGuide
   },
   data () {
     return {
@@ -90,6 +95,7 @@ export default {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-bottom: 80px;
 
     .image-container {
       margin-right: 140px;
@@ -101,7 +107,7 @@ export default {
     }
 
     .details-container {
-      max-width: 375px;
+      width: 375px;
 
       .item-title {
         font-size: 48px;
@@ -145,6 +151,11 @@ export default {
             cursor: pointer;
             border-radius: 5px;
             padding: 2px;
+          }
+
+          .unisex {
+            font-size: 13px;
+            padding-left: 1px;
           }
         }
 
@@ -206,6 +217,12 @@ export default {
         }
       }
     }
+  }
+
+  .size-guide-and-desc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
 }

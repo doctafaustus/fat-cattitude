@@ -40,7 +40,7 @@ const products = {
           ]
         }
       ],
-      description: 'Bella canvas'
+      description: ''
     },
     {
       title: 'I\'m Busy2',
