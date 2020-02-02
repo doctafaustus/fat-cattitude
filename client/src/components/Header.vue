@@ -16,11 +16,28 @@
 </template>
 
 <script>
+import utils from '@/mixins/utils';
+import EventBus from '@/EventBus';
+
+
 export default {
   name: 'Header',
   data () {
     return {
     }
+  },
+  mixins: [utils],
+  mounted() {
+    EventBus.$on('cart-add', item => {
+      const cartArray = (utils.getCookie('cart') && JSON.parse(utils.getCookie('cart'))) || [];
+      cartArray.push(item);
+      utils.setCookie('cart', JSON.stringify(cartArray));
+      EventBus.$emit('cart-update', cartArray);
+    });
+
+    EventBus.$on('cart-update', cartArray => {
+      console.log('cart-update', cartArray);
+    });
   }
 }
 </script>

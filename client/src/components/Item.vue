@@ -32,12 +32,12 @@
           <div class="row">
             <label>Size (Choose)</label>
             <ul v-for="color in item.colors" :key="color.colorName" class="item-sizes">
-              <li v-for="size in color.sizes" :key="size.variantID" @click="selectSize(size.size)" :class="{ selected: size.size === selected.size }">{{ size.size }}</li>
+              <li v-for="size in color.sizes" :key="size.variantID" @click="selectSize(size.size, size.variantID)" :class="{ selected: size.size === selected.size }" :data-variant-id="size.variantID">{{ size.size }}</li>
             </ul>
           </div>
 
           <div class="cta-and-price">
-            <button class="cta">Add to Cart</button>
+            <button @click="addToCart()" class="cta">Add to Cart</button>
             <div class="item-price">{{ item.price }}</div>
           </div>
         </div>
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+import EventBus from '@/EventBus';
 import products from '@/model/products.js';
 import Icon from '@/components/Icons';
 import SizeGuide from '@/components/SizeGuide';
@@ -70,7 +71,9 @@ export default {
     return {
       item: {},
       selected: {
-        size: null
+        size: null,
+        productID: null,
+        variantID: null
       }
     }
   },
@@ -83,8 +86,13 @@ export default {
     getSwatch(colorCode) {
       return `background-color: ${colorCode}`;
     },
-    selectSize(size) {
+    selectSize(size, variantID) {
       this.selected.size = size;
+      this.selected.variantID = variantID;
+      this.selected.productID = this.item.id;
+    },
+    addToCart() {
+      EventBus.$emit('cart-add', this.selected);
     }
   },
   created() {
