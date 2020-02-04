@@ -7,10 +7,11 @@
       </router-link>
     </div>
     <div class="header-right">
-      <div class="bag-section">
-        <img class="bag-image" src="../assets/bag-sad.png">
-        <div class="bag-count">0</div>
-      </div>
+      <router-link :to="{ path: '/cart' }" class="bag-section">
+        <img v-if="bagCount" class="bag-image" src="../assets/bag-happy.png">
+        <img v-else class="bag-image" src="../assets/bag-sad.png">
+        <div class="bag-count">{{ bagCount }}</div>
+      </router-link>
     </div>
   </header>
 </template>
@@ -24,6 +25,7 @@ export default {
   name: 'Header',
   data () {
     return {
+      bagCount: 0,
     }
   },
   mixins: [utils],
@@ -36,8 +38,12 @@ export default {
     });
 
     EventBus.$on('cart-update', cartArray => {
-      console.log('cart-update', cartArray);
+      this.bagCount = cartArray.length;
     });
+  },
+  created() {
+    const cartArray = (utils.getCookie('cart') && JSON.parse(utils.getCookie('cart'))) || [];
+    this.bagCount = cartArray.length;
   }
 }
 </script>
@@ -94,7 +100,7 @@ header {
       padding: .25rem .5rem;
       border-radius: 10px 0 0 10px;
       color: #fff;
-      background: #701aff;
+      background: #6805fb;
     }
   }
 }

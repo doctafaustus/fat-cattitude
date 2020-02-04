@@ -40,6 +40,9 @@
             <button @click="addToCart()" class="cta">Add to Cart</button>
             <div class="item-price">{{ item.price }}</div>
           </div>
+
+          <div v-show="showSuccess" class="success-message">Added to cart :sunglasses:</div>
+          <div v-show="showError" class="error-message">Please choose a size first</div>
         </div>
       </div>
 
@@ -74,7 +77,9 @@ export default {
         size: null,
         productID: null,
         variantID: null
-      }
+      },
+      showSuccess: false,
+      showError: false
     }
   },
   computed: {
@@ -92,7 +97,14 @@ export default {
       this.selected.productID = this.item.id;
     },
     addToCart() {
+      this.resetMessages();
+      if (!this.selected.size) return this.showError = true;
       EventBus.$emit('cart-add', this.selected);
+      this.showSuccess = true;
+    },
+    resetMessages() {
+      this.showSuccess = false;
+      this.showError = false;
     }
   },
   created() {
@@ -228,6 +240,21 @@ export default {
           color: #05a3e3;
           font-weight: 600;
         }
+      }
+
+      .success-message,
+      .error-message {
+        margin-top: 15px;
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      .success-message {
+        color: #17c305;
+      }
+
+      .error-message {
+        color: rgb(206, 16, 16);
       }
     }
   }

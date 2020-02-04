@@ -8,7 +8,7 @@
         <h1 class="section-title light">Keep up with Fat Cattitude!</h1>
         <div class="subtitle light">Sign up for our newsletter:</div>
 
-        <form class="newsletter-form">
+        <form @submit.prevent="subscribe()" class="newsletter-form">
           <label class="newsletter-label">Your email</label>
           <div class="newsletter-input-container">
             <input class="newsletter-input" type="email" spellcheck="false">
@@ -40,6 +40,11 @@ export default {
   },
   data () {
     return {
+    }
+  },
+  methods: {
+    subscribe() {
+      console.log('subscribe()');
     }
   }
 }
@@ -133,6 +138,8 @@ footer {
         border-radius: 5px;
         padding: 16px 65px;
         transition: all .60s ease;
+        font-weight: 600;
+        letter-spacing: 0.3px;
 
         &:hover {
           filter: hue-rotate(270deg);
