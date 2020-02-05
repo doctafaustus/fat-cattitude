@@ -41,8 +41,14 @@
             <div class="item-price">{{ item.price }}</div>
           </div>
 
-          <div v-show="showSuccess" class="success-message">Added to cart :sunglasses:</div>
-          <div v-show="showError" class="error-message">Please choose a size first</div>
+          <div :class="{ 'show': showSuccess }" class="success-message">
+            <span>Added to cart</span>
+            <img class="emoji" src="../assets/sunglasses-emoji.png">
+          </div>
+          <div :class="{ 'show': showError }" class="error-message">
+            <span>Please choose a size first</span>
+            <img class="emoji" src="../assets/grin-emoji.png">
+          </div>
         </div>
       </div>
 
@@ -98,6 +104,9 @@ export default {
     },
     addToCart() {
       this.resetMessages();
+      const messageResetTime = 5000;
+      clearTimeout(window.atcTimeout);
+      window.atcTimeout = setTimeout(this.resetMessages, messageResetTime);
       if (!this.selected.size) return this.showError = true;
       EventBus.$emit('cart-add', this.selected);
       this.showSuccess = true;
@@ -244,9 +253,26 @@ export default {
 
       .success-message,
       .error-message {
-        margin-top: 15px;
         font-weight: 600;
         font-size: 16px;
+        max-height: 0;
+        height: 0;
+        margin: 0;
+        overflow: hidden;
+        transition: all .5s ease;
+        display: flex;
+        align-items: center;
+
+        &.show {
+          max-height: 500px;
+          height: auto;
+          margin-top: 15px;
+        }
+
+        .emoji {
+          width: 20px;
+          margin-left: 6px;
+        }
       }
 
       .success-message {
@@ -254,7 +280,7 @@ export default {
       }
 
       .error-message {
-        color: rgb(206, 16, 16);
+        color: #ff0000;
       }
     }
   }
