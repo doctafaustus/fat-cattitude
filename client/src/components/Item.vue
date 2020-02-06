@@ -92,7 +92,7 @@ export default {
   },
   methods: {
     getItem() {
-      this.item = products.featuredShirts.find(item => item.id == this.$route.params.id);
+      this.item = products.find(item => item.id == this.$route.params.id);
     },
     getSwatch(colorCode) {
       return `background-color: ${colorCode}`;
@@ -103,6 +103,7 @@ export default {
       this.selected.productID = this.item.id;
     },
     addToCart() {
+      console.log('addToCart');
       this.resetMessages();
       const messageResetTime = 5000;
       clearTimeout(window.atcTimeout);

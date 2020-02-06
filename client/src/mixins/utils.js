@@ -19,7 +19,6 @@ export default {
   },
 
   setCookie(name, value, minutes) {
-    console.log('setcookie', name);
     let expirationFragment = '';
 
     if (minutes) {

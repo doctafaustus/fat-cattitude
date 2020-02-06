@@ -31,6 +31,7 @@ export default {
   mixins: [utils],
   mounted() {
     EventBus.$on('cart-add', item => {
+      console.log('cart0add')
       const cartArray = (utils.getCookie('cart') && JSON.parse(utils.getCookie('cart'))) || [];
       cartArray.push(item);
       utils.setCookie('cart', JSON.stringify(cartArray));

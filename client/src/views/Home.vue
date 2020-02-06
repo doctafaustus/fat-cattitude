@@ -1,13 +1,13 @@
 <template>
   <section>
-    <Header></Header>
     <div class="main">
 
       <!-- Eight Bit -->
       <div class="row eight-bit">
         <h1 class="section-title light">Show off your Fat Cattitude</h1>
         <div class="product-list wrapper">
-          <ProductCard v-for="shirt in products.featuredShirts" :key="shirt.id" :product="shirt"></ProductCard>
+          <!-- <ProductCard v-for="shirt in products.featuredShirts" :key="shirt.id" :product="shirt"></ProductCard> -->
+          <ProductCard v-for="shirt in products.filter(product => product.category === 'featuredShirts')" :key="shirt.id" :product="shirt"></ProductCard>
         </div>
       </div>
 
@@ -18,7 +18,7 @@
             <h1 class="section-title">Don't be a Sticky Vicky</h1>
             <div class="subtitle">And get yourself<br>a sticker!</div>
           </div>
-          <ProductCard v-for="sticker in products.stickers" :key="sticker.id" :product="sticker"></ProductCard>
+          <ProductCard v-for="sticker in products.filter(product => product.category === 'stickers')" :key="sticker.id" :product="sticker"></ProductCard>
         </div>
       </div>
 
@@ -53,28 +53,22 @@
       <div class="row cool-background">
         <h1 class="section-title light">Once a Fat Cat, Always a Fat Cat</h1>
         <div class="product-list wrapper">
-          <ProductCard v-for="shirt in products.shirts" :key="shirt.id" :product="shirt"></ProductCard>
+          <ProductCard v-for="shirt in products.filter(product => product.category === 'shirts')" :key="shirt.id" :product="shirt"></ProductCard>
         </div>
       </div>
 
     </div>
-
-    <Footer></Footer>
   </section>
 </template>
 
 <script>
-import Header from '@/components/Header';
 import ProductCard from '@/components/ProductCard';
-import Footer from '@/components/Footer';
 import products from '@/model/products.js';
 
 export default {
   name: 'Home',
   components: {
-    Header,
-    ProductCard,
-    Footer
+    ProductCard
   },
   data () {
     return {
