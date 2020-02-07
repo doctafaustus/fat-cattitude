@@ -81,8 +81,11 @@ export default {
       item: {},
       selected: {
         size: null,
+        variantID: null,
         productID: null,
-        variantID: null
+        title: null,
+        price: null,
+        image: null
       },
       showSuccess: false,
       showError: false
@@ -93,6 +96,10 @@ export default {
   methods: {
     getItem() {
       this.item = products.find(item => item.id == this.$route.params.id);
+
+      this.selected.title = this.item.title;
+      this.selected.price = this.item.price;
+      this.selected.image = this.item.image;
     },
     getSwatch(colorCode) {
       return `background-color: ${colorCode}`;
@@ -119,6 +126,8 @@ export default {
   },
   created() {
     this.getItem();
+
+
   },
 }
 </script>
