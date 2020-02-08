@@ -1,7 +1,7 @@
 <template>
   <section>
     <section class="cart">
-      <h1>Cart</h1>
+      <h1 class="cart-title">Your Items ({{cart.length}})</h1>
       <div class="cart-main">
 
         <div class="cart-left">
@@ -15,28 +15,25 @@
           <ul class="cart-list">
 
             <li class="cart-product" v-for="(product, index) in cart" :key="`size-${index}`">
-              <router-link class="cart-product-image-link" :to="{ name: 'Item', params: { id: product.productID } }">
+
+              <router-link class="cart-product-image-link-col" :to="{ name: 'Product', params: { id: product.productID } }">
                 <img class="cart-product-image" :src="product.image">
               </router-link>
               
-              <div class="cart-product-details">
-                <div class="cart-product-details-left">
-                  <router-link :to="{ name: 'Item', params: { id: product.id } }" class="cart-product-link">
-                    <div class="cart-prdouct-title">{{ product.title }}</div>
-                  </router-link>
-                  <div class="cart-product-size">
-                    <label>Size:</label>
-                    <span class="cart-product-size-val">{{ product.size }}</span>
-                  </div>
+              <div class="cart-product-details-col">
+                <router-link :to="{ name: 'Product', params: { id: product.productID } }" class="cart-product-link">
+                  <div class="cart-prdouct-title">{{ product.title }}</div>
+                </router-link>
+                <div class="cart-product-size">
+                  <label>Size:</label>
+                  <span class="cart-product-size-val">{{ product.size }}</span>
                 </div>
+                <div class="cart-product-price">{{ product.price }}</div>
+              </div>
 
-                <div class="cart-product-details-right">
-                  <div class="cart-product-delete">
-                    <div class="cart-product-delete-close" @click="remove(index)">
-                      <Icon name="close"/>
-                    </div>
-                  </div>
-                  <div class="cart-product-price">{{ product.price }}</div>
+              <div class="cart-product-delete-col">
+                <div class="cart-product-delete-close" @click="remove(product.variantID)">
+                  <Icon name="close"/>
                 </div>
               </div>
             </li>
@@ -62,6 +59,7 @@
 
 
 <script>
+import EventBus from '@/EventBus';
 import utils from '@/mixins/utils';
 import Icon from '@/components/Icons';
 import products from '@/model/products.js';
@@ -80,18 +78,31 @@ export default {
     }
   },
   methods: {
-    remove(id) {
-      console.log('remove', id);
+    getCart() {
+      this.cart = utils.getCartArray();
+      console.log('cart mounted', this.cart);
+    },
+    remove(variantID) {
+      EventBus.$emit('cart-remove', variantID);
+      this.getCart();
     }
   },
   mounted() {
-    this.cart = (utils.getCookie('cart') && JSON.parse(utils.getCookie('cart'))) || [];
-    console.log('cart mounted', this.cart);
+    this.getCart();
   }
 }
 </script>
 
 <style scoped lang="scss">
+
+  .cart {
+    padding: 80px;
+  }
+
+  .cart-title {
+    margin-bottom: 40px;
+  }
+
   .cart-main {
     display: flex;
     justify-content: space-between;
@@ -99,15 +110,32 @@ export default {
     margin: 0 auto;
 
     .cart-left {
-      width: 465px;
+      width: 500px;
 
       .back-top-shopping {
-        font-size: 12px;
+        font-size: 14px;
         margin-bottom: 15px;
         display: block;
         text-align: left;
-        color: #808284;
+        color: #000;
         cursor: pointer;
+
+        .icon {
+          width: 12px;
+          fill: #000;
+          stroke-width: 2;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          top: -2px;
+          transition: all .25s ease;
+        }
+
+        &:hover {
+          .icon {
+            transform: translateX(-8px);
+
+          }
+        }
       }
 
       .cart-empty {
@@ -124,62 +152,73 @@ export default {
 
         .cart-product {
           display: flex;
-          border-top: solid 1px #f3f3f3;
-          padding: 15px 0;
+          align-items: center;
+          background-color: #fff;
+          border-radius: 6px;
+          margin-bottom: 40px;
+          display: grid;
+          grid-template-columns: 200px auto 40px;
 
-          .cart-product-image {
-            width: 150px;
-            background: #f3f3f3;
-            margin-right: 15px;
+          .cart-product-image-link-col {
+            .cart-product-image {
+              background: #f3f3f3;
+              width: 100%;
+            }
+
+            &:hover + .cart-product-details-col .cart-product-link {
+              text-decoration: underline;
+            }
           }
 
-          .cart-product-image-link:hover+.cart-product-details {
-            .cart-product-details-left {
-              .cart-product-link {
+          .cart-product-details-col {
+            padding: 0 20px;
+
+            .cart-product-link {
+              color: #4c4c4b;
+              text-decoration: none;
+              display: inline-block;
+
+              &:hover {
                 text-decoration: underline;
               }
+
+              .cart-prdouct-title {
+                font-size: 20px;
+                font-weight: 600;
+                margin-bottom: 20px;
+              }
+            }
+
+            .cart-product-size,
+            .cart-product-price {
+              font-size: 18px;
+              color: #808284;
+              margin-bottom: 10px;
             }
           }
 
-          .cart-product-details {
-            width: 100%;
+          .cart-product-delete-col {
+            height: 100%;
+            background-color: #efefef;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
 
-            .cart-product-details-left {
-              width: 250px;
+            .cart-product-delete-close .icon {
+              height: 20px;
+              width: 20px;
+              cursor: pointer;
+              transition: all .25s ease;
 
-              .cart-product-link {
-                color: #4c4c4b;
-                text-decoration: none;
-
-                &:hover {
-                  text-decoration: underline;
-                }
-              }
-
-              .cart-product-size,
-              .cart-product-qty {
-                color: #808284;
-              }
-            }
-
-            .cart-product-details-right {
-              .cart-product-delete {
-                text-align: right;
-                margin-bottom: 19px;
-
-                .cart-product-delete-x {
-                  cursor: pointer;
-                }
+              &:hover {
+                transform: scale(1.5);
               }
             }
           }
-
         }
-
       }
     }
+
     .cart-right {
       width: 250px;
       color: #808284;

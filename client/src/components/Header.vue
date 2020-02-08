@@ -25,26 +25,36 @@ export default {
   name: 'Header',
   data () {
     return {
-      bagCount: 0,
+      bagCount: 0
     }
   },
   mixins: [utils],
   mounted() {
+
     EventBus.$on('cart-add', item => {
-      console.log('cart0add')
-      const cartArray = (utils.getCookie('cart') && JSON.parse(utils.getCookie('cart'))) || [];
+      const cartArray = utils.getCartArray();
       cartArray.push(item);
-      utils.setCookie('cart', JSON.stringify(cartArray));
+      EventBus.$emit('cart-update', cartArray);
+    });
+
+    EventBus.$on('cart-remove', variantID => {
+      const cartArray = utils.getCartArray();
+      for (let i = 0; i < cartArray.length; i++) {
+        if (cartArray[i].variantID === variantID) {
+          cartArray.splice(i, 1);
+          break;
+        }
+      }
       EventBus.$emit('cart-update', cartArray);
     });
 
     EventBus.$on('cart-update', cartArray => {
+      utils.setCookie('cart', JSON.stringify(cartArray));
       this.bagCount = cartArray.length;
     });
   },
   created() {
-    const cartArray = (utils.getCookie('cart') && JSON.parse(utils.getCookie('cart'))) || [];
-    this.bagCount = cartArray.length;
+    this.bagCount = utils.getCartArray().length;
   }
 }
 </script>

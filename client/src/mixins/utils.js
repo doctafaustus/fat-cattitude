@@ -1,4 +1,8 @@
 export default {
+  getCartArray() {
+    return (this.getCookie('cart') && JSON.parse(this.getCookie('cart'))) || [];
+  },
+
   getCookie(name) {
     const nameEQ = `${name}=`;
     const ca = document.cookie.split(';');
