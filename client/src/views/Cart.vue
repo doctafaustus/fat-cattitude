@@ -43,12 +43,17 @@
           <div class="cart-os">
             <div class="cart-os-title">Order Summary</div>
             <div class="cart-os-details">
-              <div class="cart-os-subtotal-label">Subtotal</div>
-              <div class="cart-os-subtotal-value">{{ total }}</div>
+              <div class="cart-os-details-row">
+                <div class="cart-os-subtotal-label">Subtotal</div>
+                <div class="cart-os-subtotal-value">{{ total }}</div>
+              </div>
+              <div class="cart-os-details-row">
+                <div class="cart-os-subtotal-label">Shipping</div>
+                <div class="cart-os-subtotal-value">TBD</div>
+              </div>
             </div>
           </div>
-          <div class="cart-payment-plan" v-show="cart.length">or 4 interest-free payments of x by afterpay</div>
-          <a class="checkout-btn" href="#">Continue To Checkout</a>
+          <a class="checkout-btn cta" href="#">Checkout</a>
         </div>
 
 
@@ -80,7 +85,12 @@ export default {
   methods: {
     getCart() {
       this.cart = utils.getCartArray();
-      console.log('cart mounted', this.cart);
+      console.log(this.cart);
+
+      const totalAsNumber = this.cart.reduce((accum, item) => {
+        return accum + utils.dollarToFloat(item.price);
+      }, 0);
+      this.total = utils.floatToDollar(totalAsNumber);
     },
     remove(variantID) {
       EventBus.$emit('cart-remove', variantID);
@@ -221,20 +231,18 @@ export default {
 
     .cart-right {
       width: 250px;
-      color: #808284;
 
       .cart-os-title,
-      .cart-os-details,
-      .cart-payment-plan {
+      .cart-os-details {
         background-color: #f7f7f8;
         padding: 20px;
       }
 
       .cart-os {
         .cart-os-title {
-          font-family: auto;
-          letter-spacing: 1px;
-          font-size: 16.5px;
+          font-size: 20px;
+          font-family: 'Work Sans', sans-serif;
+          font-weight: bold;
         }
 
         .cart-os-title {
@@ -242,35 +250,24 @@ export default {
         }
 
         .cart-os-details {
-          display: flex;
-          justify-content: space-between;
-          font-size: 14px;
+          .cart-os-details-row {
+            display: flex;
+            justify-content: space-between;
+            
+            &:not(:last-child) {
+              margin-bottom: 20px;
+            }
 
-          .cart-os-subtotal-value {
-            font-weight: bold;
+            .cart-os-subtotal-value {
+              font-weight: bold;
+            }
           }
         }
       }
 
-      .cart-payment-plan {
-        margin-top: 20px;
-        font-size: 14px;
-        line-height: 20px;
-      }
-
       .checkout-btn {
-        margin-top: 20px;
-        background-color: #4c4c4b;
-        color: white;
-        display: inline-block;
-        box-sizing: border-box;
-        width: 100%;
-        padding: 12px 20px;
-        text-transform: uppercase;
-        text-decoration: none;
-        font-size: 12px;
-        font-weight: bold;
-        letter-spacing: .5px;
+        margin-top: 40px;
+        font-weight: 600;
       }
     }
   }
