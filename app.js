@@ -6,9 +6,22 @@ const PRINTFUL_API_KEY = process.env.PORT ? process.env.PRINTFUL_API_KEY : fs.re
 
 console.log(Buffer.from("Hello World").toString('base64'));
 
+// request(
+//   {
+//     url: 'https://api.printful.com/store',
+//     headers: {
+//       'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}`
+//     }
+//   },
+//   (error, response) => {
+//   console.error('error:', error);
+//   console.log('response:', response.body);
+// });
+
+
 request(
   {
-    url: 'https://api.printful.com/store',
+    url: 'https://api.printful.com/store/products',
     headers: {
       'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}`
     }
