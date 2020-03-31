@@ -19,27 +19,27 @@ console.log(Buffer.from("Hello World").toString('base64'));
 // });
 
 
-// request(
-//   {
-//     url: 'https://api.printful.com/store/products',
-//     headers: {
-//       'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}`
-//     }
-//   },
-//   (error, response) => {
-//   console.error('error:', error);
-//   console.log('response:', response.body);
-// });
-
 request(
   {
-    url: 'https://api.printful.com/store/products/163442054',
+    url: 'https://api.printful.com/store/products',
     headers: {
       'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}`
     }
   },
   (error, response) => {
   console.error('error:', error);
-  //console.log('response:', response.body);
-  console.log('XXX', JSON.parse(response.body).result.sync_variants[0]);
+  console.log('response:', response.body);
 });
+
+// request(
+//   {
+//     url: 'https://api.printful.com/store/products/163442054',
+//     headers: {
+//       'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}`
+//     }
+//   },
+//   (error, response) => {
+//   console.error('error:', error);
+//   //console.log('response:', response.body);
+//   console.log('XXX', JSON.parse(response.body).result.sync_variants[0]);
+// });

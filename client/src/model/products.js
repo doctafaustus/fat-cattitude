@@ -2,7 +2,7 @@ const products = [
   {
     title: 'I\'m Busy',
     subtitle: 'Sassy busy cat T-shirt',
-    id: 1,
+    id: 703090796,
     price: '$30',
     image: 'https://i.ibb.co/znmgYyG/im-busy-911cde4.jpg',
     inStock: true,
@@ -14,27 +14,27 @@ const products = [
         colorCode: '#ffffff',
         sizes: [
           {
-            variantID: '#3573346050',
+            variantID: 163440250,
             size: 'XS'
           },
           {
-            variantID: '#3327753047',
+            variantID: 3327753047,
             size: 'S'
           },
           {
-            variantID: '#3327753049',
+            variantID: 3327753049,
             size: 'M'
           },
           {
-            variantID: '#3573346052',
+            variantID: 3573346052,
             size: 'L'
           },
           {
-            variantID: '#3573346054',
+            variantID: 3573346054,
             size: 'XL'
           },
           {
-            variantID: '#3327753051',
+            variantID: 3327753051,
             size: '2X'
           }
         ]
