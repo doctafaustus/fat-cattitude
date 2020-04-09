@@ -1,64 +1,62 @@
 <template>
-  <section>
-    <section class="cart">
-      <h1 class="cart-title">Your Items ({{cart.length}})</h1>
-      <div class="cart-main">
+  <section class="cart">
+    <h1 class="cart-title">Your Items ({{cart.length}})</h1>
+    <div class="cart-main">
 
-        <div class="cart-left">
-          <a class="back-top-shopping" @click="$router.go(-1)">
-            <Icon name="backArrowLeft"/>
-            <span>Back to Shopping</span>
-          </a>
+      <div class="cart-left">
+        <a class="back-top-shopping" @click="$router.go(-1)">
+          <Icon name="backArrowLeft"/>
+          <span>Back to Shopping</span>
+        </a>
 
-          <div class="cart-empty" v-show="!cart.length">There are no products in your cart.</div>
+        <div class="cart-empty" v-show="!cart.length">There are no products in your cart.</div>
 
-          <ul class="cart-list">
+        <ul class="cart-list">
 
-            <li class="cart-product" v-for="(product, index) in cart" :key="`size-${index}`">
+          <li class="cart-product" v-for="(product, index) in cart" :key="`size-${index}`">
 
-              <router-link class="cart-product-image-link-col" :to="{ name: 'Product', params: { id: product.productID } }">
-                <img class="cart-product-image" :src="product.image">
+            <router-link class="cart-product-image-link-col" :to="{ name: 'Product', params: { id: product.productID } }">
+              <img class="cart-product-image" :src="product.image">
+            </router-link>
+            
+            <div class="cart-product-details-col">
+              <router-link :to="{ name: 'Product', params: { id: product.productID } }" class="cart-product-link">
+                <div class="cart-prdouct-title">{{ product.title }}</div>
               </router-link>
-              
-              <div class="cart-product-details-col">
-                <router-link :to="{ name: 'Product', params: { id: product.productID } }" class="cart-product-link">
-                  <div class="cart-prdouct-title">{{ product.title }}</div>
-                </router-link>
-                <div class="cart-product-size">
-                  <label>Size:</label>
-                  <span class="cart-product-size-val">{{ product.size }}</span>
-                </div>
-                <div class="cart-product-price">{{ product.price }}</div>
+              <div class="cart-product-size">
+                <label>Size:</label>
+                <span class="cart-product-size-val">{{ product.size }}</span>
               </div>
+              <div class="cart-product-price">{{ product.price }}</div>
+            </div>
 
-              <div class="cart-product-delete-col">
-                <div class="cart-product-delete-close" @click="remove(product.variantID)">
-                  <Icon name="close"/>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="cart-right">
-          <div class="cart-os">
-            <div class="cart-os-title">Order Summary</div>
-            <div class="cart-os-details">
-              <div class="cart-os-details-row">
-                <div class="cart-os-subtotal-label">Subtotal</div>
-                <div class="cart-os-subtotal-value">{{ total }}</div>
-              </div>
-              <div class="cart-os-details-row">
-                <div class="cart-os-subtotal-label">Shipping</div>
-                <div class="cart-os-subtotal-value">TBD</div>
+            <div class="cart-product-delete-col">
+              <div class="cart-product-delete-close" @click="remove(product.variantID)">
+                <Icon name="close"/>
               </div>
             </div>
-          </div>
-          <a class="checkout-btn cta" href="#">Checkout</a>
-        </div>
-
-
+          </li>
+        </ul>
       </div>
-    </section>
+      <div class="cart-right">
+        <div class="cart-os">
+          <div class="cart-os-title">Order Summary</div>
+          <div class="cart-os-details">
+            <div class="cart-os-details-row">
+              <div class="cart-os-subtotal-label">Subtotal</div>
+              <div class="cart-os-subtotal-value">{{ total }}</div>
+            </div>
+            <div class="cart-os-details-row">
+              <div class="cart-os-subtotal-label">Shipping</div>
+              <div class="cart-os-subtotal-value">TBD</div>
+            </div>
+          </div>
+        </div>
+        <a class="checkout-btn cta" href="#">Checkout</a>
+      </div>
+    </div>
+
+    <Checkout></Checkout>
   </section>
 </template>
 
@@ -67,13 +65,15 @@
 import EventBus from '@/EventBus';
 import utils from '@/mixins/utils';
 import Icon from '@/components/Icons';
+import Checkout from '@/components/Checkout';
 import products from '@/model/products.js';
 
 
 export default {
   name: 'Cart',
   components: {
-    Icon
+    Icon,
+    Checkout
   },
   mixins: [utils],
   data () {
