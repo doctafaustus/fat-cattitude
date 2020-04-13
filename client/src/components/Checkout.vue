@@ -104,7 +104,13 @@
       <!-- Payment Information -->
       <div class="segment payment-information">
         <h3 class="segment-title">Payment Information</h3>
-        <div class="input-wrapper">
+
+        <div id="card"></div>
+        <!-- <div id="card-number"></div>
+        <div id="card-expiry"></div>
+        <div id="card-cvc"></div> -->
+
+        <!-- <div class="input-wrapper">
           <label>Credit Card Number</label>
           <input id="ccn" type="text" placeholder="Credit Card Number">
         </div>
@@ -131,7 +137,7 @@
             <label>CVC</label>
             <input id="cvc" type="text" placeholder="CVC">
           </div>
-        </div>
+        </div> -->
 
         <!-- Same Address Toggle -->
         <div class="same-shipping-billing">
@@ -312,14 +318,45 @@ export default {
       .then(html => console.log(html));
     },
     initStripe() {
-      utils.loadScript('https://js.stripe.com/v2/', this.createToken);
+      utils.loadScript('https://js.stripe.com/v3/', this.addStripeElements);
     },
-    async createToken() {
-      this.cardCheckSending = true;
-      const stripePublishableKey = 'pk_test_OKClfKEUHvsE9Bpb9hoptSGV';
-      Stripe.setPublishableKey(stripePublishableKey);
-      Stripe.createToken(this.card, this.stripeResponseHandler);
+    addStripeElements() {
+      var style = {
+        base: {
+          color: '#000000',
+          fontSmoothing: 'antialiased',
+          backgroundColor: '#fff',
+          border: 'solid 1px #red',
+          borderTop: 'solid 1px red',
+          padding: '20px',
+          fontSize: '16px',
+          height: '100px',
+          color: 'blue',
+          '::placeholder': {
+            color: '#949494'
+          }
+        },
+        invalid: {
+          color: '#fa755a',
+          iconColor: '#fa755a'
+        }
+      };
 
+      const stripePublishableKey = 'pk_test_OKClfKEUHvsE9Bpb9hoptSGV';
+      const stripe = Stripe(stripePublishableKey);
+      const elements = stripe.elements();
+
+      elements.create('card', { style: style }).mount('#card');
+      // elements.create('cardNumber', { style: style }).mount('#card-number');
+      // elements.create('cardExpiry', { style: style }).mount('#card-expiry');
+      // elements.create('cardCvc', { style: style }).mount('#card-cvc');
+
+
+
+
+      // const stripePublishableKey = 'pk_test_OKClfKEUHvsE9Bpb9hoptSGV';
+      // Stripe.setPublishableKey(stripePublishableKey);
+      // Stripe.createToken(this.card, this.stripeResponseHandler);
     },
     stripeResponseHandler(status, res) {
       this.cardCheckSending = false;
