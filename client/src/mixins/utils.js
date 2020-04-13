@@ -55,5 +55,16 @@ export default {
 
   deleteCookie(name) {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+  },
+
+  loadScript(url, optCallback) {
+    const scriptEl = document.createElement('script');
+    scriptEl.type = 'text/javascript';
+    scriptEl.async = true;
+    scriptEl.src = url;
+    if (typeof optCallback === 'function') {
+      scriptEl.onload = optCallback;
+    }
+    document.head.insertAdjacentElement('beforeend', scriptEl);
   }
 }

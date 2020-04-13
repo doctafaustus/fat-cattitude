@@ -250,8 +250,11 @@
 </template>
 
 <script>
+import utils from '@/mixins/utils';
+
 export default {
   name: 'Checkout',
+  mixins: [utils],
   data () {
     return {
       sameAddress: true,
@@ -264,7 +267,14 @@ export default {
         cityShipping: null,
         stateShipping: null,
         zipShipping: null
-      }
+      },
+      card: {
+        number: '4242424242424242',
+        expMonth: '01',
+        expYear: '22',
+        cvc: '123'
+      },
+      cardCheckSending: false
     }
   },
   methods: {
@@ -282,7 +292,8 @@ export default {
       }
     },
     placeOrder() {
-      console.log('placeOrder');
+      return this.createToken();
+
       fetch('http://localhost:8081/api/place-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -299,10 +310,54 @@ export default {
       })
       .then(response => response.text())
       .then(html => console.log(html));
+    },
+    initStripe() {
+      utils.loadScript('https://js.stripe.com/v2/', this.createToken);
+    },
+    async createToken() {
+      this.cardCheckSending = true;
+      const stripePublishableKey = 'pk_test_OKClfKEUHvsE9Bpb9hoptSGV';
+      Stripe.setPublishableKey(stripePublishableKey);
+      Stripe.createToken(this.card, this.stripeResponseHandler);
+
+    },
+    stripeResponseHandler(status, res) {
+      this.cardCheckSending = false;
+
+      if (res.error) {
+        //this.cardCheckErrorMessage = res.error.message;
+        //this.cardCheckError = true;
+        console.log('ERROR', res);
+      } else {
+        console.log('Submitting...');
+        const tokenFromStripe = res.id;
+        const request = {
+          tokenFromStripe,
+          description: 'Test description',
+          name: 'Connor Leech',
+          email: 'connor@employbl.com',
+          address: {
+            street: '123 Something Lane',
+            city: 'San Francisco',
+            state: 'CA',
+            zip: '94607'
+          },
+          card: this.card,
+        };
+
+        fetch('http://localhost:8081/api/place-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(request)
+        })
+        .then(response => response.text())
+        .then(html => console.log('HERE YO GO', html));
+      }
     }
   },
   mounted() {
     this.initInputClasses();
+    if (!window.Stripe) this.initStripe(); 
   }
 }
 </script>
