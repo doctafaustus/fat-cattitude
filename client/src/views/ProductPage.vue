@@ -252,7 +252,6 @@ export default {
         .cta {
           padding: 11px 28px;
           font-size: 18px;
-          font-weight: 600;
         }
 
         .item-price {

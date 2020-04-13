@@ -7,7 +7,7 @@
         <h3 class="segment-title">Contact Information</h3>
         <div class="input-wrapper">
           <label>Email</label>
-          <input id="email" type="email" placeholder="Email">
+          <input v-model="fields.email" id="email" type="text" placeholder="Email">
         </div>
       </div>
 
@@ -17,29 +17,29 @@
         <div class="input-group input-group-col-2">
           <div class="input-wrapper">
             <label>First Name</label>
-            <input id="first-name-shipping" type="text" placeholder="First Name">
+            <input v-model="fields.firstNameShipping" id="first-name-shipping" type="text" placeholder="First Name">
           </div>
           <div class="input-wrapper">
             <label>Last Name</label>
-            <input id="last-name-shipping" type="text" placeholder="Last Name">
+            <input v-model="fields.lastNameShipping" id="last-name-shipping" type="text" placeholder="Last Name">
           </div>
         </div>
         <div class="input-wrapper">
           <label>Address</label>
-          <input id="address-shipping" type="text" placeholder="Address">
+          <input v-model="fields.addressShipping" id="address-shipping" type="text" placeholder="Address">
         </div>
         <div class="input-wrapper">
           <label>Address 2 (optional)</label>
-          <input id="address2-shipping" type="text" placeholder="Address 2 (optional)">
+          <input v-model="fields.address2Shipping" id="address2-shipping" type="text" placeholder="Address 2 (optional)">
         </div>
         <div class="input-wrapper">
           <label>City</label>
-          <input id="city-shipping" type="text" placeholder="City">
+          <input v-model="fields.cityShipping" id="city-shipping" type="text" placeholder="City">
         </div>
         <div class="input-group input-group-col-2">
           <div class="input-wrapper dropdown">
             <label>State</label>
-            <select id="state-shipping">
+            <select v-model="fields.stateShipping" id="state-shipping">
               <option disabled selected>State</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
@@ -96,7 +96,7 @@
           </div>
           <div class="input-wrapper">
             <label>ZIP code</label>
-            <input id="zip-shipping" type="text" placeholder="ZIP code">
+            <input v-model="fields.zipShipping" id="zip-shipping" type="text" placeholder="ZIP code">
           </div>
         </div>
       </div>
@@ -240,6 +240,11 @@
           </div>
         </div>
       </div>
+
+      <!-- Place Order -->
+      <div class="segment place-order">
+        <a @click.prevent="placeOrder" class="cta">Place Order</a>
+      </div>
     </form>
   </section>
 </template>
@@ -249,7 +254,17 @@ export default {
   name: 'Checkout',
   data () {
     return {
-      sameAddress: true
+      sameAddress: true,
+      fields: {
+        email: null,
+        firstNameShipping: null,
+        lastNameShipping: null,
+        addressShipping: null,
+        address2Shipping: null,
+        cityShipping: null,
+        stateShipping: null,
+        zipShipping: null
+      }
     }
   },
   methods: {
@@ -265,6 +280,25 @@ export default {
       function toggleActiveClass(e, method) {
         e.target.closest('.input-wrapper').classList[method]('active');
       }
+    },
+    placeOrder() {
+      console.log('placeOrder');
+      fetch('http://localhost:8081/api/place-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: this.email,
+          firstNameShipping: this.fields.firstNameShipping,
+          lastNameShipping: this.fields.lastNameShipping,
+          addressShipping: this.fields.addressShipping,
+          address2Shipping: this.fields.address2Shipping,
+          cityShipping: this.fields.cityShipping,
+          stateShipping: this.fields.stateShipping,
+          zipShipping: this.fields.zipShipping
+        })
+      })
+      .then(response => response.text())
+      .then(html => console.log(html));
     }
   },
   mounted() {
@@ -340,7 +374,7 @@ export default {
     }
 
     select {
-      padding-bottom: 10px;
+      padding-bottom: 14px;
     }
   }
 
