@@ -105,39 +105,18 @@
       <div class="segment payment-information">
         <h3 class="segment-title">Payment Information</h3>
 
-        <div id="card"></div>
-        <!-- <div id="card-number"></div>
-        <div id="card-expiry"></div>
-        <div id="card-cvc"></div> -->
-
-        <!-- <div class="input-wrapper">
+        <div class="input-wrapper stripe-wrapper">
+          <div id="card-number"></div>
           <label>Credit Card Number</label>
-          <input id="ccn" type="text" placeholder="Credit Card Number">
         </div>
-
-        <div class="input-group input-group-col-2">
-          <div class="input-wrapper dropdown">
-            <label>Expiration Year</label>
-            <select id="cc-exp">
-              <option disabled selected>Expiration Year</option>
-              <option value="2020">2020</option>
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-              <option value="2023">2023</option>
-              <option value="2024">2024</option>
-              <option value="2025">2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-              <option value="2028">2028</option>
-              <option value="2029">2029</option>
-            </select>
-          </div>
-
-          <div class="input-wrapper dropdown">
-            <label>CVC</label>
-            <input id="cvc" type="text" placeholder="CVC">
-          </div>
-        </div> -->
+        <div class="input-wrapper stripe-wrapper">
+          <div id="card-expiry"></div>
+          <label>MM / YY</label>
+        </div>
+        <div class="input-wrapper stripe-wrapper">
+          <div id="card-cvc"></div>
+          <label>CVC</label>
+        </div>
 
         <!-- Same Address Toggle -->
         <div class="same-shipping-billing">
@@ -323,33 +302,24 @@ export default {
     addStripeElements() {
       var style = {
         base: {
-          color: '#000000',
-          fontSmoothing: 'antialiased',
-          backgroundColor: '#fff',
-          border: 'solid 1px #red',
-          borderTop: 'solid 1px red',
-          padding: '20px',
           fontSize: '16px',
-          height: '100px',
-          color: 'blue',
           '::placeholder': {
-            color: '#949494'
-          }
+            color: '#a9a9a9',
+          },
         },
-        invalid: {
-          color: '#fa755a',
-          iconColor: '#fa755a'
-        }
       };
 
       const stripePublishableKey = 'pk_test_OKClfKEUHvsE9Bpb9hoptSGV';
       const stripe = Stripe(stripePublishableKey);
       const elements = stripe.elements();
 
-      elements.create('card', { style: style }).mount('#card');
-      // elements.create('cardNumber', { style: style }).mount('#card-number');
-      // elements.create('cardExpiry', { style: style }).mount('#card-expiry');
-      // elements.create('cardCvc', { style: style }).mount('#card-cvc');
+      //elements.create('card', { style: style }).mount('#card');
+      elements.create('cardNumber', { 
+        style: style,
+        placeholder: 'Credit Card Number'
+      }).mount('#card-number');
+      elements.create('cardExpiry', { style: style }).mount('#card-expiry');
+      elements.create('cardCvc', { style: style }).mount('#card-cvc');
 
 
 
@@ -423,7 +393,7 @@ export default {
     border-radius: 8px;
     position: relative;
 
-    &.active {
+    &.active:not(.stripe-wrapper) {
       border: solid 1px #16bfff;
 
       label {
@@ -433,7 +403,11 @@ export default {
 
       input,
       select {
-        padding: 24px 12px 5px 12px;
+        padding: 23px 12px 7px 12px;
+      }
+
+      select {
+        padding-top: 22px;
       }
     }
 
@@ -449,10 +423,11 @@ export default {
       top: 0;
       left: 5px;
       margin: 6px 0 1px 6px;
-      font-size: 12px;
+      font-size: 11px;
       transform: translateY(3px);
       opacity: 0;
       color: #949494;
+      pointer-events: none;
     }
 
     input,
@@ -477,9 +452,12 @@ export default {
   }
 
   .input-wrapper {
-    border: solid 1px #d5d5d5;
     height: 50px;
     margin-bottom: 10px;
+
+    &:not(.stripe-wrapper) {
+      border: solid 1px #d5d5d5;
+    }
   }
 
   .same-shipping-billing {
@@ -512,6 +490,44 @@ export default {
       fill: #fff;
       min-height: 15px;
     }
+  }
+
+  // -- Stripe elements styles -- //
+  .StripeElement {
+    padding: 15px 12px 14px 12px;
+    background-color: #fff;
+    border-radius: 8px;
+    transition: all 0.22s ease-out;
+    cursor: text;
+    border: solid 1px #d5d5d5;
+
+    label {
+      top: 2px;
+    }
+  }
+  .StripeElement--focus,
+  .StripeElement--invalid,
+  .StripeElement--complete {
+    padding: 23px 12px 6px 12px;
+
+    & + label {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+  .StripeElement--focus {
+    border: solid 1px #16bfff;
+  }
+
+  @mixin placeholder {
+    ::-webkit-input-placeholder {@content}
+    :-moz-placeholder           {@content}
+    ::-moz-placeholder          {@content}
+    :-ms-input-placeholder      {@content}  
+  }
+
+  @include placeholder {
+    color: #a9a9a9;
   }
 }
 </style>
