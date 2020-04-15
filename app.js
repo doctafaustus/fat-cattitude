@@ -28,30 +28,54 @@ if (!process.env.PORT) {
 // API
 app.post('/api/place-order', (req, res) => {
 
+  console.log('fields', req.body.fields);
+
+  // From old RS code
+  // stripe.customers.create({
+  //   description: 'Customer for ' + req.body.stripeEmail,
+  //   source: req.body.stripeToken,
+  //   email: req.body.stripeEmail,
+  // }, function(err, customer) {
+  //   if (err) console.log(err);
+  //   console.log(customer);
+
+  //   stripe.charges.create({
+  //     amount: 499,
+  //     currency: 'usd',
+  //     customer: customer.id,
+  //     description: 'Charge for ' + req.body.stripeEmail,
+  //   }, function(err, charge) {
+  //     console.log('LOOKER HERE>>>>>>>>>>>>');
+  //     console.log(err);
+  //     console.log(charge);
+  //     User.findOne({ '_id':  req.user._id }, function(err, user) {
+  //       if (err) throw err;
+  //       user.subscription = 'Full';
+  //       user.stripeSubId = charge.id;
+  //       user.save(function(err) {
+  //         if (err) throw err;
+  //         console.log('Charge created for ' + req.user._id);
+  //         res.sendStatus(200);
+  //       });
+  //     });
+  //   });
+  // });
+
   // Create new Stripe charge
   const newCharge = {
-    amount: 23500,
+    amount: 1000,
     currency: 'USD',
-    source: req.body.tokenFromStripe,
+    source: req.body.token.id,
     description: req.body.description,
     receipt_email: req.body.email,
-    billing: {
-      name: req.body.name,
-      address: {
-        line1: req.body.address.street,
-        city: req.body.address.city,
-        state: req.body.address.state,
-        postal_code: req.body.address.zip,
-        country: 'US'
-      }
-    }
   };
 
   stripe.charges.create(newCharge, (err, charge) => {
     if (err) {
-      console.error(err);
+      console.log(err);
       res.json({ error: err, charge: false });
     } else {
+      console.log('SUCCESS');
       res.json({ error: false, charge: charge });
     }
   });

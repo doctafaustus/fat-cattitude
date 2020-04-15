@@ -1,6 +1,6 @@
 <template>
   <section class="checkout">
-    <form class="checkout-form">
+    <form class="checkout-form" action="/api/place-order" method="POST">
       <div class="segment contact-information">
 
         <!-- Contact Information -->
@@ -26,7 +26,7 @@
         </div>
         <div class="input-wrapper">
           <label>Address</label>
-          <input v-model="fields.addressShipping" id="address-shipping" type="text" placeholder="Address">
+          <input v-model="fields.address1Shipping" id="address1-shipping" type="text" placeholder="Address">
         </div>
         <div class="input-wrapper">
           <label>Address 2 (optional)</label>
@@ -108,24 +108,25 @@
         <div class="input-wrapper stripe-wrapper">
           <div id="card-number"></div>
           <label>Credit Card Number</label>
+          <Icon name="creditCard" />
         </div>
-        <div class="input-wrapper stripe-wrapper">
-          <div id="card-expiry"></div>
-          <label>MM / YY</label>
-        </div>
-        <div class="input-wrapper stripe-wrapper">
-          <div id="card-cvc"></div>
-          <label>CVC</label>
+        <div class="input-group input-group-col-2">
+          <div class="input-wrapper stripe-wrapper">
+            <div id="card-expiry"></div>
+            <label>MM / YY</label>
+          </div>
+          <div class="input-wrapper stripe-wrapper">
+            <div id="card-cvc"></div>
+            <label>CVC</label>
+          </div>
         </div>
 
         <!-- Same Address Toggle -->
         <div class="same-shipping-billing">
           <label class="same-shipping-billing-label" for="same-address">
-            <input v-model="sameAddress" type="checkbox" id="same-address" checked>
+            <input v-model="fields.sameAddress" type="checkbox" id="same-address" checked>
             <div class="checkbox-container">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-404 579.5 32 32">
-                <path d="M-394.3 606.8l-8.7-8.7 1.3-1.3 7.4 7.5 20-20 1.3 1.2z"></path>
-              </svg>
+              <Icon name="checkmark" />
             </div>
             <span>Same billing &amp; shipping info</span>
           </label>
@@ -133,37 +134,35 @@
       </div>
 
       <!-- Billing Address -->
-      <div v-show="!sameAddress" class="segment billing-address">
+      <div v-show="!fields.sameAddress" class="segment billing-address">
         <h3 class="segment-title">Billing Address</h3>
 
         <div class="input-group input-group-col-2">
           <div class="input-wrapper">
             <label>First Name</label>
-            <input id="first-name-billing" type="text" placeholder="First Name">
+            <input v-model="fields.firstNameBilling" id="first-name-billing" type="text" placeholder="First Name">
           </div>
           <div class="input-wrapper">
             <label>Last Name</label>
-            <input id="last-name-billing" type="text" placeholder="Last Name">
+            <input v-model="fields.lastNameBilling" id="last-name-billing" type="text" placeholder="Last Name">
           </div>
         </div>
-
         <div class="input-wrapper">
           <label>Address</label>
-          <input id="address-billing" type="text" placeholder="Address">
+          <input v-model="fields.address1Billing" id="address1-billing" type="text" placeholder="Address">
         </div>
         <div class="input-wrapper">
           <label>Address 2 (optional)</label>
-          <input id="address2-billing" type="text" placeholder="Address 2 (optional)">
+          <input v-model="fields.address2Billing" id="address2-billing" type="text" placeholder="Address 2 (optional)">
         </div>
         <div class="input-wrapper">
           <label>City</label>
-          <input id="city-billing" type="text" placeholder="City">
+          <input  v-model="fields.cityBilling" id="city-billing" type="text" placeholder="City">
         </div>
-
         <div class="input-group input-group-col-2">
           <div class="input-wrapper dropdown">
             <label>State</label>
-            <select id="state-billing">
+            <select  v-model="fields.stateBilling" id="state-billing">
               <option disabled selected>State</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
@@ -218,10 +217,9 @@
               <option value="WY">Wyoming</option>
             </select>
           </div>
-
           <div class="input-wrapper">
             <label>ZIP code</label>
-            <input id="zip-billing" type="text" placeholder="ZIP code">
+            <input  v-model="fields.zipBilling" id="zip-billing" type="text" placeholder="ZIP code">
           </div>
         </div>
       </div>
@@ -236,22 +234,35 @@
 
 <script>
 import utils from '@/mixins/utils';
+import Icon from '@/components/Icons';
 
 export default {
   name: 'Checkout',
+  components: {
+    Icon
+  },
   mixins: [utils],
   data () {
     return {
-      sameAddress: true,
+      stripe: null,
+      card: null,
       fields: {
         email: null,
         firstNameShipping: null,
         lastNameShipping: null,
-        addressShipping: null,
+        address1Shipping: null,
         address2Shipping: null,
         cityShipping: null,
         stateShipping: null,
-        zipShipping: null
+        zipShipping: null,
+        sameAddress: true,
+        firstNameBilling: null,
+        lastNameBilling: null,
+        address1Billing: null,
+        address2Billing: null,
+        cityBilling: null,
+        stateBilling: null,
+        zipBilling: null
       },
       card: {
         number: '4242424242424242',
@@ -276,90 +287,46 @@ export default {
         e.target.closest('.input-wrapper').classList[method]('active');
       }
     },
+    initStripe() {
+      utils.loadScript('https://js.stripe.com/v3/', this.addStripeElements);
+    },
     placeOrder() {
-      return this.createToken();
+      this.createToken();
+    },
+    addStripeElements() {
+      const style = { base: { fontSize: '16px', '::placeholder': { color: '#a9a9a9', }}};
+      const stripePublishableKey = 'pk_test_OKClfKEUHvsE9Bpb9hoptSGV';
+      this.stripe = Stripe(stripePublishableKey);
+      const elements = this.stripe.elements();
+
+      this.card = elements.create('cardNumber', { style, placeholder: 'Credit Card Number' });
+      this.card.mount('#card-number');
+      elements.create('cardExpiry', { style }).mount('#card-expiry');
+      elements.create('cardCvc', { style }).mount('#card-cvc');
+    },
+    createToken() {
+      this.stripe.createToken(this.card).then((result) => {
+        if (result.error) {
+          console.log('error!!!', result.error);
+        } else {
+          console.log('sending to server');
+          this.stripeTokenHandler(result.token);
+        }
+      });
+    },
+    stripeTokenHandler(token) {
+      const formData = {
+        token,
+        fields: this.fields
+      };
 
       fetch('http://localhost:8081/api/place-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: this.email,
-          firstNameShipping: this.fields.firstNameShipping,
-          lastNameShipping: this.fields.lastNameShipping,
-          addressShipping: this.fields.addressShipping,
-          address2Shipping: this.fields.address2Shipping,
-          cityShipping: this.fields.cityShipping,
-          stateShipping: this.fields.stateShipping,
-          zipShipping: this.fields.zipShipping
-        })
+        body: JSON.stringify(formData)
       })
-      .then(response => response.text())
-      .then(html => console.log(html));
-    },
-    initStripe() {
-      utils.loadScript('https://js.stripe.com/v3/', this.addStripeElements);
-    },
-    addStripeElements() {
-      var style = {
-        base: {
-          fontSize: '16px',
-          '::placeholder': {
-            color: '#a9a9a9',
-          },
-        },
-      };
-
-      const stripePublishableKey = 'pk_test_OKClfKEUHvsE9Bpb9hoptSGV';
-      const stripe = Stripe(stripePublishableKey);
-      const elements = stripe.elements();
-
-      //elements.create('card', { style: style }).mount('#card');
-      elements.create('cardNumber', { 
-        style: style,
-        placeholder: 'Credit Card Number'
-      }).mount('#card-number');
-      elements.create('cardExpiry', { style: style }).mount('#card-expiry');
-      elements.create('cardCvc', { style: style }).mount('#card-cvc');
-
-
-
-
-      // const stripePublishableKey = 'pk_test_OKClfKEUHvsE9Bpb9hoptSGV';
-      // Stripe.setPublishableKey(stripePublishableKey);
-      // Stripe.createToken(this.card, this.stripeResponseHandler);
-    },
-    stripeResponseHandler(status, res) {
-      this.cardCheckSending = false;
-
-      if (res.error) {
-        //this.cardCheckErrorMessage = res.error.message;
-        //this.cardCheckError = true;
-        console.log('ERROR', res);
-      } else {
-        console.log('Submitting...');
-        const tokenFromStripe = res.id;
-        const request = {
-          tokenFromStripe,
-          description: 'Test description',
-          name: 'Connor Leech',
-          email: 'connor@employbl.com',
-          address: {
-            street: '123 Something Lane',
-            city: 'San Francisco',
-            state: 'CA',
-            zip: '94607'
-          },
-          card: this.card,
-        };
-
-        fetch('http://localhost:8081/api/place-order', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(request)
-        })
-        .then(response => response.text())
-        .then(html => console.log('HERE YO GO', html));
-      }
+      .then(response => response.json())
+      .then(data => console.log('HERE YO GO', data));
     }
   },
   mounted() {
@@ -461,10 +428,15 @@ export default {
   }
 
   .same-shipping-billing {
+    clear: both;
     margin-top: 20px;
 
     #same-address {
       display: none;
+    }
+
+    .same-shipping-billing-label {
+      cursor: pointer;
     }
 
     #same-address:checked + .checkbox-container {
@@ -481,14 +453,14 @@ export default {
       border: solid 1px #4292e3;
       border-radius: 3px;
       text-align: center;
-    }
 
-    svg {
-      position: relative;
-      top: 1px;
-      width: 12px;
-      fill: #fff;
-      min-height: 15px;
+      .icon--checkmark {
+        position: relative;
+        top: 1px;
+        width: 12px;
+        fill: #fff;
+        min-height: 15px;
+      }
     }
   }
 
@@ -504,6 +476,15 @@ export default {
     label {
       top: 2px;
     }
+
+    & ~ .icon--creditCard {
+      position: absolute;
+      fill: #d5d5d5;
+      right: 12px;
+      top: 10px;
+      width: 30px;
+      z-index: 1;
+    }
   }
   .StripeElement--focus,
   .StripeElement--invalid,
@@ -515,7 +496,8 @@ export default {
       transform: none !important;
     }
   }
-  .StripeElement--focus {
+  .StripeElement--focus,
+  .StripeElement--complete {
     border: solid 1px #16bfff;
   }
 
