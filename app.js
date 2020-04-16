@@ -20,7 +20,7 @@ app.use(bodyParser.json({ limit: '1mb' }));
 if (!process.env.PORT) {
   app.use(cors({
     origin: ['http://localhost:8080', 'http://localhost:8081'],
-    methods: ['GET', 'POST', 'DELETE'],
+    methods: ['GET', 'POST'],
     credentials: true 
   }));
 }
@@ -28,95 +28,92 @@ if (!process.env.PORT) {
 // API
 app.post('/api/place-order', (req, res) => {
 
-  console.log('fields', req.body.fields);
-
-  // From old RS code
-  // stripe.customers.create({
-  //   description: 'Customer for ' + req.body.stripeEmail,
-  //   source: req.body.stripeToken,
-  //   email: req.body.stripeEmail,
-  // }, function(err, customer) {
-  //   if (err) console.log(err);
-  //   console.log(customer);
-
-  //   stripe.charges.create({
-  //     amount: 499,
-  //     currency: 'usd',
-  //     customer: customer.id,
-  //     description: 'Charge for ' + req.body.stripeEmail,
-  //   }, function(err, charge) {
-  //     console.log('LOOKER HERE>>>>>>>>>>>>');
-  //     console.log(err);
-  //     console.log(charge);
-  //     User.findOne({ '_id':  req.user._id }, function(err, user) {
-  //       if (err) throw err;
-  //       user.subscription = 'Full';
-  //       user.stripeSubId = charge.id;
-  //       user.save(function(err) {
-  //         if (err) throw err;
-  //         console.log('Charge created for ' + req.user._id);
-  //         res.sendStatus(200);
-  //       });
-  //     });
-  //   });
-  // });
-
-  // Create new Stripe charge
-  const newCharge = {
-    amount: 1000,
-    currency: 'USD',
-    source: req.body.token.id,
-    description: req.body.description,
-    receipt_email: req.body.email,
-  };
-
-  stripe.charges.create(newCharge, (err, charge) => {
-    if (err) {
-      console.log(err);
-      res.json({ error: err, charge: false });
-    } else {
-      console.log('SUCCESS');
-      res.json({ error: false, charge: charge });
+  // Create draft Printful order
+  request({
+    url: 'https://api.printful.com/orders',
+    method: 'POST',
+    headers: { 'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}` },
+    json: true,
+    body: {
+    recipient: {
+        name: `${req.body.fields.firstNameShipping} ${req.body.fields.lastNameShipping}`,
+        address1: req.body.fields.address1Shipping,
+        address2: req.body.fields.address2Shipping,
+        city: req.body.fields.cityShipping,
+        state_code: req.body.fields.stateShipping,
+        country_code: 'US',
+        zip: req.body.fields.zipShipping
+      },
+      items: [{
+        sync_variant_id: 1796349947,
+        quantity: 1
+      }]
     }
+  }, (error, response) => {
+    if (error || (response && response.body && response.body.error)) {
+      console.log('Prinful order error', error || response.body.error);
+      return res.json({ error: error || response.body.error.message });
+    }
+
+    console.log('response:', response.body.result);
+    sendToStripe(response.body.result);
   });
 
 
-  // const data = {
-  //   recipient: {
-  //     name: `${req.body.firstNameShipping} ${req.body.lastNameShipping}`,
-  //     address1: req.body.addressShipping,
-  //     address2: req.body.address2Shipping,
-  //     city: req.body.cityShipping,
-  //     state_code: req.body.stateShipping,
-  //     country_code: 'US',
-  //     zip: req.body.zipShipping
-  //   },
-  //   items: [{
-  //     sync_variant_id: 1796349947,
-  //     quantity: 1
-  //   }]
-  // };
+  function sendToStripe(printfulRes) {
 
-  // console.log(JSON.stringify(data));
+    // Create Stripe customer
+    stripe.customers.create({
+      description: `Customer - ${req.body.fields.email}`,
+      source: req.body.token.id,
+      name: `${req.body.fields.firstNameShipping} ${req.body.fields.lastNameShipping}`,
+      email: req.body.fields.email,
+      address: {
+        line1: req.body.fields.address1Shipping,
+        line2: req.body.fields.address2Shipping,
+        city: req.body.fields.cityShipping,
+        state: req.body.fields.stateShipping,
+        postal_code: req.body.fields.zipShipping,
+        country: 'US'
+      }
+    }, (error, customer) => {
+      if (error) {
+        console.log('Stripe customer error', error);
+        return res.json({ error });
+      }
 
-  // request({
-  //   url: 'https://api.printful.com/orders',
-  //   method: 'POST',
-  //   headers: { 'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}` },
-  //   json: true,
-  //   body: data
-  // }, (error, response) => {
-  //   console.error('error:', error);
-  //   console.log('response:', response.body);
-  //   res.json({
-  //     yo: true
-  //   });
-  // });
+      // Create new Stripe charge
+      stripe.charges.create({
+        description: `Charge - ${req.body.fields.email}`,
+        metadata: { 
+          orderID: printfulRes.id,
+          shippingMethod: printfulRes.shipping,
+          orderURL: printfulRes.dashboard_url,
+          subtotalCharge: printfulRes.costs.subtotal,
+          shippingCharge: printfulRes.costs.shipping,
+          taxCharge: printfulRes.costs.tax
+        },
+        amount: Math.ceil((printfulRes.costs.total) * 100),
+        currency: 'USD',
+        customer: customer.id,
+        receipt_email: req.body.fields.email
+      }, (error, charge) => {
+        if (error) {
+          console.log('Stripe charge error', error);
+          return res.json({ error });
+        } 
 
+        console.log('SUCCESS - send Printfuldraft order to fulfillment!');
+        // Use https://api.printful.com/orders/{id}/confirm when ready
+
+        res.json({ charge });
+      });
+    });
+  }
 
 });
 
 // Start server
-app.listen(process.env.PORT || 8081, (req, res) => {
+app.listen(process.env.PORT || 8081, () => {
   console.log('App listening on port 8081');
 });

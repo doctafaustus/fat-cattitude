@@ -226,7 +226,8 @@
 
       <!-- Place Order -->
       <div class="segment place-order">
-        <a @click.prevent="placeOrder" class="cta">Place Order</a>
+        <div class="error-section">{{ error }}</div>
+        <a @click.prevent="placeOrder" class="cta place-order-cta">Place Order</a>
       </div>
     </form>
   </section>
@@ -246,6 +247,8 @@ export default {
     return {
       stripe: null,
       card: null,
+      cardCheckSending: false,
+      error: null,
       fields: {
         email: null,
         firstNameShipping: null,
@@ -263,14 +266,7 @@ export default {
         cityBilling: null,
         stateBilling: null,
         zipBilling: null
-      },
-      card: {
-        number: '4242424242424242',
-        expMonth: '01',
-        expYear: '22',
-        cvc: '123'
-      },
-      cardCheckSending: false
+      }
     }
   },
   methods: {
@@ -291,6 +287,7 @@ export default {
       utils.loadScript('https://js.stripe.com/v3/', this.addStripeElements);
     },
     placeOrder() {
+      this.error = null;
       this.createToken();
     },
     addStripeElements() {
@@ -307,6 +304,7 @@ export default {
     createToken() {
       this.stripe.createToken(this.card).then((result) => {
         if (result.error) {
+          this.error = result.error.message;
           console.log('error!!!', result.error);
         } else {
           console.log('sending to server');
@@ -326,7 +324,14 @@ export default {
         body: JSON.stringify(formData)
       })
       .then(response => response.json())
-      .then(data => console.log('HERE YO GO', data));
+      .then(data => {
+        console.log('api/place-order response: \n', data);
+        if (data.error) {
+          this.error = data.error;
+        } else {
+          console.log('SUCCESS!', data);
+        }
+      });
     }
   },
   mounted() {
@@ -461,6 +466,18 @@ export default {
         fill: #fff;
         min-height: 15px;
       }
+    }
+  }
+
+  .place-order {
+    .error-section {
+      color: #eb1c26;
+      margin-bottom: 10px;
+    }
+
+    .place-order-cta {
+      width: 100%;
+      text-align: center;
     }
   }
 
