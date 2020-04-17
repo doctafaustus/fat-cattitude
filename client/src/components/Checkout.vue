@@ -5,9 +5,12 @@
 
         <!-- Contact Information -->
         <h3 class="segment-title">Contact Information</h3>
-        <div class="input-wrapper">
-          <label>Email</label>
-          <input v-model="fields.email" id="email" type="text" placeholder="Email">
+        <div class="field">
+          <div class="input-wrapper">
+            <label>Email</label>
+            <input v-model="fields.email" id="email" type="text" placeholder="Email">
+          </div>
+          <span class="error"></span>
         </div>
       </div>
 
@@ -15,89 +18,110 @@
       <div class="segment shipping-address">
         <h3 class="segment-title">Shipping Address</h3>
         <div class="input-group input-group-col-2">
-          <div class="input-wrapper">
-            <label>First Name</label>
-            <input v-model="fields.firstNameShipping" id="first-name-shipping" type="text" placeholder="First Name">
+          <div class="field">
+            <div class="input-wrapper">
+              <label>First Name</label>
+              <input v-model="fields.firstNameShipping" id="first-name-shipping" type="text" placeholder="First Name">
+            </div>
+            <span class="error"></span>
           </div>
-          <div class="input-wrapper">
-            <label>Last Name</label>
-            <input v-model="fields.lastNameShipping" id="last-name-shipping" type="text" placeholder="Last Name">
+          <div class="field">
+            <div class="input-wrapper">
+              <label>Last Name</label>
+              <input v-model="fields.lastNameShipping" id="last-name-shipping" type="text" placeholder="Last Name">
+            </div>
+            <span class="error"></span>
           </div>
         </div>
-        <div class="input-wrapper">
-          <label>Address</label>
-          <input v-model="fields.address1Shipping" id="address1-shipping" type="text" placeholder="Address">
+        <div class="field">
+          <div class="input-wrapper">
+            <label>Address</label>
+            <input v-model="fields.address1Shipping" id="address1-shipping" type="text" placeholder="Address">
+          </div>
+          <span class="error"></span>
         </div>
-        <div class="input-wrapper">
-          <label>Address 2 (optional)</label>
-          <input v-model="fields.address2Shipping" id="address2-shipping" type="text" placeholder="Address 2 (optional)">
+        <div class="field">
+          <div class="input-wrapper">
+            <label>Address 2 (optional)</label>
+            <input v-model="fields.address2Shipping" id="address2-shipping" type="text" placeholder="Address 2 (optional)">
+          </div>
+          <span class="error"></span>
         </div>
-        <div class="input-wrapper">
-          <label>City</label>
-          <input v-model="fields.cityShipping" id="city-shipping" type="text" placeholder="City">
+        <div class="field">
+          <div class="input-wrapper">
+            <label>City</label>
+            <input v-model="fields.cityShipping" id="city-shipping" type="text" placeholder="City">
+          </div>
+          <span class="error"></span>
         </div>
         <div class="input-group input-group-col-2">
-          <div class="input-wrapper dropdown">
-            <label>State</label>
-            <select v-model="fields.stateShipping" id="state-shipping">
-              <option disabled selected>State</option>
-              <option value="AL">Alabama</option>
-              <option value="AK">Alaska</option>
-              <option value="AZ">Arizona</option>
-              <option value="AR">Arkansas</option>
-              <option value="CA">California</option>
-              <option value="CO">Colorado</option>
-              <option value="CT">Connecticut</option>
-              <option value="DE">Delaware</option>
-              <option value="DC">District of Columbia</option>
-              <option value="FL">Florida</option>
-              <option value="GA">Georgia</option>
-              <option value="HI">Hawaii</option>
-              <option value="ID">Idaho</option>
-              <option value="IL">Illinois</option>
-              <option value="IN">Indiana</option>
-              <option value="IA">Iowa</option>
-              <option value="KS">Kansas</option>
-              <option value="KY">Kentucky</option>
-              <option value="LA">Louisiana</option>
-              <option value="ME">Maine</option>
-              <option value="MD">Maryland</option>
-              <option value="MA">Massachusetts</option>
-              <option value="MI">Michigan</option>
-              <option value="MN">Minnesota</option>
-              <option value="MS">Mississippi</option>
-              <option value="MO">Missouri</option>
-              <option value="MT">Montana</option>
-              <option value="NE">Nebraska</option>
-              <option value="NV">Nevada</option>
-              <option value="NH">New Hampshire</option>
-              <option value="NJ">New Jersey</option>
-              <option value="NM">New Mexico</option>
-              <option value="NY">New York</option>
-              <option value="NC">North Carolina</option>
-              <option value="ND">North Dakota</option>
-              <option value="OH">Ohio</option>
-              <option value="OK">Oklahoma</option>
-              <option value="OR">Oregon</option>
-              <option value="PA">Pennsylvania</option>
-              <option value="RI">Rhode Island</option>
-              <option value="SC">South Carolina</option>
-              <option value="SD">South Dakota</option>
-              <option value="TN">Tennessee</option>
-              <option value="TX">Texas</option>
-              <option value="UT">Utah</option>
-              <option value="VT">Vermont</option>
-              <option value="VA">Virginia</option>
-              <option value="WA">Washington</option>
-              <option value="WV">West Virginia</option>
-              <option value="WI">Wisconsin</option>
-              <option value="WY">Wyoming</option>
-            </select>
+          <div class="field">
+            <div class="input-wrapper dropdown">
+              <label>State</label>
+              <select v-model="fields.stateShipping" id="state-shipping">
+                <option disabled selected>State</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+              </select>
+            </div>
+            <span class="error"></span>
           </div>
-          <div class="input-wrapper">
-            <label>ZIP code</label>
-            <input v-model="fields.zipShipping" id="zip-shipping" type="text" placeholder="ZIP code">
+          <div class="field">
+            <div class="input-wrapper">
+              <label>ZIP code</label>
+              <input v-model="fields.zipShipping" id="zip-shipping" type="text" placeholder="ZIP code">
+            </div>
           </div>
+          <span class="error"></span>
         </div>
       </div>
 
@@ -105,19 +129,28 @@
       <div class="segment payment-information">
         <h3 class="segment-title">Payment Information</h3>
 
-        <div class="input-wrapper stripe-wrapper">
-          <div id="card-number"></div>
-          <label>Credit Card Number</label>
-          <Icon name="creditCard" />
+        <div class="field">
+          <div class="input-wrapper stripe-wrapper">
+            <div id="card-number"></div>
+            <label>Credit Card Number</label>
+            <Icon name="creditCard" />
+          </div>
+          <span class="error"></span>
         </div>
         <div class="input-group input-group-col-2">
-          <div class="input-wrapper stripe-wrapper">
-            <div id="card-expiry"></div>
-            <label>MM / YY</label>
+          <div class="field">
+            <div class="input-wrapper stripe-wrapper">
+              <div id="card-expiry"></div>
+              <label>MM / YY</label>
+            </div>
+            <span class="error"></span>
           </div>
-          <div class="input-wrapper stripe-wrapper">
-            <div id="card-cvc"></div>
-            <label>CVC</label>
+          <div class="field">
+            <div class="input-wrapper stripe-wrapper">
+              <div id="card-cvc"></div>
+              <label>CVC</label>
+            </div>
+            <span class="error"></span>
           </div>
         </div>
 
@@ -138,88 +171,109 @@
         <h3 class="segment-title">Billing Address</h3>
 
         <div class="input-group input-group-col-2">
-          <div class="input-wrapper">
-            <label>First Name</label>
-            <input v-model="fields.firstNameBilling" id="first-name-billing" type="text" placeholder="First Name">
+          <div class="field">
+            <div class="input-wrapper">
+              <label>First Name</label>
+              <input v-model="fields.firstNameBilling" id="first-name-billing" type="text" placeholder="First Name">
+            </div>
+            <span class="error"></span>
           </div>
-          <div class="input-wrapper">
-            <label>Last Name</label>
-            <input v-model="fields.lastNameBilling" id="last-name-billing" type="text" placeholder="Last Name">
+          <div class="field">
+            <div class="input-wrapper">
+              <label>Last Name</label>
+              <input v-model="fields.lastNameBilling" id="last-name-billing" type="text" placeholder="Last Name">
+            </div>
+            <span class="error"></span>
           </div>
         </div>
-        <div class="input-wrapper">
-          <label>Address</label>
-          <input v-model="fields.address1Billing" id="address1-billing" type="text" placeholder="Address">
+        <div class="field">
+          <div class="input-wrapper">
+            <label>Address</label>
+            <input v-model="fields.address1Billing" id="address1-billing" type="text" placeholder="Address">
+          </div>
+          <span class="error"></span>
         </div>
-        <div class="input-wrapper">
-          <label>Address 2 (optional)</label>
-          <input v-model="fields.address2Billing" id="address2-billing" type="text" placeholder="Address 2 (optional)">
+        <div class="field">
+          <div class="input-wrapper">
+            <label>Address 2 (optional)</label>
+            <input v-model="fields.address2Billing" id="address2-billing" type="text" placeholder="Address 2 (optional)">
+          </div>
+          <span class="error"></span>
         </div>
-        <div class="input-wrapper">
-          <label>City</label>
-          <input  v-model="fields.cityBilling" id="city-billing" type="text" placeholder="City">
+        <div class="field">
+          <div class="input-wrapper">
+            <label>City</label>
+            <input  v-model="fields.cityBilling" id="city-billing" type="text" placeholder="City">
+          </div>
+          <span class="error"></span>
         </div>
         <div class="input-group input-group-col-2">
-          <div class="input-wrapper dropdown">
-            <label>State</label>
-            <select  v-model="fields.stateBilling" id="state-billing">
-              <option disabled selected>State</option>
-              <option value="AL">Alabama</option>
-              <option value="AK">Alaska</option>
-              <option value="AZ">Arizona</option>
-              <option value="AR">Arkansas</option>
-              <option value="CA">California</option>
-              <option value="CO">Colorado</option>
-              <option value="CT">Connecticut</option>
-              <option value="DE">Delaware</option>
-              <option value="DC">District of Columbia</option>
-              <option value="FL">Florida</option>
-              <option value="GA">Georgia</option>
-              <option value="HI">Hawaii</option>
-              <option value="ID">Idaho</option>
-              <option value="IL">Illinois</option>
-              <option value="IN">Indiana</option>
-              <option value="IA">Iowa</option>
-              <option value="KS">Kansas</option>
-              <option value="KY">Kentucky</option>
-              <option value="LA">Louisiana</option>
-              <option value="ME">Maine</option>
-              <option value="MD">Maryland</option>
-              <option value="MA">Massachusetts</option>
-              <option value="MI">Michigan</option>
-              <option value="MN">Minnesota</option>
-              <option value="MS">Mississippi</option>
-              <option value="MO">Missouri</option>
-              <option value="MT">Montana</option>
-              <option value="NE">Nebraska</option>
-              <option value="NV">Nevada</option>
-              <option value="NH">New Hampshire</option>
-              <option value="NJ">New Jersey</option>
-              <option value="NM">New Mexico</option>
-              <option value="NY">New York</option>
-              <option value="NC">North Carolina</option>
-              <option value="ND">North Dakota</option>
-              <option value="OH">Ohio</option>
-              <option value="OK">Oklahoma</option>
-              <option value="OR">Oregon</option>
-              <option value="PA">Pennsylvania</option>
-              <option value="RI">Rhode Island</option>
-              <option value="SC">South Carolina</option>
-              <option value="SD">South Dakota</option>
-              <option value="TN">Tennessee</option>
-              <option value="TX">Texas</option>
-              <option value="UT">Utah</option>
-              <option value="VT">Vermont</option>
-              <option value="VA">Virginia</option>
-              <option value="WA">Washington</option>
-              <option value="WV">West Virginia</option>
-              <option value="WI">Wisconsin</option>
-              <option value="WY">Wyoming</option>
-            </select>
+          <div class="field">
+            <div class="input-wrapper dropdown">
+              <label>State</label>
+              <select  v-model="fields.stateBilling" id="state-billing">
+                <option disabled selected>State</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+              </select>
+            </div>
+            <span class="error"></span>
           </div>
-          <div class="input-wrapper">
-            <label>ZIP code</label>
-            <input  v-model="fields.zipBilling" id="zip-billing" type="text" placeholder="ZIP code">
+          <div class="field">
+            <div class="input-wrapper">
+              <label>ZIP code</label>
+              <input  v-model="fields.zipBilling" id="zip-billing" type="text" placeholder="ZIP code">
+            </div>
+            <span class="error"></span>
           </div>
         </div>
       </div>
@@ -287,6 +341,15 @@ export default {
       utils.loadScript('https://js.stripe.com/v3/', this.addStripeElements);
     },
     placeOrder() {
+      Object.keys(this.fields).forEach(key => {
+        const field = this.$data.fields[key];
+        if (!field) {
+          const element = document.querySelector(`#${utils.slugify(key)}`);
+          console.log('No value for', element);
+        }
+      });
+
+      return;
       this.error = null;
       this.createToken();
     },
@@ -358,6 +421,10 @@ export default {
       font-size: 20px;
       font-weight: 600;
     }
+  }
+
+  .field {
+
   }
 
   .input-group,

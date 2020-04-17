@@ -66,5 +66,11 @@ export default {
       scriptEl.onload = optCallback;
     }
     document.head.insertAdjacentElement('beforeend', scriptEl);
+  },
+
+  slugify(text) {
+    return text.replace(/([a-z\d][A-Z])/g, g => { 
+      return `${g[0]}-${g[1].toLowerCase()}` ;
+    });
   }
 }
