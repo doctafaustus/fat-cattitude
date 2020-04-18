@@ -58,8 +58,8 @@
           <div class="field">
             <div class="input-wrapper dropdown">
               <label>State</label>
-              <select v-model="fields.stateShipping" id="state-shipping">
-                <option disabled selected>State</option>
+              <select v-model="fields.stateShipping" id="state-shipping" placeholder="State" data-clean="true">
+                <option value="null" disabled>State</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -120,8 +120,8 @@
               <label>ZIP code</label>
               <input v-model="fields.zipShipping" id="zip-shipping" type="text" placeholder="ZIP code">
             </div>
+            <span class="error"></span>
           </div>
-          <span class="error"></span>
         </div>
       </div>
 
@@ -157,7 +157,7 @@
         <!-- Same Address Toggle -->
         <div class="same-shipping-billing">
           <label class="same-shipping-billing-label" for="same-address">
-            <input v-model="fields.sameAddress" type="checkbox" id="same-address" checked>
+            <input v-model="sameAddress" type="checkbox" id="same-address" checked>
             <div class="checkbox-container">
               <Icon name="checkmark" />
             </div>
@@ -167,7 +167,7 @@
       </div>
 
       <!-- Billing Address -->
-      <div v-show="!fields.sameAddress" class="segment billing-address">
+      <div v-show="!sameAddress" class="segment billing-address">
         <h3 class="segment-title">Billing Address</h3>
 
         <div class="input-group input-group-col-2">
@@ -211,8 +211,8 @@
           <div class="field">
             <div class="input-wrapper dropdown">
               <label>State</label>
-              <select  v-model="fields.stateBilling" id="state-billing">
-                <option disabled selected>State</option>
+              <select v-model="fields.stateBilling" id="state-billing" placeholder="State" data-clean="true">
+                <option value="null" disabled>State</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -303,6 +303,7 @@ export default {
       card: null,
       cardCheckSending: false,
       error: null,
+      sameAddress: true,
       fields: {
         email: null,
         firstNameShipping: null,
@@ -312,7 +313,6 @@ export default {
         cityShipping: null,
         stateShipping: null,
         zipShipping: null,
-        sameAddress: true,
         firstNameBilling: null,
         lastNameBilling: null,
         address1Billing: null,
@@ -327,26 +327,46 @@ export default {
     initInputClasses() {
       const inputs = document.querySelectorAll('.checkout-form input[type="text"], select');
       inputs.forEach(input => {
-        input.addEventListener('focus', e => toggleActiveClass(e, 'add'));
+        input.addEventListener('focus', e => this.toggleActiveClass(e, 'add'));
         input.addEventListener('blur', e => {
-          if (!e.target.value) toggleActiveClass(e, 'remove');
+          if (!e.target.value) this.toggleActiveClass(e, 'remove');
         });
       });
-
-      function toggleActiveClass(e, method) {
-        e.target.closest('.input-wrapper').classList[method]('active');
-      }
+    },
+    toggleActiveClass(e, method) {
+      e.target.closest('.input-wrapper').classList[method]('active');
+      if (method === 'add') this.clearInlineError(e.target.closest('.field'));
+      if (e.target.nodeName === 'SELECT') e.target.dataset.clean = false;
     },
     initStripe() {
       utils.loadScript('https://js.stripe.com/v3/', this.addStripeElements);
     },
+    clearInlineError(element) {
+      element.classList.remove('has-error');
+      element.querySelector('.error').textContent = '';
+    },
+    clearAllInlineErrors() {
+      document.querySelectorAll('.field').forEach(this.clearInlineError);
+    },
     placeOrder() {
+      this.clearAllInlineErrors();
       Object.keys(this.fields).forEach(key => {
         const field = this.$data.fields[key];
+        const element = document.querySelector(`#${utils.slugify(key)}`);
+        if (/address2/.test(element.id)) return;
+
+        const parentEl = element.closest('.field');
+        const validEmailRegEx = /^.+@.+\..+$/;
+        let errorMessage;
+        
         if (!field) {
-          const element = document.querySelector(`#${utils.slugify(key)}`);
-          console.log('No value for', element);
-        }
+          errorMessage = `${element.getAttribute('placeholder')} required`;;
+        } else if (key === 'email' && !validEmailRegEx.test(field)) {
+          errorMessage = 'Invalid email address';
+        } else return;
+
+        parentEl.querySelector('.error').textContent = errorMessage;
+        parentEl.classList.add('has-error');
       });
 
       return;
@@ -423,8 +443,17 @@ export default {
     }
   }
 
-  .field {
+  .field.has-error {
+    .input-wrapper,
+    .input-wrapper.active,
+    .input-wrapper.active:not(.stripe-wrapper) {
+      margin-bottom: 6px;
+      border: solid 1px #eb1c26;
+    }
 
+    .error {
+      margin-bottom: 10px;
+    }
   }
 
   .input-group,
@@ -481,6 +510,14 @@ export default {
 
     select {
       padding-bottom: 14px;
+
+      &[data-clean="true"] {
+        color: #a9a9a9;
+      }
+
+      option[disabled] {
+        display: none;
+      }
     }
   }
 
@@ -496,6 +533,23 @@ export default {
 
     &:not(.stripe-wrapper) {
       border: solid 1px #d5d5d5;
+    }
+  }
+
+  .error {
+    display: inline-block;
+    font-size: 14px;
+    color: #eb1c26;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .contact-information,
+  .input-group:last-child {
+    .field.has-error .error {
+      margin-bottom: 0;
     }
   }
 
