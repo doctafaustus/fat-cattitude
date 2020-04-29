@@ -26,6 +26,33 @@ if (!process.env.PORT) {
 }
 
 // API
+app.post('/api/shipping-rate', (req, res) => {
+  request({
+    url: 'https://api.printful.com/shipping/rates',
+    method: 'POST',
+    headers: { 'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}` },
+    json: true,
+    body: {
+      recipient: {
+        address1: req.body.recipient.address1Shipping,
+        city: req.body.recipient.cityShipping,
+        country_code: 'US',
+        state_code: req.body.recipient.stateShipping,
+        zip: req.body.recipient.zipShipping
+      },
+      items: req.body.items
+    }, 
+  }, (error, response) => {
+    if (error || (response && response.body && response.body.error)) {
+      console.log('Prinful order error', error || response.body.error);
+      return res.json({ error: error || response.body.error.message });
+    }
+
+    console.log('response', response.body.result);
+    return res.json(response.body);
+  });
+});
+
 app.post('/api/place-order', (req, res) => {
 
   // Create draft Printful order
@@ -35,7 +62,7 @@ app.post('/api/place-order', (req, res) => {
     headers: { 'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}` },
     json: true,
     body: {
-    recipient: {
+      recipient: {
         name: `${req.body.fields.firstNameShipping} ${req.body.fields.lastNameShipping}`,
         address1: req.body.fields.address1Shipping,
         address2: req.body.fields.address2Shipping,

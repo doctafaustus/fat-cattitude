@@ -125,6 +125,11 @@
         </div>
       </div>
 
+      <!-- Save & Continue CTA -->
+      <div class="continue-container">
+        <a class="continue-btn cta" href="#" @click.prevent="getShippingRate()">Continue</a>
+      </div>
+
       <!-- Payment Information -->
       <div class="segment payment-information">
         <h3 class="segment-title">Payment Information</h3>
@@ -341,6 +346,24 @@ export default {
     initStripe() {
       utils.loadScript('https://js.stripe.com/v3/', this.addStripeElements);
     },
+    getShippingRate() {
+      console.log('get shipping rate');
+
+      fetch('http://localhost:8081/api/shipping-rate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          recipient: this.fields,
+          items: utils.getCartArray().map(item => {
+            return { variant_id: item.catalogVariantID, quantity: 1 };
+          })
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('api/shipping-rate response: ', data);
+      });
+    },
     clearInlineError(element) {
       element.classList.remove('has-error');
       element.querySelector('.error').textContent = '';
@@ -419,7 +442,9 @@ export default {
   },
   mounted() {
     this.initInputClasses();
-    if (!window.Stripe) this.initStripe(); 
+    if (!window.Stripe) {
+      this.initStripe();
+    } else this.addStripeElements();
   }
 }
 </script>
@@ -428,13 +453,11 @@ export default {
 <style scoped lang="scss">
 .checkout {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 500px;
   text-align: left;
 
   .segment {
-    &:not(:last-child) {
-      margin-bottom: 40px;
-    }
+    margin-bottom: 20px;
 
     .segment-title {
       margin-bottom: 20px;
@@ -588,6 +611,11 @@ export default {
         min-height: 15px;
       }
     }
+  }
+
+  .continue-container {
+    text-align: center;
+    margin-bottom: 20px;
   }
 
   .place-order {
