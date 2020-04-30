@@ -128,6 +128,23 @@
       <!-- Save & Continue CTA -->
       <div class="continue-container">
         <a class="continue-btn cta" href="#" @click.prevent="getShippingRate()">Continue</a>
+        <span v-show="shippingRateError" class="shipping-rate-error">{{ shippingRateError }}</span>
+      </div>
+
+      <!-- Shipping Rate -->
+      <div class="shipping-rate-container">
+        <div class="shipping-rate-title">Shipping Option</div>
+        <ul class="shipping-rate-options">
+          <li v-for="(option, index) in shippingOptions" :key="index" class="shipping-rate-option">
+            <label :for="`shipping-option-${index}`">
+              <input type="radio" :id="`shipping-option-${index}`" name="shipping-option" :value="option" v-model="selectedShippingRate">
+              <div class="circle"></div>
+              <div class="shipping-rate-name">
+                <span class="shipping-rate-id">{{ option.id.toLowerCase() }}</span> - <span>{{ option.name }}</span></div>
+              <div class="shipping-rate-value">${{ option.rate }}</div>
+            </label>
+          </li>
+        </ul>
       </div>
 
       <!-- Payment Information -->
@@ -285,7 +302,7 @@
 
       <!-- Place Order -->
       <div class="segment place-order">
-        <div class="error-section">{{ error }}</div>
+        <div class="error-section">{{ orderError }}</div>
         <a @click.prevent="placeOrder" class="cta place-order-cta">Place Order</a>
       </div>
     </form>
@@ -307,7 +324,15 @@ export default {
       stripe: null,
       card: null,
       cardCheckSending: false,
-      error: null,
+      orderError: null,
+      shippingRateError: null,
+      shippingOptions: [],
+      selectedShippingRate: {},
+      // selectedShippingRate: {
+      //   id: null,
+      //   name: null,
+      //   value: null
+      // },
       sameAddress: true,
       fields: {
         email: null,
@@ -347,8 +372,7 @@ export default {
       utils.loadScript('https://js.stripe.com/v3/', this.addStripeElements);
     },
     getShippingRate() {
-      console.log('get shipping rate');
-
+      this.shippingRateError = false;
       fetch('http://localhost:8081/api/shipping-rate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -359,9 +383,11 @@ export default {
           })
         })
       })
-      .then(response => response.json())
-      .then(data => {
+      .then(response => response.json()).then(data => {
+        if (data.error) return this.shippingRateError = `Error - ${data.error}`;
         console.log('api/shipping-rate response: ', data);
+        this.shippingOptions = data.result;
+        this.selectedShippingRate = this.shippingOptions[0];
       });
     },
     clearInlineError(element) {
@@ -393,7 +419,7 @@ export default {
       });
 
       return;
-      this.error = null;
+      this.orderError = null;
       this.createToken();
     },
     addStripeElements() {
@@ -410,7 +436,7 @@ export default {
     createToken() {
       this.stripe.createToken(this.card).then((result) => {
         if (result.error) {
-          this.error = result.error.message;
+          this.orderError = result.error.message;
           console.log('error!!!', result.error);
         } else {
           console.log('sending to server');
@@ -433,7 +459,7 @@ export default {
       .then(data => {
         console.log('api/place-order response: \n', data);
         if (data.error) {
-          this.error = data.error;
+          this.orderError = data.error;
         } else {
           console.log('SUCCESS!', data);
         }
@@ -616,6 +642,76 @@ export default {
   .continue-container {
     text-align: center;
     margin-bottom: 20px;
+
+    .shipping-rate-error {
+      display: block;
+      margin-top: 12px;
+      font-size: 14px;
+      color: #eb1c26;
+    }
+  }
+
+  // -- Shipping Rate section -- //
+  .shipping-rate-container {
+    background-color: #efefef;
+    margin-bottom: 20px;
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked {
+      & + .circle {
+        border: none;
+        background-color: #000;
+      }
+    }
+
+    .circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 25px;
+      border: solid 1px #ddd;
+      background-color: #fff;
+    }
+
+    .shipping-rate-title,
+    .shipping-rate-option {
+      padding: 20px;
+    }
+
+    .shipping-rate-title {
+      border-bottom: solid 1px #fff;
+      font-size: 26px;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .shipping-rate-options {
+      .shipping-rate-option {
+        background-color: #e6e6e6;
+
+        label {
+          display: grid;
+          grid-template-columns: 30px auto 60px;
+
+          .shipping-rate-name {
+            font-size: 14px;
+            line-height: 18px;
+
+            .shipping-rate-id {
+              text-transform: capitalize;
+            }
+          }
+
+          .shipping-rate-value {
+            text-align: right;
+            font-weight: bold;
+          }
+        }
+      }
+    }
   }
 
   .place-order {

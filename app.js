@@ -44,11 +44,8 @@ app.post('/api/shipping-rate', (req, res) => {
     }, 
   }, (error, response) => {
     if (error || (response && response.body && response.body.error)) {
-      console.log('Prinful order error', error || response.body.error);
       return res.json({ error: error || response.body.error.message });
     }
-
-    console.log('response', response.body.result);
     return res.json(response.body);
   });
 });
