@@ -125,67 +125,15 @@
         </div>
       </div>
 
-      <!-- Save & Continue CTA -->
-      <div class="continue-container">
-        <a class="continue-btn cta" href="#" @click.prevent="getShippingRate()">Continue</a>
-        <span v-show="shippingRateError" class="shipping-rate-error">{{ shippingRateError }}</span>
-      </div>
-
-      <!-- Shipping Rate -->
-      <div class="shipping-rate-container">
-        <div class="shipping-rate-title">Shipping Option</div>
-        <ul class="shipping-rate-options">
-          <li v-for="(option, index) in shippingOptions" :key="index" class="shipping-rate-option">
-            <label :for="`shipping-option-${index}`">
-              <input type="radio" :id="`shipping-option-${index}`" name="shipping-option" :value="option" v-model="selectedShippingRate">
-              <div class="circle"></div>
-              <div class="shipping-rate-name">
-                <span class="shipping-rate-id">{{ option.id.toLowerCase() }}</span> - <span>{{ option.name }}</span></div>
-              <div class="shipping-rate-value">${{ option.rate }}</div>
-            </label>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Payment Information -->
-      <div class="segment payment-information">
-        <h3 class="segment-title">Payment Information</h3>
-
-        <div class="field">
-          <div class="input-wrapper stripe-wrapper">
-            <div id="card-number"></div>
-            <label>Credit Card Number</label>
-            <Icon name="creditCard" />
+      <!-- Same Address Toggle -->
+      <div class="same-shipping-billing">
+        <label class="same-shipping-billing-label" for="same-address">
+          <input v-model="sameAddress" type="checkbox" id="same-address" checked>
+          <div class="checkbox-container">
+            <Icon name="checkmark" />
           </div>
-          <span class="error"></span>
-        </div>
-        <div class="input-group input-group-col-2">
-          <div class="field">
-            <div class="input-wrapper stripe-wrapper">
-              <div id="card-expiry"></div>
-              <label>MM / YY</label>
-            </div>
-            <span class="error"></span>
-          </div>
-          <div class="field">
-            <div class="input-wrapper stripe-wrapper">
-              <div id="card-cvc"></div>
-              <label>CVC</label>
-            </div>
-            <span class="error"></span>
-          </div>
-        </div>
-
-        <!-- Same Address Toggle -->
-        <div class="same-shipping-billing">
-          <label class="same-shipping-billing-label" for="same-address">
-            <input v-model="sameAddress" type="checkbox" id="same-address" checked>
-            <div class="checkbox-container">
-              <Icon name="checkmark" />
-            </div>
-            <span>Same billing &amp; shipping info</span>
-          </label>
-        </div>
+          <span>Same billing &amp; shipping address</span>
+        </label>
       </div>
 
       <!-- Billing Address -->
@@ -300,10 +248,62 @@
         </div>
       </div>
 
+      <!-- Save & Continue CTA -->
+      <div class="continue-container">
+        <a class="continue-btn cta" href="#" @click.prevent="validateFields({ isEstimate: true })">Continue</a>
+      </div>
+
+      <!-- Shipping Rate -->
+      <div v-show="Object.keys(orderEstimate).length" class="shipping-rate-container">
+        <div class="shipping-rate-title">Shipping Option</div>
+        <ul class="shipping-rate-options">
+          <li class="shipping-rate-option">
+            <label for="shipping-option-0">
+              <input type="radio" id="shipping-option-0" name="shipping-option" checked>
+              <div class="circle"></div>
+              <div class="shipping-rate-name">
+                <span class="shipping-rate-id">Standard</span> - <span>Flat Rate (3-4 business days after fulfillment)</span>
+              </div>
+              <div class="shipping-rate-value">${{ orderEstimate.shipping }}</div>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Payment Information -->
+      <div class="segment payment-information">
+        <h3 class="segment-title">Payment Information</h3>
+
+        <div class="field">
+          <div class="input-wrapper stripe-wrapper">
+            <div id="card-number"></div>
+            <label>Credit Card Number</label>
+            <Icon name="creditCard" />
+          </div>
+          <span class="error"></span>
+        </div>
+        <div class="input-group input-group-col-2">
+          <div class="field">
+            <div class="input-wrapper stripe-wrapper">
+              <div id="card-expiry"></div>
+              <label>MM / YY</label>
+            </div>
+            <span class="error"></span>
+          </div>
+          <div class="field">
+            <div class="input-wrapper stripe-wrapper">
+              <div id="card-cvc"></div>
+              <label>CVC</label>
+            </div>
+            <span class="error"></span>
+          </div>
+        </div>
+      </div>
+
       <!-- Place Order -->
       <div class="segment place-order">
         <div class="error-section">{{ orderError }}</div>
-        <a @click.prevent="placeOrder" class="cta place-order-cta">Place Order</a>
+        <a @click.prevent="validateFields" class="cta place-order-cta">Place Order</a>
       </div>
     </form>
   </section>
@@ -312,6 +312,7 @@
 <script>
 import utils from '@/mixins/utils';
 import Icon from '@/components/Icons';
+import EventBus from '@/EventBus';
 
 export default {
   name: 'Checkout',
@@ -325,14 +326,6 @@ export default {
       card: null,
       cardCheckSending: false,
       orderError: null,
-      shippingRateError: null,
-      shippingOptions: [],
-      selectedShippingRate: {},
-      // selectedShippingRate: {
-      //   id: null,
-      //   name: null,
-      //   value: null
-      // },
       sameAddress: true,
       fields: {
         email: null,
@@ -350,7 +343,8 @@ export default {
         cityBilling: null,
         stateBilling: null,
         zipBilling: null
-      }
+      },
+      orderEstimate: {}
     }
   },
   methods: {
@@ -371,25 +365,6 @@ export default {
     initStripe() {
       utils.loadScript('https://js.stripe.com/v3/', this.addStripeElements);
     },
-    getShippingRate() {
-      this.shippingRateError = false;
-      fetch('http://localhost:8081/api/shipping-rate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          recipient: this.fields,
-          items: utils.getCartArray().map(item => {
-            return { variant_id: item.catalogVariantID, quantity: 1 };
-          })
-        })
-      })
-      .then(response => response.json()).then(data => {
-        if (data.error) return this.shippingRateError = `Error - ${data.error}`;
-        console.log('api/shipping-rate response: ', data);
-        this.shippingOptions = data.result;
-        this.selectedShippingRate = this.shippingOptions[0];
-      });
-    },
     clearInlineError(element) {
       element.classList.remove('has-error');
       element.querySelector('.error').textContent = '';
@@ -397,8 +372,10 @@ export default {
     clearAllInlineErrors() {
       document.querySelectorAll('.field').forEach(this.clearInlineError);
     },
-    placeOrder() {
+    validateFields({ isEstimate }) {
+      this.orderError = null;
       this.clearAllInlineErrors();
+
       Object.keys(this.fields).forEach(key => {
         const field = this.$data.fields[key];
         const element = document.querySelector(`#${utils.slugify(key)}`);
@@ -409,7 +386,7 @@ export default {
         let errorMessage;
         
         if (!field) {
-          errorMessage = `${element.getAttribute('placeholder')} required`;;
+          errorMessage = `${element.getAttribute('placeholder')} required`;
         } else if (key === 'email' && !validEmailRegEx.test(field)) {
           errorMessage = 'Invalid email address';
         } else return;
@@ -418,9 +395,45 @@ export default {
         parentEl.classList.add('has-error');
       });
 
-      //return;
-      this.orderError = null;
-      this.createToken();
+      if (this.hasInlineErrors()) return console.log('has inline errors');
+
+      if (isEstimate) this.getOrderEstimate();
+      else this.createToken();
+    },
+    hasInlineErrors() {
+      if (this.sameAddress) {
+        return document.querySelectorAll('.contact-information .has-error, .shipping-address .has-error').length;
+      } else {
+        return document.querySelectorAll('.has-error').length;
+      }
+    },
+    getItemsMap() {
+      return utils.getCartArray().map(item => {
+        return { sync_variant_id: item.variantID, quantity: 1, retail_price:  item.price };
+      });
+    },
+    getOrderEstimate() {
+      console.log('getOrderEstimate');
+
+      fetch('http://localhost:8081/api/estimate-costs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          fields: this.fields,
+          items: this.getItemsMap()
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('api/estimate-costs response: \n', data);
+        if (data.error) {
+          this.orderError = data.error;
+        } else {
+          console.log('SUCCESS!', data);
+          this.orderEstimate = data.result.costs;
+          EventBus.$emit('order-estimate', this.orderEstimate);
+        }
+      });
     },
     addStripeElements() {
       const style = { base: { fontSize: '16px', '::placeholder': { color: '#a9a9a9', }}};
@@ -604,7 +617,7 @@ export default {
 
   .same-shipping-billing {
     clear: both;
-    margin-top: 20px;
+    margin-bottom: 20px;
 
     #same-address {
       display: none;
@@ -642,13 +655,6 @@ export default {
   .continue-container {
     text-align: center;
     margin-bottom: 20px;
-
-    .shipping-rate-error {
-      display: block;
-      margin-top: 12px;
-      font-size: 14px;
-      color: #eb1c26;
-    }
   }
 
   // -- Shipping Rate section -- //

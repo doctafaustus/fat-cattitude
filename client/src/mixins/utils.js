@@ -3,22 +3,6 @@ export default {
     return (this.getCookie('cart') && JSON.parse(this.getCookie('cart'))) || [];
   },
 
-  dollarToFloat(dollarString) {
-    const dollarFloat = parseFloat( dollarString.replace(/[\$,]/g,'') );
-    return dollarFloat;
-  },
-
-  floatToDollar(float, roundLastCent = false) {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: roundLastCent ? 2 : 3,
-    })
-    .format(float)
-    .replace(/(\.\d{2})\d+$/, (match, p1) => p1);
-  },
-
   getCookie(name) {
     const nameEQ = `${name}=`;
     const ca = document.cookie.split(';');

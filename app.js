@@ -50,6 +50,35 @@ app.post('/api/shipping-rate', (req, res) => {
   });
 });
 
+app.post('/api/estimate-costs', (req, res) => {
+  console.log('/estimate-costs');
+
+  request({
+    url: 'https://api.printful.com/orders/estimate-costs',
+    method: 'POST',
+    headers: { 'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}` },
+    json: true,
+    body: {
+      recipient: {
+        name: `${req.body.fields.firstNameShipping} ${req.body.fields.lastNameShipping}`,
+        address1: req.body.fields.address1Shipping,
+        address2: req.body.fields.address2Shipping,
+        city: req.body.fields.cityShipping,
+        state_code: req.body.fields.stateShipping,
+        country_code: 'US',
+        zip: req.body.fields.zipShipping
+      },
+      items: req.body.items
+    }
+  }, (error, response) => {
+    if (error || (response && response.body && response.body.error)) {
+      return res.json({ error: error || response.body.error.message });
+    }
+    return res.json(response.body);
+  });
+});
+
+
 app.post('/api/place-order', (req, res) => {
 
   // Create draft Printful order

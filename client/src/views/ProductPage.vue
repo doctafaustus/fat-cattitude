@@ -32,13 +32,13 @@
           <div class="row">
             <label>Size (Choose)</label>
             <ul v-for="color in item.colors" :key="color.colorName" class="item-sizes">
-              <li v-for="size in color.sizes" :key="size.variantID" @click="selectSize(size.size, size.variantID, size.catalogVariantID)" :class="{ selected: size.size === selected.size }" :data-variant-id="size.variantID">{{ size.size }}</li>
+              <li v-for="size in color.sizes" :key="size.variantID" @click="selectSize(size.size, size.variantID)" :class="{ selected: size.size === selected.size }" :data-variant-id="size.variantID">{{ size.size }}</li>
             </ul>
           </div>
 
           <div class="cta-and-price">
             <button @click="addToCart()" class="cta">Add to Cart</button>
-            <div class="item-price">{{ item.price }}</div>
+            <div class="item-price">${{ item.price }}</div>
           </div>
 
           <div :class="{ 'show': showSuccess }" class="success-message">
@@ -83,7 +83,6 @@ export default {
       selected: {
         productID: null,
         variantID: null,
-        catalogVariantID: null,
         size: null,
         title: null,
         price: null,
@@ -106,10 +105,9 @@ export default {
     getSwatch(colorCode) {
       return `background-color: ${colorCode}`;
     },
-    selectSize(size, variantID, catalogVariantID) {
+    selectSize(size, variantID) {
       this.selected.productID = this.item.id;
       this.selected.variantID = variantID;
-      this.selected.catalogVariantID = catalogVariantID;
       this.selected.size = size;
     },
     addToCart() {

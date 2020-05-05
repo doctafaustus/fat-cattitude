@@ -25,7 +25,7 @@
                 <label>Size:</label>
                 <span class="cart-product-size-val">{{ product.size }}</span>
               </div>
-              <div class="cart-product-price">{{ product.price }}</div>
+              <div class="cart-product-price">${{ product.price }}</div>
             </div>
 
             <div class="cart-product-delete-col">
@@ -37,16 +37,24 @@
         </ul>
       </div>
       <div class="cart-summary">
-        <div class="cart-os">
+        <div :class="{ 'cart-os': true, 'total-shown': total !== 0 }">
           <div class="cart-os-title">Order Summary</div>
           <div class="cart-os-details">
             <div class="cart-os-details-row">
               <div class="cart-os-subtotal-label">Subtotal</div>
-              <div class="cart-os-subtotal-value">{{ total }}</div>
+              <div class="cart-os-subtotal-value">{{ subtotal | toCurrency }}</div>
             </div>
             <div class="cart-os-details-row">
               <div class="cart-os-subtotal-label">Shipping</div>
-              <div class="cart-os-subtotal-value">TBD</div>
+              <div class="cart-os-subtotal-value">{{ shipping | toCurrency}}</div>
+            </div>
+            <div class="cart-os-details-row">
+              <div class="cart-os-subtotal-label">Tax</div>
+              <div class="cart-os-subtotal-value">{{ tax | toCurrency }}</div>
+            </div>
+            <div class="cart-os-details-row total">
+              <div class="cart-os-subtotal-label">Total</div>
+              <div class="cart-os-subtotal-value">{{ total | toCurrency }}</div>
             </div>
           </div>
         </div>
@@ -76,6 +84,9 @@ export default {
   data () {
     return {
       cart: [],
+      subtotal: 0,
+      shipping: 'TBD',
+      tax: 'TBD',
       total: 0
     }
   },
@@ -83,11 +94,9 @@ export default {
     getCart() {
       this.cart = utils.getCartArray();
       console.log(this.cart);
-
-      const totalAsNumber = this.cart.reduce((accum, item) => {
-        return accum + utils.dollarToFloat(item.price);
+      this.subtotal = this.cart.reduce((accum, item) => {
+        return accum + item.price;
       }, 0);
-      this.total = utils.floatToDollar(totalAsNumber);
     },
     remove(variantID) {
       EventBus.$emit('cart-remove', variantID);
@@ -96,6 +105,12 @@ export default {
   },
   mounted() {
     this.getCart();
+
+    EventBus.$on('order-estimate', orderEstimate => {
+      this.shipping = orderEstimate.shipping;
+      this.tax =  orderEstimate.tax;
+      this.total = this.subtotal + this.shipping + this.tax;
+    });
   }
 }
 </script>
@@ -241,6 +256,18 @@ export default {
       .cart-os {
         background-color: #efefef;
 
+        &.total-shown {
+          .cart-os-details .cart-os-details-row {
+            &:nth-last-child(2) {
+              margin-bottom: 20px;
+            }
+            
+            &.total {
+              display: flex;
+            }
+          }
+        }
+
         .cart-os-title {
           font-size: 26px;
           font-family: 'Work Sans', sans-serif;
@@ -258,6 +285,16 @@ export default {
             
             &:not(:last-child) {
               margin-bottom: 20px;
+            }
+
+            &:nth-last-child(2) {
+              margin-bottom: 0;
+            }
+
+            &.total {
+              display: none;
+              font-weight: bold;
+              margin-bottom: 0px;
             }
 
             .cart-os-subtotal-value {
