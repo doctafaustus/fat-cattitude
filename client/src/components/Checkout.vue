@@ -418,7 +418,7 @@ export default {
         parentEl.classList.add('has-error');
       });
 
-      return;
+      //return;
       this.orderError = null;
       this.createToken();
     },
