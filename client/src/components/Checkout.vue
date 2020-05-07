@@ -1,5 +1,22 @@
 <template>
   <section class="checkout">
+
+    <div class="saved-info">
+      <div class="saved-info-block">
+        <h4>Email Address</h4>
+        <span class="edit-link">Edit</span>
+        <div>{{ fields.email }}</div>
+      </div>
+
+      <div class="saved-info-block">
+        <h4>Shipping Address</h4>
+        <span class="edit-link">Edit</span>
+        <div>{{ fields.firstNameShipping }} {{ fields.lastNameShipping }}</div>
+        <div>{{ fields.address1Shipping }}</div>
+        <div>{{ fields.cityShipping }} {{ fields.stateShipping }} {{ fields.zipShipping }}</div>
+      </div>
+    </div>
+
     <form class="checkout-form" action="/api/place-order" method="POST">
       <div class="segment contact-information">
 
@@ -494,6 +511,33 @@ export default {
   margin: 0 auto;
   max-width: 500px;
   text-align: left;
+
+  .saved-info {
+    .saved-info-block {
+      padding: 16px;
+      border: solid 1px #e5e5e5;
+      margin-bottom: 20px;
+      font-size: 15px;
+      position: relative;
+
+      h4 {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      .edit-link {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      div {
+        line-height: 22px;
+      }
+    }
+  }
 
   .segment {
     margin-bottom: 20px;
