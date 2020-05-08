@@ -97,10 +97,7 @@ app.post('/api/place-order', (req, res) => {
         country_code: 'US',
         zip: req.body.fields.zipShipping
       },
-      items: [{
-        sync_variant_id: 1796349947,
-        quantity: 1
-      }]
+      items: []
     }
   }, (error, response) => {
     if (error || (response && response.body && response.body.error)) {

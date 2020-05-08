@@ -1,327 +1,341 @@
 <template>
   <section class="checkout">
 
-    <div class="saved-info">
+    <div v-show="step === 'post-estimate'" class="saved-info">
       <div class="saved-info-block">
-        <h4>Email Address</h4>
-        <span class="edit-link">Edit</span>
-        <div>{{ fields.email }}</div>
-      </div>
+        <span @click="editInfo()" class="edit-link">Edit</span>
 
-      <div class="saved-info-block">
-        <h4>Shipping Address</h4>
-        <span class="edit-link">Edit</span>
-        <div>{{ fields.firstNameShipping }} {{ fields.lastNameShipping }}</div>
-        <div>{{ fields.address1Shipping }}</div>
-        <div>{{ fields.cityShipping }} {{ fields.stateShipping }} {{ fields.zipShipping }}</div>
+        <div class="block">
+          <h4>Email Address</h4>
+          <div>{{ fields.email }}</div>
+        </div>
+
+        <div class="block">
+          <h4>Shipping Address</h4>
+          <div>{{ fields.firstNameShipping }} {{ fields.lastNameShipping }}</div>
+          <div>{{ fields.address1Shipping }}</div>
+          <div>{{ fields.cityShipping }} {{ fields.stateShipping }} {{ fields.zipShipping }}</div>
+        </div>
+
+        <div v-show="!sameAddress" class="block">
+          <h4>Billing Address</h4>
+          <div>{{ fields.firstNameBilling }} {{ fields.lastNameBilling }}</div>
+          <div>{{ fields.address1Billing }}</div>
+          <div>{{ fields.cityBilling }} {{ fields.stateBilling }} {{ fields.zipBilling }}</div>
+        </div>
       </div>
     </div>
 
     <form class="checkout-form" action="/api/place-order" method="POST">
-      <div class="segment contact-information">
-
-        <!-- Contact Information -->
-        <h3 class="segment-title">Contact Information</h3>
-        <div class="field">
-          <div class="input-wrapper">
-            <label>Email</label>
-            <input v-model="fields.email" id="email" type="text" placeholder="Email">
-          </div>
-          <span class="error"></span>
-        </div>
-      </div>
-
-      <!-- Shipping Address -->
-      <div class="segment shipping-address">
-        <h3 class="segment-title">Shipping Address</h3>
-        <div class="input-group input-group-col-2">
+      <fieldset v-show="step === 'pre-estimate'" class="pre-estimate">
+      
+        <div class="segment contact-information">
+          <!-- Contact Information -->
+          <h3 class="segment-title">Contact Information</h3>
           <div class="field">
             <div class="input-wrapper">
-              <label>First Name</label>
-              <input v-model="fields.firstNameShipping" id="first-name-shipping" type="text" placeholder="First Name">
-            </div>
-            <span class="error"></span>
-          </div>
-          <div class="field">
-            <div class="input-wrapper">
-              <label>Last Name</label>
-              <input v-model="fields.lastNameShipping" id="last-name-shipping" type="text" placeholder="Last Name">
+              <label>Email</label>
+              <input v-model="fields.email" id="email" type="text" placeholder="Email">
             </div>
             <span class="error"></span>
           </div>
         </div>
-        <div class="field">
-          <div class="input-wrapper">
-            <label>Address</label>
-            <input v-model="fields.address1Shipping" id="address1-shipping" type="text" placeholder="Address">
-          </div>
-          <span class="error"></span>
-        </div>
-        <div class="field">
-          <div class="input-wrapper">
-            <label>Address 2 (optional)</label>
-            <input v-model="fields.address2Shipping" id="address2-shipping" type="text" placeholder="Address 2 (optional)">
-          </div>
-          <span class="error"></span>
-        </div>
-        <div class="field">
-          <div class="input-wrapper">
-            <label>City</label>
-            <input v-model="fields.cityShipping" id="city-shipping" type="text" placeholder="City">
-          </div>
-          <span class="error"></span>
-        </div>
-        <div class="input-group input-group-col-2">
-          <div class="field">
-            <div class="input-wrapper dropdown">
-              <label>State</label>
-              <select v-model="fields.stateShipping" id="state-shipping" placeholder="State" data-clean="true">
-                <option value="null" disabled>State</option>
-                <option value="AL">Alabama</option>
-                <option value="AK">Alaska</option>
-                <option value="AZ">Arizona</option>
-                <option value="AR">Arkansas</option>
-                <option value="CA">California</option>
-                <option value="CO">Colorado</option>
-                <option value="CT">Connecticut</option>
-                <option value="DE">Delaware</option>
-                <option value="DC">District of Columbia</option>
-                <option value="FL">Florida</option>
-                <option value="GA">Georgia</option>
-                <option value="HI">Hawaii</option>
-                <option value="ID">Idaho</option>
-                <option value="IL">Illinois</option>
-                <option value="IN">Indiana</option>
-                <option value="IA">Iowa</option>
-                <option value="KS">Kansas</option>
-                <option value="KY">Kentucky</option>
-                <option value="LA">Louisiana</option>
-                <option value="ME">Maine</option>
-                <option value="MD">Maryland</option>
-                <option value="MA">Massachusetts</option>
-                <option value="MI">Michigan</option>
-                <option value="MN">Minnesota</option>
-                <option value="MS">Mississippi</option>
-                <option value="MO">Missouri</option>
-                <option value="MT">Montana</option>
-                <option value="NE">Nebraska</option>
-                <option value="NV">Nevada</option>
-                <option value="NH">New Hampshire</option>
-                <option value="NJ">New Jersey</option>
-                <option value="NM">New Mexico</option>
-                <option value="NY">New York</option>
-                <option value="NC">North Carolina</option>
-                <option value="ND">North Dakota</option>
-                <option value="OH">Ohio</option>
-                <option value="OK">Oklahoma</option>
-                <option value="OR">Oregon</option>
-                <option value="PA">Pennsylvania</option>
-                <option value="RI">Rhode Island</option>
-                <option value="SC">South Carolina</option>
-                <option value="SD">South Dakota</option>
-                <option value="TN">Tennessee</option>
-                <option value="TX">Texas</option>
-                <option value="UT">Utah</option>
-                <option value="VT">Vermont</option>
-                <option value="VA">Virginia</option>
-                <option value="WA">Washington</option>
-                <option value="WV">West Virginia</option>
-                <option value="WI">Wisconsin</option>
-                <option value="WY">Wyoming</option>
-              </select>
-            </div>
-            <span class="error"></span>
-          </div>
-          <div class="field">
-            <div class="input-wrapper">
-              <label>ZIP code</label>
-              <input v-model="fields.zipShipping" id="zip-shipping" type="text" placeholder="ZIP code">
-            </div>
-            <span class="error"></span>
-          </div>
-        </div>
-      </div>
 
-      <!-- Same Address Toggle -->
-      <div class="same-shipping-billing">
-        <label class="same-shipping-billing-label" for="same-address">
-          <input v-model="sameAddress" type="checkbox" id="same-address" checked>
-          <div class="checkbox-container">
-            <Icon name="checkmark" />
-          </div>
-          <span>Same billing &amp; shipping address</span>
-        </label>
-      </div>
-
-      <!-- Billing Address -->
-      <div v-show="!sameAddress" class="segment billing-address">
-        <h3 class="segment-title">Billing Address</h3>
-
-        <div class="input-group input-group-col-2">
-          <div class="field">
-            <div class="input-wrapper">
-              <label>First Name</label>
-              <input v-model="fields.firstNameBilling" id="first-name-billing" type="text" placeholder="First Name">
-            </div>
-            <span class="error"></span>
-          </div>
-          <div class="field">
-            <div class="input-wrapper">
-              <label>Last Name</label>
-              <input v-model="fields.lastNameBilling" id="last-name-billing" type="text" placeholder="Last Name">
-            </div>
-            <span class="error"></span>
-          </div>
-        </div>
-        <div class="field">
-          <div class="input-wrapper">
-            <label>Address</label>
-            <input v-model="fields.address1Billing" id="address1-billing" type="text" placeholder="Address">
-          </div>
-          <span class="error"></span>
-        </div>
-        <div class="field">
-          <div class="input-wrapper">
-            <label>Address 2 (optional)</label>
-            <input v-model="fields.address2Billing" id="address2-billing" type="text" placeholder="Address 2 (optional)">
-          </div>
-          <span class="error"></span>
-        </div>
-        <div class="field">
-          <div class="input-wrapper">
-            <label>City</label>
-            <input  v-model="fields.cityBilling" id="city-billing" type="text" placeholder="City">
-          </div>
-          <span class="error"></span>
-        </div>
-        <div class="input-group input-group-col-2">
-          <div class="field">
-            <div class="input-wrapper dropdown">
-              <label>State</label>
-              <select v-model="fields.stateBilling" id="state-billing" placeholder="State" data-clean="true">
-                <option value="null" disabled>State</option>
-                <option value="AL">Alabama</option>
-                <option value="AK">Alaska</option>
-                <option value="AZ">Arizona</option>
-                <option value="AR">Arkansas</option>
-                <option value="CA">California</option>
-                <option value="CO">Colorado</option>
-                <option value="CT">Connecticut</option>
-                <option value="DE">Delaware</option>
-                <option value="DC">District of Columbia</option>
-                <option value="FL">Florida</option>
-                <option value="GA">Georgia</option>
-                <option value="HI">Hawaii</option>
-                <option value="ID">Idaho</option>
-                <option value="IL">Illinois</option>
-                <option value="IN">Indiana</option>
-                <option value="IA">Iowa</option>
-                <option value="KS">Kansas</option>
-                <option value="KY">Kentucky</option>
-                <option value="LA">Louisiana</option>
-                <option value="ME">Maine</option>
-                <option value="MD">Maryland</option>
-                <option value="MA">Massachusetts</option>
-                <option value="MI">Michigan</option>
-                <option value="MN">Minnesota</option>
-                <option value="MS">Mississippi</option>
-                <option value="MO">Missouri</option>
-                <option value="MT">Montana</option>
-                <option value="NE">Nebraska</option>
-                <option value="NV">Nevada</option>
-                <option value="NH">New Hampshire</option>
-                <option value="NJ">New Jersey</option>
-                <option value="NM">New Mexico</option>
-                <option value="NY">New York</option>
-                <option value="NC">North Carolina</option>
-                <option value="ND">North Dakota</option>
-                <option value="OH">Ohio</option>
-                <option value="OK">Oklahoma</option>
-                <option value="OR">Oregon</option>
-                <option value="PA">Pennsylvania</option>
-                <option value="RI">Rhode Island</option>
-                <option value="SC">South Carolina</option>
-                <option value="SD">South Dakota</option>
-                <option value="TN">Tennessee</option>
-                <option value="TX">Texas</option>
-                <option value="UT">Utah</option>
-                <option value="VT">Vermont</option>
-                <option value="VA">Virginia</option>
-                <option value="WA">Washington</option>
-                <option value="WV">West Virginia</option>
-                <option value="WI">Wisconsin</option>
-                <option value="WY">Wyoming</option>
-              </select>
-            </div>
-            <span class="error"></span>
-          </div>
-          <div class="field">
-            <div class="input-wrapper">
-              <label>ZIP code</label>
-              <input  v-model="fields.zipBilling" id="zip-billing" type="text" placeholder="ZIP code">
-            </div>
-            <span class="error"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Save & Continue CTA -->
-      <div class="continue-container">
-        <a class="continue-btn cta" href="#" @click.prevent="validateFields({ isEstimate: true })">Continue</a>
-      </div>
-
-      <!-- Shipping Rate -->
-      <div v-show="Object.keys(orderEstimate).length" class="shipping-rate-container">
-        <div class="shipping-rate-title">Shipping Option</div>
-        <ul class="shipping-rate-options">
-          <li class="shipping-rate-option">
-            <label for="shipping-option-0">
-              <input type="radio" id="shipping-option-0" name="shipping-option" checked>
-              <div class="circle"></div>
-              <div class="shipping-rate-name">
-                <span class="shipping-rate-id">Standard</span> - <span>Flat Rate (3-4 business days after fulfillment)</span>
+        <!-- Shipping Address -->
+        <div class="segment shipping-address">
+          <h3 class="segment-title">Shipping Address</h3>
+          <div class="input-group input-group-col-2">
+            <div class="field">
+              <div class="input-wrapper">
+                <label>First Name</label>
+                <input v-model="fields.firstNameShipping" id="first-name-shipping" type="text" placeholder="First Name">
               </div>
-              <div class="shipping-rate-value">${{ orderEstimate.shipping }}</div>
-            </label>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Payment Information -->
-      <div class="segment payment-information">
-        <h3 class="segment-title">Payment Information</h3>
-
-        <div class="field">
-          <div class="input-wrapper stripe-wrapper">
-            <div id="card-number"></div>
-            <label>Credit Card Number</label>
-            <Icon name="creditCard" />
+              <span class="error"></span>
+            </div>
+            <div class="field">
+              <div class="input-wrapper">
+                <label>Last Name</label>
+                <input v-model="fields.lastNameShipping" id="last-name-shipping" type="text" placeholder="Last Name">
+              </div>
+              <span class="error"></span>
+            </div>
           </div>
-          <span class="error"></span>
-        </div>
-        <div class="input-group input-group-col-2">
           <div class="field">
-            <div class="input-wrapper stripe-wrapper">
-              <div id="card-expiry"></div>
-              <label>MM / YY</label>
+            <div class="input-wrapper">
+              <label>Address</label>
+              <input v-model="fields.address1Shipping" id="address1-shipping" type="text" placeholder="Address">
             </div>
             <span class="error"></span>
           </div>
           <div class="field">
-            <div class="input-wrapper stripe-wrapper">
-              <div id="card-cvc"></div>
-              <label>CVC</label>
+            <div class="input-wrapper">
+              <label>Address 2 (optional)</label>
+              <input v-model="fields.address2Shipping" id="address2-shipping" type="text" placeholder="Address 2 (optional)">
             </div>
             <span class="error"></span>
           </div>
+          <div class="field">
+            <div class="input-wrapper">
+              <label>City</label>
+              <input v-model="fields.cityShipping" id="city-shipping" type="text" placeholder="City">
+            </div>
+            <span class="error"></span>
+          </div>
+          <div class="input-group input-group-col-2">
+            <div class="field">
+              <div class="input-wrapper dropdown">
+                <label>State</label>
+                <select v-model="fields.stateShipping" id="state-shipping" placeholder="State" data-clean="true">
+                  <option value="null" disabled>State</option>
+                  <option value="AL">Alabama</option>
+                  <option value="AK">Alaska</option>
+                  <option value="AZ">Arizona</option>
+                  <option value="AR">Arkansas</option>
+                  <option value="CA">California</option>
+                  <option value="CO">Colorado</option>
+                  <option value="CT">Connecticut</option>
+                  <option value="DE">Delaware</option>
+                  <option value="DC">District of Columbia</option>
+                  <option value="FL">Florida</option>
+                  <option value="GA">Georgia</option>
+                  <option value="HI">Hawaii</option>
+                  <option value="ID">Idaho</option>
+                  <option value="IL">Illinois</option>
+                  <option value="IN">Indiana</option>
+                  <option value="IA">Iowa</option>
+                  <option value="KS">Kansas</option>
+                  <option value="KY">Kentucky</option>
+                  <option value="LA">Louisiana</option>
+                  <option value="ME">Maine</option>
+                  <option value="MD">Maryland</option>
+                  <option value="MA">Massachusetts</option>
+                  <option value="MI">Michigan</option>
+                  <option value="MN">Minnesota</option>
+                  <option value="MS">Mississippi</option>
+                  <option value="MO">Missouri</option>
+                  <option value="MT">Montana</option>
+                  <option value="NE">Nebraska</option>
+                  <option value="NV">Nevada</option>
+                  <option value="NH">New Hampshire</option>
+                  <option value="NJ">New Jersey</option>
+                  <option value="NM">New Mexico</option>
+                  <option value="NY">New York</option>
+                  <option value="NC">North Carolina</option>
+                  <option value="ND">North Dakota</option>
+                  <option value="OH">Ohio</option>
+                  <option value="OK">Oklahoma</option>
+                  <option value="OR">Oregon</option>
+                  <option value="PA">Pennsylvania</option>
+                  <option value="RI">Rhode Island</option>
+                  <option value="SC">South Carolina</option>
+                  <option value="SD">South Dakota</option>
+                  <option value="TN">Tennessee</option>
+                  <option value="TX">Texas</option>
+                  <option value="UT">Utah</option>
+                  <option value="VT">Vermont</option>
+                  <option value="VA">Virginia</option>
+                  <option value="WA">Washington</option>
+                  <option value="WV">West Virginia</option>
+                  <option value="WI">Wisconsin</option>
+                  <option value="WY">Wyoming</option>
+                </select>
+              </div>
+              <span class="error"></span>
+            </div>
+            <div class="field">
+              <div class="input-wrapper">
+                <label>ZIP code</label>
+                <input v-model="fields.zipShipping" id="zip-shipping" type="text" placeholder="ZIP code">
+              </div>
+              <span class="error"></span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Place Order -->
-      <div class="segment place-order">
-        <div class="error-section">{{ orderError }}</div>
-        <a @click.prevent="validateFields" class="cta place-order-cta">Place Order</a>
-      </div>
+        <!-- Same Address Toggle -->
+        <div class="same-shipping-billing">
+          <label class="same-shipping-billing-label" for="same-address">
+            <input v-model="sameAddress" type="checkbox" id="same-address" checked>
+            <div class="checkbox-container">
+              <Icon name="checkmark" />
+            </div>
+            <span>Same billing &amp; shipping address</span>
+          </label>
+        </div>
+
+        <!-- Billing Address -->
+        <div v-show="!sameAddress" class="segment billing-address">
+          <h3 class="segment-title">Billing Address</h3>
+
+          <div class="input-group input-group-col-2">
+            <div class="field">
+              <div class="input-wrapper">
+                <label>First Name</label>
+                <input v-model="fields.firstNameBilling" id="first-name-billing" type="text" placeholder="First Name">
+              </div>
+              <span class="error"></span>
+            </div>
+            <div class="field">
+              <div class="input-wrapper">
+                <label>Last Name</label>
+                <input v-model="fields.lastNameBilling" id="last-name-billing" type="text" placeholder="Last Name">
+              </div>
+              <span class="error"></span>
+            </div>
+          </div>
+          <div class="field">
+            <div class="input-wrapper">
+              <label>Address</label>
+              <input v-model="fields.address1Billing" id="address1-billing" type="text" placeholder="Address">
+            </div>
+            <span class="error"></span>
+          </div>
+          <div class="field">
+            <div class="input-wrapper">
+              <label>Address 2 (optional)</label>
+              <input v-model="fields.address2Billing" id="address2-billing" type="text" placeholder="Address 2 (optional)">
+            </div>
+            <span class="error"></span>
+          </div>
+          <div class="field">
+            <div class="input-wrapper">
+              <label>City</label>
+              <input  v-model="fields.cityBilling" id="city-billing" type="text" placeholder="City">
+            </div>
+            <span class="error"></span>
+          </div>
+          <div class="input-group input-group-col-2">
+            <div class="field">
+              <div class="input-wrapper dropdown">
+                <label>State</label>
+                <select v-model="fields.stateBilling" id="state-billing" placeholder="State" data-clean="true">
+                  <option value="null" disabled>State</option>
+                  <option value="AL">Alabama</option>
+                  <option value="AK">Alaska</option>
+                  <option value="AZ">Arizona</option>
+                  <option value="AR">Arkansas</option>
+                  <option value="CA">California</option>
+                  <option value="CO">Colorado</option>
+                  <option value="CT">Connecticut</option>
+                  <option value="DE">Delaware</option>
+                  <option value="DC">District of Columbia</option>
+                  <option value="FL">Florida</option>
+                  <option value="GA">Georgia</option>
+                  <option value="HI">Hawaii</option>
+                  <option value="ID">Idaho</option>
+                  <option value="IL">Illinois</option>
+                  <option value="IN">Indiana</option>
+                  <option value="IA">Iowa</option>
+                  <option value="KS">Kansas</option>
+                  <option value="KY">Kentucky</option>
+                  <option value="LA">Louisiana</option>
+                  <option value="ME">Maine</option>
+                  <option value="MD">Maryland</option>
+                  <option value="MA">Massachusetts</option>
+                  <option value="MI">Michigan</option>
+                  <option value="MN">Minnesota</option>
+                  <option value="MS">Mississippi</option>
+                  <option value="MO">Missouri</option>
+                  <option value="MT">Montana</option>
+                  <option value="NE">Nebraska</option>
+                  <option value="NV">Nevada</option>
+                  <option value="NH">New Hampshire</option>
+                  <option value="NJ">New Jersey</option>
+                  <option value="NM">New Mexico</option>
+                  <option value="NY">New York</option>
+                  <option value="NC">North Carolina</option>
+                  <option value="ND">North Dakota</option>
+                  <option value="OH">Ohio</option>
+                  <option value="OK">Oklahoma</option>
+                  <option value="OR">Oregon</option>
+                  <option value="PA">Pennsylvania</option>
+                  <option value="RI">Rhode Island</option>
+                  <option value="SC">South Carolina</option>
+                  <option value="SD">South Dakota</option>
+                  <option value="TN">Tennessee</option>
+                  <option value="TX">Texas</option>
+                  <option value="UT">Utah</option>
+                  <option value="VT">Vermont</option>
+                  <option value="VA">Virginia</option>
+                  <option value="WA">Washington</option>
+                  <option value="WV">West Virginia</option>
+                  <option value="WI">Wisconsin</option>
+                  <option value="WY">Wyoming</option>
+                </select>
+              </div>
+              <span class="error"></span>
+            </div>
+            <div class="field">
+              <div class="input-wrapper">
+                <label>ZIP code</label>
+                <input v-model="fields.zipBilling" id="zip-billing" type="text" placeholder="ZIP code">
+              </div>
+              <span class="error"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Save & Continue CTA -->
+        <div class="continue-container">
+          <div v-show="estimateOrderError" class="estimate-order-error error">{{ estimateOrderError }}</div>
+          <button class="continue-btn cta" @click.prevent="validateFields({ isEstimate: true })" ref="continue">Continue</button>
+        </div>
+      </fieldset>
+
+      <fieldset v-show="step === 'post-estimate'" class="post-estimate">
+        <!-- Shipping Rate -->
+        <div v-show="Object.keys(orderEstimate).length" class="shipping-rate-container">
+          <div class="shipping-rate-title">Shipping Option</div>
+          <ul class="shipping-rate-options">
+            <li class="shipping-rate-option">
+              <label for="shipping-option-0">
+                <input type="radio" id="shipping-option-0" name="shipping-option" checked>
+                <div class="circle"></div>
+                <div class="shipping-rate-name">
+                  <span class="shipping-rate-id">Standard</span> - <span>Flat Rate (3-4 business days after fulfillment)</span>
+                </div>
+                <div class="shipping-rate-value">${{ orderEstimate.shipping }}</div>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Payment Information -->
+        <div class="segment payment-information">
+          <h3 class="segment-title">Payment Information</h3>
+
+          <div class="field">
+            <div class="input-wrapper stripe-wrapper">
+              <div id="card-number"></div>
+              <label>Credit Card Number</label>
+              <Icon name="creditCard" />
+            </div>
+            <span class="error" ref="number-error"></span>
+          </div>
+          <div class="input-group input-group-col-2">
+            <div class="field">
+              <div class="input-wrapper stripe-wrapper">
+                <div id="card-expiry"></div>
+                <label>MM / YY</label>
+              </div>
+              <span class="error" ref="expiry-error"></span>
+            </div>
+            <div class="field">
+              <div class="input-wrapper stripe-wrapper">
+                <div id="card-cvc"></div>
+                <label>CVC</label>
+              </div>
+              <span class="error" ref="cvc-error"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Place Order -->
+        <div class="segment place-order">
+          <div class="place-order-error">{{ placeOrderError }}</div>
+          <button @click.prevent="validateFields({ isEstimate: false })" class="cta place-order-cta" ref="place-order"><span class="place-order-text">Place Order</span></button>
+        </div>
+      </fieldset>
     </form>
   </section>
 </template>
@@ -339,10 +353,12 @@ export default {
   mixins: [utils],
   data () {
     return {
+      step: 'pre-estimate',
       stripe: null,
       card: null,
       cardCheckSending: false,
-      orderError: null,
+      estimateOrderError: null,
+      placeOrderError: null,
       sameAddress: true,
       fields: {
         email: null,
@@ -382,6 +398,9 @@ export default {
     initStripe() {
       utils.loadScript('https://js.stripe.com/v3/', this.addStripeElements);
     },
+    editInfo() {
+      this.step = 'pre-estimate';
+    },
     clearInlineError(element) {
       element.classList.remove('has-error');
       element.querySelector('.error').textContent = '';
@@ -390,7 +409,7 @@ export default {
       document.querySelectorAll('.field').forEach(this.clearInlineError);
     },
     validateFields({ isEstimate }) {
-      this.orderError = null;
+      this.placeOrderError = null;
       this.clearAllInlineErrors();
 
       Object.keys(this.fields).forEach(key => {
@@ -414,8 +433,13 @@ export default {
 
       if (this.hasInlineErrors()) return console.log('has inline errors');
 
-      if (isEstimate) this.getOrderEstimate();
-      else this.createToken();
+      if (isEstimate) {
+        EventBus.$emit('processing', { isProcessing: true });
+        this.$refs.continue.disabled = true;
+        this.getOrderEstimate();
+      } else {
+        this.createToken();
+      }
     },
     hasInlineErrors() {
       if (this.sameAddress) {
@@ -430,7 +454,7 @@ export default {
       });
     },
     getOrderEstimate() {
-      console.log('getOrderEstimate');
+      this.estimateOrderError = false;
 
       fetch('http://localhost:8081/api/estimate-costs', {
         method: 'POST',
@@ -443,12 +467,16 @@ export default {
       .then(response => response.json())
       .then(data => {
         console.log('api/estimate-costs response: \n', data);
+        this.$refs.continue.disabled = false;
+        EventBus.$emit('processing', { isProcessing: false });
+
         if (data.error) {
-          this.orderError = data.error;
+          this.estimateOrderError = `Error - ${data.error}`;
         } else {
           console.log('SUCCESS!', data);
           this.orderEstimate = data.result.costs;
           EventBus.$emit('order-estimate', this.orderEstimate);
+          this.step = 'post-estimate';
         }
       });
     },
@@ -458,18 +486,55 @@ export default {
       this.stripe = Stripe(stripePublishableKey);
       const elements = this.stripe.elements();
 
-      this.card = elements.create('cardNumber', { style, placeholder: 'Credit Card Number' });
-      this.card.mount('#card-number');
-      elements.create('cardExpiry', { style }).mount('#card-expiry');
-      elements.create('cardCvc', { style }).mount('#card-cvc');
+      const card = elements.create('cardNumber', { style, placeholder: 'Credit Card Number' });
+      const cardExpiry = elements.create('cardExpiry', { style });
+      const cardCVC = elements.create('cardCvc', { style })
+
+      card.mount('#card-number');
+      cardExpiry.mount('#card-expiry');
+      cardCVC.mount('#card-cvc');
+
+      card.ref = '#card-number';
+      cardExpiry.ref = '#card-expiry';
+      cardCVC.ref = '#card-cvc';
+
+      this.card = card;
+
+      [card, cardExpiry, cardCVC].forEach(el => {
+        el.on('change', e => {  
+          const fieldEl = document.querySelector(el.ref).closest('.field');
+          fieldEl.classList.remove('has-error');
+          fieldEl.querySelector('.error').textContent = '';
+        });
+      });
     },
     createToken() {
       this.stripe.createToken(this.card).then((result) => {
         if (result.error) {
-          this.orderError = result.error.message;
           console.log('error!!!', result.error);
+
+          const errorMap = {
+            'incomplete_number': 'number-error',
+            'invalid_number': 'number-error',
+            'incomplete_expiry': 'expiry-error',
+            'invalid_expiry_year_past': 'expiry-error',
+            'invalid_expiry_year': 'expiry-error',
+            'incomplete_cvc': 'cvc-error',
+            'invalid_cvc': 'cvc-error' // <- Guessing this exists
+          }
+
+          const errorRef = errorMap[result.error.code];
+          if (errorRef) {
+            const element = this.$refs[errorRef];
+            element.closest('.field').classList.add('has-error');
+            element.textContent = result.error.message;
+          } else {
+            this.placeOrderError = result.error.message;
+          }
+
         } else {
           console.log('sending to server');
+          this.$refs['place-order'].disabled = true;
           this.stripeTokenHandler(result.token);
         }
       });
@@ -488,8 +553,10 @@ export default {
       .then(response => response.json())
       .then(data => {
         console.log('api/place-order response: \n', data);
+        this.$refs['place-order'].disabled = false;
+
         if (data.error) {
-          this.orderError = data.error;
+          this.placeOrderError = data.error;
         } else {
           console.log('SUCCESS!', data);
         }
@@ -501,6 +568,12 @@ export default {
     if (!window.Stripe) {
       this.initStripe();
     } else this.addStripeElements();
+
+    EventBus.$on('cart-remove', () => {
+      if (this.step === 'post-estimate') {
+        this.validateFields({ isEstimate: true });
+      }
+    });
   }
 }
 </script>
@@ -520,11 +593,6 @@ export default {
       font-size: 15px;
       position: relative;
 
-      h4 {
-        font-size: 16px;
-        margin-bottom: 8px;
-      }
-
       .edit-link {
         position: absolute;
         top: 16px;
@@ -533,8 +601,21 @@ export default {
         text-decoration: underline;
       }
 
-      div {
-        line-height: 22px;
+      .block {
+        margin-top: 16px;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        h4 {
+          font-size: 16px;
+          margin-bottom: 5px;
+        }
+
+        div {
+          line-height: 22px;
+        }
       }
     }
   }
@@ -551,10 +632,13 @@ export default {
 
   .field.has-error {
     .input-wrapper,
-    .input-wrapper.active,
-    .input-wrapper.active:not(.stripe-wrapper) {
+    .input-wrapper.active {
       margin-bottom: 6px;
       border: solid 1px #eb1c26;
+    }
+
+    .StripeElement {
+      border: none;
     }
 
     .error {
@@ -645,6 +729,7 @@ export default {
   .error {
     display: inline-block;
     font-size: 14px;
+    line-height: 18px;
     color: #eb1c26;
 
     &:empty {
@@ -699,6 +784,14 @@ export default {
   .continue-container {
     text-align: center;
     margin-bottom: 20px;
+
+    .estimate-order-error {
+      margin-bottom: 10px;
+    }
+
+    .cta {
+      width: 100%;
+    }
   }
 
   // -- Shipping Rate section -- //
@@ -765,7 +858,7 @@ export default {
   }
 
   .place-order {
-    .error-section {
+    .place-order-error {
       color: #eb1c26;
       margin-bottom: 10px;
     }
@@ -773,6 +866,32 @@ export default {
     .place-order-cta {
       width: 100%;
       text-align: center;
+      position: relative;
+      height: 55px;
+
+      &.processing{
+        .place-order-text {
+          display: none;
+        }
+
+        &::after {
+          display: inline-block;
+        }
+      }
+
+      &::after {
+        content: '';
+        position: relative;
+        display: none;
+        width: 22px;
+        height: 23px;
+        border: 4px solid transparent;
+        border-top-color: #fff;
+        border-bottom-color: #fff;
+        border-radius: 50%;
+        animation: loader-rotate-data-v-7eff5a76 .725s linear infinite;
+        top: -3px;
+      }
     }
   }
 
@@ -822,6 +941,15 @@ export default {
 
   @include placeholder {
     color: #a9a9a9;
+  }
+
+  @keyframes loader-rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg); 
+    }
   }
 }
 </style>
