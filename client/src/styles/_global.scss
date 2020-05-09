@@ -50,3 +50,60 @@ h3 {
     filter: hue-rotate(236deg);
   }
 }
+
+// Cart and Order Confirmation product list
+.order-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-size: 14px;
+
+  .order-product {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 120px auto 40px;
+
+    .order-product-image-link-col {
+      .order-product-image {
+        background: #f3f3f3;
+        width: 100%;
+      }
+
+      &:hover + .order-product-details-col .order-product-link {
+        text-decoration: underline;
+      }
+    }
+
+    .order-product-details-col {
+      padding: 0 20px;
+
+      .order-product-link {
+        color: #4c4c4b;
+        text-decoration: none;
+        display: inline-block;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        .order-product-title {
+          font-size: 16px;
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
+      }
+
+      .order-product-detail,
+      .order-product-price {
+        font-size: 14px;
+        color: #808284;
+        margin-bottom: 6px;
+      }
+    }
+  }
+}

@@ -9,23 +9,27 @@
         <h1 class="cart-title">Your Stuff ({{cart.length}})</h1>
         <div class="cart-empty" v-show="!cart.length">There are no products in your cart.</div>
 
-        <ul class="cart-list">
+        <ul class="order-list">
 
-          <li class="cart-product" v-for="(product, index) in cart" :key="`size-${index}`">
+          <li class="order-product" v-for="(product, index) in cart" :key="`size-${index}`">
 
-            <router-link class="cart-product-image-link-col" :to="{ name: 'Product', params: { id: product.productID } }">
-              <img class="cart-product-image" :src="product.image">
+            <router-link class="order-product-image-link-col" :to="{ name: 'Product', params: { id: product.productID }, query: { color: product.query.color, size: product.query.size }}">
+              <img class="order-product-image" :src="product.image">
             </router-link>
             
-            <div class="cart-product-details-col">
-              <router-link :to="{ name: 'Product', params: { id: product.productID } }" class="cart-product-link">
-                <div class="cart-product-title">{{ product.title }}</div>
+            <div class="order-product-details-col">
+              <router-link :to="{ name: 'Product', params: { id: product.productID } }" class="order-product-link">
+                <div class="order-product-title">{{ product.title }}</div>
               </router-link>
-              <div class="cart-product-size">
+              <div class="order-product-detail">
                 <label>Size:</label>
-                <span class="cart-product-size-val">{{ product.size }}</span>
+                <span class="order-product-detail-val">{{ product.size }}</span>
               </div>
-              <div class="cart-product-price">${{ product.price }}</div>
+              <div class="order-product-detail">
+                <label>Color:</label>
+                <span class="order-product-detail-val">{{ product.color }}</span>
+              </div>
+              <div class="order-product-price">${{ product.price }}</div>
             </div>
 
             <div class="cart-product-delete-col">
@@ -174,77 +178,21 @@ export default {
       margin-top: 30px;
     }
 
-    .cart-list {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      text-align: left;
-      font-size: 14px;
+    .cart-product-delete-col {
+      height: 100%;
+      background-color: #efefef;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      .cart-product {
-        display: flex;
-        align-items: center;
-        background-color: #fff;
-        border-radius: 6px;
-        margin-bottom: 20px;
-        display: grid;
-        grid-template-columns: 120px auto 40px;
+      .cart-product-delete-close .icon {
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+        transition: all .25s ease;
 
-        .cart-product-image-link-col {
-          .cart-product-image {
-            background: #f3f3f3;
-            width: 100%;
-          }
-
-          &:hover + .cart-product-details-col .cart-product-link {
-            text-decoration: underline;
-          }
-        }
-
-        .cart-product-details-col {
-          padding: 0 20px;
-
-          .cart-product-link {
-            color: #4c4c4b;
-            text-decoration: none;
-            display: inline-block;
-
-            &:hover {
-              text-decoration: underline;
-            }
-
-            .cart-product-title {
-              font-size: 16px;
-              font-weight: 600;
-              margin-bottom: 20px;
-            }
-          }
-
-          .cart-product-size,
-          .cart-product-price {
-            font-size: 14px;
-            color: #808284;
-            margin-bottom: 10px;
-          }
-        }
-
-        .cart-product-delete-col {
-          height: 100%;
-          background-color: #efefef;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          .cart-product-delete-close .icon {
-            height: 20px;
-            width: 20px;
-            cursor: pointer;
-            transition: all .25s ease;
-
-            &:hover {
-              transform: scale(1.5);
-            }
-          }
+        &:hover {
+          transform: scale(1.5);
         }
       }
     }

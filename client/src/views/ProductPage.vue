@@ -23,7 +23,9 @@
           <div class="row">
             <label>Color</label>
             <ul class="item-colors">
-              <li class="swatch" v-for="color in item.colors" :key="color.colorName">
+              <li v-for="color in item.colors" :key="color.colorName" 
+                  @click="selectColor(color.colorName, color.colorImage)"
+                  :class="{ 'swatch': true, selected: color.colorName === selected.color }">
                 <span class="swatch-icon" :style="getSwatch(color.colorCode)"></span>
                 <span class="swatch-name">{{ color.colorName }}</span>
               </li>
@@ -31,7 +33,7 @@
           </div>
           <div class="row">
             <label>Size (Choose)</label>
-            <ul v-for="color in item.colors" :key="color.colorName" class="item-sizes">
+            <ul v-for="color in item.colors" :key="color.colorName" v-show="selected.color === color.colorName" class="item-sizes">
               <li v-for="size in color.sizes" :key="size.variantID" @click="selectSize(size.size, size.variantID)" :class="{ selected: size.size === selected.size }" :data-variant-id="size.variantID">{{ size.size }}</li>
             </ul>
           </div>
@@ -83,35 +85,53 @@ export default {
       selected: {
         productID: null,
         variantID: null,
+        color: null,
         size: null,
         title: null,
         price: null,
-        image: null
+        image: null,
+        query: null
       },
       showSuccess: false,
       showError: false
     }
   },
-  computed: {
-  },
   methods: {
-    getItem() {
+    getItem(queryColor, querySize) {
       this.item = products.find(item => item.id == this.$route.params.id);
 
+      const itemColorObj = this.item.colors.find(color => color.colorName === queryColor);
+      const itemHasQueryColor = Boolean(itemColorObj);
+      const itemHasQuerySize = itemHasQueryColor ? itemColorObj.sizes.some(item => item.size === querySize) : false;
+
+      this.selected.color = itemHasQueryColor ? queryColor : this.item.colors[0].colorName;
+      this.selected.size = itemHasQuerySize ? querySize : null;
+      this.selected.image = this.item.colors[0].colorImage;
       this.selected.title = this.item.title;
       this.selected.price = this.item.price;
-      this.selected.image = this.item.image;
     },
     getSwatch(colorCode) {
       return `background-color: ${colorCode}`;
+    },
+    selectColor(colorName, colorImage) {
+      this.selected.color = colorName;
+      this.selected.image = colorImage;
+      this.updateURL();
     },
     selectSize(size, variantID) {
       this.selected.productID = this.item.id;
       this.selected.variantID = variantID;
       this.selected.size = size;
+      this.updateURL();
+    },
+    updateURL() {
+      this.$router.replace({path: this.$route.path, query: { color: this.selected.color, size: this.selected.size }}).catch(e => e);
     },
     addToCart() {
-      console.log('addToCart');
+      this.selected.query = {
+        color: this.selected.color,
+        size: this.selected.size
+      };
       this.resetMessages();
       const messageResetTime = 5000;
       clearTimeout(window.atcTimeout);
@@ -126,8 +146,9 @@ export default {
     }
   },
   created() {
-    this.getItem();
-
+    const queryColor = this.$route.query.color;
+    const querySize = this.$route.query.size;
+    this.getItem(queryColor, querySize);
 
   },
 }
@@ -194,7 +215,6 @@ export default {
         .icon {
           height: 38px;
           width: 38px;
-          cursor: pointer;
           border-radius: 5px;
           padding: 2px;
         }
@@ -206,14 +226,33 @@ export default {
       }
 
       .item-colors {
+        display: flex;
+
         .swatch {
+          cursor: pointer;
+
+          &.selected {
+            .swatch-icon {
+              border: solid 2px #701aff;
+            }
+
+            .swatch-name {
+              font-weight: bold;
+            }
+          }
+
+          &:not(.selected):hover {
+            .swatch-icon {
+              border: solid 2px rgba(112, 26, 255, 0.3);
+            }
+          }
+
           .swatch-icon {
             display: inline-block;
             height: 25px;
             width: 25px;
             border-radius: 5px;
-            border: solid 2px #000;
-            margin-right: 3px;
+            border: solid 1px #cac7c7;
           }
 
           .swatch-name {

@@ -12,6 +12,7 @@ const products = [
       {
         colorName: 'White',
         colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/44c/44c0982cb6f23465320abda0e5138b00_preview.png',
         sizes: [
           {
             variantID: 1796349947,
@@ -37,6 +38,25 @@ const products = [
             variantID: 1796349952,
             size: '2X'
           }
+        ]
+      },
+      {
+        colorName: 'Kelly',
+        colorCode: '#1a9462',
+        colorImage: 'https://files.cdn.printful.com/files/560/560e0fdc437ff7de75265ef41bcc4cbd_preview.png',
+        sizes: [
+          {
+            variantID: 1928916412,
+            size: 'S'
+          },
+          {
+            variantID: 1928916413,
+            size: 'M'
+          },
+          {
+            variantID: 1928916414,
+            size: 'L'
+          },
         ]
       }
     ],

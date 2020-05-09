@@ -558,7 +558,7 @@ export default {
           this.placeOrderError = data.error;
         } else {
           console.log('SUCCESS!', data);
-          this.$router.push(`/order-confirmation?id=34245609`);
+          this.$router.push(`/order-confirmation?id=${data.charge.metadata.orderID}`);
         }
       });
     }
