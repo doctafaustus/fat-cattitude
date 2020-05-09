@@ -540,15 +540,14 @@ export default {
       });
     },
     stripeTokenHandler(token) {
-      const formData = {
-        token,
-        fields: this.fields
-      };
-
       fetch('http://localhost:8081/api/place-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          token,
+          fields: this.fields,
+          items: this.getItemsMap()
+        })
       })
       .then(response => response.json())
       .then(data => {
@@ -559,6 +558,7 @@ export default {
           this.placeOrderError = data.error;
         } else {
           console.log('SUCCESS!', data);
+          this.$router.push(`/order-confirmation?id=34245609`);
         }
       });
     }
@@ -869,7 +869,7 @@ export default {
       position: relative;
       height: 55px;
 
-      &.processing{
+      &[disabled] {
         .place-order-text {
           display: none;
         }
@@ -883,14 +883,14 @@ export default {
         content: '';
         position: relative;
         display: none;
-        width: 22px;
-        height: 23px;
+        width: 20px;
+        height: 20px;
         border: 4px solid transparent;
         border-top-color: #fff;
         border-bottom-color: #fff;
         border-radius: 50%;
         animation: loader-rotate-data-v-7eff5a76 .725s linear infinite;
-        top: -3px;
+        top: -1px;
       }
     }
   }

@@ -21,6 +21,11 @@ export default new Router({
       path: '/cart',
       name: 'Cart',
       component: () => import('@/views/Cart.vue')
+    },
+    {
+      path: '/order-confirmation',
+      name: 'OrderConfirmation',
+      component: () => import('@/views/OrderConfirmation.vue')
     }
   ]
 });

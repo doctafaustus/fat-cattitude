@@ -8,7 +8,7 @@
     </div>
     <div class="header-right">
       <router-link :to="{ path: '/cart' }" class="bag-section">
-        <img v-if="bagCount" class="bag-image" src="../assets/bag-happy.png">
+        <img v-if="bagCount || isOrderConfirmationPage" class="bag-image" src="../assets/bag-happy.png">
         <img v-else class="bag-image" src="../assets/bag-sad.png">
         <div class="bag-count">{{ bagCount }}</div>
       </router-link>
@@ -25,12 +25,19 @@ export default {
   name: 'Header',
   data () {
     return {
-      bagCount: 0
+      bagCount: 0,
+      isOrderConfirmationPage: null
     }
   },
   mixins: [utils],
+  methods: {
+    checkForOrderConfirmation() {
+      if (window.location.pathname === '/order-confirmation') {
+        this.isOrderConfirmationPage = true;
+      } else this.isOrderConfirmationPage = false;
+    }
+  },
   mounted() {
-
     EventBus.$on('cart-add', item => {
       const cartArray = utils.getCartArray();
       cartArray.push(item);
@@ -52,9 +59,20 @@ export default {
       utils.setCookie('cart', JSON.stringify(cartArray));
       this.bagCount = cartArray.length;
     });
+
+    EventBus.$on('order-confirmation', () => {
+      EventBus.$emit('cart-update', []);
+    });
   },
   created() {
     this.bagCount = utils.getCartArray().length;
+  },
+    watch: {
+    '$route': {
+      handler() {
+        this.checkForOrderConfirmation();
+      }
+    },
   }
 }
 </script>

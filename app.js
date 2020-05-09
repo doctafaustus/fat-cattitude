@@ -26,32 +26,8 @@ if (!process.env.PORT) {
 }
 
 // API
-app.post('/api/shipping-rate', (req, res) => {
-  request({
-    url: 'https://api.printful.com/shipping/rates',
-    method: 'POST',
-    headers: { 'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}` },
-    json: true,
-    body: {
-      recipient: {
-        address1: req.body.recipient.address1Shipping,
-        city: req.body.recipient.cityShipping,
-        country_code: 'US',
-        state_code: req.body.recipient.stateShipping,
-        zip: req.body.recipient.zipShipping
-      },
-      items: req.body.items
-    }, 
-  }, (error, response) => {
-    if (error || (response && response.body && response.body.error)) {
-      return res.json({ error: error || response.body.error.message });
-    }
-    return res.json(response.body);
-  });
-});
-
 app.post('/api/estimate-costs', (req, res) => {
-  console.log('/estimate-costs');
+  console.log('/api/estimate-costs');
 
   request({
     url: 'https://api.printful.com/orders/estimate-costs',
@@ -80,6 +56,7 @@ app.post('/api/estimate-costs', (req, res) => {
 
 
 app.post('/api/place-order', (req, res) => {
+  console.log('/api/place-order');
 
   // Create draft Printful order
   request({
@@ -89,6 +66,7 @@ app.post('/api/place-order', (req, res) => {
     json: true,
     body: {
       recipient: {
+        email: req.body.fields.email,
         name: `${req.body.fields.firstNameShipping} ${req.body.fields.lastNameShipping}`,
         address1: req.body.fields.address1Shipping,
         address2: req.body.fields.address2Shipping,
@@ -97,7 +75,7 @@ app.post('/api/place-order', (req, res) => {
         country_code: 'US',
         zip: req.body.fields.zipShipping
       },
-      items: []
+      items: req.body.items
     }
   }, (error, response) => {
     if (error || (response && response.body && response.body.error)) {
@@ -160,8 +138,32 @@ app.post('/api/place-order', (req, res) => {
       });
     });
   }
-
 });
+
+
+app.get('/api/order-confirmation', (req, res) => {
+  console.log('/api/order-confirmation');
+
+  const { id } = req.query;
+
+  request({
+    url: `https://api.printful.com/orders/${id}`,
+    method: 'GET',
+    headers: { 'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}` },
+    json: true,
+  }, (error, response) => {
+    if (error || (response && response.body && response.body.error)) {
+      console.log('Prinful order error', error || response.body.error);
+      return res.json({ error: error || response.body.error.message });
+    }
+
+    console.log('response:', response.body.result);
+    res.json(response.body.result);
+  });
+
+  console.log('id', id);
+});
+
 
 // Start server
 app.listen(process.env.PORT || 8081, () => {
