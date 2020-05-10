@@ -43,11 +43,11 @@
             <div class="item-price">${{ item.price }}</div>
           </div>
 
-          <div :class="{ 'show': showSuccess }" class="success-message">
+          <div :class="{ 'show': showSuccess }" class="success-message" ref="successMessage">
             <span>Added to cart</span>
             <img class="emoji" src="../assets/sunglasses-emoji.png">
           </div>
-          <div :class="{ 'show': showError }" class="error-message">
+          <div :class="{ 'show': showError }" class="error-message" ref="errorMessage">
             <span>Please choose a size first</span>
             <img class="emoji" src="../assets/grin-emoji.png">
           </div>
@@ -104,6 +104,7 @@ export default {
       const itemHasQueryColor = Boolean(itemColorObj);
       const itemHasQuerySize = itemHasQueryColor ? itemColorObj.sizes.some(item => item.size === querySize) : false;
 
+      this.selected.productID = this.item.id;
       this.selected.color = itemHasQueryColor ? queryColor : this.item.colors[0].colorName;
       this.selected.size = itemHasQuerySize ? querySize : null;
       this.selected.image = this.item.colors[0].colorImage;
@@ -117,10 +118,10 @@ export default {
     selectColor(colorName, colorImage) {
       this.selected.color = colorName;
       this.selected.image = colorImage;
+      this.selected.size = null;
       this.updateURL();
     },
     selectSize(size, variantID) {
-      this.selected.productID = this.item.id;
       this.selected.variantID = variantID;
       this.selected.size = size;
       this.updateURL();
@@ -128,23 +129,47 @@ export default {
     updateURL() {
       this.$router.replace({path: this.$route.path, query: { color: this.selected.color, size: this.selected.size }}).catch(e => e);
     },
+    resetAnimationATC(hasError) {
+      const showClass = 'show';
+      const successMessage = this.$refs.successMessage;
+      const errorMessage = this.$refs.errorMessage;
+      const alreadyShown = successMessage.classList.contains(showClass) || errorMessage.classList.contains(showClass);
+
+      this.showSuccess = false;
+      this.showError = false;
+
+      window.requestAnimationFrame(() => {
+        successMessage.classList.remove(showClass);
+        errorMessage.classList.remove(showClass);
+
+        if (alreadyShown) {
+          setTimeout(() => {
+            this.toggleMessage(hasError);
+          }, 510);
+        } else this.toggleMessage(hasError);
+      });
+    },
+    toggleMessage(hasError) {
+      const showClass = 'show';
+      if (hasError) {
+        this.showError = true;
+        this.$refs.errorMessage.classList.add(showClass);
+      } else {
+        this.showSuccess = true;
+        this.$refs.successMessage.classList.add(showClass);
+      }
+    },
     addToCart() {
       this.selected.query = {
         color: this.selected.color,
         size: this.selected.size
       };
-      this.resetMessages();
-      const messageResetTime = 5000;
-      clearTimeout(window.atcTimeout);
-      window.atcTimeout = setTimeout(this.resetMessages, messageResetTime);
-      if (!this.selected.size) return this.showError = true;
+
+      if (!this.selected.size) return this.resetAnimationATC(true);
+
+      this.resetAnimationATC(false);
       EventBus.$emit('cart-add', this.selected);
-      this.showSuccess = true;
     },
-    resetMessages() {
-      this.showSuccess = false;
-      this.showError = false;
-    }
   },
   created() {
     const queryColor = this.$route.query.color;

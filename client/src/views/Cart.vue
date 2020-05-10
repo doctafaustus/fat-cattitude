@@ -18,7 +18,7 @@
             </router-link>
             
             <div class="order-product-details-col">
-              <router-link :to="{ name: 'Product', params: { id: product.productID } }" class="order-product-link">
+              <router-link :to="{ name: 'Product', params: { id: product.productID }, query: { color: product.query.color, size: product.query.size }}" class="order-product-link">
                 <div class="order-product-title">{{ product.title }}</div>
               </router-link>
               <div class="order-product-detail">
@@ -66,7 +66,7 @@
       </div>
     </div>
 
-    <Checkout></Checkout>
+    <Checkout v-show="cart.length"></Checkout>
   </section>
 </template>
 
@@ -174,8 +174,7 @@ export default {
 
   .cart-products {
     .cart-empty {
-      text-align: left;
-      margin-top: 30px;
+      margin: 30px 0;
     }
 
     .cart-product-delete-col {

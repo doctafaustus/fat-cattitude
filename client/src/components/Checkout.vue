@@ -567,7 +567,8 @@ export default {
     },
     bindSubmitEvents() {
       const form = document.querySelector('.checkout-form');
-      form.addEventListener('submit', () => {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
         if (this.step === 'post-estimate') this.validateFields({ isEstimate: false })
       });
     }
@@ -677,6 +678,7 @@ export default {
 
       select {
         padding-top: 22px;
+        padding-bottom: 6px;
       }
     }
 
@@ -710,7 +712,7 @@ export default {
     }
 
     select {
-      padding-bottom: 14px;
+      padding-bottom: 13px;
 
       &[data-clean="true"] {
         color: #a9a9a9;
