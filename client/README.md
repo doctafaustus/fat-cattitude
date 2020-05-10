@@ -42,4 +42,8 @@ product.product_id: 71
 product.variant_id: 9526
 
 
+TODO:
+  - Test checkout form submit event listener - make sure it's not firing multiple times on all browsers
+  - Fix product page selection - toggle ATC message
+
 

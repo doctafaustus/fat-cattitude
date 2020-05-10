@@ -1,6 +1,11 @@
 <template>
   <section class="order-confirmation wrapper">
-    <div class="order-confirmation-inner">
+
+    <div v-if="isLoading" class="order-confirmation-loading">
+      <img :src="setSpinnerSrc()" class="spinner">
+    </div>
+
+    <div v-else class="order-confirmation-inner">
       <div class="top-section">
         <img class="party-popper" src="../assets/party-popper.png">
         <h1>Your order is complete!</h1>
@@ -17,7 +22,7 @@
             <div class="data-item">{{ recipient.name }}</div>
             <div class="data-item">{{ recipient.address1 }}</div>
             <div v-show="recipient.address2" class="data-item">{{ recipient.address2 }}</div>
-            <div class="data-item">{{ recipient.city }} {{ recipient.state_code }} {{ recipient.zip }}</div>
+            <div class="data-item">{{ recipient.city }}, {{ recipient.state_code }} {{ recipient.zip }}</div>
           </div>
 
           <div class="block method">
@@ -26,32 +31,77 @@
           </div>
         </div>
 
-        <div class="products-ordered">
-          <h3>Your Items</h3>
+        <div class="products-ordered-and-os">
+          <div class="products-ordered">
+            <h3>Your Items</h3>
 
-          <ul class="order-list">
-            <li class="order-product" v-for="(product, index) in orderProducts" :key="`size-${index}`">
-              <router-link class="order-product-image-link-col" :to="{ name: 'Product', params: { id: product.productID }, query: { color: product.color, size: product.size }}">
-                <img class="order-product-image" :src="product.image">
-              </router-link>
-              
-              <div class="order-product-details-col">
-                <router-link :to="{ name: 'Product', params: { id: product.productID }, query: { color: product.color, size: product.size }}" class="order-product-link">
-                  <div class="order-product-title">{{ product.title }}</div>
+            <ul class="order-list">
+              <li class="order-product" v-for="(product, index) in orderProducts" :key="`size-${index}`">
+                <router-link class="order-product-image-link-col" :to="{ name: 'Product', params: { id: product.productID }, query: { color: product.color, size: product.size }}">
+                  <img class="order-product-image" :src="product.image">
                 </router-link>
+                
+                <div class="order-product-details-col">
+                  <router-link :to="{ name: 'Product', params: { id: product.productID }, query: { color: product.color, size: product.size }}" class="order-product-link">
+                    <div class="order-product-title">{{ product.title }}</div>
+                  </router-link>
 
-                <div class="order-product-detail">
-                  <label>Color:</label>
-                  <span class="order-product-detail-val">{{ product.color }}</span>
+                  <div class="order-product-detail">
+                    <label>Color:</label>
+                    <span class="order-product-detail-val">{{ product.color }}</span>
+                  </div>
+                  <div class="order-product-detail">
+                    <label>Size:</label>
+                    <span class="order-product-detail-val">{{ product.size }}</span>
+                  </div>
+                  <div class="order-product-price">${{ product.price }}</div>
                 </div>
-                <div class="order-product-detail">
-                  <label>Size:</label>
-                  <span class="order-product-detail-val">{{ product.size }}</span>
-                </div>
-                <div class="order-product-price">${{ product.price }}</div>
-              </div>
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="os">
+            <h3>Order Summary</h3>
+            <ul class="os-items">
+              <li class="os-item">
+                <div class="os-label">Subtotal</div>
+                <div class="os-value">${{ costs.subtotal }}</div>
+              </li>
+              <li class="os-item">
+                <div class="os-label">Shipping</div>
+                <div class="os-value">${{ costs.shipping }}</div>
+              </li>
+              <li class="os-item">
+                <div class="os-label">Tax</div>
+                <div class="os-value">${{ costs.tax }}</div>
+              </li>
+              <li class="os-item total">
+                <div class="os-label">Total</div>
+                <div class="os-value">${{ costs.total }}</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="credit-card-and-billing-address">
+          <div class="credit-card block">
+            <h3>Payment Information</h3>
+            <ul class="credit-card">
+              <li class="cc-item">Card Number: {{ creditCard.last4.padStart(16,'*') }}</li>
+              <li class="cc-item">Expiry Date: {{ String(creditCard.exp_month).padStart(2, '0') }} / {{ creditCard.exp_year }}</li>
+              <li class="cc-item">Amount: ${{ creditCard.total }}</li>
+            </ul>
+          </div>
+
+          <div class="billing-address block">
+            <div class="block address">
+              <h3>Billing Address</h3>
+              <div class="data-item">{{ billingInfo.name }}</div>
+              <div class="data-item">{{ billingInfo.address1 }}</div>
+              <div v-show="billingInfo.address2" class="data-item">{{ billingInfo.address2 }}</div>
+              <div class="data-item">{{ billingInfo.city }}, {{ billingInfo.state }} {{ billingInfo.zip }}</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -60,37 +110,75 @@
 
 <script>
 import EventBus from '@/EventBus';
+import utils from '@/mixins/utils';
 import products from '@/model/products.js';
 
 export default {
   name: 'OrderConfirmation',
+  mixins: [utils],
   data () {
     return {
+      isLoading: true,
       orderID: null,
+      chargeID: null,
       recipient: {},
       shippingMethod: null,
       shippingServiceName: null,
-      orderProducts: []
+      orderProducts: [],
+      costs: {},
+      creditCard: {
+        last4: '', // Using empty strings to prevent padStart error on load
+        exp_month: '',
+        exp_year: '',
+        total: 0
+      },
+      billingInfo: {}
     }
   },
   methods: {
-    getOrder(id) {
-      fetch(`http://localhost:8081/api/order-confirmation?id=${id}`, {
+    getOrder({ orderID, chargeID }) {
+      fetch(`http://localhost:8081/api/order-confirmation?orderID=${orderID}&chargeID=${chargeID}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
       .then(response => response.json())
       .then(data => {
         console.log('data', data);
-        this.recipient = data.recipient;
-        this.shippingMethod = data.shipping.toLowerCase();
-        this.shippingServiceName = data.shipping_service_name;
+        const { order, charge } = data;
 
-        this.getOrderProducts(data);
+        this.recipient = order.recipient;
+        this.shippingMethod = order.shipping.toLowerCase();
+        this.shippingServiceName = order.shipping_service_name;
+        this.costs = {
+          subtotal: order.retail_costs.subtotal,
+          shipping: order.costs.shipping,
+          tax: order.costs.tax,
+          total: order.retail_costs.total
+        };
+
+        this.getOrderProducts(order);
+
+        this.creditCard = {
+          last4: charge.source.last4,
+          exp_month: charge.source.exp_month,
+          exp_year: charge.source.exp_year,
+          total: charge.metadata.total
+        };
+
+        this.billingInfo = {
+          name: charge.metadata.name,
+          address1: charge.metadata.address1,
+          address2: charge.metadata.address2,
+          city: charge.metadata.city,
+          state: charge.metadata.state,
+          zip: charge.metadata.zip,
+        };
+
+        this.isLoading = false;
       });
     },
-    getOrderProducts(data) {
-      const orderProductIDs = data.items.map(item => {
+    getOrderProducts(order) {
+      const orderProductIDs = order.items.map(item => {
         return {
           productID: +(item.name.match(/^\d+/) || [])[0],
           variantID: item.sync_variant_id
@@ -121,12 +209,16 @@ export default {
           size: productSizeObj.size
         };
       });
+    },
+    setSpinnerSrc() {
+      return utils.getLoadingSpinner();
     }
   },
   mounted() {
-    this.orderID = this.$route.query.id;
-    this.getOrder(this.orderID);
+    this.orderID = this.$route.query.orderID;
+    this.chargeID = this.$route.query.chargeID;
 
+    this.getOrder({ orderID: this.orderID, chargeID: this.chargeID });
     EventBus.$emit('order-confirmation');
   }
 }
@@ -137,10 +229,24 @@ export default {
 .order-confirmation {
   padding: 80px;
 
-  .order-confirmation-inner {
+  .order-confirmation-inner,
+  .order-confirmation-loading {
     background-color: #fff;
     padding: 40px;
     box-shadow: 0 5px 10px rgba(37,33,81,0.11);
+  }
+
+  .order-confirmation-loading {
+    min-height: calc(100vh - 250px);
+
+    .spinner {
+      margin-top: 60px;
+      width: 150px;
+    }
+  }
+
+  .order-confirmation-inner {
+    animation: fadein 2s;
   }
 
   .top-section {
@@ -184,7 +290,9 @@ export default {
       margin-bottom: 10px;
     }
 
-    .delivery-address-and-method {
+    .delivery-address-and-method,
+    .products-ordered-and-os,
+    .credit-card-and-billing-address {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin-bottom: 40px;
@@ -207,6 +315,36 @@ export default {
         grid-template-columns: 120px auto;
       }
     }
+
+    .os {
+      .os-items {
+        .os-item {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          margin-bottom: 8px;
+
+          &.total {
+            font-weight: bold;
+          }
+
+          .os-value {
+            width: 100px;
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    .credit-card {
+      .cc-item {
+        margin-bottom: 8px;;
+      }
+    }
   }
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 </style>

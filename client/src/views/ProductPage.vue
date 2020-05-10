@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="row">
-            <label>Color</label>
+            <label>Color <span v-show="item.colors.length > 1">(Choose)</span></label>
             <ul class="item-colors">
               <li v-for="color in item.colors" :key="color.colorName" 
                   @click="selectColor(color.colorName, color.colorImage)"
@@ -111,7 +111,8 @@ export default {
       this.selected.price = this.item.price;
     },
     getSwatch(colorCode) {
-      return `background-color: ${colorCode}`;
+      const borderColor = (colorCode === '#ffffff') ? '#cac7c7' : 'transparent';
+      return `background-color: ${colorCode}; border: solid 1px ${borderColor}`;
     },
     selectColor(colorName, colorImage) {
       this.selected.color = colorName;
@@ -233,7 +234,7 @@ export default {
 
           &.selected {
             .swatch-icon {
-              border: solid 2px #701aff;
+              border: solid 2px #701aff !important;
             }
 
             .swatch-name {

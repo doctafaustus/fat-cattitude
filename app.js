@@ -58,6 +58,8 @@ app.post('/api/estimate-costs', (req, res) => {
 app.post('/api/place-order', (req, res) => {
   console.log('/api/place-order');
 
+  const sameAddress = req.body.sameAddress;
+
   // Create draft Printful order
   request({
     url: 'https://api.printful.com/orders',
@@ -83,27 +85,44 @@ app.post('/api/place-order', (req, res) => {
       return res.json({ error: error || response.body.error.message });
     }
 
-    console.log('response:', response.body.result);
-    sendToStripe(response.body.result);
+    sendToStripe(response.body.result, sameAddress, req.body.fields);
   });
 
 
-  function sendToStripe(printfulRes) {
+  function sendToStripe(printfulRes, sameAddress, fields) {
+
+    let name;
+    let address;
+
+    if (sameAddress) {
+      name = `${fields.firstNameShipping} ${fields.lastNameShipping}`;
+      address = {
+        line1: fields.address1Shipping,
+        line2: fields.address2Shipping,
+        city: fields.cityShipping,
+        state: fields.stateShipping,
+        postal_code: fields.zipShipping,
+        country: 'US'
+      };
+    } else {
+      name = `${fields.firstNameBilling} ${fields.lastNameBilling}`;
+      address = {
+        line1: fields.address1Billing,
+        line2: fields.address2Billing,
+        city: fields.cityBilling,
+        state: fields.stateBilling,
+        postal_code: fields.zipBilling,
+        country: 'US'
+      };
+    }
 
     // Create Stripe customer
     stripe.customers.create({
-      description: `Customer - ${req.body.fields.email}`,
+      name,
+      address,
+      description: `Customer - ${fields.email}`,
       source: req.body.token.id,
-      name: `${req.body.fields.firstNameShipping} ${req.body.fields.lastNameShipping}`,
-      email: req.body.fields.email,
-      address: {
-        line1: req.body.fields.address1Shipping,
-        line2: req.body.fields.address2Shipping,
-        city: req.body.fields.cityShipping,
-        state: req.body.fields.stateShipping,
-        postal_code: req.body.fields.zipShipping,
-        country: 'US'
-      }
+      email: fields.email
     }, (error, customer) => {
       if (error) {
         console.log('Stripe customer error', error);
@@ -117,11 +136,18 @@ app.post('/api/place-order', (req, res) => {
           orderID: printfulRes.id,
           shippingMethod: printfulRes.shipping,
           orderURL: printfulRes.dashboard_url,
-          subtotalCharge: printfulRes.costs.subtotal,
+          subtotalCharge: printfulRes.retail_costs.subtotal,
           shippingCharge: printfulRes.costs.shipping,
-          taxCharge: printfulRes.costs.tax
+          taxCharge: printfulRes.costs.tax,
+          total: printfulRes.retail_costs.total,
+          name: customer.name,
+          address1: customer.address.line1,
+          address2: customer.address.line2,
+          city: customer.address.city,
+          state: customer.address.state,
+          zip: customer.address.postal_code
         },
-        amount: Math.ceil((printfulRes.costs.total) * 100),
+        amount: Math.ceil((printfulRes.retail_costs.total) * 100),
         currency: 'USD',
         customer: customer.id,
         receipt_email: req.body.fields.email
@@ -144,10 +170,10 @@ app.post('/api/place-order', (req, res) => {
 app.get('/api/order-confirmation', (req, res) => {
   console.log('/api/order-confirmation');
 
-  const { id } = req.query;
+  const { orderID, chargeID } = req.query;
 
   request({
-    url: `https://api.printful.com/orders/${id}`,
+    url: `https://api.printful.com/orders/${orderID}`,
     method: 'GET',
     headers: { 'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}` },
     json: true,
@@ -157,11 +183,10 @@ app.get('/api/order-confirmation', (req, res) => {
       return res.json({ error: error || response.body.error.message });
     }
 
-    console.log('response:', response.body.result);
-    res.json(response.body.result);
+    stripe.charges.retrieve(chargeID, (err, charge) => {
+      res.json({ charge, order: response.body.result });
+    });
   });
-
-  console.log('id', id);
 });
 
 

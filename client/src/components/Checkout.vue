@@ -14,14 +14,16 @@
           <h4>Shipping Address</h4>
           <div>{{ fields.firstNameShipping }} {{ fields.lastNameShipping }}</div>
           <div>{{ fields.address1Shipping }}</div>
-          <div>{{ fields.cityShipping }} {{ fields.stateShipping }} {{ fields.zipShipping }}</div>
+          <div v-show="fields.address2Shipping">{{ fields.address2Shipping }}</div>
+          <div>{{ fields.cityShipping }}, {{ fields.stateShipping }} {{ fields.zipShipping }}</div>
         </div>
 
         <div v-show="!sameAddress" class="block">
           <h4>Billing Address</h4>
           <div>{{ fields.firstNameBilling }} {{ fields.lastNameBilling }}</div>
           <div>{{ fields.address1Billing }}</div>
-          <div>{{ fields.cityBilling }} {{ fields.stateBilling }} {{ fields.zipBilling }}</div>
+          <div v-show="fields.address2Billing">{{ fields.address2Billing }}</div>
+          <div>{{ fields.cityBilling }}, {{ fields.stateBilling }} {{ fields.zipBilling }}</div>
         </div>
       </div>
     </div>
@@ -501,7 +503,7 @@ export default {
       this.card = card;
 
       [card, cardExpiry, cardCVC].forEach(el => {
-        el.on('change', e => {  
+        el.on('change', e => {
           const fieldEl = document.querySelector(el.ref).closest('.field');
           fieldEl.classList.remove('has-error');
           fieldEl.querySelector('.error').textContent = '';
@@ -546,6 +548,7 @@ export default {
         body: JSON.stringify({
           token,
           fields: this.fields,
+          sameAddress: this.sameAddress,
           items: this.getItemsMap()
         })
       })
@@ -557,14 +560,22 @@ export default {
         if (data.error) {
           this.placeOrderError = data.error;
         } else {
-          console.log('SUCCESS!', data);
-          this.$router.push(`/order-confirmation?id=${data.charge.metadata.orderID}`);
+          console.log('Successful order:', data);
+          this.$router.push(`/order-confirmation?orderID=${data.charge.metadata.orderID}&chargeID=${data.charge.id}`);
         }
+      });
+    },
+    bindSubmitEvents() {
+      const form = document.querySelector('.checkout-form');
+      form.addEventListener('submit', () => {
+        if (this.step === 'post-estimate') this.validateFields({ isEstimate: false })
       });
     }
   },
   mounted() {
     this.initInputClasses();
+    this.bindSubmitEvents();
+
     if (!window.Stripe) {
       this.initStripe();
     } else this.addStripeElements();
