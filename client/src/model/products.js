@@ -1,7 +1,7 @@
 const products = [
   {
     title: 'I\'m Busy',
-    subtitle: 'Sassy busy cat T-shirt',
+    subtitle: 'Sassy busy cat t-shirt',
     id: 163440250,
     price: 30,
     image: 'https://i.ibb.co/znmgYyG/im-busy-911cde4.jpg',
@@ -60,7 +60,7 @@ const products = [
         ]
       }
     ],
-    description: 'Javascript Syntax, Colored with Sublime Text colors. Take a closer look. See if you get it. This t-shirt makes a great gift - present- for programmers, coders, IT ers, geeks, nerds and software and web developers with a sense of humor and a love for good old rock music!'
+    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   },
   {
     title: 'I\'m Busy2',

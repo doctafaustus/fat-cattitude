@@ -6,14 +6,37 @@
     </div>
 
     <div v-else class="order-confirmation-inner">
-      <div class="top-section">
-        <img class="party-popper" src="../assets/party-popper.png">
+
+      <div v-if="error" class="top-section error">
+        <img class="status-image" src="../assets/warning.png">
+        <h1>Order Not Found</h1>
+        <div class="status">Order may have been fulfilled or the number is incorrect</div>
+      </div>
+
+      <div v-else-if="creditCard.last4" class="top-section">
+        <img class="status-image" src="../assets/party-popper.png">
         <h1>Your order is complete!</h1>
-        <div v-show="recipient.email" class="email-message">A copy of your receipt has been to: <span class="email">{{ recipient.email }}</span></div>
+        <div class="email-message">A copy of your receipt has been to: <span class="email">{{ recipient.email }}</span></div>
         <div class="order-no">Order #: {{ orderID }}</div>
       </div>
 
-      <div class="bottom-section">
+      <div v-else class="top-section">
+        <img class="status-image" src="../assets/green-checkmark.png">
+        <h1>Order Status</h1>
+        <div class="email-and-order-no">
+          Order #: {{ orderID }}
+          | Email: <span class="email">{{ recipient.email }}</span>
+        </div>
+        <div class="status">Order Status: <span class="status-value">{{ status }}</span></div>
+          <ul class="shipments">
+            <li v-for="(shipment, index) in shipments" :key="index" class="shipment">
+              <div class="shipment-item">{{ shipment.carrier }} - {{ shipment.service }}</div>
+              <div class="shipment-item">Tracking #: {{ shipment.tracking_number }}</div>
+            </li>
+          </ul>
+      </div>
+
+      <div v-if="!error" class="bottom-section">
         <h2>Delivery Details</h2>
 
         <div class="delivery-address-and-method">
@@ -83,7 +106,8 @@
           </div>
         </div>
 
-        <div class="credit-card-and-billing-address">
+        <!-- Show only if using charge parameter -->
+        <div v-show="creditCard.last4" class="credit-card-and-billing-address">
           <div class="credit-card block">
             <h3>Payment Information</h3>
             <ul class="credit-card">
@@ -119,6 +143,7 @@ export default {
   data () {
     return {
       isLoading: true,
+      error: false,
       orderID: null,
       chargeID: null,
       recipient: {},
@@ -132,7 +157,9 @@ export default {
         exp_year: '',
         total: 0
       },
-      billingInfo: {}
+      billingInfo: {},
+      status: null,
+      shipments: []
     }
   },
   methods: {
@@ -146,9 +173,17 @@ export default {
         console.log('data', data);
         const { order, charge } = data;
 
+        if (!order) {
+          this.isLoading = false;
+          this.error = true;
+          return;
+        }
+
         this.recipient = order.recipient;
         this.shippingMethod = order.shipping.toLowerCase();
         this.shippingServiceName = order.shipping_service_name;
+        this.status = order.status;
+        this.shipments = order.shipments;
         this.costs = {
           subtotal: order.retail_costs.subtotal,
           shipping: order.costs.shipping,
@@ -156,8 +191,22 @@ export default {
           total: order.retail_costs.total
         };
 
+        this.shipments = [
+          {
+            carrier: 'USPS',
+            service: 'Flat Rate',
+            tracking_number: 232432432423
+          }
+        ]
+
+
         this.getOrderProducts(order);
 
+        // If there's no charge from checking order status
+        if (!charge) {
+          this.isLoading = false;
+          return;
+        } 
         this.creditCard = {
           last4: charge.source.last4,
           exp_month: charge.source.exp_month,
@@ -251,8 +300,14 @@ export default {
 
   .top-section {
     border-bottom: solid 1px #ececec;
+    padding-bottom: 40px;
 
-    .party-popper {
+    &.error {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .status-image {
       width: 100px;
     }
 
@@ -261,7 +316,8 @@ export default {
       margin: 20px 0;
     }
 
-    .email-message {
+    .email-message,
+    .email-and-order-no {
       margin-bottom: 10px;
 
       .email {
@@ -269,8 +325,29 @@ export default {
       }
     }
 
-    .order-no {
-      margin-bottom: 40px;
+    .status {
+      .status-value {
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+    }
+
+    .shipments {
+      .shipment {
+        margin-bottom: 20px;
+
+        &:first-child {
+          margin-top: 40px;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .shipment-item {
+          line-height: 20px;
+        }
+      }
     }
   }
 

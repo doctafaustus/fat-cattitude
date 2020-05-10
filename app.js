@@ -4,11 +4,22 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const request = require('request');
+const admin = require('firebase-admin')
 
 // Globals
 const STRIPE_SECRET_KEY = process.env.PORT ? process.env.STRIPE_SECRET_KEY : fs.readFileSync(`${__dirname}/private/stripe_secret_key.txt`).toString();
 const PRINTFUL_API_KEY = process.env.PORT ? process.env.PRINTFUL_API_KEY : fs.readFileSync(`${__dirname}/private/printful_api_key.txt`).toString();
 const stripe = require('stripe')(STRIPE_SECRET_KEY);
+
+// Cloudstore config
+let serviceAccount = process.env.SERVICE_ACCOUNT_KEY;
+if (!process.env.PORT) {
+  serviceAccount = require('./private/serviceAccountKey.json');
+} else {
+  serviceAccount = JSON.parse(serviceAccount);
+}
+admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
+const db = admin.firestore();
 
 // Express app / Middleware
 const app = express();
@@ -189,6 +200,21 @@ app.get('/api/order-confirmation', (req, res) => {
   });
 });
 
+
+app.post('/api/newsletter', (req, res) => {
+  console.log('/api/newsletter');
+
+  const { email } = req.body;
+  
+  db.collection('newsletter').doc(email).set({ email })
+  .then(() => {
+    res.json({ success: true });
+  })
+  .catch(e => {
+    console.log('Error writing document:', e);
+    res.json({ error: true });
+  });
+});
 
 // Start server
 app.listen(process.env.PORT || 8081, () => {

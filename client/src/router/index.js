@@ -25,6 +25,7 @@ export default new Router({
     {
       path: '/order-confirmation',
       name: 'OrderConfirmation',
+      alias: '/order-status',
       component: () => import('@/views/OrderConfirmation.vue')
     }
   ],

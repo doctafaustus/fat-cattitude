@@ -2,18 +2,18 @@
   <footer>
     <div class="footer-main wrapper">
       <div class="footer-left">
-        <img class="footer-image" src="https://i.ibb.co/r0smkLR/theyetee-com.png">
+        <img class="footer-image" src="../assets/newsletter-cat.png">
       </div>
       <div class="footer-right">
         <h1 class="section-title light">Keep up with Fat Cattitude!</h1>
-        <div class="subtitle light">Sign up for our newsletter:</div>
+        <div class="subtitle">{{ subscribeMessage }}</div>
 
-        <form @submit.prevent="subscribe()" class="newsletter-form">
+        <form :class="{ subscribed }" @submit.prevent="subscribe()" class="newsletter-form">
           <label class="newsletter-label">Your email</label>
           <div class="newsletter-input-container">
-            <input class="newsletter-input" type="email" spellcheck="false">
+            <input v-model="email" class="newsletter-input" type="email" spellcheck="false">
           </div>
-          <input class="newsletter-submit" type="submit" value="Subscribe">
+          <button class="newsletter-submit cta" type="submit">Subscribe</button>
         </form>
 
         <div class="subtitle light">Follow Us:</div>
@@ -25,7 +25,8 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-bottom-text">&copy;2020 Fat Cattiude, LLC. All rights reserved.</div>
+      <div class="footer-bottom-left">&copy;2020 Fat Cattiude, LLC. All rights reserved.</div>
+      <div class="footer-bottom-right">meow@fatcattitude.com</div>
     </div>
   </footer>
 </template>
@@ -40,11 +41,29 @@ export default {
   },
   data () {
     return {
+      subscribeMessage: 'Sign up for our newsletter:',
+      email: null,
+      subscribed: false,
+      error: false,
     }
   },
   methods: {
     subscribe() {
-      console.log('subscribe()');
+      if (!this.email) return;
+
+      fetch('http://localhost:8081/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: this.email })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('api/newsletter response: \n', data);
+        if (data.success) {
+          this.subscribed = true;
+          this.subscribeMessage = 'Subscribed!';
+        } else this.error = true;
+      });
     }
   }
 }
@@ -56,10 +75,12 @@ footer {
   background-image: url(../assets/triangle-bg.png);
   background-size: cover;
   text-align: left;
+  box-sizing: border-box;
 }
 
 .footer-main {
   display: flex;
+  align-items: center;
   padding: 60px 40px;
 
   .footer-left {
@@ -67,12 +88,13 @@ footer {
     text-align: center;
 
     .footer-image {
-      width: 300px;
+      width: 80%;
     }
   }
 
   .footer-right {
     width: 60%;
+    padding-left: 40px;
 
     .section-title {
       margin-bottom: 40px;
@@ -85,6 +107,10 @@ footer {
 
     .newsletter-form {
       margin-bottom: 40px;
+
+      &.subscribed {
+        display: none;
+      }
 
       .newsletter-label {
         color: #fff;
@@ -120,7 +146,7 @@ footer {
           width: 100%;
           font-size: 18px;
           border-radius: 5px;
-          color: #05e8b5;
+          color: #6805fb;
           outline: none;
           background-color: transparent;
           border: none;
@@ -128,22 +154,8 @@ footer {
       }
 
       .newsletter-submit {
-        border: none;
-        cursor: pointer;
-        color: #fff;
         background: linear-gradient(45deg,#05e8b5,#16bfff);
-        box-shadow: 0 3px 10px rgba(31,30,48,0.15), inset 0 0 20px rgba(22,191,255,0);
-        font-size: 20px;
-        text-decoration: none;
-        border-radius: 5px;
-        padding: 16px 65px;
-        transition: all .60s ease;
-        font-weight: 600;
-        letter-spacing: 0.3px;
-
-        &:hover {
-          filter: hue-rotate(270deg);
-        }
+        padding: 16px 75px;
       }
     }
 
@@ -169,6 +181,8 @@ footer {
 }
 
 .footer-bottom {
+  display: flex;
+  justify-content: space-between;
   background-color: #000;
   color: #fff;
   padding: 16px 20px;
