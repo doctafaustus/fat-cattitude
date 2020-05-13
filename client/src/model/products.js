@@ -14,30 +14,12 @@ const products = [
         colorCode: '#ffffff',
         colorImage: 'https://files.cdn.printful.com/files/44c/44c0982cb6f23465320abda0e5138b00_preview.png',
         sizes: [
-          {
-            variantID: 1796349947,
-            size: 'XS'
-          },
-          {
-            variantID: 1796349948,
-            size: 'S'
-          },
-          {
-            variantID: 1796349949,
-            size: 'M'
-          },
-          {
-            variantID: 1796349950,
-            size: 'L'
-          },
-          {
-            variantID: 1796349951,
-            size: 'XL'
-          },
-          {
-            variantID: 1796349952,
-            size: '2XL'
-          }
+          { variantID: 1796349947, size: 'XS' },
+          { variantID: 1796349948, size: 'S' },
+          { variantID: 1796349949, size: 'M' },
+          { variantID: 1796349950, size: 'L' },
+          { variantID: 1796349951, size: 'XL' },
+          { variantID: 1796349952, size: '2XL'}
         ]
       },
       {
@@ -45,30 +27,12 @@ const products = [
         colorCode: '#94afca',
         colorImage: 'https://files.cdn.printful.com/files/da2/da2d797b3ffca287a7ff18085d5ab92f_preview.png',
         sizes: [
-          {
-            variantID: 1936692216,
-            size: 'XS'
-          },
-          {
-            variantID: 1936692217,
-            size: 'S'
-          },
-          {
-            variantID: 1936692218,
-            size: 'M'
-          },
-          {
-            variantID: 1936692219,
-            size: 'L'
-          },
-          {
-            variantID: 1936692220,
-            size: 'XL'
-          },
-          {
-            variantID: 1936692221,
-            size: '2XL'
-          },
+          { variantID: 1936692216, size: 'XS' },
+          { variantID: 1936692217, size: 'S' },
+          { variantID: 1936692218, size: 'M' },
+          { variantID: 1936692219, size: 'L' },
+          { variantID: 1936692220, size: 'XL' },
+          { variantID: 1936692221, size: '2XL' },
         ]
       },
       {
@@ -76,30 +40,12 @@ const products = [
         colorCode: '#d9b0cb',
         colorImage: 'https://files.cdn.printful.com/files/aae/aae7864d45b1715dbf12ee017d36cbe8_preview.png',
         sizes: [
-          {
-            variantID: 1936692222,
-            size: 'XS'
-          },
-          {
-            variantID: 1936692223,
-            size: 'S'
-          },
-          {
-            variantID: 1936692224,
-            size: 'M'
-          },
-          {
-            variantID: 1936692225,
-            size: 'L'
-          },
-          {
-            variantID: 1936692226,
-            size: 'XL'
-          },
-          {
-            variantID: 1936692227,
-            size: '2XL'
-          },
+          { variantID: 1936692222, size: 'XS' },
+          { variantID: 1936692223, size: 'S' },
+          { variantID: 1936692224, size: 'M' },
+          { variantID: 1936692225, size: 'L' },
+          { variantID: 1936692226, size: 'XL' },
+          { variantID: 1936692227, size: '2XL' },
         ]
       }
     ],
