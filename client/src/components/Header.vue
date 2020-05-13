@@ -39,6 +39,7 @@ export default {
   },
   mounted() {
     EventBus.$on('cart-add', item => {
+      utils.setCookie('cart', true);
       const cartArray = utils.getCartArray();
       cartArray.push(item);
       EventBus.$emit('cart-update', cartArray);
@@ -56,11 +57,12 @@ export default {
     });
 
     EventBus.$on('cart-update', cartArray => {
-      utils.setCookie('cart', JSON.stringify(cartArray));
+      localStorage.cart = JSON.stringify(cartArray);
       this.bagCount = cartArray.length;
     });
 
     EventBus.$on('order-confirmation', () => {
+      utils.deleteCookie('cart');
       EventBus.$emit('cart-update', []);
     });
   },

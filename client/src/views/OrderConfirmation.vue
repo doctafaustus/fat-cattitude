@@ -234,6 +234,8 @@ export default {
         };
       });
 
+      console.log('orderProductIDS', orderProductIDs);
+
       this.orderProducts = orderProductIDs.map(item => {
         const product = products.find(product => product.id === item.productID);
         let productColorObj;

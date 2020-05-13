@@ -43,3 +43,4 @@ product.variant_id: 9526
 
 
 TODO:
+  - Create daily scaraper for availability https://www.printful.com/custom/mens/t-shirts/bella-canvas-3001-unisex-short-sleeve-jersey-t-shirt?region%5B%5D=USA#availability

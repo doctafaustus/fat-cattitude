@@ -1,6 +1,8 @@
 export default {
   getCartArray() {
-    return (this.getCookie('cart') && JSON.parse(this.getCookie('cart'))) || [];
+    // Delete localStorage cart if cart cookie flag was cleared
+    if (!this.getCookie('cart')) delete localStorage.cart;
+    return (localStorage.cart && JSON.parse(localStorage.cart)) || [];
   },
 
   getCookie(name) {

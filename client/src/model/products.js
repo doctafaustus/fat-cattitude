@@ -3,8 +3,8 @@ const products = [
     title: 'I\'m Busy',
     subtitle: 'Sassy busy cat t-shirt',
     id: 163440250,
-    price: 30,
-    image: 'https://i.ibb.co/znmgYyG/im-busy-911cde4.jpg',
+    price: 25,
+    image: 'https://files.cdn.printful.com/files/560/560e0fdc437ff7de75265ef41bcc4cbd_preview.png',
     inStock: true,
     style: 'tshirt',
     category: 'featuredShirts',
@@ -36,26 +36,69 @@ const products = [
           },
           {
             variantID: 1796349952,
-            size: '2X'
+            size: '2XL'
           }
         ]
       },
       {
-        colorName: 'Kelly',
-        colorCode: '#1a9462',
-        colorImage: 'https://files.cdn.printful.com/files/560/560e0fdc437ff7de75265ef41bcc4cbd_preview.png',
+        colorName: 'Blue',
+        colorCode: '#94afca',
+        colorImage: 'https://files.cdn.printful.com/files/da2/da2d797b3ffca287a7ff18085d5ab92f_preview.png',
         sizes: [
           {
-            variantID: 1928916412,
+            variantID: 1936692216,
+            size: 'XS'
+          },
+          {
+            variantID: 1936692217,
             size: 'S'
           },
           {
-            variantID: 1928916413,
+            variantID: 1936692218,
             size: 'M'
           },
           {
-            variantID: 1928916414,
+            variantID: 1936692219,
             size: 'L'
+          },
+          {
+            variantID: 1936692220,
+            size: 'XL'
+          },
+          {
+            variantID: 1936692221,
+            size: '2XL'
+          },
+        ]
+      },
+      {
+        colorName: 'Lilac',
+        colorCode: '#d9b0cb',
+        colorImage: 'https://files.cdn.printful.com/files/aae/aae7864d45b1715dbf12ee017d36cbe8_preview.png',
+        sizes: [
+          {
+            variantID: 1936692222,
+            size: 'XS'
+          },
+          {
+            variantID: 1936692223,
+            size: 'S'
+          },
+          {
+            variantID: 1936692224,
+            size: 'M'
+          },
+          {
+            variantID: 1936692225,
+            size: 'L'
+          },
+          {
+            variantID: 1936692226,
+            size: 'XL'
+          },
+          {
+            variantID: 1936692227,
+            size: '2XL'
           },
         ]
       }
@@ -63,12 +106,137 @@ const products = [
     description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   },
   {
-    title: 'I\'m Busy2',
-    id: 2,
-    price: 30,
-    image: 'https://cdn.shopify.com/s/files/1/2292/0133/products/A_ploy_420x.png?v=1571609653',
+    title: 'I Do What I Want',
+    subtitle: 'Bad cat smacking wine off the table',
+    id: 175143559,
+    price: 25,
+    image: 'https://files.cdn.printful.com/files/a7b/a7bbe09080fd2940457bb5b96cedec64_preview.png',
+    inStock: true,
+    style: 'tshirt',
     category: 'featuredShirts',
-    inStock: true
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/ad2/ad2cc8217a1563e5260818cc405d407e_preview.png',
+        sizes: [
+          {
+            variantID: 1933712008,
+            size: 'XS'
+          },
+          {
+            variantID: 1933712009,
+            size: 'S'
+          },
+          {
+            variantID: 1933712010,
+            size: 'M'
+          },
+          {
+            variantID: 1933712011,
+            size: 'L'
+          },
+          {
+            variantID: 1933712012,
+            size: 'XL'
+          },
+          {
+            variantID: 1933712013,
+            size: '2X'
+          }
+        ]
+      },
+      {
+        colorName: 'Mint',
+        colorCode: '#aad4b7',
+        colorImage: 'https://files.cdn.printful.com/files/5e9/5e92e12fc3adab7cfbbdb6d4dfd629b1_preview.png',
+        sizes: [
+          {
+            variantID: 1933714829,
+            size: 'XS'
+          },
+          {
+            variantID: 1933714830,
+            size: 'S'
+          },
+          {
+            variantID: 1933714831,
+            size: 'M'
+          },
+          {
+            variantID: 1933714833,
+            size: 'L'
+          },
+          {
+            variantID: 1933714834,
+            size: 'XL'
+          },
+          {
+            variantID: 1933714835,
+            size: '2X'
+          }
+        ]
+      },
+      {
+        colorName: 'Ice Blue',
+        colorCode: '#c0e3e4',
+        colorImage: 'https://files.cdn.printful.com/files/55e/55e8a878aed710c16d39840368196f97_preview.png',
+        sizes: [
+          {
+            variantID: 1933714838,
+            size: 'XS'
+          },
+          {
+            variantID: 1933714839,
+            size: 'S'
+          },
+          {
+            variantID: 1933714840,
+            size: 'M'
+          },
+          {
+            variantID: 1933714841,
+            size: 'L'
+          },
+          {
+            variantID: 1933714842,
+            size: 'XL'
+          },
+          {
+            variantID: 1933714843,
+            size: '2X'
+          }
+        ]
+      },
+      {
+        colorName: 'Pink',
+        colorCode: '#fcd1db',
+        colorImage: 'https://files.cdn.printful.com/files/36f/36f3f7bc45794880eb1593056a15e016_preview.png',
+        sizes: [
+          {
+            variantID: 1933714854,
+            size: 'S'
+          },
+          {
+            variantID: 1933714855,
+            size: 'M'
+          },
+          {
+            variantID: 1933714856,
+            size: 'L'
+          },
+          {
+            variantID: 1933714857,
+            size: 'XL'
+          },
+          {
+            variantID: 1933714858,
+            size: '2X'
+          }
+        ]
+      },
+    ],
+    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   },
   {
     title: 'I\'m Busy3',

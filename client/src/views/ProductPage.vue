@@ -263,7 +263,7 @@ export default {
             }
 
             .swatch-name {
-              font-weight: bold;
+              -webkit-text-stroke: .3px black;
             }
           }
 
