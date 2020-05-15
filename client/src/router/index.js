@@ -30,6 +30,8 @@ export default new Router({
     }
   ],
   scrollBehavior(to, from, savedPosition) {
+    // Ignore if just using $router.replace() with params
+    if (to.path === from.path && Object.keys(to.query).length) return;
     return { x: 0, y: 0 };
   }
 });
