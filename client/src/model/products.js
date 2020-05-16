@@ -4,7 +4,8 @@ const products = [
     subtitle: 'Sassy busy cat t-shirt',
     id: 163440250,
     price: 25,
-    image: 'https://files.cdn.printful.com/files/560/560e0fdc437ff7de75265ef41bcc4cbd_preview.png',
+    image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589652298/Fat%20Cattitude/me_im_busy.jpg',
+    modelColorIndex: 0,
     inStock: true,
     style: 'tshirt',
     category: 'featuredShirts',
@@ -12,14 +13,14 @@ const products = [
       {
         colorName: 'White',
         colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/44c/44c0982cb6f23465320abda0e5138b00_preview.png',
+        colorImage: 'https://files.cdn.printful.com/files/371/3719efd69c58b194dc978c753d48d592_preview.png',
         sizes: [
-          { variantID: 1796349947, size: 'XS' },
-          { variantID: 1796349948, size: 'S' },
-          { variantID: 1796349949, size: 'M' },
-          { variantID: 1796349950, size: 'L' },
-          { variantID: 1796349951, size: 'XL' },
-          { variantID: 1796349952, size: '2XL'}
+          { variantID: 1946217542, size: 'XS' },
+          { variantID: 1946217549, size: 'S' },
+          { variantID: 1946217557, size: 'M' },
+          { variantID: 1946217564, size: 'L' },
+          { variantID: 1946217571, size: 'XL' },
+          { variantID: 1946217579, size: '2XL'}
         ]
       },
       {
@@ -57,6 +58,7 @@ const products = [
     id: 175143559,
     price: 25,
     image: 'https://files.cdn.printful.com/files/a7b/a7bbe09080fd2940457bb5b96cedec64_preview.png',
+    modelColorIndex: 3,
     inStock: true,
     style: 'tshirt',
     category: 'featuredShirts',
@@ -66,30 +68,12 @@ const products = [
         colorCode: '#ffffff',
         colorImage: 'https://files.cdn.printful.com/files/ad2/ad2cc8217a1563e5260818cc405d407e_preview.png',
         sizes: [
-          {
-            variantID: 1933712008,
-            size: 'XS'
-          },
-          {
-            variantID: 1933712009,
-            size: 'S'
-          },
-          {
-            variantID: 1933712010,
-            size: 'M'
-          },
-          {
-            variantID: 1933712011,
-            size: 'L'
-          },
-          {
-            variantID: 1933712012,
-            size: 'XL'
-          },
-          {
-            variantID: 1933712013,
-            size: '2X'
-          }
+          { variantID: 1933712008, size: 'XS' },
+          { variantID: 1933712009, size: 'S' },
+          { variantID: 1933712010, size: 'M' },
+          { variantID: 1933712011, size: 'L' },
+          { variantID: 1933712012, size: 'XL' },
+          { variantID: 1933712013, size: '2X' }
         ]
       },
       {
@@ -97,30 +81,13 @@ const products = [
         colorCode: '#aad4b7',
         colorImage: 'https://files.cdn.printful.com/files/5e9/5e92e12fc3adab7cfbbdb6d4dfd629b1_preview.png',
         sizes: [
-          {
-            variantID: 1933714829,
-            size: 'XS'
+          { variantID: 1933714829, size: 'XS'
           },
-          {
-            variantID: 1933714830,
-            size: 'S'
-          },
-          {
-            variantID: 1933714831,
-            size: 'M'
-          },
-          {
-            variantID: 1933714833,
-            size: 'L'
-          },
-          {
-            variantID: 1933714834,
-            size: 'XL'
-          },
-          {
-            variantID: 1933714835,
-            size: '2X'
-          }
+          { variantID: 1933714830, size: 'S' },
+          { variantID: 1933714831, size: 'M' },
+          { variantID: 1933714833, size: 'L' },
+          { variantID: 1933714834, size: 'XL' },
+          { variantID: 1933714835, size: '2X' }
         ]
       },
       {
@@ -128,30 +95,12 @@ const products = [
         colorCode: '#c0e3e4',
         colorImage: 'https://files.cdn.printful.com/files/55e/55e8a878aed710c16d39840368196f97_preview.png',
         sizes: [
-          {
-            variantID: 1933714838,
-            size: 'XS'
-          },
-          {
-            variantID: 1933714839,
-            size: 'S'
-          },
-          {
-            variantID: 1933714840,
-            size: 'M'
-          },
-          {
-            variantID: 1933714841,
-            size: 'L'
-          },
-          {
-            variantID: 1933714842,
-            size: 'XL'
-          },
-          {
-            variantID: 1933714843,
-            size: '2X'
-          }
+          { variantID: 1933714838, size: 'XS' },
+          { variantID: 1933714839, size: 'S' },
+          { variantID: 1933714840, size: 'M' },
+          { variantID: 1933714841, size: 'L' },
+          { variantID: 1933714842, size: 'XL' },
+          { variantID: 1933714843, size: '2X' }
         ]
       },
       {
@@ -159,26 +108,11 @@ const products = [
         colorCode: '#fcd1db',
         colorImage: 'https://files.cdn.printful.com/files/36f/36f3f7bc45794880eb1593056a15e016_preview.png',
         sizes: [
-          {
-            variantID: 1933714854,
-            size: 'S'
-          },
-          {
-            variantID: 1933714855,
-            size: 'M'
-          },
-          {
-            variantID: 1933714856,
-            size: 'L'
-          },
-          {
-            variantID: 1933714857,
-            size: 'XL'
-          },
-          {
-            variantID: 1933714858,
-            size: '2X'
-          }
+          { variantID: 1933714854, size: 'S' },
+          { variantID: 1933714855, size: 'M' },
+          { variantID: 1933714856, size: 'L' },
+          { variantID: 1933714857, size: 'XL' },
+          { variantID: 1933714858, size: '2X' }
         ]
       },
     ],

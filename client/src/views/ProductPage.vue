@@ -4,7 +4,7 @@
     <div class="pdp-grid">
       <!-- Image -->
       <div class="image-container">
-        <img :src="item.image" class="item-image">
+        <img :src="modelImage || selected.image" class="item-image">
       </div>
 
       <!-- Details -->
@@ -52,6 +52,15 @@
             <img class="emoji" src="../assets/grin-emoji.png">
           </div>
         </div>
+
+        <ul class="product-images">
+          <li class="product-image-container" @click="selectColor(item.colors[item.modelColorIndex].colorName, item.colors[item.modelColorIndex].colorImage, item.image)" :class="{ selected: modelImage }">
+            <img :src="item.image" class="product-image">
+          </li>
+          <li v-for="color in item.colors" :key="color.colorImage" @click="selectColor(color.colorName, color.colorImage)" :class="{ selected: !modelImage && color.colorName === selected.color, 'product-image-container': true }">
+            <img :src="color.colorImage" class="product-image">
+          </li>
+        </ul>
       </div>
 
       <!-- Size guide -->
@@ -82,6 +91,7 @@ export default {
   data () {
     return {
       item: {},
+      modelImage: null,
       selected: {
         productID: null,
         variantID: null,
@@ -107,7 +117,7 @@ export default {
       this.selected.productID = this.item.id;
       this.selected.color = itemHasQueryColor ? queryColor : this.item.colors[0].colorName;
       this.selected.size = itemHasQuerySize ? querySize : null;
-      this.selected.image = this.item.colors[0].colorImage;
+      this.selected.image = itemHasQueryColor ? itemColorObj.colorImage : this.item.colors[0].colorImage;
       this.selected.title = this.item.title;
       this.selected.price = this.item.price;
     },
@@ -115,9 +125,12 @@ export default {
       const borderColor = (colorCode === '#ffffff') ? '#cac7c7' : 'transparent';
       return `background-color: ${colorCode}; border: solid 1px ${borderColor}`;
     },
-    selectColor(colorName, colorImage) {
-      this.selected.color = colorName;
+    selectColor(colorName, colorImage, modelImage) {
+      if (modelImage) this.modelImage = modelImage;
+      else this.modelImage = null;
+      
       this.selected.image = colorImage;
+      this.selected.color = colorName;
       this.selected.size = null;
       this.updateURL();
     },
@@ -356,6 +369,29 @@ export default {
 
       .error-message {
         color: #ff0000;
+      }
+    }
+
+    .product-images {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 5%;
+
+      .product-image-container {
+          &.selected .product-image {
+            border: solid 2px #701aff;
+          }
+
+          &:not(.selected):hover .product-image {
+            border: solid 2px rgba(112, 26, 255, 0.3);
+          }
+
+        .product-image {
+          cursor: pointer;
+          width: 100%;
+          box-shadow: 0 0px 3px 2px rgba(37,33,81,0.11);
+        }
       }
     }
   }

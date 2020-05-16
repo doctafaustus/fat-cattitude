@@ -11,7 +11,7 @@
 
         <ul class="order-list">
 
-          <li class="order-product" v-for="(product, index) in cart" :key="`size-${index}`">
+          <li class="order-product" v-for="(product, index) in cart.slice().reverse()" :key="`size-${index}`">
 
             <router-link class="order-product-image-link-col" :to="{ name: 'Product', params: { id: product.productID }, query: { color: product.query.color, size: product.query.size }}">
               <img class="order-product-image" :src="product.image">
