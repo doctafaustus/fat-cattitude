@@ -298,7 +298,7 @@ export default {
             font-size: 13px;
             position: relative;
             top: -7px;
-            margin-right: 20px;
+            margin-right: 19px;
           }
         }
       }

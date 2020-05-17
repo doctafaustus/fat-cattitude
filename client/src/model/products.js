@@ -53,6 +53,70 @@ const products = [
     description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   },
   {
+    title: 'Gansta Cat',
+    subtitle: 'That\'s how we roll',
+    id: 176205420,
+    price: 25,
+    image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589673513/Fat%20Cattitude/mockup-11b5aecf.jpg',
+    modelColorIndex: 2,
+    inStock: true,
+    style: 'tshirt',
+    category: 'featuredShirts',
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/9ba/9bab76048ef13b808214c171ff480782_preview.png',
+        sizes: [
+          { variantID: 1946984229, size: 'XS' },
+          { variantID: 1946984237, size: 'S' },
+          { variantID: 1946984243, size: 'M' },
+          { variantID: 1946984250, size: 'L' },
+          { variantID: 1946984257, size: 'XL' },
+          { variantID: 1946984264, size: '2XL'}
+        ]
+      },
+      {
+        colorName: 'Gray',
+        colorCode: '#a8abb2',
+        colorImage: 'https://files.cdn.printful.com/files/aa3/aa3f79cd132fd18cb659a919b3e2678c_preview.png',
+        sizes: [
+          { variantID: 1946984287, size: 'S' },
+          { variantID: 1946984295, size: 'M' },
+          { variantID: 1946984301, size: 'L' },
+          { variantID: 1946984308, size: 'XL' },
+          { variantID: 1946984317, size: '2XL' },
+        ]
+      },
+      {
+        colorName: 'Cream',
+        colorCode: '#d3c4ad',
+        colorImage: 'https://files.cdn.printful.com/files/66c/66c8e955d222d8a4beb0ce5a6c5bf16f_preview.png',
+        sizes: [
+          { variantID: 1946984339, size: 'S' },
+          { variantID: 1946984347, size: 'M' },
+          { variantID: 1946984355, size: 'L' },
+          { variantID: 1946984362, size: 'XL' },
+          { variantID: 1946984370, size: '2XL' },
+        ]
+      },
+      {
+        colorName: 'Peach',
+        colorCode: '#eec1b3',
+        colorImage: 'https://files.cdn.printful.com/files/e24/e245821f962f00be566d570e3bb0cbc9_preview.png',
+        sizes: [
+          { variantID: 1946984389, size: 'XS' },
+          { variantID: 1946984392, size: 'S' },
+          { variantID: 1946984399, size: 'M' },
+          { variantID: 1946984406, size: 'L' },
+          { variantID: 1946984413, size: 'XL' },
+          { variantID: 1946984421, size: '2XL' },
+        ]
+      }
+    ],
+    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+  },
+  {
     title: 'I Do What I Want',
     subtitle: 'Bad cat smacking wine off the table',
     id: 175143559,
@@ -117,14 +181,6 @@ const products = [
       },
     ],
     description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
-  },
-  {
-    title: 'I\'m Busy3',
-    id: 3,
-    price: 30,
-    image: 'https://cdn.shopify.com/s/files/1/2292/0133/products/inventory-01_640x.png?v=1571609686',
-    category: 'featuredShirts',
-    inStock: true
   },
   {
     title: 'I\'m Busym',
