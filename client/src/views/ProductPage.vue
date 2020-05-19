@@ -112,14 +112,17 @@ export default {
 
       const itemColorObj = this.item.colors.find(color => color.colorName === queryColor);
       const itemHasQueryColor = Boolean(itemColorObj);
-      const itemHasQuerySize = itemHasQueryColor ? itemColorObj.sizes.some(item => item.size === querySize) : false;
+      const itemSizeObj = itemHasQueryColor ? itemColorObj.sizes.find(item => item.size === querySize) : null;
 
       this.selected.productID = this.item.id;
       this.selected.color = itemHasQueryColor ? queryColor : this.item.colors[0].colorName;
-      this.selected.size = itemHasQuerySize ? querySize : null;
+      this.selected.size = itemSizeObj ? querySize : null;
+      this.selected.variantID = itemSizeObj ? itemSizeObj.variantID : null;
       this.selected.image = itemHasQueryColor ? itemColorObj.colorImage : this.item.colors[0].colorImage;
       this.selected.title = this.item.title;
       this.selected.price = this.item.price;
+
+      console.log(itemColorObj); 
     },
     getSwatch(colorCode) {
       const borderColor = (colorCode === '#ffffff') ? '#cac7c7' : 'transparent';

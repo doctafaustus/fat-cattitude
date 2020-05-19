@@ -280,7 +280,7 @@
         <!-- Save & Continue CTA -->
         <div class="continue-container">
           <div v-show="estimateOrderError" class="estimate-order-error error">{{ estimateOrderError }}</div>
-          <button class="continue-btn cta" @click.prevent="validateFields({ isEstimate: true })">Continue</button>
+          <button class="continue-btn cta" @click.prevent="validateFields({ isEstimate: true })" ref="continue">Continue</button>
         </div>
       </fieldset>
 
@@ -312,7 +312,7 @@
               <label>Credit Card Number</label>
               <Icon name="creditCard" />
             </div>
-            <span class="error number-error"></span>
+            <span class="error" ref="number-error"></span>
           </div>
           <div class="input-group input-group-col-2">
             <div class="field">
@@ -320,14 +320,14 @@
                 <div id="card-expiry"></div>
                 <label>MM / YY</label>
               </div>
-              <span class="error expiry-error"></span>
+              <span class="error" ref="expiry-error"></span>
             </div>
             <div class="field">
               <div class="input-wrapper stripe-wrapper">
                 <div id="card-cvc"></div>
                 <label>CVC</label>
               </div>
-              <span class="error cvc-error"></span>
+              <span class="error" ref="cvc-error"></span>
             </div>
           </div>
         </div>
@@ -335,7 +335,7 @@
         <!-- Place Order -->
         <div class="segment place-order">
           <div class="place-order-error">{{ placeOrderError }}</div>
-          <button @click.prevent="validateFields({ isEstimate: false })" class="cta place-order-cta"><span class="place-order-text">Place Order</span></button>
+          <button @click.prevent="validateFields({ isEstimate: false })" class="cta place-order-cta"  ref="place-order"><span class="place-order-text">Place Order</span></button>
         </div>
       </fieldset>
     </form>
@@ -437,7 +437,7 @@ export default {
 
       if (isEstimate) {
         EventBus.$emit('processing', { isProcessing: true });
-        document.querySelector('.continue-btn').disabled = true;
+        this.$refs.continue.disabled = true;
         this.getOrderEstimate();
       } else {
         this.createToken();
@@ -469,7 +469,7 @@ export default {
       .then(response => response.json())
       .then(data => {
         console.log('api/estimate-costs response: \n', data);
-        document.querySelector('.continue-btn').disabled = false;
+        this.$refs.continue.disabled = false;
         EventBus.$emit('processing', { isProcessing: false });
 
         if (data.error) {
@@ -516,18 +516,18 @@ export default {
           console.log('error!!!', result.error);
 
           const errorMap = {
-            'incomplete_number': '.number-error',
-            'invalid_number': '.number-error',
-            'incomplete_expiry': '.expiry-error',
-            'invalid_expiry_year_past': '.expiry-error',
-            'invalid_expiry_year': '.expiry-error',
-            'incomplete_cvc': '.cvc-error',
-            'invalid_cvc': '.cvc-error' // <- Guessing this exists
+            'incomplete_number': 'number-error',
+            'invalid_number': 'number-error',
+            'incomplete_expiry': 'expiry-error',
+            'invalid_expiry_year_past': 'expiry-error',
+            'invalid_expiry_year': 'expiry-error',
+            'incomplete_cvc': 'cvc-error',
+            'invalid_cvc': 'cvc-error' // <- Guessing this exists
           }
 
-          const errorSel = errorMap[result.error.code];
-          if (errorSel) {
-            const element = document.querySelector(errorSel);
+          const errorRef = errorMap[result.error.code];
+          if (errorRef) {
+            const element = this.$refs[errorRef];
             element.closest('.field').classList.add('has-error');
             element.textContent = result.error.message;
           } else {
@@ -556,7 +556,7 @@ export default {
       .then(response => response.json())
       .then(data => {
         console.log('api/place-order response: \n', data);
-        document.querySelector('.place-order-cta').disabled = false;
+        this.$refs['place-order'].disabled = false;
 
         if (data.error) {
           this.placeOrderError = data.error;
