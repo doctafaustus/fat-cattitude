@@ -183,12 +183,55 @@ const products = [
     description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   },
   {
-    title: 'I\'m Busym',
-    id: 1,
-    price: 30,
-    image: 'https://i.ibb.co/znmgYyG/im-busy-911cde4.jpg',
+    title: 'Have A Seat',
+    subtitle: 'You no longer have a hamster.',
+    id: 176594391,
+    price: 25,
+    image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589859314/Fat%20Cattitude/mockup-d368497e.jpg',
+    modelColorIndex: 2,
+    inStock: true,
+    style: 'tshirt',
     category: 'shirts',
-    inStock: true
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/296/2967a750122cc314f45f3425f7e32d73_preview.png',
+        sizes: [
+          { variantID: 1951116354, size: 'XS' },
+          { variantID: 1951116355, size: 'S' },
+          { variantID: 1951116356, size: 'M' },
+          { variantID: 1951116357, size: 'L' },
+          { variantID: 1951116358, size: 'XL' },
+          { variantID: 1951116359, size: '2XL'}
+        ]
+      },
+      {
+        colorName: 'Heather',
+        colorCode: '#a8abb2',
+        colorImage: 'https://files.cdn.printful.com/files/a71/a716718934640b86d72d8c9779e7137f_preview.png',
+        sizes: [
+          { variantID: 1951169666, size: 'S' },
+          { variantID: 1951169667, size: 'M' },
+          { variantID: 1951169668, size: 'L' },
+          { variantID: 1951169681, size: 'XL' },
+          { variantID: 1951169687, size: '2XL' },
+        ]
+      },
+      {
+        colorName: 'Ocean',
+        colorCode: '#619dc1',
+        colorImage: 'https://files.cdn.printful.com/files/3e0/3e02139db889958d37079a64ca616453_preview.png',
+        sizes: [
+          { variantID: 1951169697, size: 'S' },
+          { variantID: 1951169710, size: 'M' },
+          { variantID: 1951169717, size: 'L' },
+          { variantID: 1951169724, size: 'XL' },
+          { variantID: 1951169730, size: '2XL' },
+        ]
+      }
+    ],
+    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   },
   {
     title: 'I\'m Busy2m',

@@ -107,20 +107,25 @@ export default {
     remove(variantID) {
       EventBus.$emit('cart-remove', variantID);
       this.getCart();
+    },
+    setProcessingState({ isProcessing }) {
+      this.processing = isProcessing;
+    },
+    estimateOrder(orderEstimate) {
+      this.shipping = orderEstimate.shipping;
+      this.tax =  orderEstimate.tax;
+      this.total = this.subtotal + this.shipping + this.tax;
     }
   },
   mounted() {
     this.getCart();
 
-    EventBus.$on('processing', ({ isProcessing }) => {
-      this.processing = isProcessing;
-    });
-
-    EventBus.$on('order-estimate', orderEstimate => {
-      this.shipping = orderEstimate.shipping;
-      this.tax =  orderEstimate.tax;
-      this.total = this.subtotal + this.shipping + this.tax;
-    });
+    EventBus.$on('processing', this.setProcessingState);
+    EventBus.$on('order-estimate', this.estimateOrder);
+  },
+  beforeDestroy() {
+    EventBus.$off('processing', this.setProcessingState);
+    EventBus.$off('order-estimate', this.estimateOrder);
   }
 }
 </script>
