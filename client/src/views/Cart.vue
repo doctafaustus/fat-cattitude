@@ -315,4 +315,34 @@ export default {
   position: relative;
   animation: fade-slide .5s ease;
 }
+
+
+@media (max-width: 767px) {
+  .cart {
+    padding: 60px 20px 40px 20px;
+
+    .cart-title {
+      font-size: 36px;
+      line-height: 40px;
+      margin-bottom: 20px;
+    }
+
+    .cart-main {
+      .cart-products,
+      .cart-summary {
+        width: 100%;
+      }
+    }
+  }
+
+  .order-list .order-product {
+    grid-template-columns: 80px auto 30px;
+    margin-bottom: 10px;
+
+    .order-product-details-col {
+      padding: 10px 16px;
+    }
+  }
+
+}
 </style>

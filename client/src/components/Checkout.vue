@@ -969,5 +969,21 @@ export default {
       transform: rotate(360deg); 
     }
   }
+
+  @media (max-width: 767px) {
+    .input-group .input-wrapper {
+      &.active {
+        select {
+          padding-bottom: 2px;
+        }
+      }
+
+      select {
+
+          padding-bottom: 9px;
+        
+      }
+    }
+  }
 }
 </style>

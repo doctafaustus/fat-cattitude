@@ -129,8 +129,6 @@ export default {
       this.selected.image = itemHasQueryColor ? itemColorObj.colorImage : this.item.colors[0].colorImage;
       this.selected.title = this.item.title;
       this.selected.price = this.item.price;
-
-      console.log(itemColorObj); 
     },
     getSwatch(colorCode) {
       const borderColor = (colorCode === '#ffffff') ? '#cac7c7' : 'transparent';
@@ -199,7 +197,6 @@ export default {
     const queryColor = this.$route.query.color;
     const querySize = this.$route.query.size;
     this.getItem(queryColor, querySize);
-
   },
 }
 </script>
@@ -290,9 +287,15 @@ export default {
 
       .item-colors {
         display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 0;
 
         .swatch {
+          padding-bottom: 10px;
+
           cursor: pointer;
+          display: flex;
+          align-items: center;
 
           &.selected {
             .swatch-icon {
@@ -316,12 +319,11 @@ export default {
             width: 25px;
             border-radius: 5px;
             border: solid 1px #cac7c7;
+            margin-right: 4px;
           }
 
           .swatch-name {
             font-size: 13px;
-            position: relative;
-            top: -7px;
             margin-right: 19px;
           }
         }
@@ -449,17 +451,6 @@ export default {
     }
   }
 
-
-  @media (min-width: 768px) and (max-width: 834px) {
-    // .image-container {
-    //   .item-image {
-    //     max-width: 375px;
-    //   }
-    // }
-
-  }
-
-
   @media (max-width: 834px) {
     padding: 40px;
 
@@ -487,6 +478,18 @@ export default {
       text-align: center;
     }
 
+  }
+
+  @media (max-width: 767px) {
+    // .details-container .sub-container .item-colors .swatch {
+    //   .swatch-icon {
+    //     margin-bottom: 4px;
+    //   }
+
+    //   .swatch-name {
+    //     position: static;
+    //   }
+    // }
   }
 }
 </style>
