@@ -971,6 +971,9 @@ export default {
   }
 
   @media (max-width: 767px) {
+    width: 100%;
+    max-width: 100%;
+
     .input-group .input-wrapper {
       &.active {
         select {
@@ -979,9 +982,7 @@ export default {
       }
 
       select {
-
-          padding-bottom: 9px;
-        
+        padding-bottom: 9px;
       }
     }
   }

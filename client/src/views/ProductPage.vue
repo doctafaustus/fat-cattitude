@@ -220,6 +220,12 @@ export default {
 
     &.mobile {
       display: none;
+      margin-bottom: 20px;
+
+      .item-title {
+        font-size: 36px;
+        line-height: 40px;
+      }
     }
 
     .item-title {
@@ -451,6 +457,13 @@ export default {
     }
   }
 
+  @media (min-width: 768px) and (max-width: 834px) {
+    .image-container .item-image {
+      width: 500px;
+    }
+  }
+
+
   @media (max-width: 834px) {
     padding: 40px;
 
@@ -477,19 +490,10 @@ export default {
     .desc-container {
       text-align: center;
     }
-
   }
 
   @media (max-width: 767px) {
-    // .details-container .sub-container .item-colors .swatch {
-    //   .swatch-icon {
-    //     margin-bottom: 4px;
-    //   }
-
-    //   .swatch-name {
-    //     position: static;
-    //   }
-    // }
+    padding: 20px;
   }
 }
 </style>

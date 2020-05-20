@@ -426,4 +426,73 @@ export default {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+
+@media (max-width: 834px) {
+  .order-confirmation {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-confirmation {
+    padding: 20px;
+
+    .order-confirmation-inner {
+      padding: 20px;
+    }
+
+    .top-section {
+      .status-image {
+        width: 75px;
+      }
+
+      h1 {
+        font-size: 28px;
+        line-height: 28px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .bottom-section {
+      h2,
+      .delivery-address-and-method,
+      .products-ordered-and-os,
+      .credit-card-and-billing-address {
+        margin-bottom: 40px;
+        display: block;
+      }
+
+      h2,
+      .delivery-address-and-method,
+      .products-ordered h3,
+      .os h3,
+      .credit-card-and-billing-address {
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+      }
+
+      .delivery-address-and-method {
+        .block {
+          margin-bottom: 20px;
+        }
+      }
+
+      .os {
+      .os-items .os-item .os-value {
+          width: auto;
+        }
+      }
+
+      .credit-card-and-billing-address {
+        .credit-card {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
 </style>
