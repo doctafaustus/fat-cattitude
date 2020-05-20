@@ -4,13 +4,19 @@
     <div class="pdp-grid">
       <!-- Image -->
       <div class="image-container">
+        <div class="title-container mobile">
+          <h1 class="item-title">{{ item.title }}</h1>
+          <div class="item-subtitle">{{ item.subtitle }}</div>
+        </div>
         <img :src="modelImage || selected.image" class="item-image">
       </div>
 
       <!-- Details -->
       <div class="details-container">
-        <h1 class="item-title">{{ item.title }}</h1>
-        <div class="item-subtitle">{{ item.subtitle }}</div>
+        <div class="title-container desktop">
+          <h1 class="item-title">{{ item.title }}</h1>
+          <div class="item-subtitle">{{ item.subtitle }}</div>
+        </div>
 
         <div class="sub-container">
           <div class="row">
@@ -64,7 +70,9 @@
       </div>
 
       <!-- Size guide -->
-      <SizeGuide></SizeGuide>
+      <div class="size-guide-container">
+        <SizeGuide></SizeGuide>
+      </div>
 
       <!-- Description -->
       <div class="desc-container">
@@ -203,20 +211,19 @@ export default {
 
   .pdp-grid {
     display: grid;
+    grid-template-areas:  "image-container details-container"
+                          "size-guide-container desc-container";
     grid-template-columns: 1fr 1fr;
     grid-gap: 60px;
+    align-items: center;
   }
 
-  .image-container {
-    .item-image {
-      width: 100%;
-      box-shadow: 0 5px 10px rgba(37,33,81,.11);
+  .title-container {
+    margin-bottom: 40px;
+
+    &.mobile {
+      display: none;
     }
-  }
-
-  .details-container {
-    width: 375px;
-    margin: 0 auto;
 
     .item-title {
       font-size: 48px;
@@ -226,9 +233,23 @@ export default {
     .item-subtitle {
       font-size: 20px;
     }
+  }
+
+  .image-container {
+     grid-area: image-container;
+
+    .item-image {
+      width: 100%;
+      box-shadow: 0 5px 10px rgba(37,33,81,.11);
+    }
+  }
+
+  .details-container {
+    grid-area: details-container;
+    width: 375px;
+    margin: 0 auto;
 
     .sub-container {
-      margin-top: 40px;
       background-color: #fff;
       border-radius: 6px;
       box-shadow: 0 5px 10px rgba(37,33,81,.11);
@@ -398,8 +419,13 @@ export default {
       }
     }
   }
+
+  .size-guide-container {
+    grid-area: size-guide-container;
+  }
   
   .desc-container {
+    grid-area: desc-container;
     padding: 0 40px;
 
     .desc-title {
@@ -413,5 +439,54 @@ export default {
     }
   }
 
+
+
+  @media (max-width: 1120px) {
+    .pdp-grid {
+      grid-template-areas:  "image-container details-container"
+                            "desc-container desc-container"
+                            "size-guide-container size-guide-container";
+    }
+  }
+
+
+  @media (min-width: 768px) and (max-width: 834px) {
+    // .image-container {
+    //   .item-image {
+    //     max-width: 375px;
+    //   }
+    // }
+
+  }
+
+
+  @media (max-width: 834px) {
+    padding: 40px;
+
+    .pdp-grid {
+      grid-template-columns: 1fr;
+      grid-gap: 40px;
+      grid-template-areas: "image-container" "details-container" "desc-container" "size-guide-container";
+    }
+
+    .title-container {
+      &.desktop {
+        display: none;
+      }
+
+      &.mobile {
+        display: block;
+      }
+    }
+
+    .details-container {
+      width: 100%;
+    }
+
+    .desc-container {
+      text-align: center;
+    }
+
+  }
 }
 </style>

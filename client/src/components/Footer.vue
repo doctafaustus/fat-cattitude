@@ -98,6 +98,7 @@ footer {
 
     .section-title {
       margin-bottom: 40px;
+      line-height: 56px;
     }
 
     .subtitle {
@@ -188,5 +189,57 @@ footer {
   padding: 16px 20px;
   font-family: 'Cousine', sans-serif;
   font-size: 15px;
+}
+
+@media (max-width: 834px) {
+  .footer-main {
+    padding: 40px;
+    display: block;
+    text-align: center;
+
+    .footer-left,
+    .footer-right {
+      width: 100%;
+    }
+
+    .footer-left {
+      margin-bottom: 20px;
+
+      .footer-image {
+        display: inline-block;
+        max-width: 280px;
+        width: 100%;
+      }
+    }
+
+    .footer-right {
+      padding-left: 0;
+
+      .section-title {
+        font-size: 36px;
+        line-height: 40px;
+        margin-bottom: 20px;
+      }
+
+      .newsletter-form {
+        .newsletter-label {
+          text-align: left;
+        }
+      }
+
+      .subtitle {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .footer-bottom {
+    display: block;
+    line-height: 18px;
+
+    .footer-bottom-left {
+      margin-bottom: 10px;
+    }
+  }
 }
 </style>

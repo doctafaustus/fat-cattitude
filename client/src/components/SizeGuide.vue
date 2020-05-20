@@ -11,12 +11,12 @@
     <div class="chart">
       <div class="column size">
         <div class="title">Size</div>
-        <div class="data">XS - Extra Small</div>
-        <div class="data">S - Small</div>
-        <div class="data">M - Medium</div>
-        <div class="data">L - Large</div>
-        <div class="data">XL - Extra Large</div>
-        <div class="data">2XL - Double Extra Large</div>
+        <div class="data"><span class="size-abbrev">XS</span><span class="size-text"> - Extra Small</span></div>
+        <div class="data"><span class="size-abbrev">S</span><span class="size-text"> - Small</span></div>
+        <div class="data"><span class="size-abbrev">M</span><span class="size-text"> - Medium</span></div>
+        <div class="data"><span class="size-abbrev">L</span><span class="size-text"> - Large</span></div>
+        <div class="data"><span class="size-abbrev">XL</span><span class="size-text"> - Extra Large</span></div>
+        <div class="data"><span class="size-abbrev">2XL</span><span class="size-text"> - Double Extra Large</span></div>
       </div>
       <div class="column chest">
         <div class="title">Chest To Fit</div>
@@ -42,56 +42,66 @@
 
 
 <style scoped lang="scss">
-  .size-guide {
+.size-guide {
 
-    .size-guide-title {
-      margin-bottom: 10px;
-    }
+  .size-guide-title {
+    margin-bottom: 10px;
+  }
+
+  .size-style {
+    margin-bottom: 12px;
 
     .size-style {
-      margin-bottom: 12px;
-
-      .size-style {
-        font-weight: 600;
-      }
-
-      .style-brand {
-        font-size: 14px;
-      }
+      font-weight: 600;
     }
 
-    .chart {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      border: solid 1px #e1e1e1;
+    .style-brand {
+      font-size: 14px;
+    }
+  }
 
-      .column {
-        .title,
-        .data {
-          padding: 10px;
-        }
+  .chart {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: solid 1px #e1e1e1;
 
-        .title {
-          font-weight: bold;
-          background-color: #6805fb;
-          color: #fff;
-          box-shadow: 0 3px 5px rgba(36,35,83,0.1);
-          margin-bottom: 10px;
-        }
+    .column {
+      .title,
+      .data {
+        padding: 10px;
+      }
 
-        &.size .data {
-          text-align: left;
-          padding-left: 20px;
-        }
+      .title {
+        font-weight: bold;
+        background-color: #6805fb;
+        color: #fff;
+        box-shadow: 0 3px 5px rgba(36,35,83,0.1);
+        margin-bottom: 10px;
+      }
 
-        .data {
-          border-bottom: solid 1px #eaeaea;
+      &.size .data {
+        text-align: left;
+        padding-left: 20px;
+      }
 
-          &:last-child {
-            border-bottom: none;
-          }
+      .data {
+        border-bottom: solid 1px #eaeaea;
+
+        &:last-child {
+          border-bottom: none;
         }
       }
     }
   }
+
+  @media (max-width: 767px) {
+    .chart {
+      grid-template-columns: 65px 1fr 90px;
+
+      .size-text {
+        display: none;
+      }
+    }
+  }
+}
 </style>
