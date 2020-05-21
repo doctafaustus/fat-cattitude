@@ -285,6 +285,28 @@ const products = [
     description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   },
   {
+    title: 'If I Fits, I Sits',
+    subtitle: 'This cat ain\'t moving nowhere.',
+    id: 177031652,
+    price: 25,
+    image: 'https://files.cdn.printful.com/files/317/317e240fd602c764547d628bbce91b31_preview.png',
+    modelColorIndex: 0,
+    inStock: true,
+    style: 'Enamel Mug',
+    category: 'accessories',
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/317/317e240fd602c764547d628bbce91b31_preview.png',
+        sizes: [
+          { variantID: 177031652, size: 'Regular' },
+        ]
+      },
+    ],
+    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+  },
+  {
     title: 'I\'m Busy3m',
     id: 3,
     price: 30,
