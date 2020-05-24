@@ -4,11 +4,13 @@ const products = [
     subtitle: 'Sassy busy cat t-shirt',
     id: 163440250,
     price: 25,
-    image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589652298/Fat%20Cattitude/me_im_busy.jpg',
-    modelColorIndex: 0,
     inStock: true,
     style: 'tshirt',
     category: 'featuredShirts',
+    modelImages: [{
+      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589652298/Fat%20Cattitude/me_im_busy.jpg',
+      variantIndex: 0
+    }],
     colors: [
       {
         colorName: 'White',
@@ -57,11 +59,13 @@ const products = [
     subtitle: 'That\'s how we roll',
     id: 176205420,
     price: 25,
-    image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589673513/Fat%20Cattitude/mockup-11b5aecf.jpg',
-    modelColorIndex: 2,
     inStock: true,
     style: 'tshirt',
     category: 'featuredShirts',
+    modelImages: [{
+      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589673513/Fat%20Cattitude/mockup-11b5aecf.jpg',
+      variantIndex: 2
+    }],
     colors: [
       {
         colorName: 'White',
@@ -121,11 +125,13 @@ const products = [
     subtitle: 'Bad cat smacking wine off the table',
     id: 175143559,
     price: 25,
-    image: 'https://files.cdn.printful.com/files/a7b/a7bbe09080fd2940457bb5b96cedec64_preview.png',
-    modelColorIndex: 3,
     inStock: true,
     style: 'tshirt',
     category: 'featuredShirts',
+    modelImages: [{
+      image: 'https://files.cdn.printful.com/files/a7b/a7bbe09080fd2940457bb5b96cedec64_preview.png',
+      variantIndex: 3
+    }],
     colors: [
       {
         colorName: 'White',
@@ -187,11 +193,13 @@ const products = [
     subtitle: 'You no longer have a hamster.',
     id: 176594391,
     price: 25,
-    image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589859314/Fat%20Cattitude/mockup-d368497e.jpg',
-    modelColorIndex: 2,
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
+    modelImages:[{
+      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589859314/Fat%20Cattitude/mockup-d368497e.jpg',
+      variantIndex: 2
+    }],
     colors: [
       {
         colorName: 'White',
@@ -234,15 +242,70 @@ const products = [
     description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   },
   {
+    title: 'Mechanic Cat',
+    subtitle: 'I have no idea what I\'m doing.',
+    id: 177594656,
+    price: 25,
+    inStock: true,
+    style: 'tshirt',
+    category: 'shirts',
+    modelImages:[{
+      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590340170/Fat%20Cattitude/mockup-9c0381e1.jpg',
+      variantIndex: 2
+    }],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/38a/38a74d42a8b62575a17d908bd150a1f9_preview.png',
+        sizes: [
+          { variantID: 1962384111, size: 'XS' },
+          { variantID: 1962384112, size: 'S' },
+          { variantID: 1962384113, size: 'M' },
+          { variantID: 1962384114, size: 'L' },
+          { variantID: 1962384115, size: 'XL' },
+          { variantID: 1962384116, size: '2XL'}
+        ]
+      },
+      {
+        colorName: 'Heather',
+        colorCode: '#a8abb2',
+        colorImage: 'https://files.cdn.printful.com/files/6d0/6d0a4c81e134e32964a7f95c426b79e9_preview.png',
+        sizes: [
+          { variantID: 1962387247, size: 'S' },
+          { variantID: 1962387248, size: 'M' },
+          { variantID: 1962387249, size: 'L' },
+          { variantID: 1962387250, size: 'XL' },
+          { variantID: 1962387251, size: '2XL' },
+        ]
+      },
+      {
+        colorName: 'Blue',
+        colorCode: '#86a9c9',
+        colorImage: 'https://files.cdn.printful.com/files/bae/bae283e02e4cf0029e40ba3ae3ade19c_preview.png',
+        sizes: [
+          { variantID: 1962387252, size: 'S' },
+          { variantID: 1962387253, size: 'M' },
+          { variantID: 1962387254, size: 'L' },
+          { variantID: 1962387255, size: 'XL' },
+          { variantID: 1962387256, size: '2XL' },
+        ]
+      }
+    ],
+    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+  },
+  {
     title: 'Daddy\'s Lil\' Monster',
     subtitle: 'Just a cat enjoying his late night TV.',
     id: 176794106,
     price: 25,
-    image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589954174/Fat%20Cattitude/mockup-37626f09.jpg',
-    modelColorIndex: 1,
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
+    modelImages: [{
+      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589954174/Fat%20Cattitude/mockup-37626f09.jpg',
+      variantIndex: 1
+    }],
     colors: [
       {
         colorName: 'White',
@@ -286,19 +349,27 @@ const products = [
   },
   {
     title: 'If I Fits, I Sits',
-    subtitle: 'This cat ain\'t moving nowhere.',
+    subtitle: 'This cat ain\'t going nowhere.',
     id: 177031652,
     price: 25,
-    image: 'https://files.cdn.printful.com/files/317/317e240fd602c764547d628bbce91b31_preview.png',
-    modelColorIndex: 0,
     inStock: true,
-    style: 'Enamel Mug',
+    style: 'mug',
     category: 'accessories',
+    modelImages: [
+      {
+        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590334058/Fat%20Cattitude/317e240fd602c764547d628bbce91b31_preview.png',
+        variantIndex: 0
+      },
+      { 
+        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590334442/Fat%20Cattitude/mockup_Left_Default_12oz_White.jpg',
+        variantIndex: 0
+      }
+    ],
     colors: [
       {
         colorName: 'White',
         colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/317/317e240fd602c764547d628bbce91b31_preview.png',
+        colorImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590334565/Fat%20Cattitude/mockup-6bcb166d_2.jpg',
         sizes: [
           { variantID: 177031652, size: 'Regular' },
         ]
@@ -306,14 +377,7 @@ const products = [
     ],
     description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   },
-  {
-    title: 'I\'m Busy3m',
-    id: 3,
-    price: 30,
-    image: 'https://cdn.shopify.com/s/files/1/2292/0133/products/inventory-01_640x.png?v=1571609686',
-    category: 'shirts',
-    inStock: true
-  },
+
   {
     title: 'Sticker',
     id: 1,

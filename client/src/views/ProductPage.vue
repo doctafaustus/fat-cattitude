@@ -8,7 +8,7 @@
           <h1 class="item-title">{{ item.title }}</h1>
           <div class="item-subtitle">{{ item.subtitle }}</div>
         </div>
-        <img :src="modelImage || selected.image" class="item-image">
+        <zoom-on-hover :img-normal="featuredImage || selected.image"  class="item-image" />
       </div>
 
       <!-- Details -->
@@ -23,15 +23,19 @@
             <label>Style</label>
             <div class="item-style">
               <Icon :name="item.style"/>
-              <span class="unisex">Unisex</span>
+              <span class="item-style-text">{{ style }}</span>
             </div>
           </div>
           <div class="row">
             <label>Color <span v-show="item.colors.length > 1">(Choose)</span></label>
             <ul class="item-colors">
-              <li v-for="color in item.colors" :key="color.colorName" 
-                  @click="selectColor(color.colorName, color.colorImage)"
-                  :class="{ 'swatch': true, selected: color.colorName === selected.color }">
+              <li
+                v-for="color in item.colors" :key="color.colorName" 
+                :class="{ 'swatch': true, selected: color.colorName === selected.color }"
+                @click="selectColor({
+                  colorName: color.colorName,
+                  colorImage: color.colorImage})"
+              >
                 <span class="swatch-icon" :style="getSwatch(color.colorCode)"></span>
                 <span class="swatch-name">{{ color.colorName }}</span>
               </li>
@@ -60,10 +64,28 @@
         </div>
 
         <ul class="product-images">
-          <li class="product-image-container" @click="selectColor(item.colors[item.modelColorIndex].colorName, item.colors[item.modelColorIndex].colorImage, item.image)" :class="{ selected: modelImage }">
-            <img :src="item.image" class="product-image">
+          <!-- Model images -->
+          <li
+            v-for="modelImage in item.modelImages" :key="modelImage.image" 
+            :class="{ selected: featuredImage === modelImage.image, 'product-image-container': true }"
+            @click="selectColor({
+              colorName: item.colors[modelImage.variantIndex].colorName,
+              colorImage: item.colors[modelImage.variantIndex].colorImage,
+              modelImage: modelImage.image
+            })"
+          >
+            <img :src="modelImage.image" class="product-image">
           </li>
-          <li v-for="color in item.colors" :key="color.colorImage" @click="selectColor(color.colorName, color.colorImage)" :class="{ selected: !modelImage && color.colorName === selected.color, 'product-image-container': true }">
+
+          <!-- Variant images -->
+          <li 
+            v-for="color in item.colors" :key="color.colorImage"
+            :class="{ selected: !featuredImage && color.colorName === selected.color, 'product-image-container': true }"
+            @click="selectColor({
+              colorName: color.colorName,
+              colorImage: color.colorImage
+            })"
+          >
             <img :src="color.colorImage" class="product-image">
           </li>
         </ul>
@@ -89,17 +111,19 @@ import EventBus from '@/EventBus';
 import products from '@/model/products.js';
 import Icon from '@/components/Icons';
 import SizeGuide from '@/components/SizeGuide';
+import zoomOnHover from '@/components/scripts/zoomOnHover.js';
 
 export default {
   name: 'Product',
   components: {
     Icon,
-    SizeGuide
+    SizeGuide,
+    zoomOnHover
   },
   data () {
     return {
       item: {},
-      modelImage: null,
+      featuredImage: null,
       selected: {
         productID: null,
         variantID: null,
@@ -112,6 +136,12 @@ export default {
       },
       showSuccess: false,
       showError: false
+    }
+  },
+  computed: {
+    style() {
+      if (this.item.style === 'tshirt') return 'Unisex';
+      if (this.item.style === 'mug') return 'Enamel Mug';
     }
   },
   methods: {
@@ -134,9 +164,9 @@ export default {
       const borderColor = (colorCode === '#ffffff') ? '#cac7c7' : 'transparent';
       return `background-color: ${colorCode}; border: solid 1px ${borderColor}`;
     },
-    selectColor(colorName, colorImage, modelImage) {
-      if (modelImage) this.modelImage = modelImage;
-      else this.modelImage = null;
+    selectColor({ colorName, colorImage, modelImage }) {
+      if (modelImage) this.featuredImage = modelImage;
+      else this.featuredImage = null;
       
       this.selected.image = colorImage;
       this.selected.color = colorName;
@@ -285,7 +315,7 @@ export default {
           padding: 2px;
         }
 
-        .unisex {
+        .item-style-text {
           font-size: 13px;
           padding-left: 1px;
         }

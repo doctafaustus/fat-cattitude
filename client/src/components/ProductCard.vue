@@ -1,7 +1,7 @@
 <template>
   <section class="product-card" :class="{ 'sold-out': !product.inStock }">
     <router-link :to="{ name: 'Product', params: { id: product.id } }" class="card-link" :product="product">
-      <img class="card-image" :src="product.image">
+      <img class="card-image" :src="product.modelImages[0].image">
       <div class="out-of-stock">Sold Out</div>
       <div class="card-info">
         <div class="card-title">{{ product.title }}</div>
