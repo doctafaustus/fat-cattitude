@@ -34,9 +34,7 @@
               <span>Introducing Burger Bun.</span>
             </div>
             <a class="cta" href="#">Gimme this!</a>
-            <a class="block-image-link" href="#">
-              <img class="block-image" src="https://ih1.redbubble.net/image.126250173.7747/mug%2Ctravel%2C210x230%2Ccenter-pad%2C210x230%2Cf8f8f8.u1.jpg">
-            </a>
+            <ProductCard v-for="item in products.filter(product => product.id === 177031652)" :key="item.id" :product="item"></ProductCard>
           </div>
 
           <div class="block">
