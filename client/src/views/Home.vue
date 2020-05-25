@@ -12,15 +12,15 @@
       </div>
 
       <!-- Stickers -->
-      <!-- <div class="row sticker">
+      <div class="row sticker">
         <div class="product-list wrapper">
           <div class="title-card">
             <h1 class="section-title">Don't be a Sticky Vicky</h1>
             <div class="subtitle">And get yourself<br>a sticker!</div>
           </div>
-          <ProductCard v-for="sticker in products.filter(product => product.category === 'stickers')" :key="sticker.id" :product="sticker"></ProductCard>
+          <ProductCard v-for="sticker in products.filter(product => product.category === 'sticker')" :key="sticker.id" :product="sticker"></ProductCard>
         </div>
-      </div> -->
+      </div>
 
       <!-- Side By Side -->
       <div class="row side-by-side">

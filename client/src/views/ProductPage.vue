@@ -66,7 +66,7 @@
         <ul class="product-images">
           <!-- Model images -->
           <li
-            v-for="modelImage in item.modelImages" :key="modelImage.image" 
+            v-for="modelImage in item.modelImages.filter(item => item.showOnPDP !== false)" :key="modelImage.image" 
             :class="{ selected: featuredImage === modelImage.image, 'product-image-container': true }"
             @click="selectColor({
               colorName: item.colors[modelImage.variantIndex].colorName,
@@ -142,6 +142,7 @@ export default {
     style() {
       if (this.item.style === 'tshirt') return 'Unisex';
       if (this.item.style === 'mug') return 'Enamel Mug';
+      if (this.item.style === 'sticker') return 'Bubble-free Sticker'
     }
   },
   methods: {

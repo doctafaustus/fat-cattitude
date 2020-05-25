@@ -442,31 +442,106 @@ const products = [
     ],
     description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   },
-
   {
-    title: 'Sticker',
-    id: 1,
+    title: 'That\'s How We Roll',
+    subtitle: 'Tryin\' to catch me ridin\' dirty',
+    id: 177664287,
     price: 5,
-    image: 'https://ih1.redbubble.net/image.966878624.0842/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.u4.jpg',
-    category: 'stickers',
-    inStock: true
+    inStock: true,
+    style: 'sticker',
+    category: 'sticker',
+    modelImages: [
+      {
+        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590421915/Fat%20Cattitude/Thats-How-We-Roll_mockup_Default_Default_5.5x5.5_1.png',
+        variantIndex: 0,
+        showOnPDP: false
+      },
+      {
+        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590421518/Fat%20Cattitude/Thats-How-We-Roll_mockup_Lifestyle-2_Lifestyle_5.5x5.5.png',
+        variantIndex: 0
+      }
+    ],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/aca/acac87c413dcb6409e50acfc2a4257b2_preview.png',
+        sizes: [
+          { variantID: 1963149117, size: '3x3 in' },
+          { variantID: 1963149118, size: '4x4 in' },
+          { variantID: 1963149119, size: '5.5x5.x5 in' },
+        ]
+      },
+    ],
+    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   },
   {
-    title: 'Sticker2',
-    id: 2,
+    title: 'Pathetic',
+    subtitle: 'Principal Skinner Cat',
+    id: 177751976,
     price: 5,
-    image: 'https://ih0.redbubble.net/image.880495456.8392/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.u1.jpg',
-    category: 'stickers',
-    inStock: true
+    inStock: true,
+    style: 'sticker',
+    category: 'sticker',
+    modelImages: [
+      {
+        image: 'https://files.cdn.printful.com/files/f51/f5119ffd1aea8e2c70f0cfeffa2a8ab8_preview.png',
+        variantIndex: 0,
+        showOnPDP: false
+      },
+      {
+        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590426823/Fat%20Cattitude/Pathetic-Cat_mockup_Lifestyle-2_Lifestyle_5.5x5.5_2.png',
+        variantIndex: 0
+      }
+    ],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/f51/f5119ffd1aea8e2c70f0cfeffa2a8ab8_preview.png',
+        sizes: [
+          { variantID: 1964149590, size: '3x3 in' },
+          { variantID: 1964149591, size: '4x4 in' },
+          { variantID: 1964149592, size: '5.5x5.x5 in' },
+        ]
+      },
+    ],
+    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   },
   {
-    title: 'Sticker3',
-    id: 3,
+    title: 'Loaf Cat',
+    subtitle: 'They suspect nothing.',
+    id: 177759753,
     price: 5,
-    image: 'https://ih0.redbubble.net/image.962310403.1481/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.u1.jpg',
-    category: 'stickers',
-    inStock: true
+    inStock: true,
+    style: 'sticker',
+    category: 'sticker',
+    modelImages: [
+      {
+        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590428384/Fat%20Cattitude/Loaf-Cat_mockup_Default_Default_5.5x5.5_2.png',
+        variantIndex: 0,
+        showOnPDP: false
+      },
+      {
+        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590428386/Fat%20Cattitude/Loaf-Cat_mockup_Lifestyle-2_Lifestyle_5.5x5.5_2.png',
+        variantIndex: 0
+      }
+    ],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590428384/Fat%20Cattitude/Loaf-Cat_mockup_Default_Default_5.5x5.5_2.png',
+        sizes: [
+          { variantID: 1964272627, size: '3x3 in' },
+          { variantID: 1964272629, size: '4x4 in' },
+          { variantID: 1964272630, size: '5.5x5.x5 in' },
+        ]
+      },
+    ],
+    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   }
+
 ];
 
 

@@ -1,6 +1,6 @@
 <template>
   <section class="product-card" :class="{ 'sold-out': !product.inStock }">
-    <router-link :to="{ name: 'Product', params: { id: product.id } }" class="card-link" :product="product">
+    <router-link :to="{ name: 'Product', params: { id: product.id } }" :class="{ 'sticker': product.category === 'sticker', 'card-link': true }" :product="product">
       <img class="card-image" :src="product.modelImages[0].image">
       <div class="out-of-stock">Sold Out</div>
       <div class="card-info">
@@ -43,6 +43,14 @@ export default {
     background-color: #fff;
     position: relative;
     display: block;
+
+    &.sticker {
+      background: none;
+
+      .card-info {
+        display: none;
+      }
+    }
   
     .card-image {
       width: 100%;
