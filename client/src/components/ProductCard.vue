@@ -74,7 +74,7 @@ export default {
     }
 
     .card-info {
-      background-color: #303043;
+      background-color: #6805fb;
       position: absolute;
       z-index: 2;
       bottom: 20px;
@@ -93,8 +93,8 @@ export default {
       }
 
       .card-price {
-        background-color: #1f1e30;
-        color: #05e8b5;
+        background-color: #3f009e;
+        color: #20ff00;
         font-weight: bold;
         padding: 14px;
       }

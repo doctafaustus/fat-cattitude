@@ -142,7 +142,8 @@ export default {
     style() {
       if (this.item.style === 'tshirt') return 'Unisex';
       if (this.item.style === 'mug') return 'Enamel Mug';
-      if (this.item.style === 'sticker') return 'Bubble-free Sticker'
+      if (this.item.style === 'sticker') return 'Bubble-free Sticker';
+      if (this.item.style === 'hat') return 'Embroided Baseball Hat';
     }
   },
   methods: {

@@ -2,11 +2,11 @@
   <section>
     <div class="main">
 
-      <!-- Eight Bit -->
-      <div class="row eight-bit">
+      <!-- Featured -->
+      <div class="row featured">
+        <div class="bg-layer"></div>
         <h1 class="section-title light">Show off your Fat Cattitude</h1>
         <div class="product-list wrapper">
-          <!-- <ProductCard v-for="shirt in products.featuredShirts" :key="shirt.id" :product="shirt"></ProductCard> -->
           <ProductCard v-for="shirt in products.filter(product => product.category === 'featuredShirts')" :key="shirt.id" :product="shirt"></ProductCard>
         </div>
       </div>
@@ -42,13 +42,13 @@
             <div class="block-description">
               <span>Fat Cattitude Baseball Cap</span>
             </div>
-            <a class="cta" href="#">Get it now!</a>
+            <router-link :to="{ name: 'Product', params: { id: 177829076 }}" class="cta">Get it now!</router-link>
           </div>
         </div>
       </div>
 
-      <!-- Cool Background -->
-      <div class="row cool-background">
+      <!-- More shirts -->
+      <div class="row more-shirts">
         <h1 class="section-title light">Once a Fat Cat, Always a Fat Cat</h1>
         <div class="product-list wrapper">
           <ProductCard v-for="shirt in products.filter(product => product.category === 'shirts')" :key="shirt.id" :product="shirt"></ProductCard>
@@ -84,8 +84,28 @@ export default {
   background-repeat: repeat;
   background-size: contain;
 
-  &.eight-bit {
-    background-image: url(https://i.ibb.co/z66wrWx/bag.png);
+  &.featured {
+    background: linear-gradient(to bottom, #5433FF, #20BDFF, #f9faff);
+    position: relative;
+
+      h1,
+      .product-list {
+        position: relative;
+        z-index: 2;
+      }
+
+    .bg-layer {
+      content: '';
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-image: url(../assets/cat-bg.jpg);
+      opacity: .38;
+      mix-blend-mode: overlay;
+    }
   }
 
   &.sticker {
@@ -98,10 +118,8 @@ export default {
     padding-top: 0;
   }
 
-  &.cool-background {
-    background-image: url(../assets/space-bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+  &.more-shirts {
+    background: linear-gradient(to bottom, #9733EE, #fedad7);
 
     .product-list {
       grid-template-columns: repeat(6, 1fr);
@@ -143,7 +161,7 @@ export default {
       padding: 50px;
 
       &:nth-child(2) {
-        background-image: url(https://cdn.shopify.com/s/files/1/1175/4418/products/DSC04100_800x.jpg?v=1571439540);
+        background-image: url(https://res.cloudinary.com/dormh2fvt/image/upload/v1590455665/Fat%20Cattitude/Hat-Logo2_mockup_Front_Womens-Lifestyle_White_1.jpg);
       }
 
       .section-title {
