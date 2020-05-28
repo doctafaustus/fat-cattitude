@@ -23,7 +23,7 @@ const db = admin.firestore();
 
 // Express app / Middleware
 const app = express();
-app.use(express.static(`${__dirname}/client/build`));
+app.use(express.static(`${__dirname}/client/dist`));
 app.use(bodyParser.json({ limit: '1mb' }));
 
 
