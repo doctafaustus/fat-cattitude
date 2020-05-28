@@ -204,6 +204,7 @@ export default {
       font-size: 20px;
     }
   }
+  
 
   .row.more-shirts {
     display: none !important;
