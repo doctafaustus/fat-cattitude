@@ -10,7 +10,7 @@
 
         <router-link to="/" class="logo-link">
           <img class="logo" src="../assets/logo-small.png">
-          <div class="logo-text">Fat Cattitude</div>
+          <div class="logo-text"><span>Fat</span> <span>Cattitude</span></div>
         </router-link>
       </div>
       <div class="header-right">
@@ -83,10 +83,11 @@ export default {
   methods: {
     toggleNav() {
       this.navOpen = !this.navOpen;
+      const parentEls = [document.documentElement, document.body];
       if (this.navOpen) {
-        document.body.style.overflow = 'hidden';
+        parentEls.forEach(el => el.style.overflow = 'hidden');
       } else {
-        document.body.style.overflow = 'auto';
+        parentEls.forEach(el => el.style.overflow = 'auto');
       }
     },
     checkForOrderConfirmation() {
@@ -194,6 +195,7 @@ export default {
       text-transform: uppercase;
       font-size: 25px;
       font-family: 'Archivo Black', sans-serif;
+      padding-top: 12px;
     }
   }
 }
@@ -338,5 +340,78 @@ header.active {
   height: 100%;
   z-index: 5;
   padding: 0 0 100% 0;
+}
+
+
+@media (max-width: 834px) {
+  header {
+    .header-main {
+      height: 60px;
+
+      .header-left {
+        .burger-container {
+          height: 61px;
+          margin-right: 2px;
+
+          .icon {
+            width: 40px;
+            height: 40px;
+            margin-top: 12px;
+          }
+        }
+
+        .logo-link {
+          .logo {
+            width: 52px;
+          }
+
+          .logo-text {
+            font-size: 20px;
+            text-align: left;
+            padding-top: 0;
+
+            span {
+              display: block;
+
+              &:first-child {
+                margin-bottom: 2px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .nav-flyout-container {
+      .nav-flyout {
+        width: 78%;
+
+        .nav-flyout-inner {
+          padding: 80px 30px 0 30px;
+
+          .main-links {
+            .main-link {
+              padding: 10px 0;
+
+              .icon {
+                height: 20px;
+                width: 20px;
+              }
+
+              .main-link-anchor {
+                font-size: 18px;
+              }
+            }
+          }
+
+          .hr {
+            margin-bottom: 34px;
+          }
+        }
+      }
+    }
+  }
+
+  
 }
 </style>

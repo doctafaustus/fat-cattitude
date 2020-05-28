@@ -90,6 +90,7 @@ export default {
         color: #fff;
         font-weight: bold;
         padding-left: 20px;
+        padding-right: 10px;
       }
 
       .card-price {

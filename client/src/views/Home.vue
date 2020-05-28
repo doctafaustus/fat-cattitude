@@ -198,5 +198,15 @@ export default {
   }
 }
 
+@media (max-width: 834px) {
+  .row.featured {
+    h1 {
+      font-size: 20px;
+    }
+  }
 
+  .row.more-shirts {
+    display: none !important;
+  }
+}
 </style>
