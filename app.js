@@ -36,7 +36,7 @@ if (!process.env.PORT) {
   }));
 }
 
-// Keep paths using the app.html file on direct route hits
+// Keep paths using the index.html file on direct route hits
 app.use('/*', (req, res, next) => {
   if (/^\/api\//.test(req.originalUrl)) {
     next();
