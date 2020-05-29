@@ -199,9 +199,31 @@ export default {
 }
 
 @media (max-width: 834px) {
+  .row {
+    padding: 20px;
+  }
+
   .row.featured {
     h1 {
-      font-size: 20px;
+      font-size: 26px;
+      line-height: 28px;
+      margin-bottom: 20px;
+    }
+
+    .product-list {
+      grid-template-columns: 1fr;
+      justify-items: center;
+
+      .product-card {
+        width: 80%;
+      }
+    }
+  }
+
+  .row.sticker {
+    .product-list {
+      grid-template-columns: 1fr;
+      justify-items: center;
     }
   }
 
