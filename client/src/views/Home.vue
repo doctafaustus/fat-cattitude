@@ -207,15 +207,6 @@ export default {
     padding: 20px;
   }
 
-  .row.featured,
-  .row.sticker {
-    h1 {
-      font-size: 26px;
-      line-height: 28px;
-      margin-bottom: 20px;
-    }
-  }
-
   .subtitle {
     font-size: 20px;
     line-height: 24px;
@@ -226,6 +217,12 @@ export default {
   }
 
   .row.featured {
+    h1 {
+      font-size: 26px;
+      line-height: 28px;
+      margin-bottom: 20px;
+    }
+
     .product-list {
       grid-template-columns: 1fr;
       justify-items: center;
@@ -237,9 +234,20 @@ export default {
   }
 
   .row.sticker {
+    h1 {
+      font-size: 24px;
+      line-height: 26px;
+      margin-bottom: 10px;
+    }
+
     .product-list {
       grid-template-columns: 1fr;
       justify-items: center;
+      grid-gap: 0;
+
+      .product-card {
+        width: 60%;
+      }
     }
   }
 

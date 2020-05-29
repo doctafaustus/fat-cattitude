@@ -511,7 +511,7 @@ const products = [
     category: 'sticker',
     modelImages: [
       {
-        image: 'https://files.cdn.printful.com/files/f51/f5119ffd1aea8e2c70f0cfeffa2a8ab8_preview.png',
+        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590717639/Fat%20Cattitude/pathetic_sticker_1.png',
         variantIndex: 0,
         showOnPDP: false
       },
