@@ -240,10 +240,16 @@ export default {
   }
 
   .row.sticker {
+    padding-top: 20px;
+
     h1 {
       font-size: 24px;
       line-height: 26px;
       margin-bottom: 10px;
+    }
+
+    .subtitle {
+      margin-bottom: 30px;
     }
 
     .product-list {
@@ -253,6 +259,28 @@ export default {
 
       .product-card {
         width: 60%;
+
+        &:nth-child(3) {
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+
+  .row.side-by-side {
+    .blocks {
+      grid-template-columns: 1fr;
+
+      .block {
+        padding: 20px;
+
+        .section-title {
+          font-size: 24px;
+        }
+
+        .block-description {
+          font-size: 16px;
+        }
       }
     }
   }
