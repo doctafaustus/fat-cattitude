@@ -5,7 +5,7 @@
       <!-- Featured -->
       <div class="row featured">
         <div class="bg-layer"></div>
-        <h1 class="section-title light">Show off your Fat Cattitude</h1>
+        <h1 class="section-title light"><span>Show off your </span><span>Fat Cattitude</span></h1>
         <div class="product-list wrapper">
           <ProductCard v-for="shirt in products.filter(product => product.category === 'featuredShirts')" :key="shirt.id" :product="shirt"></ProductCard>
         </div>
@@ -247,6 +247,10 @@ export default {
       font-size: 26px;
       line-height: 28px;
       margin-bottom: 20px;
+
+      span {
+        display: block;
+      }
     }
 
     .product-list {
@@ -260,7 +264,7 @@ export default {
   }
 
   .row.sticker {
-    padding-top: 20px;
+    padding: 20px 40px 30px 40px;
 
     h1 {
       font-size: 24px;
@@ -305,6 +309,11 @@ export default {
 
         .cta {
           margin-bottom: 30px;
+        }
+
+        &.hat {
+          position: static;
+          background-size: contain;
         }
       }
     }
