@@ -193,7 +193,7 @@ footer {
 
 @media (max-width: 834px) {
   .footer-main {
-    padding: 40px;
+    padding: 20px;
     display: block;
     text-align: center;
 
@@ -207,7 +207,7 @@ footer {
 
       .footer-image {
         display: inline-block;
-        max-width: 280px;
+        max-width: 200px;
         width: 100%;
       }
     }
@@ -216,12 +216,14 @@ footer {
       padding-left: 0;
 
       .section-title {
-        font-size: 36px;
-        line-height: 40px;
+        font-size: 26px;
+        line-height: 30px;
         margin-bottom: 20px;
       }
 
       .newsletter-form {
+        margin-bottom: 30px;
+
         .newsletter-label {
           text-align: left;
         }
@@ -229,17 +231,27 @@ footer {
 
       .subtitle {
         margin-bottom: 20px;
+        font-size: 22px;
+      }
+
+      .social-media .social-media-link .icon {
+        width: 38px;
+        height: 38px;
       }
     }
   }
 
   .footer-bottom {
     display: block;
-    line-height: 18px;
+    line-height: 12px;
+    font-size: 11px;
 
     .footer-bottom-left {
       margin-bottom: 10px;
     }
   }
 }
+
+
+
 </style>

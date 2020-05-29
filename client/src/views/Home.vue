@@ -270,6 +270,7 @@ export default {
       font-size: 24px;
       line-height: 26px;
       margin-bottom: 10px;
+      letter-spacing: .2px;
     }
 
     .subtitle {
