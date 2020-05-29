@@ -16,7 +16,7 @@
         <div class="product-list wrapper">
           <div class="title-card">
             <h1 class="section-title">Don't be a Sticky Vicky</h1>
-            <div class="subtitle">And get yourself<br>a sticker!</div>
+            <div class="subtitle"><span>And get yourself </span><span>a sticker!</span></div>
           </div>
           <ProductCard v-for="sticker in products.filter(product => product.category === 'sticker')" :key="sticker.id" :product="sticker"></ProductCard>
         </div>
@@ -140,6 +140,10 @@ export default {
   color: #76768d;
   font-size: 28px;;
   line-height: 34px;
+
+  span {
+    display: block;
+  }
 }
 
 .product-list {
@@ -203,13 +207,25 @@ export default {
     padding: 20px;
   }
 
-  .row.featured {
+  .row.featured,
+  .row.sticker {
     h1 {
       font-size: 26px;
       line-height: 28px;
       margin-bottom: 20px;
     }
+  }
 
+  .subtitle {
+    font-size: 20px;
+    line-height: 24px;
+
+    span {
+      display: inline;
+    }
+  }
+
+  .row.featured {
     .product-list {
       grid-template-columns: 1fr;
       justify-items: center;
