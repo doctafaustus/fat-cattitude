@@ -26,7 +26,7 @@
       <div class="row side-by-side">
         <div class="blocks wrapper">
 
-          <div class="block">
+          <div class="block mug">
             <h1 class="section-title light">NEW: Fat Cat Mug</h1>
             <div class="block-description">
               <span>Sometimes there's a place in our heart for something and we don't even know it.</span>
@@ -37,12 +37,14 @@
             <ProductCard v-for="item in products.filter(product => product.id === 177031652)" :key="item.id" :product="item"></ProductCard>
           </div>
 
-          <div class="block">
-            <h1 class="section-title light">Mad Hatter</h1>
-            <div class="block-description">
-              <span>Fat Cattitude Baseball Cap</span>
+          <div class="block hat">
+            <div class="hat-container">
+              <h1 class="section-title light">Mad Hatter</h1>
+              <div class="block-description">
+                <span>Fat Cattitude Baseball Cap</span>
+              </div>
+              <router-link :to="{ name: 'Product', params: { id: 177829076 }}" class="cta">Get it now!</router-link>
             </div>
-            <router-link :to="{ name: 'Product', params: { id: 177829076 }}" class="cta">Get it now!</router-link>
           </div>
         </div>
       </div>
@@ -170,8 +172,20 @@ export default {
       background-size: cover;
       padding: 50px;
 
-      &:nth-child(2) {
+      &.hat {
         background-image: url(https://res.cloudinary.com/dormh2fvt/image/upload/v1590455665/Fat%20Cattitude/Hat-Logo2_mockup_Front_Womens-Lifestyle_White_1.jpg);
+        position: relative;
+
+        .hat-container {
+          position: absolute;
+          bottom: 50px;;
+          left: 0;
+          right: 0;
+
+          span {
+            text-align: center;
+          }
+        }
       }
 
       .section-title {
@@ -205,6 +219,12 @@ export default {
         }
       }
     }
+  }
+}
+
+@media (max-width: 1024px) {
+  .side-by-side .blocks .block.hat {
+    background-position: center center;
   }
 }
 
@@ -272,7 +292,7 @@ export default {
       grid-template-columns: 1fr;
 
       .block {
-        padding: 20px;
+        padding: 40px 20px;
 
         .section-title {
           font-size: 24px;
@@ -280,6 +300,11 @@ export default {
 
         .block-description {
           font-size: 16px;
+          margin-bottom: 30px;
+        }
+
+        .cta {
+          margin-bottom: 30px;
         }
       }
     }
