@@ -478,7 +478,7 @@ const products = [
     category: 'sticker',
     modelImages: [
       {
-        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590421915/Fat%20Cattitude/Thats-How-We-Roll_mockup_Default_Default_5.5x5.5_1.png',
+        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590718422/Fat%20Cattitude/thatshowweroll_1.png',
         variantIndex: 0,
         showOnPDP: false
       },
@@ -511,7 +511,7 @@ const products = [
     category: 'sticker',
     modelImages: [
       {
-        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590717639/Fat%20Cattitude/pathetic_sticker_1.png',
+        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590718683/Fat%20Cattitude/pathetic_1_1.png',
         variantIndex: 0,
         showOnPDP: false
       },
@@ -544,7 +544,7 @@ const products = [
     category: 'sticker',
     modelImages: [
       {
-        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590428384/Fat%20Cattitude/Loaf-Cat_mockup_Default_Default_5.5x5.5_2.png',
+        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590718341/Fat%20Cattitude/loaf_1.png',
         variantIndex: 0,
         showOnPDP: false
       },

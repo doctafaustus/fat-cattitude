@@ -109,8 +109,14 @@ export default {
   }
 
   &.sticker {
+    padding: 30px 40px 60px 40px;
+
     .product-list {
       grid-template-columns: 1fr 1fr 1fr 1fr;
+
+      .product-card {
+        align-self: center;
+      }
     }
   }
 
