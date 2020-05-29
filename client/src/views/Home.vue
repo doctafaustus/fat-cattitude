@@ -245,7 +245,7 @@ export default {
   .row.featured {
     h1 {
       font-size: 26px;
-      line-height: 28px;
+      line-height: 30px;
       margin-bottom: 20px;
 
       span {
@@ -305,6 +305,11 @@ export default {
         .block-description {
           font-size: 16px;
           margin-bottom: 30px;
+          text-align: center;
+
+          span {
+            display: inline;
+          }
         }
 
         .cta {
@@ -312,8 +317,25 @@ export default {
         }
 
         &.hat {
-          position: static;
-          background-size: contain;
+          background-size: cover;
+          background-position-y: 0;
+          height: 325px;
+
+          .hat-container {
+            bottom: 0;
+
+            .section-title {
+              margin-bottom: 0;
+            }
+
+            .block-description {
+              margin-bottom: 14px;
+            }
+
+            .cta {
+              margin-bottom: 20px;
+            }
+          }
         }
       }
     }
