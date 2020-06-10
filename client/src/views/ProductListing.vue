@@ -91,7 +91,7 @@ export default {
     }
 
     .product-card {
-      width: 75%;
+      width: 85%;
     }
   }
 }
