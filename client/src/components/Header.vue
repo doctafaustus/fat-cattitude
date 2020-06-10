@@ -28,17 +28,23 @@
       <div class="nav-flyout">
         <div class="nav-flyout-inner">
           <ul class="main-links">
-            <li class="main-link">
-              <Icon name="tshirt" />
-              <router-link to="/" class="main-link-anchor">T-Shirts</router-link>
+            <li @click="toggleNav()" class="main-link">
+              <router-link to="/items/tshirt" class="main-link-anchor">
+                <Icon name="tshirt" />
+                <span class="main-link-span">T-Shirts</span>
+              </router-link>
             </li>
-            <li class="main-link">
-              <Icon name="sticker" />
-              <router-link to="/" class="main-link-anchor">Stickers</router-link>
+            <li @click="toggleNav()" class="main-link">
+              <router-link to="/items/sticker" class="main-link-anchor">
+                <Icon name="sticker" />
+                <span class="main-link-span">Stickers</span>
+              </router-link>
             </li>
-            <li class="main-link">
-              <Icon name="hat" />
-              <router-link to="/" class="main-link-anchor">Accessories</router-link>
+            <li @click="toggleNav()" class="main-link">
+              <router-link to="/items/accessories" class="main-link-anchor">
+                <Icon name="hat" />
+                <span class="main-link-span">Accessories</span>
+              </router-link>
             </li>
           </ul>
 
@@ -280,8 +286,12 @@ header.active {
     .main-links {
       .main-link {
         padding: 16px 0;
-        display: flex;
-        align-items: center;
+
+        .main-link-anchor {
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+        }
 
         .icon {
           height: 23px;
@@ -290,7 +300,7 @@ header.active {
           margin-right: 10px;
         }
 
-        .main-link-anchor {
+        .main-link-span {
           color: #fff;
           text-decoration: none;
           font-size: 20px;
@@ -398,7 +408,7 @@ header.active {
                 width: 20px;
               }
 
-              .main-link-anchor {
+              .main-link-span {
                 font-size: 18px;
               }
             }

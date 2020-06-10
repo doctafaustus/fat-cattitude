@@ -101,5 +101,13 @@ export default {
       }
     }
   }
+
+  @media (max-width: 834px) {
+    .card-link {
+      .card-info {
+        width: 90%;
+      }
+    }
+  }
 }
 </style>

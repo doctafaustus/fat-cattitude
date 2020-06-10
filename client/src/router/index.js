@@ -13,6 +13,11 @@ export default new Router({
       component: Home
     },
     {
+      path: '/items/:category',
+      name: 'ProductListing',
+      component: () => import('@/views/ProductListing.vue')
+    },
+    {
       path: '/item/:id',
       name: 'Product',
       component: () => import('@/views/ProductPage.vue')

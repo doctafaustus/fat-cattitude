@@ -92,7 +92,7 @@
       </div>
 
       <!-- Size guide -->
-      <div class="size-guide-container">
+      <div v-show="item.style === 'tshirt'" class="size-guide-container">
         <SizeGuide></SizeGuide>
       </div>
 
