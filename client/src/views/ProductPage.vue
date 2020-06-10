@@ -538,6 +538,7 @@ export default {
 
     .desc-container {
       text-align: center;
+      padding: 28px 0;
     }
   }
 

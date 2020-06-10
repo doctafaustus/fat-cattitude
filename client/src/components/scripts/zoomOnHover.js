@@ -26,7 +26,8 @@ export default {
     return {
       scaleFactor: 1,
       resizeCheckInterval: null,
-      zoomed: false
+      zoomed: false,
+      customZoom: 0,
     }
   },
   methods: {
@@ -36,13 +37,15 @@ export default {
       // this.zoomed = !this.zoomed
     },
     zoom: function() {
-      if (!this.disabled) this.zoomed = true
+      if (window.innerWidth < 767) return;
+      if (!this.disabled) this.zoomed = true;
     },
     unzoom: function() {
-      if (!this.disabled) this.zoomed = false
+      if (!this.disabled) this.zoomed = false;
     },
     move: function(event) {
-      if (this.disabled || !this.zoomed) return
+      if (this.disabled || !this.zoomed) return;
+
       var offset = pageOffset(this.$el)
       var zoom = this.$refs.zoom
       var normal = this.$refs.normal
