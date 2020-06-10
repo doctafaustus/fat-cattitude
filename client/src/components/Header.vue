@@ -51,14 +51,14 @@
           <div class="hr"></div>
 
           <ul class="other-links">
-            <li class="other-link">
+            <li @click="toggleNav()" class="other-link">
               <router-link to="/" class="other-link-anchor">About</router-link>
             </li>
-            <li class="other-link">
-              <router-link to="/" class="other-link-anchor">Help / FAQ</router-link>
+            <li @click="toggleNav()" class="other-link">
+              <router-link to="/help" class="other-link-anchor">Help / FAQ</router-link>
             </li>
-            <li class="other-link">
-              <router-link to="/" class="other-link-anchor">Privacy Policy &amp; Terms</router-link>
+            <li @click="toggleNav()" class="other-link">
+              <router-link to="/privacy-policy" class="other-link-anchor">Privacy Policy &amp; Terms</router-link>
             </li>
           </ul>
         </div>
@@ -330,6 +330,8 @@ header.active {
           font-family: 'Cousine', sans-serif;
           font-size: 15px;
           font-weight: bold;
+          display: block;
+          padding: 2px 0;
 
           &:hover {
             color: #000;

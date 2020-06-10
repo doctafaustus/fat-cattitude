@@ -32,6 +32,16 @@ export default new Router({
       name: 'OrderConfirmation',
       alias: '/order-status',
       component: () => import('@/views/OrderConfirmation.vue')
+    },
+    {
+      path: '/help',
+      name: 'Help',
+      component: () => import('@/views/Help.vue')
+    },
+    {
+      path: '/privacy-policy',
+      name: 'PrivacyPolicy',
+      component: () => import('@/views/PrivacyPolicy.vue')
     }
   ],
   scrollBehavior(to, from, savedPosition) {
