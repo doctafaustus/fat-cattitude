@@ -31,9 +31,9 @@ export default {
   },
   methods: {
     touchzoom: function(event) {
-      if (this.disabled) return
-      this.move(event)
-      this.zoomed = !this.zoomed
+      // if (this.disabled) return
+      // this.move(event)
+      // this.zoomed = !this.zoomed
     },
     zoom: function() {
       if (!this.disabled) this.zoomed = true
