@@ -501,7 +501,7 @@ export default {
 
     .pdp-grid {
       grid-template-columns: 1fr;
-      grid-gap: 40px;
+      grid-gap: 12px;
       grid-template-areas: "image-container" "details-container" "desc-container" "size-guide-container";
     }
 
@@ -517,6 +517,23 @@ export default {
 
     .details-container {
       width: 100%;
+
+      .sub-container {
+        padding: 12px;
+
+        .row {
+          margin-bottom: 12px;
+        }
+
+        .item-style {
+          padding: 6px 0;
+
+          .icon {
+            width: 25px;
+            height: 25px;
+          }
+        }
+      }
     }
 
     .desc-container {
