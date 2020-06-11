@@ -52,7 +52,7 @@
 
           <ul class="other-links">
             <li @click="toggleNav()" class="other-link">
-              <router-link to="/" class="other-link-anchor">About</router-link>
+              <router-link to="/about" class="other-link-anchor">About</router-link>
             </li>
             <li @click="toggleNav()" class="other-link">
               <router-link to="/help" class="other-link-anchor">Help / FAQ</router-link>
