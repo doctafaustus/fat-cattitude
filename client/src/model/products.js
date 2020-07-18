@@ -188,71 +188,71 @@ const products = [
     ],
     description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
   },
-  {
-    title: 'Corporate Fat Cat',
-    subtitle: 'All the fat cats in Washington',
-    id: 177643473,
-    price: 25,
-    inStock: true,
-    style: 'tshirt',
-    category: 'featuredShirts',
-    modelImages: [{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590364121/Fat%20Cattitude/mockup-0da9814e_1.jpg',
-      variantIndex: 1
-    }],
-    colors: [
-      {
-        colorName: 'White',
-        colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/f9c/f9c55ce5f414e5daa90956f17817d2ea_preview.png',
-        sizes: [
-          { variantID: 1962930869, size: 'XS' },
-          { variantID: 1962930871, size: 'S' },
-          { variantID: 1962930872, size: 'M' },
-          { variantID: 1962930873, size: 'L' },
-          { variantID: 1962930874, size: 'XL' },
-          { variantID: 1962930875, size: '2X' }
-        ]
-      },
-      {
-        colorName: 'Gray',
-        colorCode: '#a8abb2',
-        colorImage: 'https://files.cdn.printful.com/files/38c/38c84bf9c26b7e4e502767c8f736b2f3_preview.png',
-        sizes: [
-          { variantID: 1962938160, size: 'S' },
-          { variantID: 1962938161, size: 'M' },
-          { variantID: 1962938162, size: 'L' },
-          { variantID: 1962938163, size: 'XL' },
-          { variantID: 1962938164, size: '2X' }
-        ]
-      },
-      {
-        colorName: 'Blue',
-        colorCode: '#668ea7',
-        colorImage: 'https://files.cdn.printful.com/files/9a3/9a380790355fae9ed94406b1b440be12_preview.png',
-        sizes: [
-          { variantID: 1962938167, size: 'S' },
-          { variantID: 1962938168, size: 'M' },
-          { variantID: 1962938169, size: 'L' },
-          { variantID: 1962938170, size: 'XL' },
-          { variantID: 1962938171, size: '2X' }
-        ]
-      },
-      {
-        colorName: 'Orchid',
-        colorCode: '#b17e85',
-        colorImage: 'https://files.cdn.printful.com/files/eee/eeedd1b5effe31f6f303bd7d864dc007_preview.png',
-        sizes: [
-          { variantID: 1962938174, size: 'S' },
-          { variantID: 1962938175, size: 'M' },
-          { variantID: 1962938176, size: 'L' },
-          { variantID: 1962938177, size: 'XL' },
-          { variantID: 1962938178, size: '2X' }
-        ]
-      }
-    ],
-    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
-  },
+  // {
+  //   title: 'Corporate Fat Cat',
+  //   subtitle: 'All the fat cats in Washington',
+  //   id: 177643473,
+  //   price: 25,
+  //   inStock: true,
+  //   style: 'tshirt',
+  //   category: 'featuredShirts',
+  //   modelImages: [{
+  //     image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590364121/Fat%20Cattitude/mockup-0da9814e_1.jpg',
+  //     variantIndex: 1
+  //   }],
+  //   colors: [
+  //     {
+  //       colorName: 'White',
+  //       colorCode: '#ffffff',
+  //       colorImage: 'https://files.cdn.printful.com/files/f9c/f9c55ce5f414e5daa90956f17817d2ea_preview.png',
+  //       sizes: [
+  //         { variantID: 1962930869, size: 'XS' },
+  //         { variantID: 1962930871, size: 'S' },
+  //         { variantID: 1962930872, size: 'M' },
+  //         { variantID: 1962930873, size: 'L' },
+  //         { variantID: 1962930874, size: 'XL' },
+  //         { variantID: 1962930875, size: '2X' }
+  //       ]
+  //     },
+  //     {
+  //       colorName: 'Gray',
+  //       colorCode: '#a8abb2',
+  //       colorImage: 'https://files.cdn.printful.com/files/38c/38c84bf9c26b7e4e502767c8f736b2f3_preview.png',
+  //       sizes: [
+  //         { variantID: 1962938160, size: 'S' },
+  //         { variantID: 1962938161, size: 'M' },
+  //         { variantID: 1962938162, size: 'L' },
+  //         { variantID: 1962938163, size: 'XL' },
+  //         { variantID: 1962938164, size: '2X' }
+  //       ]
+  //     },
+  //     {
+  //       colorName: 'Blue',
+  //       colorCode: '#668ea7',
+  //       colorImage: 'https://files.cdn.printful.com/files/9a3/9a380790355fae9ed94406b1b440be12_preview.png',
+  //       sizes: [
+  //         { variantID: 1962938167, size: 'S' },
+  //         { variantID: 1962938168, size: 'M' },
+  //         { variantID: 1962938169, size: 'L' },
+  //         { variantID: 1962938170, size: 'XL' },
+  //         { variantID: 1962938171, size: '2X' }
+  //       ]
+  //     },
+  //     {
+  //       colorName: 'Orchid',
+  //       colorCode: '#b17e85',
+  //       colorImage: 'https://files.cdn.printful.com/files/eee/eeedd1b5effe31f6f303bd7d864dc007_preview.png',
+  //       sizes: [
+  //         { variantID: 1962938174, size: 'S' },
+  //         { variantID: 1962938175, size: 'M' },
+  //         { variantID: 1962938176, size: 'L' },
+  //         { variantID: 1962938177, size: 'XL' },
+  //         { variantID: 1962938178, size: '2X' }
+  //       ]
+  //     }
+  //   ],
+  //   description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+  // },
   {
     title: 'Have A Seat',
     subtitle: 'You no longer have a hamster.',
@@ -566,66 +566,7 @@ const products = [
       },
     ],
     description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
-  },
-
-  {
-    title: 'XCorporate Fat Cat',
-    subtitle: 'All the fat cats in Washington',
-    id: 1,
-    price: 25,
-    inStock: true,
-    style: 'tshirt',
-    category: 'featuredShirts',
-    modelImages: [{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590364121/Fat%20Cattitude/mockup-0da9814e_1.jpg',
-      variantIndex: 1
-    }],
-    colors: [
-      {
-        colorName: 'White',
-        colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/f9c/f9c55ce5f414e5daa90956f17817d2ea_preview.png',
-        sizes: [
-          { variantID: 1962930869, size: 'XS' },
-          { variantID: 1962930871, size: 'S' },
-          { variantID: 1962930872, size: 'M' },
-          { variantID: 1962930873, size: 'L' },
-          { variantID: 1962930874, size: 'XL' },
-          { variantID: 1962930875, size: '2X' }
-        ]
-      },
-    ],
-    description: 'test'
-  },
-  {
-    title: 'XCorporate Fat Cat',
-    subtitle: 'All the fat cats in Washington',
-    id: 2,
-    price: 25,
-    inStock: true,
-    style: 'tshirt',
-    category: 'featuredShirts',
-    modelImages: [{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590364121/Fat%20Cattitude/mockup-0da9814e_1.jpg',
-      variantIndex: 1
-    }],
-    colors: [
-      {
-        colorName: 'White',
-        colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/f9c/f9c55ce5f414e5daa90956f17817d2ea_preview.png',
-        sizes: [
-          { variantID: 1962930869, size: 'XS' },
-          { variantID: 1962930871, size: 'S' },
-          { variantID: 1962930872, size: 'M' },
-          { variantID: 1962930873, size: 'L' },
-          { variantID: 1962930874, size: 'XL' },
-          { variantID: 1962930875, size: '2X' }
-        ]
-      },
-    ],
-    description: 'test'
-  },
+  }
 ];
 
 
