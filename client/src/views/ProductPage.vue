@@ -211,9 +211,6 @@ export default {
       } else {
         this.showSuccess = true;
         this.$refs.successMessage.classList.add(showClass);
-
-        // Expose ATC hook for AB testing
-        document.dispatchEvent(new CustomEvent('atc', { detail: this.selected.variantID }));
       }
     },
     addToCart() {

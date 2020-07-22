@@ -124,6 +124,9 @@ export default {
     EventBus.$on('cart-update', cartArray => {
       localStorage.cart = JSON.stringify(cartArray);
       this.bagCount = cartArray.length;
+
+      // Expose hook for AB testing
+      document.dispatchEvent(new CustomEvent('cart-update', { detail: localStorage.cart }));
     });
 
     EventBus.$on('order-confirmation', () => {
