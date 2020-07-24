@@ -38,21 +38,16 @@ if (!process.env.PORT) {
 
 // Force HTTPS redirect
 // Always force "https://www."
-console.log('hello?');
 if (process.env.PORT) {
-  console.log('hello?222');
-  try {
-    app.use('/*', (req, res, next) => {
-      console.log('--------------', req.header('x-forwarded-proto'));
+  console.log('hello3?');
+  app.use((req, res, next) => {
+    console.log('--------------', req.header('x-forwarded-proto'));
 
-      if (req.header('x-forwarded-proto') !== 'https' ||
-          !req.header('host').includes('www.') ) {
-        res.redirect(`https://www.${req.header('host').replace('www.', '')}${req.url}`);
-      } else next();
-    });
-  } catch(e) {
-    console.log('XXXXXXXXXXXXXXXXXXX', e);
-  }
+    if (req.header('x-forwarded-proto') !== 'https' ||
+        !req.header('host').includes('www.') ) {
+      res.redirect(`https://www.${req.header('host').replace('www.', '')}${req.url}`);
+    } else next();
+  });
 }
 
 // Keep paths using the index.html file on direct route hits
