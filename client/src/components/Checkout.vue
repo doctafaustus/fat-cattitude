@@ -458,7 +458,7 @@ export default {
     getOrderEstimate() {
       this.estimateOrderError = false;
 
-      fetch('http://localhost:8081/api/estimate-costs', {
+      fetch(`${window.baseURL}/estimate-costs`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 

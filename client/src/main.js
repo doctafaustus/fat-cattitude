@@ -22,3 +22,6 @@ Vue.filter('toCurrency', value => {
   });
   return formatter.format(value);
 });
+
+window.baseURL = (window.location.host.includes('fatcattitude.com')) ? 
+`https://${window.location.host}/api` : 'https://localhost:8081/api';
