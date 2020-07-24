@@ -23,20 +23,16 @@ const db = admin.firestore();
 
 // Express app / Middleware
 const app = express();
+
 // Force HTTPS redirect
 // Always force "https://www."
 if (process.env.PORT) {
-  console.log('hello3?');
   app.use((req, res, next) => {
-    console.log('--------------', req.header('x-forwarded-proto'));
-
     if (req.header('x-forwarded-proto') !== 'https' || !req.header('host').includes('www.')) {
-      console.log('------------x--------- REDIRECTING');
       res.redirect(`https://www.${req.header('host').replace('www.', '')}${req.url}`);
     } else next();
   });
 }
-
 app.use(express.static(`${__dirname}/client/dist`));
 app.use(bodyParser.json({ limit: '1mb' }));
 
@@ -49,8 +45,6 @@ if (!process.env.PORT) {
     credentials: true 
   }));
 }
-
-
 
 // Keep paths using the index.html file on direct route hits
 app.use('/*', (req, res, next) => {
