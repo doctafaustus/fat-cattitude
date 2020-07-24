@@ -29,7 +29,7 @@ const app = express();
 if (process.env.PORT) {
   app.use((req, res, next) => {
     if (req.header('x-forwarded-proto') !== 'https' || !req.header('host').includes('www.')) {
-      res.redirect(`https://www.${req.header('host').replace('www.', '')}${req.url}`);
+      res.redirect(301, `https://www.${req.header('host').replace('www.', '')}${req.url}`);
     } else next();
   });
 }
