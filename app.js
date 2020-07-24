@@ -41,14 +41,18 @@ if (!process.env.PORT) {
 console.log('hello?');
 if (process.env.PORT) {
   console.log('hello?222');
-  app.use((req, res, next) => {
-    console.log('--------------', req.header('x-forwarded-proto'));
+  try {
+    app.use((req, res, next) => {
+      console.log('--------------', req.header('x-forwarded-proto'));
 
-    if (req.header('x-forwarded-proto') !== 'https' ||
-        !req.header('host').includes('www.') ) {
-      res.redirect(`https://www.${req.header('host').replace('www.', '')}${req.url}`);
-    } else next();
-  });
+      if (req.header('x-forwarded-proto') !== 'https' ||
+          !req.header('host').includes('www.') ) {
+        res.redirect(`https://www.${req.header('host').replace('www.', '')}${req.url}`);
+      } else next();
+    });
+  } catch(e) {
+    console.log('XXXXXXXXXXXXXXXXXXX', e);
+  }
 }
 
 // Keep paths using the index.html file on direct route hits
