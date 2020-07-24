@@ -52,7 +52,7 @@ const products = [
         ]
       }
     ],
-    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+    description: 'Why are other humans always trying to talk to us? Let them know you have better things to do. Like buy more funny cat shirts. They’ll take the hint.'
   },
   {
     title: 'Gansta Cat',
@@ -118,7 +118,7 @@ const products = [
         ]
       }
     ],
-    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+    description: 'Embrace those days you’re really feline like a gangsta. Hell, that’s every day. We see you keepin’ it real. Now show off your true stripes.'
   },
   {
     title: 'I Do What I Want',
@@ -186,7 +186,7 @@ const products = [
         ]
       },
     ],
-    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+    description: 'Yea, you march to the beat of your own meow. So what if you ruffle a little fur along the way? They should know who they’re messing with.'
   },
   // {
   //   title: 'Corporate Fat Cat',
@@ -304,7 +304,7 @@ const products = [
         ]
       }
     ],
-    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+    description: 'Something told us the cat and hamster wouldn’t get along…but who needs a hamster when you have a cat? Or an awesome cat shirt? It’s really a win-win for everybody (except for the hamster).'
   },
   {
     title: 'Mechanic Cat',
@@ -357,7 +357,7 @@ const products = [
         ]
       }
     ],
-    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+    description: 'Act confident and they’ll think you know what you’re doing. Even better, just act like you don’t care and go play with some yarn or something. Someone else can figure that out.'
   },
   {
     title: 'Daddy\'s Lil\' Monster',
@@ -410,7 +410,7 @@ const products = [
         ]
       }
     ],
-    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+    description: 'We all have that one in the litter—they hog the couch and think it’s always dinnertime. But you love them anyway. Show some love for your lil’ monster…even if they eat the last cheeseburger.'
   },
   {
     title: 'If I Fits, I Sits',
@@ -440,7 +440,7 @@ const products = [
         ]
       },
     ],
-    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+    description: 'Excuse me, we were sitting there. And there…and there. Mark your territory and keep your drink close by with a mug you probably relate to a little too much.'
   },
   {
     title: 'Fat Cattitude Hat',
@@ -466,7 +466,7 @@ const products = [
         ]
       },
     ],
-    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+    description: 'Let your inner fat cat take front and center with this top-notch hat. Warning: product may cause a sudden superiority complex. But it\'s worth it.'
   },
   {
     title: 'That\'s How We Roll',
@@ -499,7 +499,7 @@ const products = [
         ]
       },
     ],
-    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+    description: 'Don’t think of it as wasting all the toilet paper—think of it as redecorating the bathroom. Sometimes, you just gotta roll with the punches. The bathroom needed some sprucing up anyway.'
   },
   {
     title: 'Pathetic',
@@ -532,7 +532,7 @@ const products = [
         ]
       },
     ],
-    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+    description: 'Show them you’re not toying around. Playtime is over. At least, until we see the next shiny thing. Ooooh look, a laser!'
   },
   {
     title: 'Loaf Cat',
@@ -565,7 +565,7 @@ const products = [
         ]
       },
     ],
-    description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
+    description: 'We were never good at the “loaf of bread or cat?” game. Probably because we were always hoping it was a cat. Or maybe because we always buttered the loaf just in case. If you were wondering—cats don’t like to be buttered.'
   }
 ];
 

@@ -467,6 +467,7 @@ export default {
   .desc-container {
     grid-area: desc-container;
     padding: 0 40px;
+    align-self: flex-start;
 
     .desc-title {
       margin-bottom: 10px;
