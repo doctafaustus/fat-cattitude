@@ -40,6 +40,7 @@ if (!process.env.PORT) {
 // Always force "https://www."
 console.log('hello?');
 if (process.env.PORT) {
+  console.log('hello?222');
   app.use((req, res, next) => {
     console.log('--------------', req.header('x-forwarded-proto'));
 
