@@ -164,7 +164,7 @@ export default {
   },
   methods: {
     getOrder({ orderID, chargeID }) {
-      fetch(`http://localhost:8081/api/order-confirmation?orderID=${orderID}&chargeID=${chargeID}`, {
+      fetch(`${window.baseURL}/order-confirmation?orderID=${orderID}&chargeID=${chargeID}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })

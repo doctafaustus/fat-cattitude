@@ -543,7 +543,7 @@ export default {
       });
     },
     stripeTokenHandler(token) {
-      fetch('http://localhost:8081/api/place-order', {
+      fetch(`${window.baseURL}/place-order`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
