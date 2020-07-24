@@ -42,7 +42,7 @@ console.log('hello?');
 if (process.env.PORT) {
   console.log('hello?222');
   try {
-    app.use((req, res, next) => {
+    app.use('/*', (req, res, next) => {
       console.log('--------------', req.header('x-forwarded-proto'));
 
       if (req.header('x-forwarded-proto') !== 'https' ||
