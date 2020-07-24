@@ -38,6 +38,7 @@ if (!process.env.PORT) {
 
 // Force HTTPS redirect
 // Always force "https://www."
+console.log('hello?');
 if (process.env.PORT) {
   app.use((req, res, next) => {
     console.log('--------------', req.header('x-forwarded-proto'));
