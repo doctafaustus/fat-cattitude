@@ -484,7 +484,8 @@ export default {
     },
     addStripeElements() {
       const style = { base: { fontSize: '16px', '::placeholder': { color: '#a9a9a9', }}};
-      const stripePublishableKey = 'pk_test_OKClfKEUHvsE9Bpb9hoptSGV';
+
+      const stripePublishableKey = (window.location.hostname === 'www.fatcattitude.com') ? 'pk_live_WoScdx61kcdTsm7TbBSalh8j' : 'pk_test_OKClfKEUHvsE9Bpb9hoptSGV';
       this.stripe = Stripe(stripePublishableKey);
       const elements = this.stripe.elements();
 
