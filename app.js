@@ -188,10 +188,29 @@ app.post('/api/place-order', (req, res) => {
           return res.json({ error });
         } 
 
-        console.log('SUCCESS - send Printfuldraft order to fulfillment!');
         // Use https://api.printful.com/orders/{id}/confirm when ready
+        if (process.env.PORT) {
+          console.log('Confirming Printful order...');
 
-        res.json({ charge });
+          request({
+            url: `https://api.printful.com/orders/${charge.id}/confirm`,
+            method: 'POST',
+            headers: { 'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}` },
+            json: true,
+          }, (error, response) => {
+            if (error || (response && response.body && response.body.error)) {
+              console.log('Prinful confirm order error', error || response.body.error);
+              return res.json({ error: error || response.body.error.message });
+            }
+            
+            console.log('SUCCESS - Printful order confirmed!');
+            res.json({ charge });
+          });
+
+        } else {
+          console.log('SUCCESS - send Printful draft order to fulfillment!');
+          res.json({ charge });
+        }
       });
     });
   }
