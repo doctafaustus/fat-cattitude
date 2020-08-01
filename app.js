@@ -193,7 +193,7 @@ app.post('/api/place-order', (req, res) => {
           console.log('Confirming Printful order...');
 
           request({
-            url: `https://api.printful.com/orders/${charge.id}/confirm`,
+            url: `https://api.printful.com/orders/${charge.metadata.orderID}/confirm`,
             method: 'POST',
             headers: { 'Authorization': `Basic ${Buffer.from(PRINTFUL_API_KEY).toString('base64')}` },
             json: true,
@@ -259,3 +259,4 @@ app.post('/api/newsletter', (req, res) => {
 app.listen(process.env.PORT || 8081, () => {
   console.log('App listening on port 8081');
 });
+
