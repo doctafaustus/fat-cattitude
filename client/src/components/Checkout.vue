@@ -908,7 +908,7 @@ export default {
         border-top-color: #fff;
         border-bottom-color: #fff;
         border-radius: 50%;
-        animation: loader-rotate-data-v-7eff5a76 .725s linear infinite;
+        animation: loader-rotate .725s linear infinite;
         top: -1px;
       }
     }
