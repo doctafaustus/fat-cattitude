@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const request = require('request');
 const admin = require('firebase-admin');
+const favicon = require('serve-favicon');
 
 // Globals
 const STRIPE_SECRET_KEY = process.env.PORT ? process.env.STRIPE_SECRET_KEY : fs.readFileSync(`${__dirname}/private/stripe_secret_key.txt`).toString();
@@ -23,6 +24,7 @@ const db = admin.firestore();
 
 // Express app / Middleware
 const app = express();
+app.use(favicon(`${__dirname}/client/static/favicon.ico`));
 
 // Force HTTPS redirect
 // Always force "https://www."

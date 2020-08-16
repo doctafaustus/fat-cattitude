@@ -83,6 +83,7 @@ export default {
 
     .listing-title {
       margin-bottom: 20px;
+      font-size: 36px;
     }
 
     .products {

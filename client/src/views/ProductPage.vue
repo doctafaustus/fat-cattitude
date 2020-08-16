@@ -267,6 +267,7 @@ export default {
 
     .item-subtitle {
       font-size: 20px;
+      line-height: 26px;
     }
   }
 

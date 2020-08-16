@@ -188,71 +188,180 @@ const products = [
     ],
     description: 'Yea, you march to the beat of your own meow. So what if you ruffle a little fur along the way? They should know who they’re messing with.'
   },
-  // {
-  //   title: 'Corporate Fat Cat',
-  //   subtitle: 'All the fat cats in Washington',
-  //   id: 177643473,
-  //   price: 25,
-  //   inStock: true,
-  //   style: 'tshirt',
-  //   category: 'featuredShirts',
-  //   modelImages: [{
-  //     image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590364121/Fat%20Cattitude/mockup-0da9814e_1.jpg',
-  //     variantIndex: 1
-  //   }],
-  //   colors: [
-  //     {
-  //       colorName: 'White',
-  //       colorCode: '#ffffff',
-  //       colorImage: 'https://files.cdn.printful.com/files/f9c/f9c55ce5f414e5daa90956f17817d2ea_preview.png',
-  //       sizes: [
-  //         { variantID: 1962930869, size: 'XS' },
-  //         { variantID: 1962930871, size: 'S' },
-  //         { variantID: 1962930872, size: 'M' },
-  //         { variantID: 1962930873, size: 'L' },
-  //         { variantID: 1962930874, size: 'XL' },
-  //         { variantID: 1962930875, size: '2X' }
-  //       ]
-  //     },
-  //     {
-  //       colorName: 'Gray',
-  //       colorCode: '#a8abb2',
-  //       colorImage: 'https://files.cdn.printful.com/files/38c/38c84bf9c26b7e4e502767c8f736b2f3_preview.png',
-  //       sizes: [
-  //         { variantID: 1962938160, size: 'S' },
-  //         { variantID: 1962938161, size: 'M' },
-  //         { variantID: 1962938162, size: 'L' },
-  //         { variantID: 1962938163, size: 'XL' },
-  //         { variantID: 1962938164, size: '2X' }
-  //       ]
-  //     },
-  //     {
-  //       colorName: 'Blue',
-  //       colorCode: '#668ea7',
-  //       colorImage: 'https://files.cdn.printful.com/files/9a3/9a380790355fae9ed94406b1b440be12_preview.png',
-  //       sizes: [
-  //         { variantID: 1962938167, size: 'S' },
-  //         { variantID: 1962938168, size: 'M' },
-  //         { variantID: 1962938169, size: 'L' },
-  //         { variantID: 1962938170, size: 'XL' },
-  //         { variantID: 1962938171, size: '2X' }
-  //       ]
-  //     },
-  //     {
-  //       colorName: 'Orchid',
-  //       colorCode: '#b17e85',
-  //       colorImage: 'https://files.cdn.printful.com/files/eee/eeedd1b5effe31f6f303bd7d864dc007_preview.png',
-  //       sizes: [
-  //         { variantID: 1962938174, size: 'S' },
-  //         { variantID: 1962938175, size: 'M' },
-  //         { variantID: 1962938176, size: 'L' },
-  //         { variantID: 1962938177, size: 'XL' },
-  //         { variantID: 1962938178, size: '2X' }
-  //       ]
-  //     }
-  //   ],
-  //   description: 'Porchetta meatloaf landjaeger, pork belly sausage jerky flank shoulder. Tail jerky salami sausage short ribs alcatra chuck porchetta shankle kevin capicola ham leberkas. Pastrami filet mignon hamburger drumstick fatback ham pork loin bacon.'
-  // },
+  {
+    title: 'Corporate Fat Cat',
+    subtitle: 'The fat cats in Washington don\'t even look this good',
+    id: 177643473,
+    price: 25,
+    inStock: true,
+    style: 'tshirt',
+    category: 'shirts',
+    modelImages: [{
+      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590364121/Fat%20Cattitude/mockup-0da9814e_1.jpg',
+      variantIndex: 1
+    }],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/f9c/f9c55ce5f414e5daa90956f17817d2ea_preview.png',
+        sizes: [
+          { variantID: 1962930869, size: 'XS' },
+          { variantID: 1962930871, size: 'S' },
+          { variantID: 1962930872, size: 'M' },
+          { variantID: 1962930873, size: 'L' },
+          { variantID: 1962930874, size: 'XL' },
+          { variantID: 1962930875, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Gray',
+        colorCode: '#a8abb2',
+        colorImage: 'https://files.cdn.printful.com/files/38c/38c84bf9c26b7e4e502767c8f736b2f3_preview.png',
+        sizes: [
+          { variantID: 1962938160, size: 'S' },
+          { variantID: 1962938161, size: 'M' },
+          { variantID: 1962938162, size: 'L' },
+          { variantID: 1962938163, size: 'XL' },
+          { variantID: 1962938164, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Blue',
+        colorCode: '#668ea7',
+        colorImage: 'https://files.cdn.printful.com/files/9a3/9a380790355fae9ed94406b1b440be12_preview.png',
+        sizes: [
+          { variantID: 1962938167, size: 'S' },
+          { variantID: 1962938168, size: 'M' },
+          { variantID: 1962938169, size: 'L' },
+          { variantID: 1962938170, size: 'XL' },
+          { variantID: 1962938171, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Orchid',
+        colorCode: '#b17e85',
+        colorImage: 'https://files.cdn.printful.com/files/eee/eeedd1b5effe31f6f303bd7d864dc007_preview.png',
+        sizes: [
+          { variantID: 1962938174, size: 'S' },
+          { variantID: 1962938175, size: 'M' },
+          { variantID: 1962938176, size: 'L' },
+          { variantID: 1962938177, size: 'XL' },
+          { variantID: 1962938178, size: '2X' }
+        ]
+      }
+    ],
+    description: 'Ah, the corporate life. We’ve got very serious business to do, thank you very much. And we won’t tell anyone that your briefcase is full of snacks. It’ll be our little secret.'
+  },
+  {
+    title: 'Fat Caturday',
+    subtitle: 'You know how to spend the weekend.',
+    id: 189011336,
+    price: 25,
+    inStock: true,
+    style: 'tshirt',
+    category: 'shirts',
+    modelImages: [{
+      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1597544675/Fat%20Cattitude/mockup-1b41d8a4_1.jpg',
+      variantIndex: 1
+    }],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/fe3/fe30fb16c201d25ea074057658cc3078_preview.png',
+        sizes: [
+          { variantID: 2086396621, size: 'XS' },
+          { variantID: 2086396623, size: 'S' },
+          { variantID: 2086396624, size: 'M' },
+          { variantID: 2086396625, size: 'L' },
+          { variantID: 2086396626, size: 'XL' },
+          { variantID: 2086396627, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Prism',
+        colorCode: '#a1c3b8',
+        colorImage: 'https://files.cdn.printful.com/files/cd0/cd0a89cebaf1d1572852302843070203_preview.png',
+        sizes: [
+          { variantID: 2086396630, size: 'XS' },
+          { variantID: 2086396631, size: 'S' },
+          { variantID: 2086396632, size: 'M' },
+          { variantID: 2086396633, size: 'L' },
+          { variantID: 2086396634, size: 'XL' },
+          { variantID: 2086396635, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Lilac',
+        colorCode: '#d9b0cb',
+        colorImage: 'https://files.cdn.printful.com/files/b98/b988b870a8aa55f8ced1d3a394fd3d18_preview.png',
+        sizes: [
+          { variantID: 2086396638, size: 'XS' },
+          { variantID: 2086396639, size: 'S' },
+          { variantID: 2086396640, size: 'M' },
+          { variantID: 2086396641, size: 'L' },
+          { variantID: 2086396642, size: 'XL' },
+          { variantID: 2086396643, size: '2X' }
+        ]
+      },
+    ],
+    description: 'Even if you’re not making the fat cat bucks, at least you’ve got the weekend. And what’s Caturday without a little wine? Ok, a lot of wine. Unleash your weekend warrior right meow.'
+  },
+  {
+    title: 'Don\'t Talk To Me',
+    subtitle: 'Ever again.',
+    id: 189017057,
+    price: 25,
+    inStock: true,
+    style: 'tshirt',
+    category: 'shirts',
+    modelImages: [{
+      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1597547159/Fat%20Cattitude/0634de8c9dc940d3dccbd526a86ff9f9_preview_1.png',
+      variantIndex: 2
+    }],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/0da/0da378dcd3dde0c6e53b3c754b861b46_preview.png',
+        sizes: [
+          { variantID: 2086573210, size: 'XS' },
+          { variantID: 2086573211, size: 'S' },
+          { variantID: 2086573212, size: 'M' },
+          { variantID: 2086573213, size: 'L' },
+          { variantID: 2086573214, size: 'XL' },
+          { variantID: 2086573215, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Peach',
+        colorCode: '#eec1b3',
+        colorImage: 'https://files.cdn.printful.com/files/cd0/cd04207c41afcf1592b91b9e2f493452_preview.png',
+        sizes: [
+          { variantID: 2086573216, size: 'XS' },
+          { variantID: 2086573218, size: 'S' },
+          { variantID: 2086573219, size: 'M' },
+          { variantID: 2086573221, size: 'L' },
+          { variantID: 2086573223, size: 'XL' },
+          { variantID: 2086573225, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Pink',
+        colorCode: '#fcd1db',
+        colorImage: 'https://files.cdn.printful.com/files/a76/a76bcc834abb6cbba2f3482348ebe17c_preview.png',
+        sizes: [
+          { variantID: 2086573226, size: 'S' },
+          { variantID: 2086573228, size: 'M' },
+          { variantID: 2086573229, size: 'L' },
+          { variantID: 2086573230, size: 'XL' },
+          { variantID: 2086573231, size: '2X' }
+        ]
+      },
+    ],
+    description: 'Whether you have a mini-me or not, this shirt gets the message across. You’re the only one allowed to make fun of your family. Haters can talk to the paw.'
+  },
   {
     title: 'Have A Seat',
     subtitle: 'You no longer have a hamster.',
