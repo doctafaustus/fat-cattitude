@@ -30,8 +30,8 @@
         <div class="status">Order Status: <span class="status-value">{{ status }}</span></div>
           <ul class="shipments">
             <li v-for="(shipment, index) in shipments" :key="index" class="shipment">
-              <div class="shipment-item">{{ shipment.carrier }} - {{ shipment.service }}</div>
-              <div class="shipment-item">Tracking #: {{ shipment.tracking_number }}</div>
+              <div class="shipment-item"><b>{{ shipment.carrier }}</b> - {{ shipment.service }}</div>
+              <div class="shipment-item"><b>Tracking #</b>: {{ shipment.tracking_number }}</div>
             </li>
           </ul>
       </div>
