@@ -191,14 +191,6 @@ export default {
           total: order.retail_costs.total
         };
 
-        this.shipments = [
-          {
-            carrier: 'USPS',
-            service: 'Flat Rate',
-            tracking_number: 232432432423
-          }
-        ]
-
 
         this.getOrderProducts(order);
 
