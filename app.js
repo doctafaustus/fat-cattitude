@@ -8,6 +8,7 @@ const admin = require('firebase-admin');
 const favicon = require('serve-favicon');
 const sendOrderSuccessEmail = require('./mailer/send-order-success-email.js'); 
 
+
 // Globals
 const STRIPE_SECRET_KEY = process.env.PORT ? process.env.STRIPE_SECRET_KEY : fs.readFileSync(`${__dirname}/private/stripe_secret_key.txt`).toString();
 const PRINTFUL_API_KEY = process.env.PORT ? process.env.PRINTFUL_API_KEY : fs.readFileSync(`${__dirname}/private/printful_api_key.txt`).toString();
@@ -52,11 +53,10 @@ if (!process.env.PORT) {
 
 // Keep paths using the index.html file on direct route hits
 app.use('/*', (req, res, next) => {
-  if (/^\/api\//.test(req.originalUrl)) {
-    next();
-  } else {
-    res.sendFile(`${__dirname}/client/dist/index.html`);
-  }
+  console.log('reqqqqqq', req.originalUrl);
+  if (/^\/api\//.test(req.originalUrl)) next();
+  else if (/\/item\//.test(req.originalUrl)) updateMetaTags(req, res);
+  else res.sendFile(`${__dirname}/client/dist/index.html`);
 });
 
 
@@ -266,3 +266,44 @@ app.listen(process.env.PORT || 8081, () => {
 });
 
 
+
+
+async function updateMetaTags(req, res) {
+
+  console.log('working');
+
+  // First get and parse products array from app src
+  const productsText = await fs.promises.readFile(`${__dirname}/client/src/model/products.js`, 'utf-8');
+  const startPos = productsText.search(/\[/);
+  const endPos = productsText.lastIndexOf('];') + 1;
+  const trimmedSnippetText = productsText.substring(startPos, endPos);
+  const stringifiedProducts = JSON.stringify(trimmedSnippetText);
+  const productsArr = JSON.parse(stringifiedProducts);
+
+  // Retrieve product object that includes the current URL item id
+  const productID = req.originalUrl.substring(req.originalUrl.indexOf('/item/')).replace('/item/', '');
+  const productObj = productsArr.find(product => product.id == productID);
+
+  console.log('productObj', productObj);
+
+  // const snippetSlug = req.originalUrl.substring(req.originalUrl.indexOf('/snippet/')).replace('/snippet/', '');
+  // const snippetObj = snippetsArr.find(snippet => snippet.slug === snippetSlug);
+
+  // const baseFile = `${__dirname}/client/dist/index.html`;
+  // if (!snippetObj) return res.sendFile(baseFile);
+
+  // // Update the meta tag properties in the built bundle
+  // const baseHTML = await fs.promises.readFile(baseFile, 'utf-8');
+  // const tempHTML = baseHTML.replace('<html lang=en>', '<article>').replace('</html>', '</article>');
+  // const $base = $(tempHTML);
+
+  // $base.find('meta[property=og\\:url]').attr('content', `${req.protocol}://${req.get('host')}${req.originalUrl}`);
+  // $base.find('meta[property=og\\:type]').attr('content', 'article');
+  // $base.find('meta[property=og\\:title]').attr('content', snippetObj.title);
+  // $base.find('meta[property=og\\:image]').attr('content', snippetObj.image);
+  // $base.find('meta[property=og\\:description]').attr('content', snippetObj.desc);
+
+
+  // // Send the modified HTML as the response
+  // res.send($.html($base));
+}
