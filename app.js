@@ -280,19 +280,12 @@ async function updateMetaTags(req, res) {
   const stringifiedProducts = JSON.stringify(eval('(' + trimmedSnippetText + ')'));
   const productsArr = JSON.parse(stringifiedProducts);
 
-
   // Retrieve product object that includes the current URL item id
   const productID = req.originalUrl.substring(req.originalUrl.indexOf('/item/')).replace('/item/', '');
-  console.log('PRODUCTID', productID);
   const productObj = productsArr.find(product => product.id == productID);
 
-  console.log('productObj', productObj);
-
-  // const snippetSlug = req.originalUrl.substring(req.originalUrl.indexOf('/snippet/')).replace('/snippet/', '');
-  // const snippetObj = snippetsArr.find(snippet => snippet.slug === snippetSlug);
-
-  // const baseFile = `${__dirname}/client/dist/index.html`;
-  // if (!snippetObj) return res.sendFile(baseFile);
+  const baseFile = `${__dirname}/client/dist/index.html`;
+  if (!productObj) return res.sendFile(baseFile);
 
   // // Update the meta tag properties in the built bundle
   // const baseHTML = await fs.promises.readFile(baseFile, 'utf-8');
