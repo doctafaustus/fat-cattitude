@@ -6,6 +6,7 @@ const cors = require('cors');
 const request = require('request');
 const admin = require('firebase-admin');
 const favicon = require('serve-favicon');
+const sendOrderSuccessEmail = require('./mailer/send-order-success-email.js'); 
 
 // Globals
 const STRIPE_SECRET_KEY = process.env.PORT ? process.env.STRIPE_SECRET_KEY : fs.readFileSync(`${__dirname}/private/stripe_secret_key.txt`).toString();
@@ -25,6 +26,7 @@ const db = admin.firestore();
 // Express app / Middleware
 const app = express();
 app.use(favicon(`${__dirname}/client/static/favicon.ico`));
+
 
 // Force HTTPS redirect
 // Always force "https://www."
@@ -201,11 +203,12 @@ app.post('/api/place-order', (req, res) => {
             json: true,
           }, (error, response) => {
             if (error || (response && response.body && response.body.error)) {
-              console.log('Prinful confirm order error', error || response.body.error);
+              console.log('Printful confirm order error', error || response.body.error);
               return res.json({ error: error || response.body.error.message });
             }
             
             console.log('SUCCESS - Printful order confirmed!');
+            sendOrderSuccessEmail(charge.receipt_email, charge.metadata.orderID);
             res.json({ charge });
           });
 
@@ -261,4 +264,5 @@ app.post('/api/newsletter', (req, res) => {
 app.listen(process.env.PORT || 8081, () => {
   console.log('App listening on port 8081');
 });
+
 
