@@ -469,7 +469,7 @@ const products = [
     description: 'Act confident and they’ll think you know what you’re doing. Even better, just act like you don’t care and go play with some yarn or something. Someone else can figure that out.'
   },
   {
-    title: 'Daddy\'s Lil\' Monster',
+    title: 'Fat Catting',
     subtitle: 'Just a cat enjoying his late night TV.',
     id: 176794106,
     price: 25,
@@ -477,14 +477,14 @@ const products = [
     style: 'tshirt',
     category: 'shirts',
     modelImages: [{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589954174/Fat%20Cattitude/mockup-37626f09.jpg',
+      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598036526/Fat%20Cattitude/d56685e087e8628a1be89a51060e3b81_preview_1.png',
       variantIndex: 1
     }],
     colors: [
       {
         colorName: 'White',
         colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/8c8/8c8e90efb5fb23a96340ca09b3ef7899_preview.png',
+        colorImage: 'https://files.cdn.printful.com/files/782/782b3ca3681beea87cf66a469fae7d27_preview.png',
         sizes: [
           { variantID: 1954020516, size: 'XS' },
           { variantID: 1954020517, size: 'S' },
@@ -497,7 +497,7 @@ const products = [
       {
         colorName: 'Teal',
         colorCode: '#487485',
-        colorImage: 'https://files.cdn.printful.com/files/25b/25bfa06adf552c8f933b7fd9953be0cb_preview.png',
+        colorImage: 'https://files.cdn.printful.com/files/d3d/d3d3b94e5059a61a0b423e2cfc02accd_preview.png',
         sizes: [
           { variantID: 1954021677, size: 'S' },
           { variantID: 1954021678, size: 'M' },
@@ -509,7 +509,7 @@ const products = [
       {
         colorName: 'Ocean',
         colorCode: '#619dc1',
-        colorImage: 'https://files.cdn.printful.com/files/474/474119ca46b99ef1edcd7db95511f057_preview.png',
+        colorImage: 'https://files.cdn.printful.com/files/c9b/c9b7efac8b1c9bc865c8d6b71d6f90d0_preview.png',
         sizes: [
           { variantID: 1954021682, size: 'S' },
           { variantID: 1954021683, size: 'M' },
@@ -519,7 +519,7 @@ const products = [
         ]
       }
     ],
-    description: 'We all have that one in the litter—they hog the couch and think it’s always dinnertime. But you love them anyway. Show some love for your lil’ monster…even if they eat the last cheeseburger.'
+    description: 'We all need a little down time to hog the couch and indulge on some gourmet junk food. Show off your fat cat lifestyle with pride... even if you stole the very last cheeseburger.'
   },
   {
     title: 'If I Fits, I Sits',
