@@ -1,6 +1,6 @@
 const products = [
   {
-    title: 'I\'m Busy',
+    title: 'I’m Busy',
     subtitle: 'Sassy busy cat t-shirt',
     id: 163440250,
     price: 25,
@@ -56,7 +56,7 @@ const products = [
   },
   {
     title: 'Gansta Cat',
-    subtitle: 'That\'s how we roll',
+    subtitle: 'That’s how we roll',
     id: 176205420,
     price: 25,
     inStock: true,
@@ -190,7 +190,7 @@ const products = [
   },
   {
     title: 'Corporate Fat Cat',
-    subtitle: 'The fat cats in Washington don\'t even look this good',
+    subtitle: 'The fat cats in Washington don’t even look this good',
     id: 177643473,
     price: 25,
     inStock: true,
@@ -309,7 +309,7 @@ const products = [
     description: 'Even if you’re not making the fat cat bucks, at least you’ve got the weekend. And what’s Caturday without a little wine? Ok, a lot of wine. Unleash your weekend warrior right meow.'
   },
   {
-    title: 'Don\'t Talk To Me',
+    title: 'Don’t Talk To Me',
     subtitle: 'Ever again.',
     id: 189017057,
     price: 25,
@@ -417,7 +417,7 @@ const products = [
   },
   {
     title: 'Mechanic Cat',
-    subtitle: 'I have no idea what I\'m doing.',
+    subtitle: 'I have no idea what I’m doing.',
     id: 177594656,
     price: 25,
     inStock: true,
@@ -523,7 +523,7 @@ const products = [
   },
   {
     title: 'If I Fits, I Sits',
-    subtitle: 'This cat ain\'t going nowhere.',
+    subtitle: 'This cat ain’t going nowhere.',
     id: 177031652,
     price: 25,
     inStock: true,
@@ -575,11 +575,11 @@ const products = [
         ]
       },
     ],
-    description: 'Let your inner fat cat take front and center with this top-notch hat. Warning: product may cause a sudden superiority complex. But it\'s worth it.'
+    description: 'Let your inner fat cat take front and center with this top-notch hat. Warning: product may cause a sudden superiority complex. But it’s worth it.'
   },
   {
-    title: 'That\'s How We Roll',
-    subtitle: 'Tryin\' to catch me ridin\' dirty',
+    title: 'That’s How We Roll',
+    subtitle: 'Tryin’ to catch me ridin’ dirty',
     id: 177664287,
     price: 5,
     inStock: true,

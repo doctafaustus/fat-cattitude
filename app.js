@@ -265,7 +265,7 @@ app.listen(process.env.PORT || 8081, () => {
   console.log('App listening on port 8081');
 });
 
-
+updateMetaTags();
 
 
 async function updateMetaTags(req, res) {
@@ -277,10 +277,9 @@ async function updateMetaTags(req, res) {
   const startPos = productsText.search(/\[/);
   const endPos = productsText.lastIndexOf('];') + 1;
   const trimmedSnippetText = productsText.substring(startPos, endPos);
-  const stringifiedProducts = JSON.stringify(trimmedSnippetText);
+  const stringifiedProducts = JSON.stringify(eval('(' + trimmedSnippetText + ')'));
   const productsArr = JSON.parse(stringifiedProducts);
-  
-  console.log('????', productsArr);
+
 
   // Retrieve product object that includes the current URL item id
   const productID = req.originalUrl.substring(req.originalUrl.indexOf('/item/')).replace('/item/', '');
