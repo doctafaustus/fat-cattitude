@@ -279,9 +279,12 @@ async function updateMetaTags(req, res) {
   const trimmedSnippetText = productsText.substring(startPos, endPos);
   const stringifiedProducts = JSON.stringify(trimmedSnippetText);
   const productsArr = JSON.parse(stringifiedProducts);
+  
+  console.log('????', productsArr);
 
   // Retrieve product object that includes the current URL item id
   const productID = req.originalUrl.substring(req.originalUrl.indexOf('/item/')).replace('/item/', '');
+  console.log('PRODUCTID', productID);
   const productObj = productsArr.find(product => product.id == productID);
 
   console.log('productObj', productObj);
