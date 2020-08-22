@@ -293,7 +293,7 @@ async function updateMetaTags(req, res) {
 
   $base.find('meta[property=og\\:url]').attr('content', `https://${req.get('host')}${req.originalUrl}`);
   $base.find('meta[property=og\\:title]').attr('content', productObj.title);
-  $base.find('meta[property=og\\:image]').attr('content', productObj.colors[0].colorImage);
+  $base.find('meta[property=og\\:image]').attr('content', productObj.ogImage);
   $base.find('meta[property=og\\:description]').attr('content', productObj.description);
 
   console.log('WHAT IS IT', $base.find('meta[property=og\\:url]').attr('content'));

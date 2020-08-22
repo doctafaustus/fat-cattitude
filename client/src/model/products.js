@@ -7,6 +7,7 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'featuredShirts',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598066664/Fat%20Cattitude/OG_Image_Template.jpg',
     modelImages: [{
       image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589652298/Fat%20Cattitude/me_im_busy.jpg',
       variantIndex: 0
