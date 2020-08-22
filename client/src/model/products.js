@@ -199,6 +199,7 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598069110/Fat%20Cattitude/corporate-fat-cat.jpg',
     modelImages: [{
       image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590364121/Fat%20Cattitude/mockup-0da9814e_1.jpg',
       variantIndex: 1
@@ -264,6 +265,7 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598069257/Fat%20Cattitude/fat-caturday.jpg',
     modelImages: [{
       image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1597544675/Fat%20Cattitude/mockup-1b41d8a4_1.jpg',
       variantIndex: 1
@@ -319,6 +321,7 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598069368/Fat%20Cattitude/dont-talk-to-me-or-my-son.jpg',
     modelImages: [{
       image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1597547159/Fat%20Cattitude/0634de8c9dc940d3dccbd526a86ff9f9_preview_1.png',
       variantIndex: 2
@@ -373,6 +376,7 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598069519/Fat%20Cattitude/have-a-seat-sized.jpg',
     modelImages:[{
       image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589859314/Fat%20Cattitude/mockup-d368497e.jpg',
       variantIndex: 2
