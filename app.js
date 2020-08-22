@@ -287,17 +287,10 @@ async function updateMetaTags(req, res) {
   const tempHTML = baseHTML.replace('<html lang=en>', '<article>').replace('</html>', '</article>');
   const $base = $(tempHTML);
 
-  console.log('title', productObj.title);
-  console.log('image', productObj.colors[0].colorImage);
-  console.log('description', productObj.description);
-
   $base.find('meta[property=og\\:url]').attr('content', `https://${req.get('host')}${req.originalUrl}`);
   $base.find('meta[property=og\\:title]').attr('content', productObj.title);
   $base.find('meta[property=og\\:image]').attr('content', productObj.ogImage);
   $base.find('meta[property=og\\:description]').attr('content', productObj.description);
-
-  console.log('WHAT IS IT', $base.find('meta[property=og\\:url]').attr('content'));
-  console.log('---', $.html($base));
 
   // Send the modified HTML as the response
   res.send($.html($base));
