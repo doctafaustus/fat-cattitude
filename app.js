@@ -266,8 +266,6 @@ app.listen(process.env.PORT || 8081, () => {
 
 async function updateMetaTags(req, res) {
 
-  console.log('--------', /\/item\//.test(req.originalUrl));
-
   // First get and parse products array from app src
   const productsText = await fs.promises.readFile(`${__dirname}/client/src/model/products.js`, 'utf-8');
   const startPos = productsText.search(/\[/);
@@ -284,13 +282,12 @@ async function updateMetaTags(req, res) {
   const baseFile = `${__dirname}/client/dist/index.html`;
   if (!productObj) return res.sendFile(baseFile);
 
-  console.log('productObj', productObj);
-
   // Update the meta tag properties in the built bundle
   const baseHTML = await fs.promises.readFile(baseFile, 'utf-8');
   const tempHTML = baseHTML.replace('<html lang=en>', '<article>').replace('</html>', '</article>');
   const $base = $(tempHTML);
 
+  console.log('URL', `${req.protocol}://${req.get('host')}${req.originalUrl}`);
   $base.find('meta[property=og\\:url]').attr('content', `${req.protocol}://${req.get('host')}${req.originalUrl}`);
   $base.find('meta[property=og\\:type]').attr('content', 'Product');
   $base.find('meta[property=og\\:title]').attr('content', productObj.title);
