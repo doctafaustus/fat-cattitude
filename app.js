@@ -26,7 +26,7 @@ const db = admin.firestore();
 
 // Express app / Middleware
 const app = express();
-app.use(favicon(`${__dirname}/client/static/favicon.ico`));
+app.use(favicon(`${__dirname}/client/public/favicon.ico`));
 
 
 // Force HTTPS redirect
