@@ -29,17 +29,15 @@
           <div class="block mug">
             <h1 class="section-title light">NEW: Fat Cat Mug</h1>
             <div class="block-description">
-              <span>Sometimes there's a place in our heart for something and we don't even know it.</span>
-              <span>We've got that something for you.</span>
-              <span>Introducing Burger Bun.</span>
+              <span>Excuse me, we were sitting there. And there…and there. Mark your territory and keep your drink close by with a mug you probably relate to a little too much. Introducing the "If I Fits, I Sits" Mug!</span>
             </div>
-            <a class="cta" href="#">Gimme this!</a>
+            <router-link :to="{ name: 'Product', params: { id: 177031652 }}" class="cta">Gimme this!</router-link>
             <ProductCard v-for="item in products.filter(product => product.id === 177031652)" :key="item.id" :product="item"></ProductCard>
           </div>
 
           <div class="block hat">
             <div class="hat-container">
-              <h1 class="section-title light">Mad Hatter</h1>
+              <h1 class="section-title light">Cat Hatter</h1>
               <div class="block-description">
                 <span>Fat Cattitude Baseball Cap</span>
               </div>
@@ -196,9 +194,8 @@ export default {
         text-align: left;
         color: #fff;
         font-size: 20px;
-        font-weight: bold;
-        line-height: 23px;
-        margin-bottom: 45px;
+        line-height: 26px;
+        margin-bottom: 40px;
 
         span {
           display: block;

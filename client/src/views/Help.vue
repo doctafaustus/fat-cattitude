@@ -12,7 +12,7 @@
       <li class="question-container">
         <div class="question">Q: How long does it take to process and ship my order?</div>
         <div class="answer">
-          A: The time it takes for you to receive your order will depend on your location, the item(s) ordered, and the shipping speed you selected. All shipments take place in two stages: processing and transit. At this time, due to Covid-19 delays, processsing time is estimated to be between 22-27 days. Shipping time is, on average, 3-4 business days after fulfillment.
+          A: The time it takes for you to receive your order will depend on your location, the item(s) ordered, and the shipping speed you selected. All shipments take place in two stages: processing and transit. At this time, processsing takes anywhere from 2-7 business days. Shipping time is, on average, 3-4 business days after fulfillment.
         </div>
       </li>
 
