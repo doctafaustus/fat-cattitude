@@ -7,7 +7,7 @@ const request = require('request');
 const admin = require('firebase-admin');
 const favicon = require('serve-favicon');
 const sendOrderSuccessEmail = require('./mailer/send-order-success-email.js'); 
-
+const $ = require('cheerio');
 
 // Globals
 const STRIPE_SECRET_KEY = process.env.PORT ? process.env.STRIPE_SECRET_KEY : fs.readFileSync(`${__dirname}/private/stripe_secret_key.txt`).toString();
@@ -264,9 +264,6 @@ app.listen(process.env.PORT || 8081, () => {
   console.log('App listening on port 8081');
 });
 
-//updateMetaTags();
-
-
 async function updateMetaTags(req, res) {
 
   // First get and parse products array from app src
@@ -285,18 +282,18 @@ async function updateMetaTags(req, res) {
   const baseFile = `${__dirname}/client/dist/index.html`;
   if (!productObj) return res.sendFile(baseFile);
 
-  // // Update the meta tag properties in the built bundle
-  // const baseHTML = await fs.promises.readFile(baseFile, 'utf-8');
-  // const tempHTML = baseHTML.replace('<html lang=en>', '<article>').replace('</html>', '</article>');
-  // const $base = $(tempHTML);
+  // Update the meta tag properties in the built bundle
+  const baseHTML = await fs.promises.readFile(baseFile, 'utf-8');
+  const tempHTML = baseHTML.replace('<html lang=en>', '<article>').replace('</html>', '</article>');
+  const $base = $(tempHTML);
 
-  // $base.find('meta[property=og\\:url]').attr('content', `${req.protocol}://${req.get('host')}${req.originalUrl}`);
-  // $base.find('meta[property=og\\:type]').attr('content', 'article');
-  // $base.find('meta[property=og\\:title]').attr('content', snippetObj.title);
-  // $base.find('meta[property=og\\:image]').attr('content', snippetObj.image);
-  // $base.find('meta[property=og\\:description]').attr('content', snippetObj.desc);
+  $base.find('meta[property=og\\:url]').attr('content', `${req.protocol}://${req.get('host')}${req.originalUrl}`);
+  $base.find('meta[property=og\\:type]').attr('content', 'Product');
+  $base.find('meta[property=og\\:title]').attr('content', productObj.title);
+  $base.find('meta[property=og\\:image]').attr('content', productObj.colors[0].colorImage);
+  $base.find('meta[property=og\\:description]').attr('content', productObj.description);
 
 
-  // // Send the modified HTML as the response
-  // res.send($.html($base));
+  // Send the modified HTML as the response
+  res.send($.html($base));
 }
