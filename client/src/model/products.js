@@ -63,6 +63,7 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'featuredShirts',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598068633/Fat%20Cattitude/gangsta-cat.jpg',
     modelImages: [{
       image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598056789/Fat%20Cattitude/molly_fc_1.jpg',
       variantIndex: 3
