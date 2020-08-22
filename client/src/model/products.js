@@ -430,6 +430,7 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598071794/Fat%20Cattitude/mechanic-cat.jpg',
     modelImages:[{
       image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590340170/Fat%20Cattitude/mockup-9c0381e1.jpg',
       variantIndex: 2
@@ -483,6 +484,7 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598071881/Fat%20Cattitude/fat-catting.jpg',
     modelImages: [{
       image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598036526/Fat%20Cattitude/d56685e087e8628a1be89a51060e3b81_preview_1.png',
       variantIndex: 1
@@ -536,6 +538,7 @@ const products = [
     inStock: true,
     style: 'mug',
     category: 'accessories',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598072247/Fat%20Cattitude/if-i-fiits-i-sits.jpg',
     modelImages: [
       {
         image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590334058/Fat%20Cattitude/317e240fd602c764547d628bbce91b31_preview.png',
@@ -566,6 +569,7 @@ const products = [
     inStock: true,
     style: 'hat',
     category: 'accessories',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598072574/Fat%20Cattitude/fat-cattitude-hat.jpg',
     modelImages: [
       {
         image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590455665/Fat%20Cattitude/Hat-Logo2_mockup_Front_Womens-Lifestyle_White_1.jpg',
@@ -592,6 +596,7 @@ const products = [
     inStock: true,
     style: 'sticker',
     category: 'sticker',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598072840/Fat%20Cattitude/thats-how-we-roll.jpg',
     modelImages: [
       {
         image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590718422/Fat%20Cattitude/thatshowweroll_1.png',
@@ -625,6 +630,7 @@ const products = [
     inStock: true,
     style: 'sticker',
     category: 'sticker',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598072978/Fat%20Cattitude/pathetic-cat.jpg',
     modelImages: [
       {
         image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590718683/Fat%20Cattitude/pathetic_1_1.png',
@@ -658,6 +664,7 @@ const products = [
     inStock: true,
     style: 'sticker',
     category: 'sticker',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598073084/Fat%20Cattitude/loaf-cat.jpg',
     modelImages: [
       {
         image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590718341/Fat%20Cattitude/loaf_1.png',
