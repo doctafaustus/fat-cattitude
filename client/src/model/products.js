@@ -63,8 +63,8 @@ const products = [
     style: 'tshirt',
     category: 'featuredShirts',
     modelImages: [{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589673513/Fat%20Cattitude/mockup-11b5aecf.jpg',
-      variantIndex: 2
+      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598056789/Fat%20Cattitude/molly_fc_1.jpg',
+      variantIndex: 3
     }],
     colors: [
       {

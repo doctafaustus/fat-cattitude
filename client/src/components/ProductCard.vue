@@ -77,7 +77,7 @@ export default {
       background-color: #6805fb;
       position: absolute;
       z-index: 2;
-      bottom: 20px;
+      bottom: 15px;
       width: 70%;
       margin: 0 auto;
       left: 0;

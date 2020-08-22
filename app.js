@@ -53,7 +53,6 @@ if (!process.env.PORT) {
 
 // Keep paths using the index.html file on direct route hits
 app.use('/*', (req, res, next) => {
-  console.log('reqqqqqq', req.originalUrl);
   if (/^\/api\//.test(req.originalUrl)) next();
   else if (/\/item\//.test(req.originalUrl)) updateMetaTags(req, res);
   else res.sendFile(`${__dirname}/client/dist/index.html`);
@@ -265,12 +264,10 @@ app.listen(process.env.PORT || 8081, () => {
   console.log('App listening on port 8081');
 });
 
-updateMetaTags();
+//updateMetaTags();
 
 
 async function updateMetaTags(req, res) {
-
-  console.log('working');
 
   // First get and parse products array from app src
   const productsText = await fs.promises.readFile(`${__dirname}/client/src/model/products.js`, 'utf-8');
@@ -284,6 +281,7 @@ async function updateMetaTags(req, res) {
   const productID = req.originalUrl.substring(req.originalUrl.indexOf('/item/')).replace('/item/', '');
   const productObj = productsArr.find(product => product.id == productID);
 
+  // Return base file if requested page is not a PDP
   const baseFile = `${__dirname}/client/dist/index.html`;
   if (!productObj) return res.sendFile(baseFile);
 
