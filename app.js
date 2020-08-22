@@ -279,7 +279,7 @@ async function updateMetaTags(req, res) {
   const productObj = productsArr.find(product => product.id == productID);
 
   // Return base file if requested page is not a PDP
-  const baseFile = `${__dirname}/client/index.html`;
+  const baseFile = `${__dirname}/client/dist/index.html`;
   if (!productObj) return res.sendFile(baseFile);
 
   // Update the meta tag properties in the built bundle
