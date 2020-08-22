@@ -130,6 +130,7 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'featuredShirts',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598068771/Fat%20Cattitude/i-do-what-i-want.jpg',
     modelImages: [{
       image: 'https://files.cdn.printful.com/files/a7b/a7bbe09080fd2940457bb5b96cedec64_preview.png',
       variantIndex: 3
