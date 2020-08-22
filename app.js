@@ -296,6 +296,7 @@ async function updateMetaTags(req, res) {
   $base.find('meta[property=og\\:image]').attr('content', productObj.colors[0].colorImage);
   $base.find('meta[property=og\\:description]').attr('content', productObj.description);
 
+  console.log('WHAT IS IT', $base.find('meta[property=og\\:url]').attr('content'));
   console.log('---', $.html($base));
 
   // Send the modified HTML as the response
