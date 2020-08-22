@@ -266,6 +266,8 @@ app.listen(process.env.PORT || 8081, () => {
 
 async function updateMetaTags(req, res) {
 
+  console.log('--------', /\/item\//.test(req.originalUrl));
+
   // First get and parse products array from app src
   const productsText = await fs.promises.readFile(`${__dirname}/client/src/model/products.js`, 'utf-8');
   const startPos = productsText.search(/\[/);
@@ -281,6 +283,8 @@ async function updateMetaTags(req, res) {
   // Return base file if requested page is not a PDP
   const baseFile = `${__dirname}/client/dist/index.html`;
   if (!productObj) return res.sendFile(baseFile);
+
+  console.log('productObj', productObj);
 
   // Update the meta tag properties in the built bundle
   const baseHTML = await fs.promises.readFile(baseFile, 'utf-8');
