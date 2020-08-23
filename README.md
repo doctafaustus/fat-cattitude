@@ -17,12 +17,12 @@ Get sync product information:
 The regular ids here are the true sync variant ids
 
 Main Product
-external_id: 703090796
-id: 163440250 <- this one returns results in /store/products/{id}
+  - external_id: 703090796
+  - id: 163440250 <- this one returns results in /store/products/{id}
 
 First Variant
-id: 1796349947
-external_id: 3573346050
-sync_product_id: 163440250
-product.product_id: 71
-product.variant_id: 9526
+  - id: 1796349947
+  - external_id: 3573346050
+  - sync_product_id: 163440250
+  - product.product_id: 71
+  - product.variant_id: 9526
