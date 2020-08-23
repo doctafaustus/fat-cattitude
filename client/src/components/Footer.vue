@@ -18,9 +18,9 @@
 
         <div class="subtitle light">Follow Us:</div>
         <div class="social-media">
-          <a class="social-media-link" href="#"><Icon name="instagram"/></a>
-          <a class="social-media-link" href="#"><Icon name="twitter"/></a>
-          <a class="social-media-link" href="#"><Icon name="facebook"/></a>
+          <a class="social-media-link" href="https://www.instagram.com/fat_cattitude/" target="_blank"><Icon name="instagram"/></a>
+          <a class="social-media-link" href="https://twitter.com/fatcattitude" target="_blank"><Icon name="twitter"/></a>
+          <a class="social-media-link" href="https://www.facebook.com/fatcattitude/" target="_blank"><Icon name="facebook"/></a>
         </div>
       </div>
     </div>
