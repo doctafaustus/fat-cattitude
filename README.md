@@ -10,10 +10,12 @@
 # Printful API
 Get list of sync products:
 `https://api.printful.com/sync/products`
+<br>
 Copy regular id
 
 Get sync product information:
 `https://api.printful.com/store/products/163440250` <- regular id
+<br>
 The regular ids here are the true sync variant ids
 
 Main Product
