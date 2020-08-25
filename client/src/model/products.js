@@ -123,75 +123,6 @@ const products = [
     description: 'Embrace those days you’re really feline like a gangsta. Hell, that’s every day. We see you keepin’ it real. Now show off your true stripes.'
   },
   {
-    title: 'I Do What I Want',
-    subtitle: 'Bad cat smacking wine off the table',
-    id: 175143559,
-    price: 20,
-    inStock: true,
-    style: 'tshirt',
-    category: 'featuredShirts',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598068771/Fat%20Cattitude/i-do-what-i-want.jpg',
-    modelImages: [{
-      image: 'https://files.cdn.printful.com/files/a7b/a7bbe09080fd2940457bb5b96cedec64_preview.png',
-      variantIndex: 3
-    }],
-    colors: [
-      {
-        colorName: 'White',
-        colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/ad2/ad2cc8217a1563e5260818cc405d407e_preview.png',
-        sizes: [
-          { variantID: 1933712008, size: 'XS' },
-          { variantID: 1933712009, size: 'S' },
-          { variantID: 1933712010, size: 'M' },
-          { variantID: 1933712011, size: 'L' },
-          { variantID: 1933712012, size: 'XL' },
-          { variantID: 1933712013, size: '2X' }
-        ]
-      },
-      {
-        colorName: 'Mint',
-        colorCode: '#aad4b7',
-        colorImage: 'https://files.cdn.printful.com/files/5e9/5e92e12fc3adab7cfbbdb6d4dfd629b1_preview.png',
-        sizes: [
-          { variantID: 1933714829, size: 'XS'
-          },
-          { variantID: 1933714830, size: 'S' },
-          { variantID: 1933714831, size: 'M' },
-          { variantID: 1933714833, size: 'L' },
-          { variantID: 1933714834, size: 'XL' },
-          { variantID: 1933714835, size: '2X' }
-        ]
-      },
-      {
-        colorName: 'Ice Blue',
-        colorCode: '#c0e3e4',
-        colorImage: 'https://files.cdn.printful.com/files/55e/55e8a878aed710c16d39840368196f97_preview.png',
-        sizes: [
-          { variantID: 1933714838, size: 'XS' },
-          { variantID: 1933714839, size: 'S' },
-          { variantID: 1933714840, size: 'M' },
-          { variantID: 1933714841, size: 'L' },
-          { variantID: 1933714842, size: 'XL' },
-          { variantID: 1933714843, size: '2X' }
-        ]
-      },
-      {
-        colorName: 'Pink',
-        colorCode: '#fcd1db',
-        colorImage: 'https://files.cdn.printful.com/files/36f/36f3f7bc45794880eb1593056a15e016_preview.png',
-        sizes: [
-          { variantID: 1933714854, size: 'S' },
-          { variantID: 1933714855, size: 'M' },
-          { variantID: 1933714856, size: 'L' },
-          { variantID: 1933714857, size: 'XL' },
-          { variantID: 1933714858, size: '2X' }
-        ]
-      },
-    ],
-    description: 'Yea, you march to the beat of your own meow. So what if you ruffle a little fur along the way? They should know who they’re messing with.'
-  },
-  {
     title: 'Corporate Fat Cat',
     subtitle: 'The fat cats in Washington don’t even look this good',
     id: 177643473,
@@ -256,6 +187,75 @@ const products = [
       }
     ],
     description: 'Ah, the corporate life. We’ve got very serious business to do, thank you very much. And we won’t tell anyone that your briefcase is full of snacks. It’ll be our little secret.'
+  },
+  {
+    title: 'I Do What I Want',
+    subtitle: 'Bad cat smacking wine off the table',
+    id: 175143559,
+    price: 20,
+    inStock: true,
+    style: 'tshirt',
+    category: 'shirts',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598068771/Fat%20Cattitude/i-do-what-i-want.jpg',
+    modelImages: [{
+      image: 'https://files.cdn.printful.com/files/a7b/a7bbe09080fd2940457bb5b96cedec64_preview.png',
+      variantIndex: 3
+    }],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/ad2/ad2cc8217a1563e5260818cc405d407e_preview.png',
+        sizes: [
+          { variantID: 1933712008, size: 'XS' },
+          { variantID: 1933712009, size: 'S' },
+          { variantID: 1933712010, size: 'M' },
+          { variantID: 1933712011, size: 'L' },
+          { variantID: 1933712012, size: 'XL' },
+          { variantID: 1933712013, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Mint',
+        colorCode: '#aad4b7',
+        colorImage: 'https://files.cdn.printful.com/files/5e9/5e92e12fc3adab7cfbbdb6d4dfd629b1_preview.png',
+        sizes: [
+          { variantID: 1933714829, size: 'XS'
+          },
+          { variantID: 1933714830, size: 'S' },
+          { variantID: 1933714831, size: 'M' },
+          { variantID: 1933714833, size: 'L' },
+          { variantID: 1933714834, size: 'XL' },
+          { variantID: 1933714835, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Ice Blue',
+        colorCode: '#c0e3e4',
+        colorImage: 'https://files.cdn.printful.com/files/55e/55e8a878aed710c16d39840368196f97_preview.png',
+        sizes: [
+          { variantID: 1933714838, size: 'XS' },
+          { variantID: 1933714839, size: 'S' },
+          { variantID: 1933714840, size: 'M' },
+          { variantID: 1933714841, size: 'L' },
+          { variantID: 1933714842, size: 'XL' },
+          { variantID: 1933714843, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Pink',
+        colorCode: '#fcd1db',
+        colorImage: 'https://files.cdn.printful.com/files/36f/36f3f7bc45794880eb1593056a15e016_preview.png',
+        sizes: [
+          { variantID: 1933714854, size: 'S' },
+          { variantID: 1933714855, size: 'M' },
+          { variantID: 1933714856, size: 'L' },
+          { variantID: 1933714857, size: 'XL' },
+          { variantID: 1933714858, size: '2X' }
+        ]
+      },
+    ],
+    description: 'Yea, you march to the beat of your own meow. So what if you ruffle a little fur along the way? They should know who they’re messing with.'
   },
   {
     title: 'Fat Caturday',
@@ -375,7 +375,7 @@ const products = [
     price: 20,
     inStock: true,
     style: 'tshirt',
-    category: 'shirts',
+    category: 'featuredShirts',
     ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598069519/Fat%20Cattitude/have-a-seat-sized.jpg',
     modelImages:[{
       image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589859314/Fat%20Cattitude/mockup-d368497e.jpg',
