@@ -27,7 +27,11 @@
           Order #: {{ orderID }}
           | Email: <span class="email">{{ recipient.email }}</span>
         </div>
-        <div class="status">Order Status: <span class="status-value">{{ status }}</span></div>
+        <div class="status">Order Status:
+          <span class="status-value">
+            {{ (status === 'partial') ? 'partial (some items are shipped already, the rest will follow)' : status  }}
+          </span>
+        </div>
           <ul class="shipments">
             <li v-for="(shipment, index) in shipments" :key="index" class="shipment">
               <div class="shipment-item"><b>{{ shipment.carrier }}</b> - {{ shipment.service }}</div>
@@ -322,7 +326,6 @@ export default {
     .status {
       .status-value {
         font-weight: bold;
-        text-transform: capitalize;
       }
     }
 
