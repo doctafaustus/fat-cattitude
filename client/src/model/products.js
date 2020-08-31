@@ -56,7 +56,7 @@ const products = [
     description: 'Why are other humans always trying to talk to us? Let them know you have better things to do. Like buy more funny cat shirts. They’ll take the hint.'
   },
   {
-    title: 'Gansta Cat',
+    title: 'Gangsta Cat',
     subtitle: 'That’s how we roll',
     id: 176205420,
     price: 20,
