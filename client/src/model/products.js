@@ -313,60 +313,6 @@ const products = [
     description: 'Whether you have a mini-me or not, this shirt gets the message across. You’re the only one allowed to make fun of your family. Haters can talk to the paw.'
   },
   {
-    title: 'Mechanic Cat',
-    subtitle: 'I have no idea what I’m doing.',
-    id: 177594656,
-    price: 20,
-    inStock: true,
-    style: 'tshirt',
-    category: 'shirts',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598071794/Fat%20Cattitude/mechanic-cat.jpg',
-    modelImages:[{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590340170/Fat%20Cattitude/mockup-9c0381e1.jpg',
-      variantIndex: 2
-    }],
-    colors: [
-      {
-        colorName: 'White',
-        colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/38a/38a74d42a8b62575a17d908bd150a1f9_preview.png',
-        sizes: [
-          { variantID: 1962384111, size: 'XS' },
-          { variantID: 1962384112, size: 'S' },
-          { variantID: 1962384113, size: 'M' },
-          { variantID: 1962384114, size: 'L' },
-          { variantID: 1962384115, size: 'XL' },
-          { variantID: 1962384116, size: '2XL'}
-        ]
-      },
-      {
-        colorName: 'Heather',
-        colorCode: '#a8abb2',
-        colorImage: 'https://files.cdn.printful.com/files/6d0/6d0a4c81e134e32964a7f95c426b79e9_preview.png',
-        sizes: [
-          { variantID: 1962387247, size: 'S' },
-          { variantID: 1962387248, size: 'M' },
-          { variantID: 1962387249, size: 'L' },
-          { variantID: 1962387250, size: 'XL' },
-          { variantID: 1962387251, size: '2XL' },
-        ]
-      },
-      {
-        colorName: 'Blue',
-        colorCode: '#86a9c9',
-        colorImage: 'https://files.cdn.printful.com/files/bae/bae283e02e4cf0029e40ba3ae3ade19c_preview.png',
-        sizes: [
-          { variantID: 1962387252, size: 'S' },
-          { variantID: 1962387253, size: 'M' },
-          { variantID: 1962387254, size: 'L' },
-          { variantID: 1962387255, size: 'XL' },
-          { variantID: 1962387256, size: '2XL' },
-        ]
-      }
-    ],
-    description: 'Act confident and they’ll think you know what you’re doing. Even better, just act like you don’t care and go play with some yarn or something. Someone else can figure that out.'
-  },
-  {
     title: 'Fat Caturday',
     subtitle: 'You know how to spend the weekend.',
     id: 189011336,
@@ -477,13 +423,67 @@ const products = [
     description: 'We all need a little down time to hog the couch and indulge on some gourmet junk food. Show off your fat cat lifestyle with pride... even if you stole the very last cheeseburger.'
   },
   {
+    title: 'Mechanic Cat',
+    subtitle: 'I have no idea what I’m doing.',
+    id: 177594656,
+    price: 20,
+    inStock: true,
+    style: 'tshirt',
+    category: 'featuredShirts',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598071794/Fat%20Cattitude/mechanic-cat.jpg',
+    modelImages:[{
+      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598846100/Fat%20Cattitude/ac_fc_1.jpg',
+      variantIndex: 2
+    }],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/38a/38a74d42a8b62575a17d908bd150a1f9_preview.png',
+        sizes: [
+          { variantID: 1962384111, size: 'XS' },
+          { variantID: 1962384112, size: 'S' },
+          { variantID: 1962384113, size: 'M' },
+          { variantID: 1962384114, size: 'L' },
+          { variantID: 1962384115, size: 'XL' },
+          { variantID: 1962384116, size: '2XL'}
+        ]
+      },
+      {
+        colorName: 'Heather',
+        colorCode: '#a8abb2',
+        colorImage: 'https://files.cdn.printful.com/files/6d0/6d0a4c81e134e32964a7f95c426b79e9_preview.png',
+        sizes: [
+          { variantID: 1962387247, size: 'S' },
+          { variantID: 1962387248, size: 'M' },
+          { variantID: 1962387249, size: 'L' },
+          { variantID: 1962387250, size: 'XL' },
+          { variantID: 1962387251, size: '2XL' },
+        ]
+      },
+      {
+        colorName: 'Blue',
+        colorCode: '#86a9c9',
+        colorImage: 'https://files.cdn.printful.com/files/bae/bae283e02e4cf0029e40ba3ae3ade19c_preview.png',
+        sizes: [
+          { variantID: 1962387252, size: 'S' },
+          { variantID: 1962387253, size: 'M' },
+          { variantID: 1962387254, size: 'L' },
+          { variantID: 1962387255, size: 'XL' },
+          { variantID: 1962387256, size: '2XL' },
+        ]
+      }
+    ],
+    description: 'Act confident and they’ll think you know what you’re doing. Even better, just act like you don’t care and go play with some yarn or something. Someone else can figure that out.'
+  },
+  {
     title: 'Have A Seat',
     subtitle: 'You no longer have a hamster.',
     id: 176594391,
     price: 20,
     inStock: true,
     style: 'tshirt',
-    category: 'featuredShirts',
+    category: 'shirts',
     ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598069519/Fat%20Cattitude/have-a-seat-sized.jpg',
     modelImages:[{
       image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589859314/Fat%20Cattitude/mockup-d368497e.jpg',
