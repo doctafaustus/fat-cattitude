@@ -7,7 +7,7 @@
       </p>
 
       <p>
-        At Fat Cattitude, we don’t take ourselves too seriously, and you shouldn’t either. We’re just here to spread the love of all things cat and have a good laugh (and coerce you to life a <b>Fat Cat Lifestyle</b> 😺). 
+        At Fat Cattitude, we don’t take ourselves too seriously, and you shouldn’t either. We’re just here to spread the love of all things cat and have a good laugh (and coerce you to live a <b>Fat Cat Lifestyle</b> 😺). 
       </p>
 
       <p>
