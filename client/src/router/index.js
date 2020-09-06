@@ -47,6 +47,11 @@ export default new Router({
       path: '/privacy-policy',
       name: 'PrivacyPolicy',
       component: () => import('@/views/PrivacyPolicy.vue')
+    },
+    {
+      path: '/the-impossible-game',
+      name: 'TheImpossibleGame',
+      component: () => import('@/views/TheImpossibleGame.vue')
     }
   ],
   scrollBehavior(to, from, savedPosition) {
