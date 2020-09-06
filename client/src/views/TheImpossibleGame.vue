@@ -8,9 +8,9 @@
       </h3>
 
       <div class="container q-1">
-        <button class="left-button">Button</button>
+        <button class="left-button" @click="test">Button</button>
         <img class="man" src="../assets/man.png">
-        <button class="right-button">Button</button>
+        <button class="right-button" @click="test">Button</button>
       </div>
     </main>
 
