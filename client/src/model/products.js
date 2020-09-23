@@ -1,61 +1,5 @@
 const products = [
   {
-    title: 'I’m Busy',
-    subtitle: 'Sassy busy cat t-shirt',
-    id: 163440250,
-    price: 20,
-    inStock: true,
-    style: 'tshirt',
-    category: 'featuredShirts',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598068252/Fat%20Cattitude/im-busy_1.jpg',
-    modelImages: [{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589652298/Fat%20Cattitude/me_im_busy.jpg',
-      variantIndex: 0
-    }],
-    colors: [
-      {
-        colorName: 'White',
-        colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/371/3719efd69c58b194dc978c753d48d592_preview.png',
-        sizes: [
-          { variantID: 1946217542, size: 'XS' },
-          { variantID: 1946217549, size: 'S' },
-          { variantID: 1946217557, size: 'M' },
-          { variantID: 1946217564, size: 'L' },
-          { variantID: 1946217571, size: 'XL' },
-          { variantID: 1946217579, size: '2XL'}
-        ]
-      },
-      {
-        colorName: 'Blue',
-        colorCode: '#94afca',
-        colorImage: 'https://files.cdn.printful.com/files/da2/da2d797b3ffca287a7ff18085d5ab92f_preview.png',
-        sizes: [
-          { variantID: 1936692216, size: 'XS' },
-          { variantID: 1936692217, size: 'S' },
-          { variantID: 1936692218, size: 'M' },
-          { variantID: 1936692219, size: 'L' },
-          { variantID: 1936692220, size: 'XL' },
-          { variantID: 1936692221, size: '2XL' },
-        ]
-      },
-      {
-        colorName: 'Lilac',
-        colorCode: '#d9b0cb',
-        colorImage: 'https://files.cdn.printful.com/files/aae/aae7864d45b1715dbf12ee017d36cbe8_preview.png',
-        sizes: [
-          { variantID: 1936692222, size: 'XS' },
-          { variantID: 1936692223, size: 'S' },
-          { variantID: 1936692224, size: 'M' },
-          { variantID: 1936692225, size: 'L' },
-          { variantID: 1936692226, size: 'XL' },
-          { variantID: 1936692227, size: '2XL' },
-        ]
-      }
-    ],
-    description: 'Why are other humans always trying to talk to us? Let them know you have better things to do. Like buy more funny cat shirts. They’ll take the hint.'
-  },
-  {
     title: 'Gangsta Cat',
     subtitle: 'That’s how we roll',
     id: 176205420,
@@ -369,6 +313,62 @@ const products = [
     description: 'Even if you’re not making the fat cat bucks, at least you’ve got the weekend. And what’s Caturday without a little wine? Ok, a lot of wine. Unleash your weekend warrior right meow.'
   },
   {
+    title: 'I’m Busy',
+    subtitle: 'Sassy busy cat t-shirt',
+    id: 163440250,
+    price: 20,
+    inStock: true,
+    style: 'tshirt',
+    category: 'shirts',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598068252/Fat%20Cattitude/im-busy_1.jpg',
+    modelImages: [{
+      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589652298/Fat%20Cattitude/me_im_busy.jpg',
+      variantIndex: 0
+    }],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/371/3719efd69c58b194dc978c753d48d592_preview.png',
+        sizes: [
+          { variantID: 1946217542, size: 'XS' },
+          { variantID: 1946217549, size: 'S' },
+          { variantID: 1946217557, size: 'M' },
+          { variantID: 1946217564, size: 'L' },
+          { variantID: 1946217571, size: 'XL' },
+          { variantID: 1946217579, size: '2XL'}
+        ]
+      },
+      {
+        colorName: 'Blue',
+        colorCode: '#94afca',
+        colorImage: 'https://files.cdn.printful.com/files/da2/da2d797b3ffca287a7ff18085d5ab92f_preview.png',
+        sizes: [
+          { variantID: 1936692216, size: 'XS' },
+          { variantID: 1936692217, size: 'S' },
+          { variantID: 1936692218, size: 'M' },
+          { variantID: 1936692219, size: 'L' },
+          { variantID: 1936692220, size: 'XL' },
+          { variantID: 1936692221, size: '2XL' },
+        ]
+      },
+      {
+        colorName: 'Lilac',
+        colorCode: '#d9b0cb',
+        colorImage: 'https://files.cdn.printful.com/files/aae/aae7864d45b1715dbf12ee017d36cbe8_preview.png',
+        sizes: [
+          { variantID: 1936692222, size: 'XS' },
+          { variantID: 1936692223, size: 'S' },
+          { variantID: 1936692224, size: 'M' },
+          { variantID: 1936692225, size: 'L' },
+          { variantID: 1936692226, size: 'XL' },
+          { variantID: 1936692227, size: '2XL' },
+        ]
+      }
+    ],
+    description: 'Why are other humans always trying to talk to us? Let them know you have better things to do. Like buy more funny cat shirts. They’ll take the hint.'
+  },
+  {
     title: 'Fat Catting',
     subtitle: 'Just a cat enjoying his late night TV.',
     id: 176794106,
@@ -423,6 +423,60 @@ const products = [
     description: 'We all need a little down time to hog the couch and indulge on some gourmet junk food. Show off your fat cat lifestyle with pride... even if you stole the very last cheeseburger.'
   },
   {
+    title: 'Have A Seat',
+    subtitle: 'You no longer have a hamster.',
+    id: 176594391,
+    price: 20,
+    inStock: true,
+    style: 'tshirt',
+    category: 'featuredShirts',
+    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598069519/Fat%20Cattitude/have-a-seat-sized.jpg',
+    modelImages:[{
+      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1600894906/Fat%20Cattitude/mockup-37626f09_1_2.jpg',
+      variantIndex: 1
+    }],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/296/2967a750122cc314f45f3425f7e32d73_preview.png',
+        sizes: [
+          { variantID: 1951116354, size: 'XS' },
+          { variantID: 1951116355, size: 'S' },
+          { variantID: 1951116356, size: 'M' },
+          { variantID: 1951116357, size: 'L' },
+          { variantID: 1951116358, size: 'XL' },
+          { variantID: 1951116359, size: '2XL'}
+        ]
+      },
+      {
+        colorName: 'Heather',
+        colorCode: '#a8abb2',
+        colorImage: 'https://files.cdn.printful.com/files/a71/a716718934640b86d72d8c9779e7137f_preview.png',
+        sizes: [
+          { variantID: 1951169666, size: 'S' },
+          { variantID: 1951169667, size: 'M' },
+          { variantID: 1951169668, size: 'L' },
+          { variantID: 1951169681, size: 'XL' },
+          { variantID: 1951169687, size: '2XL' },
+        ]
+      },
+      {
+        colorName: 'Ocean',
+        colorCode: '#619dc1',
+        colorImage: 'https://files.cdn.printful.com/files/3e0/3e02139db889958d37079a64ca616453_preview.png',
+        sizes: [
+          { variantID: 1951169697, size: 'S' },
+          { variantID: 1951169710, size: 'M' },
+          { variantID: 1951169717, size: 'L' },
+          { variantID: 1951169724, size: 'XL' },
+          { variantID: 1951169730, size: '2XL' },
+        ]
+      }
+    ],
+    description: 'Something told us the cat and hamster wouldn’t get along…but who needs a hamster when you have a cat? Or an awesome cat shirt? It’s really a win-win for everybody (except for the hamster).'
+  },
+  {
     title: 'Mechanic Cat',
     subtitle: 'I have no idea what I’m doing.',
     id: 177594656,
@@ -475,60 +529,6 @@ const products = [
       }
     ],
     description: 'Act confident and they’ll think you know what you’re doing. Even better, just act like you don’t care and go play with some yarn or something. Someone else can figure that out.'
-  },
-  {
-    title: 'Have A Seat',
-    subtitle: 'You no longer have a hamster.',
-    id: 176594391,
-    price: 20,
-    inStock: true,
-    style: 'tshirt',
-    category: 'shirts',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598069519/Fat%20Cattitude/have-a-seat-sized.jpg',
-    modelImages:[{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589859314/Fat%20Cattitude/mockup-d368497e.jpg',
-      variantIndex: 2
-    }],
-    colors: [
-      {
-        colorName: 'White',
-        colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/296/2967a750122cc314f45f3425f7e32d73_preview.png',
-        sizes: [
-          { variantID: 1951116354, size: 'XS' },
-          { variantID: 1951116355, size: 'S' },
-          { variantID: 1951116356, size: 'M' },
-          { variantID: 1951116357, size: 'L' },
-          { variantID: 1951116358, size: 'XL' },
-          { variantID: 1951116359, size: '2XL'}
-        ]
-      },
-      {
-        colorName: 'Heather',
-        colorCode: '#a8abb2',
-        colorImage: 'https://files.cdn.printful.com/files/a71/a716718934640b86d72d8c9779e7137f_preview.png',
-        sizes: [
-          { variantID: 1951169666, size: 'S' },
-          { variantID: 1951169667, size: 'M' },
-          { variantID: 1951169668, size: 'L' },
-          { variantID: 1951169681, size: 'XL' },
-          { variantID: 1951169687, size: '2XL' },
-        ]
-      },
-      {
-        colorName: 'Ocean',
-        colorCode: '#619dc1',
-        colorImage: 'https://files.cdn.printful.com/files/3e0/3e02139db889958d37079a64ca616453_preview.png',
-        sizes: [
-          { variantID: 1951169697, size: 'S' },
-          { variantID: 1951169710, size: 'M' },
-          { variantID: 1951169717, size: 'L' },
-          { variantID: 1951169724, size: 'XL' },
-          { variantID: 1951169730, size: '2XL' },
-        ]
-      }
-    ],
-    description: 'Something told us the cat and hamster wouldn’t get along…but who needs a hamster when you have a cat? Or an awesome cat shirt? It’s really a win-win for everybody (except for the hamster).'
   },
   {
     title: 'If I Fits, I Sits',
