@@ -7,9 +7,9 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'featuredShirts',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598068633/Fat%20Cattitude/gangsta-cat.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925156/Fat%20Cattitude/gangsta-cat_puzbpg.jpg',
     modelImages: [{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598056789/Fat%20Cattitude/molly_fc_1.jpg',
+      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925158/Fat%20Cattitude/molly_fc_1_ejqohi.jpg',
       variantIndex: 3
     }],
     colors: [
@@ -74,9 +74,9 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598069110/Fat%20Cattitude/corporate-fat-cat.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925155/Fat%20Cattitude/corporate-fat-cat_fakevo.jpg',
     modelImages: [{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590364121/Fat%20Cattitude/mockup-0da9814e_1.jpg',
+      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925158/Fat%20Cattitude/mockup-0da9814e_1_p3wxwo.jpg',
       variantIndex: 1
     }],
     colors: [
@@ -140,9 +140,9 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598068771/Fat%20Cattitude/i-do-what-i-want.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/i-do-what-i-want_doz7zf.jpg',
     modelImages: [{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598655329/Fat%20Cattitude/664e9db109d7ea22e807479b6689a141_preview_1.png',
+      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925155/Fat%20Cattitude/664e9db109d7ea22e807479b6689a141_preview_1_ogmayb.png',
       variantIndex: 3
     }],
     colors: [
@@ -209,9 +209,9 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598069368/Fat%20Cattitude/dont-talk-to-me-or-my-son.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925156/Fat%20Cattitude/dont-talk-to-me-or-my-son_jdy1cz.jpg',
     modelImages: [{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598656136/Fat%20Cattitude/6e7070065f2d90eeab5cbe9a47bc488a_preview_1.png',
+      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925155/Fat%20Cattitude/6e7070065f2d90eeab5cbe9a47bc488a_preview_1_oyt9id.png',
       variantIndex: 0
     }],
     colors: [
@@ -264,9 +264,9 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598069257/Fat%20Cattitude/fat-caturday.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925156/Fat%20Cattitude/fat-caturday_gug8j7.jpg',
     modelImages: [{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598656417/Fat%20Cattitude/d702463ab624b31755152b384d945fe4_preview_1.png',
+      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925156/Fat%20Cattitude/d702463ab624b31755152b384d945fe4_preview_1_zax4mu.png',
       variantIndex: 1
     }],
     colors: [
@@ -320,9 +320,9 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598068252/Fat%20Cattitude/im-busy_1.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/im-busy_1_wf3xak.jpg',
     modelImages: [{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1589652298/Fat%20Cattitude/me_im_busy.jpg',
+      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/me_im_busy_wzclhb.jpg',
       variantIndex: 0
     }],
     colors: [
@@ -376,9 +376,9 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598071881/Fat%20Cattitude/fat-catting.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925156/Fat%20Cattitude/fat-catting_vrnngg.jpg',
     modelImages: [{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598036526/Fat%20Cattitude/d56685e087e8628a1be89a51060e3b81_preview_1.png',
+      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925155/Fat%20Cattitude/d56685e087e8628a1be89a51060e3b81_preview_1_tcapsr.png',
       variantIndex: 1
     }],
     colors: [
@@ -430,9 +430,9 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'featuredShirts',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598069519/Fat%20Cattitude/have-a-seat-sized.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/have-a-seat-sized_ucmbdb.jpg',
     modelImages:[{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1600894906/Fat%20Cattitude/mockup-37626f09_1_2.jpg',
+      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925158/Fat%20Cattitude/mockup-37626f09_1_2_fzzotl.jpg',
       variantIndex: 1
     }],
     colors: [
@@ -484,9 +484,9 @@ const products = [
     inStock: true,
     style: 'tshirt',
     category: 'featuredShirts',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598071794/Fat%20Cattitude/mechanic-cat.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/mechanic-cat_vptmds.jpg',
     modelImages:[{
-      image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598846100/Fat%20Cattitude/ac_fc_1.jpg',
+      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925155/Fat%20Cattitude/ac_fc_1_xrsdym.jpg',
       variantIndex: 2
     }],
     colors: [
@@ -538,14 +538,14 @@ const products = [
     inStock: true,
     style: 'mug',
     category: 'accessories',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598072247/Fat%20Cattitude/if-i-fiits-i-sits.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/if-i-fiits-i-sits_ar71ug.jpg',
     modelImages: [
       {
-        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590334058/Fat%20Cattitude/317e240fd602c764547d628bbce91b31_preview.png',
+        image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925155/Fat%20Cattitude/317e240fd602c764547d628bbce91b31_preview_lerchb.png',
         variantIndex: 0
       },
       { 
-        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590334442/Fat%20Cattitude/mockup_Left_Default_12oz_White.jpg',
+        image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925158/Fat%20Cattitude/mockup_Left_Default_12oz_White_opdvwh.jpg',
         variantIndex: 0
       }
     ],
@@ -553,7 +553,7 @@ const products = [
       {
         colorName: 'White',
         colorCode: '#ffffff',
-        colorImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590334565/Fat%20Cattitude/mockup-6bcb166d_2.jpg',
+        colorImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925158/Fat%20Cattitude/mockup-6bcb166d_2_pqjf5c.jpg',
         sizes: [
           { variantID: 1956175871, size: 'Regular' },
         ]
@@ -569,10 +569,10 @@ const products = [
     inStock: true,
     style: 'hat',
     category: 'accessories',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598072574/Fat%20Cattitude/fat-cattitude-hat.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925156/Fat%20Cattitude/fat-cattitude-hat_dzu99p.jpg',
     modelImages: [
       {
-        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590455665/Fat%20Cattitude/Hat-Logo2_mockup_Front_Womens-Lifestyle_White_1.jpg',
+        image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/Hat-Logo2_mockup_Front_Womens-Lifestyle_White_1_vobifd.jpg',
         variantIndex: 0
       }
     ],
@@ -580,7 +580,7 @@ const products = [
       {
         colorName: 'White',
         colorCode: '#ffffff',
-        colorImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590454913/Fat%20Cattitude/hat_1.jpg',
+        colorImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925156/Fat%20Cattitude/hat_1_favr68.jpg',
         sizes: [
           { variantID: 1964932551, size: 'One Size' },
         ]
@@ -596,15 +596,15 @@ const products = [
     inStock: true,
     style: 'sticker',
     category: 'sticker',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598072840/Fat%20Cattitude/thats-how-we-roll.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925159/Fat%20Cattitude/thats-how-we-roll_jlpq5y.jpg',
     modelImages: [
       {
-        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590718422/Fat%20Cattitude/thatshowweroll_1.png',
+        image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925159/Fat%20Cattitude/thatshowweroll_1_ksy8ak.png',
         variantIndex: 0,
         showOnPDP: false
       },
       {
-        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590421518/Fat%20Cattitude/Thats-How-We-Roll_mockup_Lifestyle-2_Lifestyle_5.5x5.5.png',
+        image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925159/Fat%20Cattitude/Thats-How-We-Roll_mockup_Lifestyle-2_Lifestyle_5.5x5.5_j7mjht.png',
         variantIndex: 0
       }
     ],
@@ -630,15 +630,15 @@ const products = [
     inStock: true,
     style: 'sticker',
     category: 'sticker',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598072978/Fat%20Cattitude/pathetic-cat.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925159/Fat%20Cattitude/pathetic-cat_yykgzr.jpg',
     modelImages: [
       {
-        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590718683/Fat%20Cattitude/pathetic_1_1.png',
+        image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925159/Fat%20Cattitude/pathetic_1_1_tgyfgi.png',
         variantIndex: 0,
         showOnPDP: false
       },
       {
-        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590426823/Fat%20Cattitude/Pathetic-Cat_mockup_Lifestyle-2_Lifestyle_5.5x5.5_2.png',
+        image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925159/Fat%20Cattitude/Pathetic-Cat_mockup_Lifestyle-2_Lifestyle_5.5x5.5_2_dowivs.png',
         variantIndex: 0
       }
     ],
@@ -664,15 +664,15 @@ const products = [
     inStock: true,
     style: 'sticker',
     category: 'sticker',
-    ogImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1598073084/Fat%20Cattitude/loaf-cat.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/loaf-cat_iojf4c.jpg',
     modelImages: [
       {
-        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590718341/Fat%20Cattitude/loaf_1.png',
+        image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/loaf_1_xiubra.png',
         variantIndex: 0,
         showOnPDP: false
       },
       {
-        image: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1590428386/Fat%20Cattitude/Loaf-Cat_mockup_Lifestyle-2_Lifestyle_5.5x5.5_2.png',
+        image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/Loaf-Cat_mockup_Lifestyle-2_Lifestyle_5.5x5.5_2_eet3wl.png',
         variantIndex: 0
       }
     ],
@@ -680,7 +680,7 @@ const products = [
       {
         colorName: 'White',
         colorCode: '#ffffff',
-        colorImage: 'https://res.cloudinary.com/dormh2fvt/image/upload/v1591761684/Fat%20Cattitude/mockup_Default_Default_5.5x5.5.jpg',
+        colorImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925158/Fat%20Cattitude/mockup_Default_Default_5.5x5.5_bcrbfl.jpg',
         sizes: [
           { variantID: 1964272627, size: '3x3 in' },
           { variantID: 1964272629, size: '4x4 in' },

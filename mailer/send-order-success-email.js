@@ -8,7 +8,7 @@ module.exports = function sendOrderSuccessEmail(email, orderID) {
       subject: 'Order Received!',
       html: `
         <div style="font-family:'Montserrat','Roboto',Helvetica;border:solid 1px #eee;text-align:center;padding:40px;width:600px;box-sizing:border-box;margin: 0 auto;font-size:15px;">
-        <a href="https://www.fatcattitude.com" target="_blank" alt="Fat Cattitude Logo"><img src="https://res.cloudinary.com/dormh2fvt/image/upload/v1597983140/Fat%20Cattitude/Fat_Cattitude_Professional_Logo_50_1_1-c_scale_w_500_1.png" style="width:200px;display:block;margin:0 auto;"></a>
+        <a href="https://www.fatcattitude.com" target="_blank" alt="Fat Cattitude Logo"><img src="https://res.cloudinary.com/dzynqn10l/image/upload/v1600925156/Fat%20Cattitude/Fat_Cattitude_Professional_Logo_50_1_1-c_scale_w_500_1_idalmk.png" style="width:200px;display:block;margin:0 auto;"></a>
         <div style="font-size:24px;font-style:normal;font-weight:bold;letter-spacing:-.5px;margin:20px 0 40px 0;text-align:center;">Your order has been submitted!</div>
       
         <div style="font-weight: bold;margin-bottom:14px;text-align:left;">Hi there,</div>

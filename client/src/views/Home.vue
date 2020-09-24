@@ -171,7 +171,7 @@ export default {
       padding: 50px;
 
       &.hat {
-        background-image: url(https://res.cloudinary.com/dormh2fvt/image/upload/v1590455665/Fat%20Cattitude/Hat-Logo2_mockup_Front_Womens-Lifestyle_White_1.jpg);
+        background-image: url(https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/Hat-Logo2_mockup_Front_Womens-Lifestyle_White_1_vobifd.jpg);
         position: relative;
 
         .hat-container {
