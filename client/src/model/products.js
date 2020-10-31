@@ -1,5 +1,71 @@
 const products = [
   {
+    title: 'Corporate Fat Cat',
+    subtitle: 'The fat cats in Washington don’t even look this good',
+    id: 177643473,
+    price: 20,
+    inStock: true,
+    style: 'tshirt',
+    category: 'featuredShirts',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925155/Fat%20Cattitude/corporate-fat-cat_fakevo.jpg',
+    modelImages: [{
+      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1604158754/Fat%20Cattitude/BDF_Model_Shot_cgbcat.jpg',
+      variantIndex: 0
+    }],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/f9c/f9c55ce5f414e5daa90956f17817d2ea_preview.png',
+        sizes: [
+          { variantID: 1962930869, size: 'XS' },
+          { variantID: 1962930871, size: 'S' },
+          { variantID: 1962930872, size: 'M' },
+          { variantID: 1962930873, size: 'L' },
+          { variantID: 1962930874, size: 'XL' },
+          { variantID: 1962930875, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Gray',
+        colorCode: '#a8abb2',
+        colorImage: 'https://files.cdn.printful.com/files/38c/38c84bf9c26b7e4e502767c8f736b2f3_preview.png',
+        sizes: [
+          { variantID: 1962938160, size: 'S' },
+          { variantID: 1962938161, size: 'M' },
+          { variantID: 1962938162, size: 'L' },
+          { variantID: 1962938163, size: 'XL' },
+          { variantID: 1962938164, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Blue',
+        colorCode: '#668ea7',
+        colorImage: 'https://files.cdn.printful.com/files/9a3/9a380790355fae9ed94406b1b440be12_preview.png',
+        sizes: [
+          { variantID: 1962938167, size: 'S' },
+          { variantID: 1962938168, size: 'M' },
+          { variantID: 1962938169, size: 'L' },
+          { variantID: 1962938170, size: 'XL' },
+          { variantID: 1962938171, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Orchid',
+        colorCode: '#b17e85',
+        colorImage: 'https://files.cdn.printful.com/files/eee/eeedd1b5effe31f6f303bd7d864dc007_preview.png',
+        sizes: [
+          { variantID: 1962938174, size: 'S' },
+          { variantID: 1962938175, size: 'M' },
+          { variantID: 1962938176, size: 'L' },
+          { variantID: 1962938177, size: 'XL' },
+          { variantID: 1962938178, size: '2X' }
+        ]
+      }
+    ],
+    description: 'Ah, the corporate life. We’ve got very serious business to do, thank you very much. And we won’t tell anyone that your briefcase is full of snacks. It’ll be our little secret.'
+  },
+  {
     title: 'Gangsta Cat',
     subtitle: 'That’s how we roll',
     id: 176205420,
@@ -67,70 +133,168 @@ const products = [
     description: 'Embrace those days you’re really feline like a gangsta. Hell, that’s every day. We see you keepin’ it real. Now show off your true stripes.'
   },
   {
-    title: 'Corporate Fat Cat',
-    subtitle: 'The fat cats in Washington don’t even look this good',
-    id: 177643473,
+    title: 'Mechanic Cat',
+    subtitle: 'I have no idea what I’m doing.',
+    id: 177594656,
     price: 20,
     inStock: true,
     style: 'tshirt',
     category: 'shirts',
-    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925155/Fat%20Cattitude/corporate-fat-cat_fakevo.jpg',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/mechanic-cat_vptmds.jpg',
+    modelImages:[{
+      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925155/Fat%20Cattitude/ac_fc_1_xrsdym.jpg',
+      variantIndex: 2
+    }],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/38a/38a74d42a8b62575a17d908bd150a1f9_preview.png',
+        sizes: [
+          { variantID: 1962384111, size: 'XS' },
+          { variantID: 1962384112, size: 'S' },
+          { variantID: 1962384113, size: 'M' },
+          { variantID: 1962384114, size: 'L' },
+          { variantID: 1962384115, size: 'XL' },
+          { variantID: 1962384116, size: '2XL'}
+        ]
+      },
+      {
+        colorName: 'Heather',
+        colorCode: '#a8abb2',
+        colorImage: 'https://files.cdn.printful.com/files/6d0/6d0a4c81e134e32964a7f95c426b79e9_preview.png',
+        sizes: [
+          { variantID: 1962387247, size: 'S' },
+          { variantID: 1962387248, size: 'M' },
+          { variantID: 1962387249, size: 'L' },
+          { variantID: 1962387250, size: 'XL' },
+          { variantID: 1962387251, size: '2XL' },
+        ]
+      },
+      {
+        colorName: 'Blue',
+        colorCode: '#86a9c9',
+        colorImage: 'https://files.cdn.printful.com/files/bae/bae283e02e4cf0029e40ba3ae3ade19c_preview.png',
+        sizes: [
+          { variantID: 1962387252, size: 'S' },
+          { variantID: 1962387253, size: 'M' },
+          { variantID: 1962387254, size: 'L' },
+          { variantID: 1962387255, size: 'XL' },
+          { variantID: 1962387256, size: '2XL' },
+        ]
+      }
+    ],
+    description: 'Act confident and they’ll think you know what you’re doing. Even better, just act like you don’t care and go play with some yarn or something. Someone else can figure that out.'
+  },
+  {
+    title: 'Fat Caturday',
+    subtitle: 'You know how to spend the weekend.',
+    id: 189011336,
+    price: 20,
+    inStock: true,
+    style: 'tshirt',
+    category: 'shirts',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925156/Fat%20Cattitude/fat-caturday_gug8j7.jpg',
     modelImages: [{
-      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925158/Fat%20Cattitude/mockup-0da9814e_1_p3wxwo.jpg',
+      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925156/Fat%20Cattitude/d702463ab624b31755152b384d945fe4_preview_1_zax4mu.png',
       variantIndex: 1
     }],
     colors: [
       {
         colorName: 'White',
         colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/f9c/f9c55ce5f414e5daa90956f17817d2ea_preview.png',
+        colorImage: 'https://files.cdn.printful.com/files/fe3/fe30fb16c201d25ea074057658cc3078_preview.png',
         sizes: [
-          { variantID: 1962930869, size: 'XS' },
-          { variantID: 1962930871, size: 'S' },
-          { variantID: 1962930872, size: 'M' },
-          { variantID: 1962930873, size: 'L' },
-          { variantID: 1962930874, size: 'XL' },
-          { variantID: 1962930875, size: '2X' }
+          { variantID: 2086396621, size: 'XS' },
+          { variantID: 2086396623, size: 'S' },
+          { variantID: 2086396624, size: 'M' },
+          { variantID: 2086396625, size: 'L' },
+          { variantID: 2086396626, size: 'XL' },
+          { variantID: 2086396627, size: '2X' }
         ]
       },
       {
-        colorName: 'Gray',
+        colorName: 'Prism',
+        colorCode: '#a1c3b8',
+        colorImage: 'https://files.cdn.printful.com/files/cd0/cd0a89cebaf1d1572852302843070203_preview.png',
+        sizes: [
+          { variantID: 2086396630, size: 'XS' },
+          { variantID: 2086396631, size: 'S' },
+          { variantID: 2086396632, size: 'M' },
+          { variantID: 2086396633, size: 'L' },
+          { variantID: 2086396634, size: 'XL' },
+          { variantID: 2086396635, size: '2X' }
+        ]
+      },
+      {
+        colorName: 'Lilac',
+        colorCode: '#d9b0cb',
+        colorImage: 'https://files.cdn.printful.com/files/b98/b988b870a8aa55f8ced1d3a394fd3d18_preview.png',
+        sizes: [
+          { variantID: 2086396638, size: 'XS' },
+          { variantID: 2086396639, size: 'S' },
+          { variantID: 2086396640, size: 'M' },
+          { variantID: 2086396641, size: 'L' },
+          { variantID: 2086396642, size: 'XL' },
+          { variantID: 2086396643, size: '2X' }
+        ]
+      },
+    ],
+    description: 'Even if you’re not making the fat cat bucks, at least you’ve got the weekend. And what’s Caturday without a little wine? Ok, a lot of wine. Unleash your weekend warrior right meow.'
+  },
+  {
+    title: 'Have A Seat',
+    subtitle: 'You no longer have a hamster.',
+    id: 176594391,
+    price: 20,
+    inStock: true,
+    style: 'tshirt',
+    category: 'shirts',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/have-a-seat-sized_ucmbdb.jpg',
+    modelImages:[{
+      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925158/Fat%20Cattitude/mockup-37626f09_1_2_fzzotl.jpg',
+      variantIndex: 1
+    }],
+    colors: [
+      {
+        colorName: 'White',
+        colorCode: '#ffffff',
+        colorImage: 'https://files.cdn.printful.com/files/296/2967a750122cc314f45f3425f7e32d73_preview.png',
+        sizes: [
+          { variantID: 1951116354, size: 'XS' },
+          { variantID: 1951116355, size: 'S' },
+          { variantID: 1951116356, size: 'M' },
+          { variantID: 1951116357, size: 'L' },
+          { variantID: 1951116358, size: 'XL' },
+          { variantID: 1951116359, size: '2XL'}
+        ]
+      },
+      {
+        colorName: 'Heather',
         colorCode: '#a8abb2',
-        colorImage: 'https://files.cdn.printful.com/files/38c/38c84bf9c26b7e4e502767c8f736b2f3_preview.png',
+        colorImage: 'https://files.cdn.printful.com/files/a71/a716718934640b86d72d8c9779e7137f_preview.png',
         sizes: [
-          { variantID: 1962938160, size: 'S' },
-          { variantID: 1962938161, size: 'M' },
-          { variantID: 1962938162, size: 'L' },
-          { variantID: 1962938163, size: 'XL' },
-          { variantID: 1962938164, size: '2X' }
+          { variantID: 1951169666, size: 'S' },
+          { variantID: 1951169667, size: 'M' },
+          { variantID: 1951169668, size: 'L' },
+          { variantID: 1951169681, size: 'XL' },
+          { variantID: 1951169687, size: '2XL' },
         ]
       },
       {
-        colorName: 'Blue',
-        colorCode: '#668ea7',
-        colorImage: 'https://files.cdn.printful.com/files/9a3/9a380790355fae9ed94406b1b440be12_preview.png',
+        colorName: 'Ocean',
+        colorCode: '#619dc1',
+        colorImage: 'https://files.cdn.printful.com/files/3e0/3e02139db889958d37079a64ca616453_preview.png',
         sizes: [
-          { variantID: 1962938167, size: 'S' },
-          { variantID: 1962938168, size: 'M' },
-          { variantID: 1962938169, size: 'L' },
-          { variantID: 1962938170, size: 'XL' },
-          { variantID: 1962938171, size: '2X' }
-        ]
-      },
-      {
-        colorName: 'Orchid',
-        colorCode: '#b17e85',
-        colorImage: 'https://files.cdn.printful.com/files/eee/eeedd1b5effe31f6f303bd7d864dc007_preview.png',
-        sizes: [
-          { variantID: 1962938174, size: 'S' },
-          { variantID: 1962938175, size: 'M' },
-          { variantID: 1962938176, size: 'L' },
-          { variantID: 1962938177, size: 'XL' },
-          { variantID: 1962938178, size: '2X' }
+          { variantID: 1951169697, size: 'S' },
+          { variantID: 1951169710, size: 'M' },
+          { variantID: 1951169717, size: 'L' },
+          { variantID: 1951169724, size: 'XL' },
+          { variantID: 1951169730, size: '2XL' },
         ]
       }
     ],
-    description: 'Ah, the corporate life. We’ve got very serious business to do, thank you very much. And we won’t tell anyone that your briefcase is full of snacks. It’ll be our little secret.'
+    description: 'Something told us the cat and hamster wouldn’t get along…but who needs a hamster when you have a cat? Or an awesome cat shirt? It’s really a win-win for everybody (except for the hamster).'
   },
   {
     title: 'I Do What I Want',
@@ -257,69 +421,13 @@ const products = [
     description: 'Whether you have a mini-me or not, this shirt gets the message across. You’re the only one allowed to make fun of your family. Haters can talk to the paw.'
   },
   {
-    title: 'Fat Caturday',
-    subtitle: 'You know how to spend the weekend.',
-    id: 189011336,
-    price: 20,
-    inStock: true,
-    style: 'tshirt',
-    category: 'shirts',
-    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925156/Fat%20Cattitude/fat-caturday_gug8j7.jpg',
-    modelImages: [{
-      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925156/Fat%20Cattitude/d702463ab624b31755152b384d945fe4_preview_1_zax4mu.png',
-      variantIndex: 1
-    }],
-    colors: [
-      {
-        colorName: 'White',
-        colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/fe3/fe30fb16c201d25ea074057658cc3078_preview.png',
-        sizes: [
-          { variantID: 2086396621, size: 'XS' },
-          { variantID: 2086396623, size: 'S' },
-          { variantID: 2086396624, size: 'M' },
-          { variantID: 2086396625, size: 'L' },
-          { variantID: 2086396626, size: 'XL' },
-          { variantID: 2086396627, size: '2X' }
-        ]
-      },
-      {
-        colorName: 'Prism',
-        colorCode: '#a1c3b8',
-        colorImage: 'https://files.cdn.printful.com/files/cd0/cd0a89cebaf1d1572852302843070203_preview.png',
-        sizes: [
-          { variantID: 2086396630, size: 'XS' },
-          { variantID: 2086396631, size: 'S' },
-          { variantID: 2086396632, size: 'M' },
-          { variantID: 2086396633, size: 'L' },
-          { variantID: 2086396634, size: 'XL' },
-          { variantID: 2086396635, size: '2X' }
-        ]
-      },
-      {
-        colorName: 'Lilac',
-        colorCode: '#d9b0cb',
-        colorImage: 'https://files.cdn.printful.com/files/b98/b988b870a8aa55f8ced1d3a394fd3d18_preview.png',
-        sizes: [
-          { variantID: 2086396638, size: 'XS' },
-          { variantID: 2086396639, size: 'S' },
-          { variantID: 2086396640, size: 'M' },
-          { variantID: 2086396641, size: 'L' },
-          { variantID: 2086396642, size: 'XL' },
-          { variantID: 2086396643, size: '2X' }
-        ]
-      },
-    ],
-    description: 'Even if you’re not making the fat cat bucks, at least you’ve got the weekend. And what’s Caturday without a little wine? Ok, a lot of wine. Unleash your weekend warrior right meow.'
-  },
-  {
     title: 'I’m Busy',
     subtitle: 'Sassy busy cat t-shirt',
     id: 163440250,
     price: 20,
     inStock: true,
     style: 'tshirt',
-    category: 'shirts',
+    category: 'featuredShirts',
     ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/im-busy_1_wf3xak.jpg',
     modelImages: [{
       image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/me_im_busy_wzclhb.jpg',
@@ -421,114 +529,6 @@ const products = [
       }
     ],
     description: 'We all need a little down time to hog the couch and indulge on some gourmet junk food. Show off your fat cat lifestyle with pride... even if you stole the very last cheeseburger.'
-  },
-  {
-    title: 'Have A Seat',
-    subtitle: 'You no longer have a hamster.',
-    id: 176594391,
-    price: 20,
-    inStock: true,
-    style: 'tshirt',
-    category: 'featuredShirts',
-    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/have-a-seat-sized_ucmbdb.jpg',
-    modelImages:[{
-      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925158/Fat%20Cattitude/mockup-37626f09_1_2_fzzotl.jpg',
-      variantIndex: 1
-    }],
-    colors: [
-      {
-        colorName: 'White',
-        colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/296/2967a750122cc314f45f3425f7e32d73_preview.png',
-        sizes: [
-          { variantID: 1951116354, size: 'XS' },
-          { variantID: 1951116355, size: 'S' },
-          { variantID: 1951116356, size: 'M' },
-          { variantID: 1951116357, size: 'L' },
-          { variantID: 1951116358, size: 'XL' },
-          { variantID: 1951116359, size: '2XL'}
-        ]
-      },
-      {
-        colorName: 'Heather',
-        colorCode: '#a8abb2',
-        colorImage: 'https://files.cdn.printful.com/files/a71/a716718934640b86d72d8c9779e7137f_preview.png',
-        sizes: [
-          { variantID: 1951169666, size: 'S' },
-          { variantID: 1951169667, size: 'M' },
-          { variantID: 1951169668, size: 'L' },
-          { variantID: 1951169681, size: 'XL' },
-          { variantID: 1951169687, size: '2XL' },
-        ]
-      },
-      {
-        colorName: 'Ocean',
-        colorCode: '#619dc1',
-        colorImage: 'https://files.cdn.printful.com/files/3e0/3e02139db889958d37079a64ca616453_preview.png',
-        sizes: [
-          { variantID: 1951169697, size: 'S' },
-          { variantID: 1951169710, size: 'M' },
-          { variantID: 1951169717, size: 'L' },
-          { variantID: 1951169724, size: 'XL' },
-          { variantID: 1951169730, size: '2XL' },
-        ]
-      }
-    ],
-    description: 'Something told us the cat and hamster wouldn’t get along…but who needs a hamster when you have a cat? Or an awesome cat shirt? It’s really a win-win for everybody (except for the hamster).'
-  },
-  {
-    title: 'Mechanic Cat',
-    subtitle: 'I have no idea what I’m doing.',
-    id: 177594656,
-    price: 20,
-    inStock: true,
-    style: 'tshirt',
-    category: 'featuredShirts',
-    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925157/Fat%20Cattitude/mechanic-cat_vptmds.jpg',
-    modelImages:[{
-      image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925155/Fat%20Cattitude/ac_fc_1_xrsdym.jpg',
-      variantIndex: 2
-    }],
-    colors: [
-      {
-        colorName: 'White',
-        colorCode: '#ffffff',
-        colorImage: 'https://files.cdn.printful.com/files/38a/38a74d42a8b62575a17d908bd150a1f9_preview.png',
-        sizes: [
-          { variantID: 1962384111, size: 'XS' },
-          { variantID: 1962384112, size: 'S' },
-          { variantID: 1962384113, size: 'M' },
-          { variantID: 1962384114, size: 'L' },
-          { variantID: 1962384115, size: 'XL' },
-          { variantID: 1962384116, size: '2XL'}
-        ]
-      },
-      {
-        colorName: 'Heather',
-        colorCode: '#a8abb2',
-        colorImage: 'https://files.cdn.printful.com/files/6d0/6d0a4c81e134e32964a7f95c426b79e9_preview.png',
-        sizes: [
-          { variantID: 1962387247, size: 'S' },
-          { variantID: 1962387248, size: 'M' },
-          { variantID: 1962387249, size: 'L' },
-          { variantID: 1962387250, size: 'XL' },
-          { variantID: 1962387251, size: '2XL' },
-        ]
-      },
-      {
-        colorName: 'Blue',
-        colorCode: '#86a9c9',
-        colorImage: 'https://files.cdn.printful.com/files/bae/bae283e02e4cf0029e40ba3ae3ade19c_preview.png',
-        sizes: [
-          { variantID: 1962387252, size: 'S' },
-          { variantID: 1962387253, size: 'M' },
-          { variantID: 1962387254, size: 'L' },
-          { variantID: 1962387255, size: 'XL' },
-          { variantID: 1962387256, size: '2XL' },
-        ]
-      }
-    ],
-    description: 'Act confident and they’ll think you know what you’re doing. Even better, just act like you don’t care and go play with some yarn or something. Someone else can figure that out.'
   },
   {
     title: 'If I Fits, I Sits',
