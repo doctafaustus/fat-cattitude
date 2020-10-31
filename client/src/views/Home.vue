@@ -5,7 +5,7 @@
       <!-- Featured -->
       <div class="row featured">
         <div class="bg-layer"></div>
-        <h1 class="section-title light"><span>Show off your </span><span>Fat Cattitude</span></h1>
+        <h1 class="section-title light"><span>Only for those </span><span>with good taste 🎩</span></h1>
         <div class="product-list wrapper">
           <ProductCard v-for="shirt in products.filter(product => product.category === 'featuredShirts')" :key="shirt.id" :product="shirt"></ProductCard>
         </div>
