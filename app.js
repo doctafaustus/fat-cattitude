@@ -34,9 +34,13 @@ app.use(favicon(`${__dirname}/client/public/favicon.ico`));
 // Always force "https://www."
 if (process.env.PORT) {
   app.use((req, res, next) => {
-    console.log('test');
+
     const cookie = new Cookies(req, res);
-    cookie.set('testtest', 'test', { expires: setDate(180) });
+    const optimizelyCookie = cookie.get('optimizelyEndUserId');
+    console.log('optimizelyCookie', optimizelyCookie);
+    if (!optimizelyCookie) {
+      cookie.set('optimizelyEndUserId', generateID(), { expires: setDate(180) });
+    }
 
     if (req.header('x-forwarded-proto') !== 'https' || !req.header('host').includes('www.')) {
       res.redirect(301, `https://www.${req.header('host').replace('www.', '')}${req.url}`);
@@ -63,13 +67,17 @@ app.use('/*', (req, res, next) => {
   else res.sendFile(`${__dirname}/client/dist/index.html`);
 });
 
+function generateID() {
+  var timestamp = new Date().getTime();
+  var randomNum = String(Math.floor(Math.random() * 1000000)).padStart(6, '0');
+  return `oeu${timestamp}.${randomNum}.lov`;
+}
+
 function setDate(days = 180) {
   var targetDate = new Date().getTime() + (days * 24 * 60 * 60 * 1000);
   targetDate = new Date().setTime(targetDate);
   return new Date(targetDate);
 }
-
-
 
 // API
 app.post('/api/estimate-costs', (req, res) => {
