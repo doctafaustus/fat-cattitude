@@ -34,6 +34,10 @@ app.use(favicon(`${__dirname}/client/public/favicon.ico`));
 // Always force "https://www."
 if (process.env.PORT) {
   app.use((req, res, next) => {
+    console.log('test');
+    const cookie = new Cookies(req, res);
+    cookie.set('testtest', 'test', { expires: setDate(180) });
+
     if (req.header('x-forwarded-proto') !== 'https' || !req.header('host').includes('www.')) {
       res.redirect(301, `https://www.${req.header('host').replace('www.', '')}${req.url}`);
     } else next();
@@ -57,13 +61,6 @@ app.use('/*', (req, res, next) => {
   if (/^\/api\//.test(req.originalUrl)) next();
   else if (/\/item\//.test(req.originalUrl)) updateMetaTags(req, res);
   else res.sendFile(`${__dirname}/client/dist/index.html`);
-});
-
-app.use((req, res, next) => {
-  console.log('test');
-  const cookie = new Cookies(req, res);
-  cookie.set('testtest', 'test', { expires: setDate(180) });
-  next();
 });
 
 function setDate(days = 180) {
