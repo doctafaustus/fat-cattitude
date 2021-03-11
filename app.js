@@ -39,7 +39,7 @@ if (process.env.PORT) {
     const optimizelyCookie = cookie.get('optimizelyEndUserId');
     console.log('optimizelyCookie', optimizelyCookie);
     if (!optimizelyCookie) {
-      cookie.set('optimizelyEndUserId', generateID(), { expires: setDate(180) });
+      cookie.set('optimizelyEndUserId', generateID(), { expires: setDate(180), domain: 'fatcattitude.com' });
     }
 
     if (req.header('x-forwarded-proto') !== 'https' || !req.header('host').includes('www.')) {
