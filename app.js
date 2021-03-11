@@ -8,7 +8,6 @@ const admin = require('firebase-admin');
 const favicon = require('serve-favicon');
 const sendOrderSuccessEmail = require('./mailer/send-order-success-email.js'); 
 const $ = require('cheerio');
-const Cookies = require('cookies');
 
 // Globals
 const STRIPE_SECRET_KEY = process.env.PORT ? process.env.STRIPE_SECRET_KEY : fs.readFileSync(`${__dirname}/private/stripe_secret_key.txt`).toString();
@@ -34,14 +33,6 @@ app.use(favicon(`${__dirname}/client/public/favicon.ico`));
 // Always force "https://www."
 if (process.env.PORT) {
   app.use((req, res, next) => {
-
-    const cookie = new Cookies(req, res);
-    const optimizelyCookie = cookie.get('optimizelyEndUserId');
-    console.log('optimizelyCookie', optimizelyCookie);
-    if (!optimizelyCookie) {
-      cookie.set('optimizelyEndUserId', generateID(), { expires: setDate(180), domain: 'fatcattitude.com' });
-    }
-
     if (req.header('x-forwarded-proto') !== 'https' || !req.header('host').includes('www.')) {
       res.redirect(301, `https://www.${req.header('host').replace('www.', '')}${req.url}`);
     } else next();
@@ -66,18 +57,6 @@ app.use('/*', (req, res, next) => {
   else if (/\/item\//.test(req.originalUrl)) updateMetaTags(req, res);
   else res.sendFile(`${__dirname}/client/dist/index.html`);
 });
-
-function generateID() {
-  var timestamp = new Date().getTime();
-  var randomNum = String(Math.floor(Math.random() * 1000000)).padStart(6, '0');
-  return `oeu${timestamp}.${randomNum}.lov`;
-}
-
-function setDate(days = 180) {
-  var targetDate = new Date().getTime() + (days * 24 * 60 * 60 * 1000);
-  targetDate = new Date().setTime(targetDate);
-  return new Date(targetDate);
-}
 
 // API
 app.post('/api/estimate-costs', (req, res) => {
