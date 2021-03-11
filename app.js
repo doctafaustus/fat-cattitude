@@ -8,6 +8,7 @@ const admin = require('firebase-admin');
 const favicon = require('serve-favicon');
 const sendOrderSuccessEmail = require('./mailer/send-order-success-email.js'); 
 const $ = require('cheerio');
+const Cookies = require('cookies');
 
 // Globals
 const STRIPE_SECRET_KEY = process.env.PORT ? process.env.STRIPE_SECRET_KEY : fs.readFileSync(`${__dirname}/private/stripe_secret_key.txt`).toString();
@@ -57,6 +58,20 @@ app.use('/*', (req, res, next) => {
   else if (/\/item\//.test(req.originalUrl)) updateMetaTags(req, res);
   else res.sendFile(`${__dirname}/client/dist/index.html`);
 });
+
+app.use((req, res, next) => {
+  console.log('test');
+  const cookie = new Cookies(req, res);
+  cookie.set('testtest', 'test', { expires: setDate(180) });
+  next();
+});
+
+function setDate(days = 180) {
+  var targetDate = new Date().getTime() + (days * 24 * 60 * 60 * 1000);
+  targetDate = new Date().setTime(targetDate);
+  return new Date(targetDate);
+}
+
 
 
 // API
