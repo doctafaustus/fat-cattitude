@@ -192,7 +192,7 @@ export default {
           subtotal: order.retail_costs.subtotal,
           shipping: order.costs.shipping,
           tax: order.costs.tax,
-          total: order.retail_costs.total
+          total: parseFloat(order.retail_costs.subtotal) + parseFloat(order.costs.shipping) + parseFloat(order.costs.tax)
         };
 
 

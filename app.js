@@ -162,6 +162,13 @@ app.post('/api/place-order', (req, res) => {
         return res.json({ error });
       }
 
+      function getTotal() {
+        const subtotal = parseFloat(printfulRes.retail_costs.subtotal);
+        const shipping = parseFloat(printfulRes.costs.shipping);
+        const tax = parseFloat(printfulRes.costs.tax);
+        return subtotal + shipping + tax;
+      }
+
       // Create new Stripe charge
       stripe.charges.create({
         description: `Charge - ${req.body.fields.email}`,
@@ -172,7 +179,7 @@ app.post('/api/place-order', (req, res) => {
           subtotalCharge: printfulRes.retail_costs.subtotal,
           shippingCharge: printfulRes.costs.shipping,
           taxCharge: printfulRes.costs.tax,
-          total: printfulRes.retail_costs.total,
+          total: getTotal(),
           name: customer.name,
           address1: customer.address.line1,
           address2: customer.address.line2,
@@ -180,7 +187,7 @@ app.post('/api/place-order', (req, res) => {
           state: customer.address.state,
           zip: customer.address.postal_code
         },
-        amount: Math.ceil((printfulRes.retail_costs.total) * 100),
+        amount: Math.ceil(getTotal() * 100),
         currency: 'USD',
         customer: customer.id,
         receipt_email: req.body.fields.email
@@ -211,7 +218,7 @@ app.post('/api/place-order', (req, res) => {
           });
 
         } else {
-          console.log('SUCCESS - send Printful draft order to fulfillment!');
+          console.log('SUCCESS - sent Printful draft order to fulfillment!');
           res.json({ charge });
         }
       });
