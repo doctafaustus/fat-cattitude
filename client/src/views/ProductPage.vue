@@ -144,6 +144,7 @@ export default {
       if (this.item.style === 'mug') return 'Enamel Mug';
       if (this.item.style === 'sticker') return 'Bubble-free Sticker';
       if (this.item.style === 'hat') return 'Embroided Baseball Hat';
+      if (this.item.style === 'pillow') return 'Pillow Plush';
     }
   },
   methods: {
@@ -183,7 +184,7 @@ export default {
     updateURL() {
       this.$router.replace({path: this.$route.path, query: { color: this.selected.color, size: this.selected.size }}).catch(e => e);
     },
-    resetAnimationATC(hasError) {
+    resetAnimationATC(hasError, catPillow) {
       const showClass = 'show';
       const successMessage = this.$refs.successMessage;
       const errorMessage = this.$refs.errorMessage;
@@ -198,14 +199,23 @@ export default {
 
         if (alreadyShown) {
           setTimeout(() => {
-            this.toggleMessage(hasError);
+            this.toggleMessage(hasError, catPillow);
           }, 510);
-        } else this.toggleMessage(hasError);
+        } else this.toggleMessage(hasError, catPillow);
       });
     },
-    toggleMessage(hasError) {
+    toggleMessage(hasError, catPillow) {
       const showClass = 'show';
-      if (hasError) {
+      if (catPillow) {
+        this.$ga.event({
+          eventCategory: 'Pillow',
+          eventAction: 'ATC attempt',
+        });
+        this.showError = true;
+        this.$refs.errorMessage.textContent = 'Sorry! This product is out of stock. Please come back later!'
+        this.$refs.errorMessage.classList.add(showClass);
+      }
+      else if (hasError) {
         this.showError = true;
         this.$refs.errorMessage.classList.add(showClass);
       } else {
@@ -220,6 +230,7 @@ export default {
       };
 
       if (!this.selected.size) return this.resetAnimationATC(true);
+      if (this.selected.productID === 13371337) return this.resetAnimationATC(true, 'cat-pillow');
 
       this.resetAnimationATC(false);
       EventBus.$emit('cart-add', this.selected);

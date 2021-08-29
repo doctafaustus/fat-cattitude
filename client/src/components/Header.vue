@@ -104,6 +104,7 @@ export default {
   },
   mounted() {
     EventBus.$on('cart-add', item => {
+      if (item.productID === 13371337) return console.log('cat pillow');
       utils.setCookie('cart', true);
       const cartArray = utils.getCartArray();
       cartArray.push(item);

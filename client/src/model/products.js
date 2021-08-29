@@ -1,5 +1,32 @@
 const products = [
   {
+    title: 'Fat Cat Pillow',
+    subtitle: 'He\'s adorabs',
+    id: 13371337,
+    price: 32,
+    inStock: false,
+    style: 'pillow',
+    category: 'accessories',
+    ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925159/Fat%20Cattitude/og-image_2_flo7h8.jpg',
+    modelImages: [
+      {
+        image: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1630196900/Fat%20Cattitude/H6695b4b8808c4e03815b86473206199b6_mw5sbt.jpg',
+        variantIndex: 0
+      }
+    ],
+    colors: [
+      {
+        colorName: 'Tiger Stripes',
+        colorCode: '#ffffff',
+        colorImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1630197068/Fat%20Cattitude/61TIBtSKNnS._AC_SL1500__qjdxuu.jpg',
+        sizes: [
+          { variantID: 133713371, size: 'One Size' },
+        ]
+      },
+    ],
+    description: 'The cute sleeping kitty pillow! He has thick, sexy lips, a straight nose, and lovely little tail! People can\'t help but want to hug him or use him to rest your weary head. Don\'t you wanna give it a try?'
+  },
+  {
     title: 'Corporate Fat Cat',
     subtitle: 'The fat cats in Washington don’t even look this good',
     id: 177643473,
