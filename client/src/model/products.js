@@ -4,7 +4,7 @@ const products = [
     subtitle: 'He\'s adorabs',
     id: 13371337,
     price: 32,
-    inStock: false,
+    inStock: true,
     style: 'pillow',
     category: 'accessories',
     ogImage: 'https://res.cloudinary.com/dzynqn10l/image/upload/v1600925159/Fat%20Cattitude/og-image_2_flo7h8.jpg',

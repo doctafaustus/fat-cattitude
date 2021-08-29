@@ -27,13 +27,22 @@
         <div class="blocks wrapper">
 
           <div class="block mug">
+            <h1 class="section-title light">NEW: Fat Cat Pillow</h1>
+            <div class="block-description">
+              <span>You've seen him on TikTok. He's become an overnight sensation! But act fast since quantities are VERY LIMITED right now! You deserve to have this Fat Cat Pillow!</span>
+            </div>
+            <router-link :to="{ name: 'Product', params: { id: 13371337 }}" class="cta">Gimme this!</router-link>
+            <ProductCard v-for="item in products.filter(product => product.id === 13371337)" :key="item.id" :product="item"></ProductCard>
+          </div>
+
+          <!-- <div class="block mug">
             <h1 class="section-title light">NEW: Fat Cat Mug</h1>
             <div class="block-description">
               <span>Excuse me, we were sitting there. And there…and there. Mark your territory and keep your drink close by with a mug you probably relate to a little too much. Introducing the "If I Fits, I Sits" Mug!</span>
             </div>
             <router-link :to="{ name: 'Product', params: { id: 177031652 }}" class="cta">Gimme this!</router-link>
             <ProductCard v-for="item in products.filter(product => product.id === 177031652)" :key="item.id" :product="item"></ProductCard>
-          </div>
+          </div> -->
 
           <div class="block hat">
             <div class="hat-container">
